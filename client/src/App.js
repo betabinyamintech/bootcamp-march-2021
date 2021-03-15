@@ -1,11 +1,11 @@
 // import logo from "./logo.svg";
 import "./App.css";
-import Profile from "./components/Profile/Profile";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
     <div className="App">
-      <Profile name="אפרת" numExperts="5" />
+      <Home />
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
