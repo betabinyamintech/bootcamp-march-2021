@@ -3,7 +3,7 @@ import LoginRegister from "./components/Login/LoginRegister";
 import ProfileEdit from "./components/ProfileEdit/ProfileEdit";
 
 const App = () => {
-  return <ProfileEdit />;
+  return <LoginRegister />; //<ProfileEdit />;
 };
 
 export default App;

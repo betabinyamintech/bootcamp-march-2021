@@ -1,4 +1,7 @@
+import { useState } from "react";
+
 const LoginDetails = ({ loginDetails, setLoginDetails, isLogin }) => {
+  const [errorMessage, setErrorMessage] = useState();
   return (
     <form>
       <div className="input-div">
@@ -27,13 +30,12 @@ const LoginDetails = ({ loginDetails, setLoginDetails, isLogin }) => {
           <label>
             <input
               placeholder=" "
-              onChange={(e) => {
-                if (loginDetails.password === e.target.value) console.log(e.target.value);
-              }}
+              onChange={(e) => setErrorMessage(loginDetails.password !== e.target.value)}
               type="password"
             ></input>
             <span>אימות</span>
           </label>
+          {errorMessage && <h5 style={{ color: "red" }}>הסיסמאות לא תואמות</h5>}
         </div>
       )}
     </form>

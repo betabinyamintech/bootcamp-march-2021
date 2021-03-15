@@ -1,8 +1,8 @@
 import React from "react";
 import "./ProfileEdit.css";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import { Checkbox } from "@material-ui/core";
+// import { makeStyles } from "@material-ui/core/styles";
+// import TextField from "@material-ui/core/TextField";
+// import { Checkbox } from "@material-ui/core";
 const ProfileEdit = () => {
   return (
     <div className="profile-edit-container">
@@ -10,7 +10,7 @@ const ProfileEdit = () => {
       <div className="profile-details">
         <img
           className="profile-image"
-          alt="image"
+          alt="profile_img"
           src="https://image.shutterstock.com/image-photo/27032020-riga-latvia-portrait-man-600w-1686506806.jpg"
         />
         <h4 className="user-name"> ישראל ישראלי</h4>
