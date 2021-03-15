@@ -3,24 +3,28 @@
         "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
         "timePassed": 24,
         "statusMessage": "לא רלוונטי",
-        "sender" : "Avram"
+        "sender" : "Avram",
+        "inOrOut" : "in"
     },
     {
         "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
         "timePassed": 24,
         "statusMessage": "לא רלוונטי",
-        "sender" : "Avram"
+        "sender" : "Avram",
+        "inOrOut" : "in"
     },
     {
         "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
         "timePassed": 24,
         "statusMessage": "לא רלוונטי",
-        "sender" : "Avram"
+        "sender" : "Avram",
+        "inOrOut" : "out"
     },
     {
         "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
         "timePassed": 24,
         "statusMessage": "לא רלוונטי",
-        "sender" : "Avram"
+        "sender" : "Avram",
+        "inOrOut" : "out"
     }
 ]

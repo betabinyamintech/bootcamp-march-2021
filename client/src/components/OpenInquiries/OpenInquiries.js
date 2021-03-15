@@ -1,5 +1,6 @@
 import react from 'react';
 import Inquiry from '../Inquiry/Inquiry';
+let placeholder = 0;
 
 const OpenInquiries = ({ inquiries }) => {
 
@@ -10,8 +11,8 @@ const OpenInquiries = ({ inquiries }) => {
         </div>;
 
 return <div className="inquiriesBox">
-    {props.inquiries.map((inquiry) => {
-        <Inquiry id={placeholder} inquiry={inquiry} /> //place holder values!!
+    {inquiries.map((inquiry) => {
+        <Inquiry id={placeholder++} inquiry={inquiry} /> //place holder values!!
     })}
 
 </div>
