@@ -1,22 +1,21 @@
 import react from 'react';
+import Inquiry from '../Inquiry/Inquiry';
 
-const OpenInquiries = (props) =>{
+const OpenInquiries = ({ inquiries }) => {
 
-    if (props.inquiries.length === 0){
-        <div className = "emptyInquiries">
+    if (inquiries.length === 0) 
+        return <div className="emptyInquiries">
             <h3>אין שאלות</h3>
             <h4>הכל ברור לך, אחלה!</h4>
-        </div>
-    }
+        </div>;
 
-    return (
-    <div className = "inquiriesBox">
-        {props.inquiries.map((inquiry) => {
-            <Inquiry id = {placeholder} props = {inquiry} /> //place holder values!!
-        })}
-        
-    </div>
-    )
+return <div className="inquiriesBox">
+    {props.inquiries.map((inquiry) => {
+        <Inquiry id={placeholder} inquiry={inquiry} /> //place holder values!!
+    })}
+
+</div>
+    
 }
 
 export default OpenInquiries;
