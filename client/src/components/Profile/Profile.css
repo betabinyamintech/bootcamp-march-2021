@@ -1,31 +1,29 @@
-.imgProfile {
-  border-radius: 50%;
-  height: 70px;
-  border-right: groove;
-  float: right;
-}
 .profileButton {
-  float: left;
+    float: left;
 }
 
 .iconQuestion {
-  height: 20px;
-  float: right;
+    height: 20px;
+    float: right;
 }
+
 .divProfile {
-  height: 80px;
-  margin: 10px;
+    height: 80px;
+    margin: 10px;
 }
+
 .profileMessage {
-  text-align: right;
-  margin: 10px;
+    text-align: right;
+    margin: 10px;
 }
+
 .divInputQuestion {
-  margin: 10px;
+    margin: 10px;
 }
+
 .inputNewQuestion {
-  width: 90%;
-  border: none;
-  border-bottom: 2px dotted rgb(105, 101, 101);
-  text-align: right;
+    width: 90%;
+    border: none;
+    border-bottom: 2px dotted rgb(105, 101, 101);
+    text-align: right;
 }

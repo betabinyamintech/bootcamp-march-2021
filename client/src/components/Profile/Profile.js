@@ -1,26 +1,24 @@
-import "./Profile.css";
-import React from "react";
-import avatar from "./avatar.png";
+import React, { useContext } from "react";
 import icon from "./iconQuestion.png";
+import Avatar from "../Avatar/Avatar";
+import UserContext from "../../contexts/UserContext";
 
-const Profile = ({ name, numExperts }) => {
+const Header = ({ numExperts = 167 }) => {
+  const user = useContext(UserContext).user;
+  const { name } = user;
   return (
     <div>
-      <div className="divProfile">
-        <img className="imgProfile" src={avatar} alt="" />
-        <button className="profileButton"></button>
-      </div>
+      <button className="profileButton"></button>
+      <Avatar />
       <div className="profileMessage">
-        {name}, {numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
+        {name}, {numExperts} .מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
       </div>
-      <div className="divInputQuestion">
-        <img className="iconQuestion" src={icon} alt="" />
-        <input
-          className="inputNewQuestion"
-          placeholder="השאלה החדשה שלך..."
-        ></input>
-      </div>
+      <img className="iconQuestion" src={icon} alt="" />
+      <input
+        className="inputNewQuestion"
+        placeholder="השאלה החדשה שלך..."
+      ></input>
     </div>
   );
 };
-export default Profile;
+export default Header;

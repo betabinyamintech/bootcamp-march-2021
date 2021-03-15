@@ -1,0 +1,6 @@
+.imgProfile {
+    border-radius: 50%;
+    height: 70px;
+    border-right: groove;
+    float: right;
+}
