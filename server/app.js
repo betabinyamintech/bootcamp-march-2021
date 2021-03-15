@@ -1,6 +1,7 @@
 require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
+const bcrypt = require("bcrypt");
 const { authenticateToken, generateAccessToken } = require("./jwt");
 const bcrypt = require("bcrypt");
 var logger = require("morgan");
@@ -11,6 +12,7 @@ const {
 connectDb();
 
 var app = express();
+const salt = 10;
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -26,28 +28,36 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+
 // app.post("/login", async (req, res) => {
-//   const { username, password } = req.body;
-//   const user = await User.findOne({ username }).exec();
-//   const isValid = bcrypt.compareSync(password, user.hash);
-//   if (!isValid) throw Error("user not valid");
+//   const { email, password} = req.body;
+//   const user = await User.findOne({ email,password }).exec();
 //   res.send(user);
 // });
 // app.post("/register", async (req, res) => {
-//   const { username, password } = req.body;
-//   console.log("username, password: ", username, password);
-//   const hash = bcrypt.hashSync(password, saltRounds, function (err, hash) {
-//     // Store hash in your password DB.
-//   });
-app.post("/login", async (req, res) => {
-  const { email, password} = req.body;
-  const user = await User.findOne({ email,password }).exec();
-  res.send(user);
-});
+//   const { email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}} = req.body;
+//   console.log("email, password: ", email, password);
+//   const user = await new User({email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}}).save();
+//   res.send(user);
+// });
 app.post("/register", async (req, res) => {
-  const { email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}} = req.body;
-  console.log("email, password: ", email, password);
-  const user = await new User({email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}}).save();
+  try {
+    const { username, password } = req.body;
+    const hash = bcrypt.hashSync(password, salt);
+    const token = generateAccessToken({ username });
+    console.log("token-------------------------:", token);
+    const user = await new User({ username, password: hash }).save();
+    res.send(user);
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username }).exec();
+  const isValid = bcrypt.compareSync(password, user.password);
+  if (!isValid) throw Error("user not valid");
   res.send(user);
 });
 
