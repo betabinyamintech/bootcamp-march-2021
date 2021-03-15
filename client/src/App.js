@@ -1,8 +1,8 @@
 import "./App.css";
-import MainScreen from "./components/MainScreen/MainScreen";
+import LoginRegister from "./components/Login/LoginRegister";
 
 const App = () => {
-  return <MainScreen />;
+  return <LoginRegister />;
 };
 
 export default App;
