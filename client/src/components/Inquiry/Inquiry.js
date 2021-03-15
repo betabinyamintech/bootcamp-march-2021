@@ -9,7 +9,7 @@ const Inquiry = ({ inquiry }) => {
         <div className="inquiryTitle">{inquiryTitle}</div>
         <div className="timePassed">{timePassed}</div>
         <div className="statusMessage">{statusMessage}</div>
-        <button className="nextStepButton">בחירת מומחה</button>
+        <button className="nextStepButton">בחירת מומחה &nbsp;&nbsp;&gt;</button>
       </div>
     </div>
   );

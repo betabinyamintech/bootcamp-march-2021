@@ -1,7 +1,7 @@
 // import React from "react";
 import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
-import "./Style.css";
+import "./Avatar.css";
 
 const Avatar = () => {
   const avatarImg = useContext(UserContext).user.avatarImg;

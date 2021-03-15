@@ -59,10 +59,7 @@
     background: #414141;
     border-radius: 4px;
     /* Inside Auto Layout */
-    flex: none;
-    order: 1;
-    align-self: stretch;
-    flex-grow: 0;
+   
     margin: 8px 10px;
     font-family: Heebo;
     font-style: normal;
@@ -70,7 +67,7 @@
     font-size: 12px;
     line-height: 18px;
     /* identical to box height */
-    text-align: right;
+  
     letter-spacing: 0.01em;
     color: #FFFFFF;
 }

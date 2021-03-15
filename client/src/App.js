@@ -7,12 +7,9 @@ import MyRouter from "./components/MyRouter/MyRouter";
 import Home from "./components/Home/Home";
 
 function App() {
-  
   return (
     <div className="App">
-      <header className="App-header">
-        <Home />
-      </header>
+      <Home />
     </div>
   );
 }

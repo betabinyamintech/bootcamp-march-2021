@@ -1,3 +1,4 @@
+import "./Header.css";
 import React, { useContext } from "react";
 import Avatar from "../Avatar/Avatar";
 import UserContext from "../../contexts/UserContext";
@@ -13,7 +14,7 @@ const Header = ({ numExperts = 167 }) => {
         <Avatar />
       </div>
       <div className="profileMessage">
-        {name}, {numExperts} .מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
+        {name}, {numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
       </div>
       <div>
         <InputQuestion />

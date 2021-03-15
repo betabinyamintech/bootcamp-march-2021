@@ -1,25 +1,35 @@
 .profileButton {
-    float: left;
+  float: left;
+  margin: 20px;
+
+  /* font-family: Material-Design-Iconic-Font;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 23px;
+  line-height: 25px;
+  letter-spacing: 0.01em;
+
+  color: #414141; */
 }
 
-.headerBox{
-    display: flex;
-    flex-flow: column nowrap;
-    background-color: #FFFFFF;
-    border-radius: 4px;
-    margin: 10px;
+.headerBox {
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin: 10px;
 }
 
 .divProfile {
-    height: 80px;
-    margin: 10px;
+  height: 80px;
+  margin: 10px;
 }
 
 .profileMessage {
-    text-align: right;
-    margin: 10px;
+  text-align: right;
+  margin: 10px;
 }
 
 .divInputQuestion {
-    margin: 10px;
+  margin: 10px;
 }

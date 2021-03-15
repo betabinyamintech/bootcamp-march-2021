@@ -1,6 +1,4 @@
-.openInquiries {
-    float: right;
-}
-.receivedInquiries{
-    float: right;
+.inquiriesTitle{
+    text-align: right;
+    margin-right: 12px;
 }
