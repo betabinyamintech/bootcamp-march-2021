@@ -3,7 +3,6 @@ var createError = require("http-errors");
 var express = require("express");
 const bcrypt = require("bcrypt");
 const { authenticateToken, generateAccessToken } = require("./jwt");
-const bcrypt = require("bcrypt");
 var logger = require("morgan");
 const {
   connectDb,
@@ -28,7 +27,6 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-
 // app.post("/login", async (req, res) => {
 //   const { email, password} = req.body;
 //   const user = await User.findOne({ email,password }).exec();
@@ -42,25 +40,68 @@ app.use(function (err, req, res, next) {
 // });
 app.post("/register", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const {
+      email,
+      password,
+      firstName,
+      lastName,
+      profession,
+      phone,
+      city,
+      isExpert,
+      expertDetails: {
+        helpKind,
+        inquirySubjects,
+        questionsBeforeMeeting,
+        lengthMeeting,
+        preferredMeetingType,
+        meetingAddress,
+      },
+    } = req.body;
     const hash = bcrypt.hashSync(password, salt);
-    const token = generateAccessToken({ username });
+    const token = generateAccessToken( {email });
     console.log("token-------------------------:", token);
-    const user = await new User({ username, password: hash }).save();
-    res.send(user);
+    const user = await new User({
+      email,
+      password: hash,
+      firstName,
+      lastName,
+      profession,
+      phone,
+      city,
+      isExpert,
+      expertDetails: {
+        helpKind,
+        inquirySubjects,
+        questionsBeforeMeeting,
+        lengthMeeting,
+        preferredMeetingType,
+        meetingAddress,
+      },
+    }).save();
+    console.log(user);
+    const objectUser = user.toObject();
+    objectUser.token = token;
+    res.send(objectUser);
   } catch (err) {
     res.send(err.message);
   }
 });
 
-app.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username }).exec();
+app.post("/login",authenticateToken, async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email }).exec();
+  const token = generateAccessToken({ email });
+
   const isValid = bcrypt.compareSync(password, user.password);
   if (!isValid) throw Error("user not valid");
-  res.send(user);
+  const objectUser = user.toObject();
+  objectUser.token = token;
+  res.send(objectUser);
 });
-
+app.get('/hi', authenticateToken,(req,res)=>{
+  res.send('hello awsome team number 1!');
+})
 app.use(function (req, res, next) {
   next(createError(404));
 });
