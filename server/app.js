@@ -1,41 +1,20 @@
+require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
+const { authenticateToken, generateAccessToken } = require("./jwt");
 var logger = require("morgan");
-const mongoose = require("mongoose");
-const authenticateToken = require("./jwt");
-const dotenv = require("dotenv");
-dotenv.config();
-
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+const {
+  connectDb,
+  models: { User },
+} = require("./models");
+connectDb();
 
 var app = express();
-
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
 
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-// error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -45,12 +24,6 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-const usersSchema = new mongoose.Schema({
-  user_name: String,
-  password: String,
-});
-const User = mongoose.model("User", usersSchema);
 
 app.post("/login", async (req, res) => {
   const { user_name, password } = req.body;
@@ -66,6 +39,13 @@ app.post("/register", async (req, res) => {
   const user = await new User({ user_name, hash }).save();
   user.token = token;
   res.send(user);
+});
+
+app.use(function (req, res, next) {
+  next(createError(404));
+});
+app.listen(process.env.PORT, () => {
+  console.log("Opened port succesfully at port " + process.env.PORT);
 });
 
 module.exports = app;
