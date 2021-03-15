@@ -2,6 +2,7 @@ require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
 const { authenticateToken, generateAccessToken } = require("./jwt");
+const bcrypt = require("bcrypt");
 var logger = require("morgan");
 const {
   connectDb,
@@ -25,19 +26,28 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
+// app.post("/login", async (req, res) => {
+//   const { username, password } = req.body;
+//   const user = await User.findOne({ username }).exec();
+//   const isValid = bcrypt.compareSync(password, user.hash);
+//   if (!isValid) throw Error("user not valid");
+//   res.send(user);
+// });
+// app.post("/register", async (req, res) => {
+//   const { username, password } = req.body;
+//   console.log("username, password: ", username, password);
+//   const hash = bcrypt.hashSync(password, saltRounds, function (err, hash) {
+//     // Store hash in your password DB.
+//   });
 app.post("/login", async (req, res) => {
-  const { user_name, password } = req.body;
-  const user = await User.findOne({ user_name }).exec();
-  const isValid = bcrypt.compareSync(password, user.hash);
-  if (!isValid) throw Error("user not valid");
+  const { email, password} = req.body;
+  const user = await User.findOne({ email,password }).exec();
   res.send(user);
 });
 app.post("/register", async (req, res) => {
-  const { user_name, password } = req.body;
-  const hash = bcrypt.hashSync(password);
-  const token = generateAccessToken({ user_name, hash });
-  const user = await new User({ user_name, hash }).save();
-  user.token = token;
+  const { email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}} = req.body;
+  console.log("email, password: ", email, password);
+  const user = await new User({email, password,firstName,lastName,profession,phone,city,isExpert,expertDetails:{helpKind,inquirySubjects,questionsBeforeMeeting,lengthMeeting,preferredMeetingType,meetingAddress}}).save();
   res.send(user);
 });
 
