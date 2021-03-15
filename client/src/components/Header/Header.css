@@ -1,0 +1,25 @@
+.profileButton {
+    float: left;
+}
+
+.headerBox{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.divProfile {
+    height: 80px;
+    margin: 10px;
+}
+
+.profileMessage {
+    text-align: right;
+    margin: 10px;
+}
+
+.divInputQuestion {
+    margin: 10px;
+}

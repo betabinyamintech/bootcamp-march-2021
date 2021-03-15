@@ -1,20 +1,37 @@
-import React from "react";
+import "./Home.css";
+import React, { useContext } from "react";
+import UserContext from "../../contexts/UserContext";
+import OpenInquiries from "../OpenInquiries/OpenInquiries";
+import Header from "../Header/Header";
+import inquiries from "./inquires.json";
 
 const Home = () => {
   return (
-    <div>
-      <Profile />
+    <div style={{ display: "flex", flexFlow: "column nowrap" }}>
+      <div>
+        <Header />
+      </div>
 
-      <label className="receivedInquiries">פניות נכנסות</label>
-      <ReceivedInquiries />
+      <div className="receivedInquiries">פניות נכנסות</div>
+      <OpenInquiries inquiries={inquiries} />
 
-      <label className="openInquiries">פניות פתוחות</label>
-      <OpenInquiries />
+      <div className="openInquiries">פניות פתוחות</div>
+      <OpenInquiries inquiries={inquiries} />
 
-      <button className="lastInquiriesButton">הצגת פניות קודמות</button>
-      <button className="lastChallengesButton">הצג אתגרים קודמים</button>
-    </div>
-  );
-};
+// const Home = () => {
+//   return (
+//     <div>
+//       <Profile />
+
+//       <label className="receivedInquiries">פניות נכנסות</label>
+//       <ReceivedInquiries />
+
+//       <label className="openInquiries">פניות פתוחות</label>
+//       <OpenInquiries />
+//       <button className="lastInquiriesButton">הצגת פניות קודמות</button>
+//       <button className="lastChallengesButton">הצג אתגרים קודמים</button>
+//     </div>
+//   );
+// };
 
 export default Home;
