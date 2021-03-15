@@ -12,7 +12,7 @@ const Home = () => {
       <Profile />
 
       <label className="receivedInquiries">פניות נכנסות</label>
-      <OpenInquiriesuiries inquiries = {inquiries}/>
+      <OpenInquiries inquiries = {inquiries}/>
 
       <label className="openInquiries">פניות פתוחות</label>
       <OpenInquiries inquiries = {inquiries} />
