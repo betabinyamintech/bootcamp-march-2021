@@ -1,21 +1,25 @@
+import "./Profile.css";
 import React from "react";
 import avatar from "./avatar.png";
 import icon from "./iconQuestion.png";
-import points from "./3points.png";
 
 const Profile = ({ name, numExperts }) => {
   return (
     <div>
-      <button className="profileButton">
-        <img src={points} alt="" />
-      </button>
-      <img className="imgProfile" src={avatar} alt="" />
-      <div className="profileMessage">
-        {name}, {numExperts} .מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
+      <div className="divProfile">
+        <img className="imgProfile" src={avatar} alt="" />
+        <button className="profileButton"></button>
       </div>
-      <input className="inputNewQuestion" placeholder="השאלה החדשה שלך...">
+      <div className="profileMessage">
+        {name}, {numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
+      </div>
+      <div className="divInputQuestion">
         <img className="iconQuestion" src={icon} alt="" />
-      </input>
+        <input
+          className="inputNewQuestion"
+          placeholder="השאלה החדשה שלך..."
+        ></input>
+      </div>
     </div>
   );
 };
