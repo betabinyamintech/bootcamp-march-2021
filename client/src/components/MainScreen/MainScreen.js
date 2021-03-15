@@ -12,7 +12,10 @@ const MainScreen = () => {
       ></img>
       <div className="details">
         <h3 className="login-title">התחברות</h3>
-        <p className="description">תושבי מטה בנימין יכולים לעזור ולהיעזר כאן במגוון תחומים בצורה נוחה וידידותית.</p>
+        <p className="description">
+          תושבי מטה בנימין יכולים לעזור ולהיעזר כאן במגוון תחומים בצורה נוחה
+          וידידותית.
+        </p>
       </div>
       <div className="buttons">
         <button className="email-button" style={{ top: "470px" }}>
@@ -22,7 +25,10 @@ const MainScreen = () => {
       </div>
       <h4 className="footer">
         אין לך חשבון?
-        <span style={{ textDecoration: "underline" }} onClick={() => setIsLogin(!isLogin)}>
+        <span
+          style={{ textDecoration: "underline" }}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           {" "}
           הירשם עכשיו.
         </span>
@@ -37,7 +43,10 @@ const MainScreen = () => {
       ></img>
       <div className="details">
         <h3 className="login-title">הרשמה</h3>
-        <p className="description">תושבי מטה בנימין יכולים לעזור ולהיעזר כאן במגוון תחומים בצורה נוחה וידידותית.</p>
+        <p className="description">
+          תושבי מטה בנימין יכולים לעזור ולהיעזר כאן במגוון תחומים בצורה נוחה
+          וידידותית.
+        </p>
       </div>
       <div className="buttons">
         <button className="email-button" style={{ top: "470px" }}>
@@ -47,7 +56,10 @@ const MainScreen = () => {
       </div>
       <h4 className="footer">
         יש לך חשבון?
-        <span style={{ textDecoration: "underline" }} onClick={() => setIsLogin(!isLogin)}>
+        <span
+          style={{ textDecoration: "underline" }}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           {" "}
           היכנס עכשיו.
         </span>
