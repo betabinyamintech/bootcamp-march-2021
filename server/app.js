@@ -1,6 +1,7 @@
 require("dotenv").config();
 var createError = require("http-errors");
 var express = require("express");
+const bcrypt = require("bcrypt");
 const { authenticateToken, generateAccessToken } = require("./jwt");
 var logger = require("morgan");
 const {
@@ -10,6 +11,7 @@ const {
 connectDb();
 
 var app = express();
+const salt = 10;
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -25,19 +27,24 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-app.post("/login", async (req, res) => {
-  const { user_name, password } = req.body;
-  const user = await User.findOne({ user_name }).exec();
-  const isValid = bcrypt.compareSync(password, user.hash);
-  if (!isValid) throw Error("user not valid");
-  res.send(user);
-});
 app.post("/register", async (req, res) => {
-  const { user_name, password } = req.body;
-  const hash = bcrypt.hashSync(password);
-  const token = generateAccessToken({ user_name, hash });
-  const user = await new User({ user_name, hash }).save();
-  user.token = token;
+  try {
+    const { username, password } = req.body;
+    const hash = bcrypt.hashSync(password, salt);
+    const token = generateAccessToken({ username });
+    console.log("token-------------------------:", token);
+    const user = await new User({ username, password: hash }).save();
+    res.send(user);
+  } catch (err) {
+    res.send(err.message);
+  }
+});
+
+app.post("/login", async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username }).exec();
+  const isValid = bcrypt.compareSync(password, user.password);
+  if (!isValid) throw Error("user not valid");
   res.send(user);
 });
 
