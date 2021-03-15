@@ -1,5 +1,5 @@
 import "./App.css";
-import Register from "./components/Register/Register";
+import LoginRegister from "./components/Login/LoginRegister";
 
 const App = () => {
   return <LoginRegister />;
