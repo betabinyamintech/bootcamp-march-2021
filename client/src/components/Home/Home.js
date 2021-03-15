@@ -12,10 +12,10 @@ const Home = () => {
       <Profile />
 
       <label className="receivedInquiries">פניות נכנסות</label>
-      <ReceivedInquiries />
+      <OpenInquiriesuiries inquiries = {inquiries}/>
 
       <label className="openInquiries">פניות פתוחות</label>
-      <OpenInquiries />
+      <OpenInquiries inquiries = {inquiries} />
 
       <button className="lastInquiriesButton">הצגת פניות קודמות</button>
       <button className="lastChallengesButton">הצג אתגרים קודמים</button>
