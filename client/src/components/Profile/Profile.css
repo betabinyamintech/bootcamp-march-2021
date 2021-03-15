@@ -1,0 +1,9 @@
+.imgProfile{
+    border-radius: 50%;
+}
+
+.inputNewQuestion{
+    width: 100%;
+    border: none;
+    border-bottom: 2px dotted rgb(105, 101, 101);
+}
