@@ -1,23 +1,23 @@
 import React, { useContext } from "react";
-import icon from "./iconQuestion.png";
 import Avatar from "../Avatar/Avatar";
 import UserContext from "../../contexts/UserContext";
+import InputQuestion from "../InputQuestion/InputQuestion";
 
 const Header = ({ numExperts = 167 }) => {
   const user = useContext(UserContext).user;
   const { name } = user;
   return (
-    <div>
-      <button className="profileButton"></button>
-      <Avatar />
+    <div className="headerBox">
+      <div>
+        <button className="profileButton"></button>
+        <Avatar />
+      </div>
       <div className="profileMessage">
         {name}, {numExperts} .מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
       </div>
-      <img className="iconQuestion" src={icon} alt="" />
-      <input
-        className="inputNewQuestion"
-        placeholder="השאלה החדשה שלך..."
-      ></input>
+      <div>
+        <InputQuestion />
+      </div>
     </div>
   );
 };

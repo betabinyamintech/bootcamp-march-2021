@@ -2,18 +2,20 @@ import "./Home.css";
 import React, { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
-import Header from "../Profile/Profile";
+import Header from "../Header/Header";
 import inquiries from "./inquires.json";
 
 const Home = () => {
   return (
-    <div>
-      <Header />
+    <div style={{ display: "flex", flexFlow: "column nowrap" }}>
+      <div>
+        <Header />
+      </div>
 
-      <label className="receivedInquiries">פניות נכנסות</label>
+      <div className="receivedInquiries">פניות נכנסות</div>
       <OpenInquiries inquiries={inquiries} />
 
-      <label className="openInquiries">פניות פתוחות</label>
+      <div className="openInquiries">פניות פתוחות</div>
       <OpenInquiries inquiries={inquiries} />
 
       <button className="lastInquiriesButton">הצגת פניות קודמות</button>

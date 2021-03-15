@@ -2,9 +2,12 @@
     float: left;
 }
 
-.iconQuestion {
-    height: 20px;
-    float: right;
+.headerBox{
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+    margin: 10px;
 }
 
 .divProfile {
@@ -19,11 +22,4 @@
 
 .divInputQuestion {
     margin: 10px;
-}
-
-.inputNewQuestion {
-    width: 90%;
-    border: none;
-    border-bottom: 2px dotted rgb(105, 101, 101);
-    text-align: right;
 }
