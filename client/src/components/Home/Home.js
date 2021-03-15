@@ -1,6 +1,5 @@
 import "./Home.css";
-import React, { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquires.json";
