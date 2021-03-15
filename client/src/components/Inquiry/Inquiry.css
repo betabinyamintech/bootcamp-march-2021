@@ -1,19 +1,10 @@
-.windowBox {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    background: #F0F0F0;
-}
-
 .inquiryBox {
     margin: auto;
     background: #FFFFFF;
     border-radius: 4px;
 }
 
-.textQuestion {
+.inquiryTitle {
     font-family: Heebo;
     font-style: normal;
     font-weight: normal;
