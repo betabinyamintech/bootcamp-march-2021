@@ -9,4 +9,4 @@ const connectDb = () => {
 };
 const models = { User };
 
-module.exports = { connectDb, models };
+module.exports =  connectDb;
