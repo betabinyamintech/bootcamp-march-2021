@@ -1,0 +1,30 @@
+.outerdiv{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    padding: 10px;
+}
+
+.finishedicon{
+    background-color: #ababab;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.currenticon{
+    background-color: #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.unstartedicon{
+    background-color: #E8E8E8;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+img {
+
+}

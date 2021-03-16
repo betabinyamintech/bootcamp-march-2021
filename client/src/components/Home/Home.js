@@ -2,6 +2,7 @@ import "./Home.css";
 import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
+import Profile from "../Profile/Profile";
 import inquiries from "./inquires.json";
 
 const Home = () => {
@@ -16,11 +17,9 @@ const Home = () => {
 
       <div className="inquiriesTitle">פניות פתוחות</div>
       <OpenInquiries inquiries={inquiries} />
+      </div>
+  )
+}
 
-      <button className="lastInquiriesButton">הצגת פניות קודמות</button>
-      <button className="lastChallengesButton">הצג אתגרים קודמים</button>
-    </div>
-  );
-};
 
 export default Home;

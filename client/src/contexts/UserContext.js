@@ -10,5 +10,4 @@ const afterLogin = {
 
 const beforeLogin = { user: null };
 const UserContext = createContext(afterLogin);
-
 export default UserContext;
