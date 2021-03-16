@@ -1,7 +1,7 @@
-.imgProfile {
-    border-radius: 50%;
-    height: 70px;
-    border-right: groove;
-    float: right;
-    margin:10px;
+.imgAvatar {
+  border-radius: 50%;
+  height: 70px;
+  border-right: groove;
+  float: right;
+  margin: 10px;
 }

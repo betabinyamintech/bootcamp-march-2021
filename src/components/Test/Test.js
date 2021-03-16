@@ -1,11 +1,9 @@
-import LoginRegister from "../Login/LoginRegister";
-import MoreMenu from "../MoreMenu/MoreMenu";
+import Home from "../Home/Home";
 
 import "./Test.css";
 
 function Test() {
-  return <LoginRegister />;
-  // return <MoreMenu />;
+  return <Home />;
 }
 
 export default Test;
