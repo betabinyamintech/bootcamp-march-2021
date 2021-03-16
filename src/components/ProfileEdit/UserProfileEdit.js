@@ -10,7 +10,7 @@ const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
   return (
     <div className="profile-edit-container">
-      <PreviousButton label="   חזרה" />
+      <PreviousButton label="   חזרה " />
       <div className="profile-details">
         <Avatar />
         <h4 className="user-name"> ישראל ישראלי</h4>

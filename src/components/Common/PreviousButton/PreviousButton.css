@@ -1,6 +1,7 @@
 .back-button{
+    color:#606060;
     display: block;
-    justify-content: space-between;
+    align-self: end;
     width: 61%;
     font-size: 19px;
  }
