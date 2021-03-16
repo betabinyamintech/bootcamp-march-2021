@@ -1,0 +1,36 @@
+  .input-div{
+    margin-top: 20px;
+  }
+  .input-div label {
+    margin:13px 0;
+    position:relative;
+    display: flex;  }
+    
+  .input-div span {
+    padding:10px;
+    pointer-events: none;
+    position:absolute;
+    /* left:150px; */
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity:0.5;
+  }
+  
+  .input-div input {
+    padding:10px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 15px;
+    margin: 2px;
+  }
+  
+  .input-div input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    transform: scale(0.75) translateY(-80%) translateX(10px);
+    
+  }
+  .input-div input:focus{
+    outline: none;
+    
+  }

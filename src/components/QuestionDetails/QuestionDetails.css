@@ -1,0 +1,26 @@
+.openingText {
+  margin: 20px;
+}
+.questionDetails {
+  background-color: #f3f3f3;
+  padding: 20px;
+  margin: 20px;
+}
+
+.imgSender {
+  height: 20px;
+}
+.inquiryTitle {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.inquiryText {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.question {
+  color: #606060;
+}
+.anser {
+  color: #101010;
+}

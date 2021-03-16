@@ -1,41 +1,24 @@
 import { useState } from "react";
+import InputField from "../Common/InputField/InputField";
 
 const LoginDetails = ({ loginDetails, setLoginDetails, isLogin }) => {
   const [errorMessage, setErrorMessage] = useState();
   return (
     <form>
-      <div className="input-div">
-        <label>
-          <input
-            placeholder=" "
-            onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })}
-            type="email"
-          ></input>
-          <span>אימייל</span>
-        </label>
-      </div>
-
-      <div className="input-div">
-        <label>
-          <input
-            placeholder=" "
-            onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })}
-            type="password"
-          ></input>
-          <span>סיסמא</span>
-        </label>
-      </div>
+      <InputField onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })} label="אימייל" />
+      <InputField
+        onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })}
+        label="סיסמא"
+        type="password"
+      />
       {isLogin && (
-        <div className="input-div">
-          <label>
-            <input
-              placeholder=" "
-              onChange={(e) => setErrorMessage(loginDetails.password !== e.target.value)}
-              type="password"
-            ></input>
-            <span>אימות</span>
-          </label>
-          {errorMessage && <h5 style={{ color: "red" }}>הסיסמאות לא תואמות</h5>}
+        <div>
+          <InputField
+            onChange={(e) => setErrorMessage(loginDetails.password !== e.target.value)}
+            label="אימות סיסמא"
+            type="password"
+          />
+          {errorMessage && <h5 style={{ color: "red" }}>הסיסמאות לא תואמות</h5>}{" "}
         </div>
       )}
     </form>

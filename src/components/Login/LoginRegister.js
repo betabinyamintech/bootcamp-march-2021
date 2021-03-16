@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
 import "./Style.css";
 
@@ -10,7 +11,7 @@ function register(email, password) {
   console.log("register", email, password);
 }
 
-const LoginRegister = () => {
+const LoginRegister = ({onLogin}) => {
   const [isLogin, setIsLogin] = useState(true);
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   // isLogin ? (
@@ -32,15 +33,15 @@ const LoginRegister = () => {
         {/* <button className="email-button" style={{ top: "470px" }}>
           התחברות באמצעות גוגל
         </button> */}
-        <button
-          className="email-button"
+        <Button
           onClick={() => {
             if (isLogin) login(loginDetails);
             else register(loginDetails);
+            onLogin(loginDetails);
           }}
         >
           {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
-        </button>
+        </Button>
       </div>
 
       <h4 className="footer">

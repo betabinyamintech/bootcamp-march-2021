@@ -2,7 +2,7 @@ import "./Header.css";
 import React, { useContext } from "react";
 import Avatar from "../Avatar/Avatar";
 import UserContext from "../../contexts/UserContext";
-import InputQuestion from "../InputQuestion/InputQuestion";
+import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
 const Header = ({ numExperts = 167 }) => {
   const user = useContext(UserContext).user;
