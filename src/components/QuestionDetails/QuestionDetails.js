@@ -1,6 +1,9 @@
 import "./QuestionDetails.css";
 import React, { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import Button from "../Common/Button/Button";
+import Avatar from "../Avatar/Avatar";
+
 const ques = {
   inquiryTitle: "איך אני יכול לאכול בלי להשמין?",
   inquiryText:
@@ -22,14 +25,17 @@ const QuestionDetails = () => {
   const user = useContext(UserContext).user;
   const { name } = user;
   return (
-    <div>
+    <div style={{ display: "flex", flexFlow: "column nowrap" }}>
       <div>חזרה</div>
       <div className="openingText">
         {name},<br /> יש שאלה,חשבנו שאתה בדיוק הבנאדם המתאים שיכול לעזור:
       </div>
-      <div className="questionDetails">
-        <div>
-          <img className="imgSender" src={ques.senderImg} alt="" />
+      <div
+        className="questionDetails"
+        style={{ display: "flex", flexFlow: "column nowrap" }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Avatar src={ques.senderImg} style={{ height: 50 }} />
           <span>{ques.sender}, </span>
           <span>{ques.senderCity}</span>
         </div>
@@ -42,9 +48,9 @@ const QuestionDetails = () => {
           </div>
         ))}
       </div>
-      <button>אשמח לעזור</button>
+      <Button>אשמח לעזור</Button>
       <br />
-      <button>מצטער,הפעם לא אוכל לעזור</button>
+      <a href="#">מצטער,הפעם לא אוכל לעזור</a>
     </div>
   );
 };

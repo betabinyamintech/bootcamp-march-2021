@@ -1,28 +1,26 @@
-.openingText{
-    margin: 20px;
+.openingText {
+  margin: 20px;
+}
+.questionDetails {
+  background-color: #f3f3f3;
+  padding: 20px;
+  margin: 20px;
+}
 
+.imgSender {
+  height: 20px;
 }
-.questionDetails{
-    background-color: #F3F3F3;
-    padding: 20px;
-    margin: 20px;
+.inquiryTitle {
+  margin-top: 10px;
+  font-weight: bold;
 }
-.imgSender{
-    border-radius: 50%;
-    height: 50px;
-    border-right: groove;
+.inquiryText {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.inquiryTitle{ 
-    margin-top: 10px;
-
+.question {
+  color: #606060;
 }
-.inquiryText{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.question{
-    color: #606060;
-}
-.anser{
-    color:#101010;
+.anser {
+  color: #101010;
 }
