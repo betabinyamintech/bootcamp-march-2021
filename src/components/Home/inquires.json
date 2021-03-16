@@ -1,0 +1,30 @@
+[
+  {
+    "inquiryTitle": "איך אני יכול לאכול בלי להשמין?",
+    "timePassed": "לפני 7 שעות",
+    "statusMessage": "לא רלוונטי",
+    "sender": "Avram",
+    "isIncoming": true
+  },
+  {
+    "inquiryTitle": "איך אפשר לעשות ספורט בלי להתאמץ?",
+    "timePassed": "לפני יומיים",
+    "statusMessage": "נמצאו 3 מומחים שיעזרו לך",
+    "sender": "Moshe",
+    "isIncoming": true
+  },
+  {
+    "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
+    "timePassed": 24,
+    "statusMessage": "לא רלוונטי",
+    "sender": "Avram",
+    "isIncoming": true
+  },
+  {
+    "inquiryTitle": "איך אני מחזיר את העסק שלי לאיזון?",
+    "timePassed": 24,
+    "statusMessage": "לא רלוונטי",
+    "sender": "Avram",
+    "isIncoming": true
+  }
+]
