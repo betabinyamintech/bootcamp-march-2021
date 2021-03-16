@@ -1,5 +1,6 @@
 import react, { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
+import Inquiry from "../Inquiry/Inquiry";
 import RequestStage from "./RequestStage";
 
 import StageStatuses from "./StageStatuses";
@@ -7,13 +8,13 @@ const stages = [
   {
     stageNum: 1,
     name: "האתגר התקבל",
-    status: StageStatuses.CURRENT,
+    status: StageStatuses.FINISHED,
     timestamp: "",
   },
   {
     stageNum: 2,
     name: "נמצאו 3 מומחים מתאימים",
-    status: StageStatuses.UNSTARTED,
+    status: StageStatuses.CURRENT,
     timestamp: "",
   },
   {

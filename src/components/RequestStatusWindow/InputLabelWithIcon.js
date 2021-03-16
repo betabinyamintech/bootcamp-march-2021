@@ -1,9 +1,7 @@
 import react, { useContext, useState } from "react";
 
 import "../Common/RequestStatusWindow/StatusIcon/StatusIcon.css";
-import infoIcon from "../Common/RequestStatusWindow/StatusIcon/info.svg";
-//import "../Common/InputField/Style.css";
-import "./RequestStyle.css";
+import infoIcon from "./StatusIcon/info.svg";
 
 const InputLabelWithIcon = ({ text }) => {
   return (

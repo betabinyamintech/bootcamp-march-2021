@@ -1,7 +1,6 @@
-import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
+import MeetingScheduled from "../meetingScheduled/meetingScheduled";
 import "./Test.css";
 
-function Test() {
-  return <UserProfileEdit />;
-}
+const Test = () => <MeetingScheduled />;
+
 export default Test;
