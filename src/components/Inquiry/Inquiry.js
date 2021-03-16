@@ -2,7 +2,6 @@ import "./Inquiry.css";
 
 const Inquiry = ({ inquiry }) => {
   const { inquiryTitle, timePassed, statusMessage } = inquiry;
-  console.log("inquiryTitle");
   return (
     <div>
       <div className="inquiryBox">

@@ -11,7 +11,7 @@ function register(email, password) {
   console.log("register", email, password);
 }
 
-const LoginRegister = () => {
+const LoginRegister = ({onLogin}) => {
   const [isLogin, setIsLogin] = useState(true);
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   // isLogin ? (
@@ -37,6 +37,7 @@ const LoginRegister = () => {
           onClick={() => {
             if (isLogin) login(loginDetails);
             else register(loginDetails);
+            onLogin(loginDetails);
           }}
         >
           {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}

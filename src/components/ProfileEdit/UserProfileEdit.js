@@ -3,48 +3,30 @@ import "./UserProfileEdit.css";
 import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
+import InputField from "../Common/InputField/InputField";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
   return (
     <div className="profile-edit-container">
-      <div className="back-button">חזרה </div>
+      <PreviousButton label="   חזרה " />
       <div className="profile-details">
         <Avatar />
         <h4 className="user-name"> ישראל ישראלי</h4>
         <h6 className="user-city"> כוכב השחר</h6>
       </div>
       <div className="input-fields">
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>שם פרטי</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>שם משפחה</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>טלפון</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>מייל</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>יישוב</span>
-          </label>
-        </div>
+        <InputField label="שם פרטי:" />
+
+        <InputField label="שם משפחה:" />
+
+        <InputField label="טלפון" />
+
+        <InputField label="מייל" />
+
+        <InputField label="יישוב" />
+
         <div className="mentor-switch">
           <label className="switch">
             <input type="checkbox" onChange={() => setExportOn(!exportOn)} />

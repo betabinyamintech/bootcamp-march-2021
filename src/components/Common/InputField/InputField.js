@@ -1,5 +1,3 @@
-import "./Style.css";
-
 function InputField({ onChange, label, ...props }) {
   return (
     <div className="input-div">
