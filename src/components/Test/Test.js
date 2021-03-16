@@ -1,8 +1,11 @@
+import LoginRegister from "../Login/LoginRegister";
+import MoreMenu from "../MoreMenu/MoreMenu";
+
 import "./Test.css";
-import QuestionDetails from "../QuestionDetails/QuestionDetails";
 
 function Test() {
-  return <QuestionDetails />;
+  return <LoginRegister />;
+  // return <MoreMenu />;
 }
 
 export default Test;
