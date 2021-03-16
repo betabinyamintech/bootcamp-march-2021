@@ -1,0 +1,10 @@
+.back-button{
+    display: flex;
+    align-self: flex-start;
+    justify-content: space-between;
+    width:32%;
+    font-size: 17px;
+ }
+ .previous-icon{
+     margin-top:2px
+ }
