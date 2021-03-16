@@ -1,9 +1,17 @@
+// import logo from "./logo.svg";
 import "./App.css";
-import LoginRegister from "./components/Login/LoginRegister";
-import ProfileEdit from "./components/ProfileEdit/ProfileEdit";
+import Inquiry from "./components/Inquiry/Inquiry";
+import logo from "./logo.svg";
+import "./App.css";
+import MyRouter from "./components/MyRouter/MyRouter";
+import Home from "./components/Home/Home";
 
-const App = () => {
-  return <LoginRegister />; //<ProfileEdit />;
-};
+function App() {
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
+}
 
 export default App;
