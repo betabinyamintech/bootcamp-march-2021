@@ -4,10 +4,7 @@ import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
 function App() {
   return (
     <div className="App">
-      <QuestionScreen
-        questionText=" בכמה מילים, מה האתגר שלך."
-        labelText="טקסט למטה"
-      />
+      <Test />
     </div>
   );
 }

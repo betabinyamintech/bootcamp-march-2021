@@ -1,7 +1,7 @@
 import react, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import InputLabelWithIcon from "./InputLabelWithIcon";
-import StageStatuses from "./StageStatuses";
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 
 const stages = [
   {
