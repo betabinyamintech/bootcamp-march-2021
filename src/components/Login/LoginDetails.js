@@ -1,23 +1,14 @@
 import { useState } from "react";
+import InputField from "../Common/InputField/InputField";
 
 const LoginDetails = ({ loginDetails, setLoginDetails, isLogin }) => {
   const [errorMessage, setErrorMessage] = useState();
   return (
     <form>
+      <InputField onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })}/>
       <div className="input-div">
         <label>
-          <input
-            placeholder=" "
-            onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })}
-            type="email"
-          ></input>
-          <span>אימייל</span>
-        </label>
-      </div>
-
-      <div className="input-div">
-        <label>
-          <input
+          <input    
             placeholder=" "
             onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })}
             type="password"
