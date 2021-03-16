@@ -17,9 +17,8 @@ const Home = () => {
 
       <div className="inquiriesTitle">פניות פתוחות</div>
       <OpenInquiries inquiries={inquiries} />
-      </div>
-  )
-}
-
+    </div>
+  );
+};
 
 export default Home;
