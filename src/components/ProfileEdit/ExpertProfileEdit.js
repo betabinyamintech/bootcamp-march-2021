@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import InputField from "../Common/InputField/InputField";
 import "./ExpertProfileEdit.css";
-// import InputField from "../Common/InputField/InputField";
 
 const ExpertProfileEdit = () => {
   const [exportOn, setExportOn] = useState(true);
@@ -9,12 +9,7 @@ const ExpertProfileEdit = () => {
   return (
     <div className="profile-edit-container">
       <div className="input-fields">
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span> מה המקצוע שלך?</span>
-          </label>
-        </div>
+        <InputField label="מה המקצוע שלך?" />
         <div className="input-div">
           <label>
             <textarea placeholder=" " type="email"></textarea>
@@ -22,27 +17,14 @@ const ExpertProfileEdit = () => {
           </label>
         </div>
 
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span> hash tags component</span>
-          </label>
-        </div>
-        <span className="expert-questions">מה חשוב לך לדעת לפני הפגישה?</span>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>שאלה 1:</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>שאלה 2:</span>
-          </label>
-        </div>
-        <span className="expert-questions"> קבע את פרטי הפגישה: </span>
-        <div className="expert-questions">
+        <div className="input-div">hashtag</div>
+        <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
+
+        <InputField label="שאלה 1:" />
+
+        <InputField label="שאלה 2:" />
+        <span className="titles"> קבע את פרטי הפגישה: </span>
+        <div className="titles">
           <span>אורך הפגישה </span>
           <span style={{ alignSelf: "flex-start" }}>
             {" "}
@@ -66,7 +48,7 @@ const ExpertProfileEdit = () => {
           <option value="45">00:45 </option>
           <option value="60">01:00 </option>
         </select>
-        <span className="expert-questions">סוג פגישה מועדף</span>
+        <span className="titles">סוג פגישה מועדף</span>
         <select
           className="meeting-kind "
           defaultValue="בחר"
@@ -76,14 +58,7 @@ const ExpertProfileEdit = () => {
           <option value="phone">שיחת טלפון</option>
           <option value="zoom">שיחת וידאו בזום</option>
         </select>
-        {favMeetKind === "face2face" && (
-          <div className="input-div">
-            <label>
-              <input placeholder=" " type="email"></input>
-              <span>כתובת לפגישה:</span>
-            </label>
-          </div>
-        )}
+        {favMeetKind === "face2face" && <InputField label="כתובת לפגישה:" />}
         {favMeetKind === "face2face" && (
           <span className="beta-gift">
             <svg

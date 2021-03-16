@@ -34,7 +34,6 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 18px;
-/* identical to box height */
 
 letter-spacing: 0.05em;
 }
@@ -65,7 +64,6 @@ letter-spacing: 0.05em;
     padding:10px;
     pointer-events: none;
     position:absolute;
-    /* left:150px; */
     top:0;
     transition: 0.2s;
     transition-timing-function: ease;

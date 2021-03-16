@@ -23,6 +23,7 @@
 }
 
 .input-div{
+  margin-top: 30px;
    margin-top:   30px;
 }
 .input-div label {
@@ -83,7 +84,7 @@
    outline: none;
    
  }
-.expert-questions{
+.titles{
   font-weight: bold;
   margin-top: 39px;
   display: flex;
