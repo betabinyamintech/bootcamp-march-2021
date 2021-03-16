@@ -49,7 +49,7 @@ letter-spacing: 0.05em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 109%;
+    width: 100%;
   }
 
 .input-div{

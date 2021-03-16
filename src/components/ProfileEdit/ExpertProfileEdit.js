@@ -8,7 +8,7 @@ const ExpertProfileEdit = () => {
   console.log(favMeetKind);
   return (
     <div className="profile-edit-container">
-      <div className="input-fields">
+      <div className="input-fieldss">
         <InputField label="מה המקצוע שלך?" />
         <div className="input-div">
           <label>
