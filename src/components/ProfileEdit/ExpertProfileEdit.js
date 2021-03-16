@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../Common/InputField/InputField";
+import HashtagScreen from "../HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
 
 const ExpertProfileEdit = () => {
@@ -17,7 +18,9 @@ const ExpertProfileEdit = () => {
           </label>
         </div>
 
-        <div className="input-div">hashtag</div>
+        {/* <div className="input-div">hashtag</div>
+         */}
+        <HashtagScreen />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
         <InputField label="שאלה 1:" />

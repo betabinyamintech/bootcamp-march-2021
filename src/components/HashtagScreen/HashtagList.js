@@ -15,8 +15,8 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
             setSelectedHashtags(
               active
                 ? selectedHashtags.filter((hashtag) => title !== hashtag.title)
-                : [...selectedHashtags,{ title }])
-            
+                : [...selectedHashtags, { title }]
+            )
           }
           title={title}
           active={active}
