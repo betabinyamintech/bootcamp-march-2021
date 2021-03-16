@@ -1,8 +1,9 @@
-.email-button{
-    width: 335px;
-    height: 50px;
-    margin-top: 4px;
-    background: #414141;
-    border-radius: 12px;
-    color:white;
+.email-button {
+  width: 335px;
+  height: 50px;
+  margin-top: 4px;
+  background: #414141;
+  border-radius: 12px;
+  color: white;
+  margin: 0 auto;
 }
