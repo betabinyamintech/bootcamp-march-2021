@@ -1,6 +1,6 @@
-import './Test.css'
+import MeetingScheduled from "../meetingScheduled/meetingScheduled";
+import "./Test.css";
 
-function Test(){
-    return <div/>
-}
+const Test = () => <MeetingScheduled />;
+
 export default Test;

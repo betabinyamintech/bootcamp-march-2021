@@ -1,0 +1,58 @@
+import React, { useState } from "react";
+import HashtagList from "./HashtagList";
+
+const hashtags = [
+  {
+    title: "אינטרנט",
+  },
+  {
+    title: 'נדל"ן',
+  },
+  {
+    title: "מיסוי",
+  },
+
+  {
+    title: "שיתופי פעולה",
+  },
+  {
+    title: "תקשורת",
+  },
+  {
+    title: "דת",
+  },
+  {
+    title: "בריאות",
+  },
+  { title: "עסקים" },
+
+  { title: "ביטחון" },
+
+  { title: "תחבורה" },
+
+  { title: "ביטוח לאומי" },
+];
+
+const selectedHashtagsMock = [
+  { title: "ביטחון" },
+
+  { title: "תחבורה" },
+
+  { title: "ביטוח לאומי" },
+];
+
+const HashtagScreen = () => {
+  const [selectedHashtags, setSelectedHashtags] = useState(
+    selectedHashtagsMock
+  );
+  return (
+    <div>
+      <HashtagList
+        hashtags={hashtags}
+        selectedHashtags={selectedHashtags}
+        setSelectedHashtags={setSelectedHashtags}
+      />
+    </div>
+  );
+};
+export default HashtagScreen;

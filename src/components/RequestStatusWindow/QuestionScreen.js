@@ -1,8 +1,8 @@
-import react, { useContext } from "react";
+import react, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
-import RequestStage from "./RequestStage";
+import InputLabelWithIcon from "./InputLabelWithIcon";
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 
-import StageStatuses from "./StageStatuses";
 const stages = [
   {
     stageNum: 1,
@@ -29,19 +29,19 @@ const stages = [
     timestamp: "",
   },
 ];
-const RequestStatus = ({ name, status }) => {
+const QuestionScreen = ({ questionText, labelText }) => {
+  const [question, setQuestion] = useState("");
   return (
     <div>
-      <div className="">{name}</div>
-      {stages.map((stage) => (
-        <RequestStage
-          name={stage.name}
-          status={stage.status}
-          timestamp={stage.timestamp}
-          stageNum={stage.stageNum}
-        />
-      ))}
+      <div>{questionText} </div>
+      <input
+        value={question}
+        onChange={(e) => {
+          setQuestion(e);
+        }}
+      ></input>
+      <InputLabelWithIcon text={labelText} />
     </div>
   );
 };
-export default RequestStatus;
+export default QuestionScreen;
