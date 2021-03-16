@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <QuestionScreen
         questionText=" בכמה מילים, מה האתגר שלך."
-        labelText="טקסט למטה"
+        labelText="אי אפשר בלי זה, מצטערת"
       />
     </div>
   );

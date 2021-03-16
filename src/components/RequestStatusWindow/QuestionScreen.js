@@ -1,47 +1,46 @@
 import react, { useContext, useState } from "react";
 import UserContext from "../../contexts/UserContext";
 import InputLabelWithIcon from "./InputLabelWithIcon";
-import StageStatuses from "./StageStatuses";
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
+//import "../Common/InputField/Style.css";
+import "./RequestStyle.css";
+import Button from "../Common/Button/Button";
+import arrowIcon from "../Common/RequestStatusWindow/StatusIcon/arrow.svg";
 
-const stages = [
-  {
-    stageNum: 1,
-    name: "האתגר התקבל",
-    status: StageStatuses.CURRENT,
-    timestamp: "",
-  },
-  {
-    stageNum: 2,
-    name: "נמצאו 3 מומחים מתאימים",
-    status: StageStatuses.UNSTARTED,
-    timestamp: "",
-  },
-  {
-    stageNum: 3,
-    name: "המידע המלא הועבר למומחה ",
-    status: StageStatuses.UNSTARTED,
-    timestamp: "",
-  },
-  {
-    stageNum: 4,
-    name: "קיבלת תגובה ממומחה",
-    status: StageStatuses.UNSTARTED,
-    timestamp: "",
-  },
-];
 const QuestionScreen = ({ questionText, labelText }) => {
+  const arrowSign = "&gt";
+  const buttonText = "הבא";
   const [question, setQuestion] = useState("");
   return (
-    <div>
-      <div>{questionText} </div>
-      <input
-        value={question}
-        onChange={(e) => {
-          setQuestion(e);
-        }}
-      ></input>
-      <InputLabelWithIcon text={labelText} />
+    <div className="questionScreen">
+      <div className="question-invisible-box">
+        <div className="question-title">{questionText} </div>
+        <div className="input-with-label">
+          <div className="question-box">
+            <textarea
+              contenteditable="true"
+              className="question-input"
+              value={question}
+              onChange={(e) => {
+                setQuestion(e.value);
+                console.log(question);
+              }}
+            ></textarea>
+            <div className="dotted-line"></div>
+          </div>
+          <InputLabelWithIcon text={labelText} />
+        </div>
+      </div>
+      <Button>
+        {buttonText} <img src={arrowIcon} alt="exclamation mark" />
+      </Button>
     </div>
   );
 };
 export default QuestionScreen;
+
+/*
+<Button>
+        {buttonText} <img src={arrowIcon} alt="exclamation mark" />
+      </Button>
+      */
