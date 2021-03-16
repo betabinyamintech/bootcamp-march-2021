@@ -1,8 +1,6 @@
+import MeetingScheduled from "../meetingScheduled/meetingScheduled";
 import "./Test.css";
-import QuestionDetails from "../QuestionDetails/QuestionDetails";
 
-function Test() {
-  return <QuestionDetails />;
-}
+const Test = () => <MeetingScheduled />;
 
 export default Test;
