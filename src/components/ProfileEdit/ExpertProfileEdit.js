@@ -20,8 +20,6 @@ const ExpertProfileEdit = () => {
           </label>
         </div>
 
-        {/* <div className="input-div">hashtag</div>
-         */}
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
         <InputField label="שאלה 1:" />

@@ -37,14 +37,7 @@
 
 letter-spacing: 0.05em;
 }
-.profile-image{
-    position: static;
-    width: 94px;
-    height: 89px;
-    right: 15.5px;
-    top: 0px;
-    border-radius: 51px;
-}
+
 .input-fields{
     display: flex;
     flex-direction: column;

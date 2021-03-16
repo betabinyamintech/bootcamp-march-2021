@@ -1,7 +1,6 @@
-import MeetingScheduled from "../meetingScheduled/meetingScheduled";
-import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
+import ProfileView from "../ProfileView/ProfileView";
 import "./Test.css";
 
-const Test = () => <UserProfileEdit />;
+const Test = () => <ProfileView />;
 
 export default Test;
