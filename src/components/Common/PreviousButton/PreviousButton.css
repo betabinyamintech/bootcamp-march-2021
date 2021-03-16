@@ -1,9 +1,8 @@
 .back-button{
-    display: flex;
-    align-self: flex-start;
+    display: block;
     justify-content: space-between;
-    width:32%;
-    font-size: 17px;
+    width: 61%;
+    font-size: 19px;
  }
  .previous-icon{
      margin-top:2px

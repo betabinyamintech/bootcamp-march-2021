@@ -28,7 +28,7 @@ const UserProfileEdit = () => {
         </span>
         חזרה{" "}
       </div> */}
-      <PreviousButton label="חזרה לראשי" />
+      <PreviousButton label="  לראשי חזרה" />
       <div className="profile-details">
         <Avatar />
         <h4 className="user-name"> ישראל ישראלי</h4>
