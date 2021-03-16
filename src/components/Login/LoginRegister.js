@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
 import "./Style.css";
 
@@ -32,8 +33,7 @@ const LoginRegister = ({onLogin}) => {
         {/* <button className="email-button" style={{ top: "470px" }}>
           התחברות באמצעות גוגל
         </button> */}
-        <button
-          className="email-button"
+        <Button
           onClick={() => {
             if (isLogin) login(loginDetails);
             else register(loginDetails);
@@ -41,7 +41,7 @@ const LoginRegister = ({onLogin}) => {
           }}
         >
           {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
-        </button>
+        </Button>
       </div>
 
       <h4 className="footer">
