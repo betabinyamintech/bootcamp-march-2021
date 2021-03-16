@@ -1,7 +1,8 @@
-import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
 import "./Test.css";
+import QuestionDetails from "../QuestionDetails/QuestionDetails";
 
 function Test() {
-  return <UserProfileEdit />;
+  return <QuestionDetails />;
 }
+
 export default Test;
