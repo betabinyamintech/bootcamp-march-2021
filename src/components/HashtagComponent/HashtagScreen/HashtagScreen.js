@@ -3,6 +3,9 @@ import HashtagList from "./HashtagList";
 
 const hashtags = [
   {
+    title: "אחר",
+  },
+  {
     title: "אינטרנט",
   },
   {
@@ -33,13 +36,7 @@ const hashtags = [
   { title: "ביטוח לאומי" },
 ];
 
-const selectedHashtagsMock = [
-  { title: "ביטחון" },
-
-  { title: "תחבורה" },
-
-  { title: "ביטוח לאומי" },
-];
+const selectedHashtagsMock = [];
 
 const HashtagScreen = () => {
   const [selectedHashtags, setSelectedHashtags] = useState(

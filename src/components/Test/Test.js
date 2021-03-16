@@ -1,6 +1,6 @@
-import MeetingScheduled from "../meetingScheduled/meetingScheduled";
+import HashtagComponent from "../HashtagComponent/HashtagComponent";
 import "./Test.css";
 
-const Test = () => <MeetingScheduled />;
+const Test = () => <HashtagComponent />;
 
 export default Test;
