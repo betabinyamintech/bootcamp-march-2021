@@ -1,0 +1,9 @@
+.mentorcard{
+display: flex;
+
+padding: 4px, 12px, 4px, 12px;
+
+}
+.mentorcardnextimg {
+    padding: 20px;
+}
