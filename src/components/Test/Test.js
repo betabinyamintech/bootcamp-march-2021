@@ -1,6 +1,7 @@
+import MeetingArrangment from '../MeetingArrangment/MeetingArrangment';
 import './Test.css'
 
 function Test(){
-    return <div/>
+    return <MeetingArrangment />
 }
 export default Test;
