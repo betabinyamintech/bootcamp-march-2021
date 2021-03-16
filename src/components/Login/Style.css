@@ -1,0 +1,97 @@
+.container {
+    direction: rtl;
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    height: calc(100vh - 40px);
+    justify-content: space-between;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 47px;
+    background-color: rgb(78, 85, 92);
+    margin-top: 50px;
+}
+.details{
+    text-align: center;
+}
+.login-title{
+    font-size: 24px;
+    margin-bottom: 0px;
+    letter-spacing: 0.01em;
+
+    color: #414141;
+}
+
+.description{
+font-size: 14px;
+letter-spacing: 0.01em;
+margin-top: 0px;
+color: #414141;
+}
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.email-button{
+width: 335px;
+height: 50px;
+margin-top: 4px;
+background: #414141;
+border-radius: 12px;
+color:white;
+}
+.footer{
+    width: 200px;
+    height: 24px;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #414141;
+}
+
+.input-div label {
+    margin:13px 0;
+    position:relative;
+    display:inline-block;
+  }
+    
+  .input-div span {
+    padding:10px;
+    pointer-events: none;
+    position:absolute;
+    left:150px;
+    top:0;
+    transition: 0.2s;
+    transition-timing-function: ease;
+    transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+    opacity:0.5;
+  }
+  
+  .input-div input {
+    padding:10px;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 15px;
+  }
+  
+  .input-div input:focus + span, input:not(:placeholder-shown) + span {
+    opacity:1;
+    transform: scale(0.75) translateY(-100%) translateX(10px);
+    
+  }
+
+  .input-div input:focus{
+    outline: none;
+    
+  }
