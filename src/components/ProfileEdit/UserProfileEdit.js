@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./UserProfileEdit.css";
 import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
+import Button from "../Common/Button/Button";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
@@ -52,7 +53,22 @@ const UserProfileEdit = () => {
           <span>אשמח גם לסייע לאחרים</span>
         </div>
         {exportOn && <ExpertProfileEdit />}
-        <button className="save-button">שמירה</button>
+        {/* <button className="save-button">שמירה</button> */}
+        <Button className="save-button">
+          <svg
+            width="13"
+            height="10"
+            viewBox="0 0 13 10"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4.21875 7.8125L11.3125 0.71875L12.2188 1.65625L4.21875 9.65625L0.5 5.9375L1.4375 5L4.21875 7.8125Z"
+              fill="white"
+            />
+          </svg>
+          שמירה
+        </Button>
       </div>
     </div>
   );

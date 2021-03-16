@@ -10,9 +10,9 @@
     align-items: center;
     margin: 30px;
     font-family: Heebo;
-font-style: normal;
-font-weight: normal;
-color: #414141;
+    font-style: normal;
+    font-weight: normal;
+    color: #414141;
 }
 .profile-details{
     display: flex;

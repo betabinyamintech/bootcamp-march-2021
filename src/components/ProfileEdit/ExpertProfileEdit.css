@@ -3,7 +3,7 @@
   align-self: flex-start;
 }
 .profile-edit-container{
-   height:  calc(100vh - 40px);;
+   height: auto;
    direction: rtl;
    display: flex;
    flex-direction: column;
@@ -95,4 +95,12 @@ border-left: white;
 border-right: white;
 margin-top: 20px;
 height: 53px;}
+/* 
+.save-button{
+align-self: center;
 
+} */
+.beta-gift{
+
+  width: 90%;
+}
