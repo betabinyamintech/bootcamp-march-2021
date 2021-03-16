@@ -6,7 +6,7 @@ import "./ProfileView.css";
 const ProfileView = () => {
   return (
     <div className="profile-view-container">
-      <PreviousButton label="   חזרה " />
+      <PreviousButton />
       <div className="profile-details">
         <Avatar />
         <div className="user-details">
@@ -25,12 +25,12 @@ const ProfileView = () => {
         <span className="row-description"> פגישה פיזית </span>
       </div>
       <div className="row-details">
-        <span className="row-title"> כתובת לפגישה </span>
-        <span className="row-description"> המייסדים 4, תל אביב </span>
-      </div>
-      <div className="row-details">
         <span className="row-title">משך הפגישה </span>
         <span className="row-description">00:30 </span>
+      </div>
+      <div className="row-details">
+        <span className="row-title"> כתובת הפגישה </span>
+        <span className="row-description"> המייסדים 4, תל אביב </span>
       </div>
     </div>
   );
