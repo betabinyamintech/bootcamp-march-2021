@@ -1,11 +1,16 @@
 import "./App.css";
 import Test from "./components/Test/Test";
-import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
+import { GlobalStateProvider} from "./contexts/UserContext";
+import {BrowserRouter as Router } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <Test />
-    </div>
+    <GlobalStateProvider>
+      <Router>
+        <div className="App">
+          <Test />
+        </div>
+      </Router>
+    </GlobalStateProvider>
   );
 }
 
