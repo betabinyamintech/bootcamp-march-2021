@@ -1,6 +1,8 @@
 .back-button{
    display: flex;
    align-self: flex-start;
+   justify-content: space-between;
+   width:15%;
 }
 .profile-edit-container{
     height:  calc(100vh - 40px);;
@@ -8,7 +10,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px;
+    margin: 21px;
     font-family: Heebo;
     font-style: normal;
     font-weight: normal;
@@ -48,11 +50,11 @@ letter-spacing: 0.05em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+    width: 109%;
+  }
 
 .input-div{
-    margin-top:   30px;
-    
+    margin-top: 30px;
 }
 .input-div label {
     margin:13px 0;
@@ -76,7 +78,7 @@ letter-spacing: 0.05em;
     border: none;
     border-bottom: 1px solid black;
     font-size: 15px;
-    width: 150%;
+    width: 130%;
     margin: 2px;
   }
   

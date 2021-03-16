@@ -10,21 +10,20 @@
    align-items: center;
    margin: 30px;
    font-family: Heebo;
-font-style: normal;
-font-weight: normal;
-color: #414141;
+  font-style: normal;
+  font-weight: normal;
+  color: #414141;
 }
 
 .input-fields{
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   width: 106%;
+   width: 115%;
 }
 
 .input-div{
    margin-top:   30px;
-   
 }
 .input-div label {
    margin:13px 0;
@@ -48,7 +47,7 @@ color: #414141;
    border: none;
    border-bottom: 1px solid black;
    font-size: 15px;
-   width: 150%;
+   /* width: 150%; */
    margin: 2px;
  }
  
@@ -86,15 +85,18 @@ color: #414141;
  }
 .expert-questions{
   font-weight: bold;
-  margin-top:39px
-}
+  margin-top: 39px;
+  display: flex;
+  justify-content: space-between;}
 
 .meeting-kind{
-border-top: white;
-border-left: white;
-border-right: white;
-margin-top: 20px;
-height: 53px;}
+  font-family: Heebo;
+  border-top: white;
+  border-left: white;
+  border-right: white;
+  margin-top: 20px;
+  height: 53px;
+}
 /* 
 .save-button{
 align-self: center;
