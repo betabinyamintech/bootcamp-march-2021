@@ -1,7 +1,7 @@
-import RequestStage from "../RequestStatusWindow/RequestStage";
+import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
 import "./Test.css";
 
 function Test() {
-  return <RequestStage />;
+  return <UserProfileEdit />;
 }
 export default Test;
