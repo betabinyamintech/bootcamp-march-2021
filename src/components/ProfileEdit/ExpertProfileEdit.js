@@ -11,16 +11,17 @@ const ExpertProfileEdit = () => {
     <div className="profile-edit-container">
       <div className="input-fieldss">
         <InputField label="מה המקצוע שלך?" />
+        <span className="titles"> באילו נושאים תוכל לסייע?</span>
+        <HashtagScreen />
         <div className="input-div">
           <label>
             <textarea placeholder=" " type="email"></textarea>
-            <span>בכמה מילים, במה תוכל לסייע?</span>
+            <span>בכמה מילים, במה בדיוק תוכל לסייע?</span>
           </label>
         </div>
 
         {/* <div className="input-div">hashtag</div>
          */}
-        <HashtagScreen />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
         <InputField label="שאלה 1:" />

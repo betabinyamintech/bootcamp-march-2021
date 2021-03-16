@@ -87,7 +87,9 @@
   font-weight: bold;
   margin-top: 39px;
   display: flex;
-  justify-content: space-between;}
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
 
 .meeting-kind{
   font-family: Heebo;
