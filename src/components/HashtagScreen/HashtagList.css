@@ -1,0 +1,10 @@
+
+.hashtags{
+  display: flex;
+  flex-flow: row wrap;
+justify-content: baseline;
+align-items: baseline;
+width: 100%;  
+}
+
+

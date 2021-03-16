@@ -1,14 +1,17 @@
-import Avatar from "../Avatar/Avatar";
-import StatusIcon from "../Common/RequestStatusWindow/StatusIcon/StatusIcon";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
+// import StatusIcon from "../Common/RequestStatusWindow/StatusIcon/StatusIcon";
 
-const MeetingScheduled = ({ inquiry: { meeting } }) => {
-  const {} = meeting;
+const MeetingScheduled = () => {
+  //   const {} = meeting;
   return (
     <div className="meetingScheduled">
-      <div onClick={}></div>
+      <PreviousButton />
+
       <div></div>
     </div>
   );
 };
+
+// { inquiry: { meeting } }
 
 export default MeetingScheduled;
