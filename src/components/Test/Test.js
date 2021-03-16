@@ -1,6 +1,7 @@
-import './Test.css'
+import MoreMenu from "../MoreMenu/MoreMenu";
+import "./Test.css";
 
-function Test(){
-    return <div/>
+function Test() {
+  return <MoreMenu />;
 }
 export default Test;
