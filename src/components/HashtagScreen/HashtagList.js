@@ -1,5 +1,5 @@
 import React from "react";
-import Hashtag from "./Hashtag/Hashtag";
+import Hashtag from "../Common/Hashtag/Hashtag";
 import "./HashtagList.css";
 
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {

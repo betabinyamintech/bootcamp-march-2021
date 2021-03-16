@@ -47,14 +47,11 @@ const HashtagScreen = () => {
   );
   return (
     <div>
-      <div>בחירת#האשטגים רלוונטיים</div>
-
       <HashtagList
         hashtags={hashtags}
         selectedHashtags={selectedHashtags}
         setSelectedHashtags={setSelectedHashtags}
       />
-      <div>זה פשוט עוזר לנו לאתר את המומחה שידע\תדע לעזור לך.</div>
     </div>
   );
 };
