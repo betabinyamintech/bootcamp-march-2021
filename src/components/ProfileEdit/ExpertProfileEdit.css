@@ -61,6 +61,10 @@ color: #414141;
    outline: none;
    
  }
+ input-div svg{
+   display: flex;
+   align-self: flex-start;
+ }
  .input-div textarea {
    padding:10px;
    border: none;
@@ -84,3 +88,11 @@ color: #414141;
   font-weight: bold;
   margin-top:39px
 }
+
+.meeting-kind{
+border-top: white;
+border-left: white;
+border-right: white;
+margin-top: 20px;
+height: 53px;}
+

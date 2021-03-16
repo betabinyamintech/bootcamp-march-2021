@@ -1,11 +1,10 @@
 import "./InputQuestion.css";
 import React from "react";
-import icon from "./iconQuestion.png";
 
 const InputQuestion = () => {
   return (
     <div>
-      <img className="iconQuestion" src={icon} alt="" />
+      <img className="iconQuestion" src={import('../../../Icons/question-mark.svg')} alt="" />
       <input className="inputNewQuestion" placeholder="השאלה החדשה שלך..." />
     </div>
   );

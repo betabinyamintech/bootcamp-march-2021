@@ -29,6 +29,12 @@ const UserProfileEdit = () => {
         <div className="input-div">
           <label>
             <input placeholder=" " type="email"></input>
+            <span>טלפון</span>
+          </label>
+        </div>
+        <div className="input-div">
+          <label>
+            <input placeholder=" " type="email"></input>
             <span>מייל</span>
           </label>
         </div>
@@ -36,12 +42,6 @@ const UserProfileEdit = () => {
           <label>
             <input placeholder=" " type="email"></input>
             <span>יישוב</span>
-          </label>
-        </div>
-        <div className="input-div">
-          <label>
-            <input placeholder=" " type="email"></input>
-            <span>אימייל</span>
           </label>
         </div>
         <div className="mentor-switch">
