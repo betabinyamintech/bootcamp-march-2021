@@ -19,16 +19,16 @@
     margin-top: 9px;
 }
 .user-city{
-    margin: 0px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    text-align: center;
     font-family: Heebo;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 18px;
-    letter-spacing: 0.05em;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+
+letter-spacing: 0.05em;
+
+color: #414141;
 }
 .row-details{
     align-items: flex-end;
