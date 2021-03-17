@@ -5,6 +5,6 @@ import "./Avatar.css";
 
 const Avatar = (props) => {
   const avatarImg = useContext(UserContext).user.avatarImg;
-  return <img src={avatarImg} {...props} className="imgProfile" alt="" />;
+  return <img src={avatarImg} {...props} className="imgAvatar" alt="" />;
 };
 export default Avatar;

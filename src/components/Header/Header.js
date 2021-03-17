@@ -4,7 +4,7 @@ import Avatar from "../Avatar/Avatar";
 import UserContext from "../../contexts/UserContext";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
-const Header = ({ numExperts = 167 }) => {
+const Header = ({ numExperts = 167, isCommunityManager }) => {
   const user = useContext(UserContext).user;
   const { name } = user;
   return (
@@ -29,9 +29,11 @@ const Header = ({ numExperts = 167 }) => {
       <div className="profileMessage">
         {name}, {numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך
       </div>
-      <div>
-        <InputQuestion />
-      </div>
+      {!isCommunityManager && (
+        <div>
+          <InputQuestion />
+        </div>
+      )}
     </div>
   );
 };

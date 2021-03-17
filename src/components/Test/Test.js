@@ -42,19 +42,9 @@ const users = [
 
 const Hashtags = ["aaa", "bbb", "cba", "cbc"];
 function Test() {
-  const [chosenHashtag, setChosenHashtag] = useState(null);
-
-  const changeHashtag = (chosenHashtag) => {
-    setChosenHashtag(chosenHashtag);
-  };
-  const inquiryTitle = "מה אני יכולה לעשות...";
-  return (
-    <AdminChooseMentor
-      changeHashtag={changeHashtag}
-      Hashtags={Hashtags}
-      users={users}
-      inquiryTitle={inquiryTitle}
-    />
-  );
+  <div></div>;
 }
 export default Test;
+
+//<ProfileView />
+//<UserProfileEdit />
