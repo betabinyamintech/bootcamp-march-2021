@@ -1,4 +1,5 @@
-  .input-div{
+ /*
+ .input-div{
     margin-top: 20px;
   }
   .input-div label {
@@ -9,8 +10,9 @@
   .input-div span {
     padding:10px;
     pointer-events: none;
-    position:absolute;
+    position:absolute;*/
     /* left:150px; */
+    /*
     transition: 0.2s;
     transition-timing-function: ease;
     transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -34,3 +36,4 @@
     outline: none;
     
   }
+  */
