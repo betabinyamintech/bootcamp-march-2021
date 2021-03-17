@@ -1,11 +1,7 @@
 import { createContext, useCallback, useContext, useReducer } from "react";
 import { initialState, reducer } from "./reducer";
 
-export const UserContext = createContext({
-  user: {
-    name: "oz",
-  },
-});
+export const UserContext = createContext(initialState);
 
 export function UserStateProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);

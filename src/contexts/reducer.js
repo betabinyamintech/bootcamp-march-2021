@@ -1,6 +1,6 @@
 export const initialState = {
   user: {
-    name: "Elior",
+    name: "שוקי",
   },
 };
 
