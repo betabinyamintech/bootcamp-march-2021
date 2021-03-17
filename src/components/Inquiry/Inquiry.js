@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import "./Inquiry.css";
+import inquiryType from "./inquiry-type.json";
 
 const Inquiry = ({ inquiry }) => {
+  const type = "communityManager";
   const { inquiryTitle, timePassed, statusMessage } = inquiry;
   return (
     <Link to={"/searchforexpert"}>
@@ -9,10 +11,14 @@ const Inquiry = ({ inquiry }) => {
         <div className="inquiryBox">
           <div className="inquiryTitle">{inquiryTitle}</div>
           <div className="timePassed">{timePassed}</div>
-          <div className="statusMessage">&bull; {statusMessage}</div>
-          <button className="nextStepButton">
-            בחירת מומחה &nbsp;&nbsp;&gt;
-          </button>
+          <div className="statusMessage">
+            &bull; {inquiryType[0][type][statusMessage].message}
+          </div>
+          {inquiryType[0][type][statusMessage].trueFalseButton && (
+            <button className="nextStepButton">
+              {inquiryType[0][type][statusMessage].buttonText} &nbsp;&nbsp;&gt;
+            </button>
+          )}
         </div>
       </div>
     </Link>

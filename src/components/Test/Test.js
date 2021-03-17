@@ -1,11 +1,6 @@
-// import { useUserState } from "../../contexts/context";
-// import LoginDetails from "../Login/LoginDetails";
-// import LoginRegister from "../Login/LoginRegister";
-// import "../Login/Style.css";
-// import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
-import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
-
+import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
 import "./Test.css";
+import Inquiry from "../Inquiry/Inquiry";
 
 // const arrayOf3DateTimes = [
 //   { date: Date.now(), time: "12:00" },
@@ -21,6 +16,7 @@ import "./Test.css";
 // };
 
 function Test() {
+<<<<<<< HEAD
   return (
     <div>
       <ChooseMeetingSchedule />
@@ -30,6 +26,9 @@ function Test() {
 // <ChooseMeetingSchedule />
 {
   /* <MeetingArrangment /> */
+=======
+  return <Inquiry />;
+>>>>>>> a0c6591084d7c703b8d24a5583518518e2c9cf42
 }
 
 export default Test;

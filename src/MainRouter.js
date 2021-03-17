@@ -6,15 +6,14 @@ import {
 } from "react-router-dom";
 import Home from "./components/Home/Home";
 import LoginRegister from "./components/Login/LoginRegister";
-import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import ProfileView from "./components/ProfileView/ProfileView";
 import SearchForExpert from "./components/SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment";
-
 import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
-import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
+// import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
 import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
-import { useUserState } from "./contexts/context";
+import { useUserState } from "../src/contexts/context";
+import MoreMenu from "./components/MoreMenu/MoreMenu";
 const MainRouter = () => {
   
 export default () => {
@@ -25,8 +24,14 @@ export default () => {
         <Route path="/question-screen">
           <QuestionScreen />
         </Route>
+        <Route path="/more-menu">
+          <MoreMenu />
+        </Route>
+        <Route path="/question-screen">
+          <QuestionScreen />
+        </Route>
         <Route path="/profile/edit">
-          <ProfileEdit />
+          <UserProfileEdit />
         </Route>
         <Route path="/profile">
           <ProfileView />
