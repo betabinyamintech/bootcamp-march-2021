@@ -9,6 +9,8 @@ import { useUserState } from "./contexts/UserContext";
 import LoginRegister from "./components/Login/LoginRegister";
 import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import ProfileView from "./components/ProfileView/ProfileView";
+import SearchForExpert from "./components/SearchForExpert/SearchForExpert";
+import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment";
 
 const MainRouter = () => {
   const [user, setUser] = useUserState(true);
@@ -24,6 +26,15 @@ const MainRouter = () => {
         </Route>
         <Route path="/login">
           <LoginRegister />
+        </Route>
+        <Route path="/login">
+          <LoginRegister />
+        </Route>
+        <Route path="/meeting-arrangment">
+          <MeetingArrangment />
+        </Route>
+        <Route path="/search-for-expert">
+          <SearchForExpert />
         </Route>
         <Route path="/home">
           <Home />
