@@ -1,8 +1,4 @@
-export const initialState = {
-  user: {
-    name: "שוקי",
-  },
-};
+export const initialState = { user: null };
 
 export function reducer(state = initialState, action) {
   console.log("state", state);
