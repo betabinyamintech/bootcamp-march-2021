@@ -12,7 +12,7 @@ import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
 import { useUserState } from "../contexts/context";
-import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
+import MeetingScheduled from "./MeetingScheduled/meetingScheduled";
 import MoreMenu from "./MoreMenu/MoreMenu";
 
 const MainRouter = () => {
@@ -53,11 +53,7 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user ? (
-            <Home />
-          ) : (
-            <Redirect to={{ pathname: "/login" }} />
-          )}
+          {userState.user ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
         </Route>
       </Switch>
     </Router>
