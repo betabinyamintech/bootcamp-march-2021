@@ -5,9 +5,11 @@ import infoIcon from "./StatusIcon/info.svg";
 
 const InputLabelWithIcon = ({ text }) => {
   return (
-    <div>
+    <div className="div-input">
       <img src={infoIcon} alt="exclamation mark" />
-      <span>{text}</span>
+      <label className="input-label" style={{ fontSize: "12" }}>
+        {text}
+      </label>
     </div>
   );
 };

@@ -1,0 +1,104 @@
+.questionScreen {
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.question-invisible-box {
+    height: 300px;
+    width: 335px;
+    left: 20px;
+    top: 117px;
+    border-radius: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.question-title {
+/* box */
+height: 29px;
+width: 335px;
+left: 0px;
+top: 0px;
+border-radius: nullpx;
+
+/* font */
+font-family: Heebo;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: 29px;
+letter-spacing: 0.01em;
+text-align: center;
+color: #414141;
+
+}
+
+.input-with-label{
+    /*
+    display: flex;
+    justify-content: center;
+    height: 180px;
+width: 317px;
+*/
+}
+
+.div-input {
+    margin-top: 0px;
+    display: flex;
+}
+
+.input-label{
+    font-family: Heebo;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.01em;
+text-align: right;
+padding: 5px;
+color: #606060;
+
+}
+
+.question-input {
+width: 335px;
+left: 0px;
+top: 44px;
+border-radius: 0px;
+border: 0px;
+min-height: 80px;
+height: auto;
+}
+
+
+.question-box {
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+}
+
+.dotted-line {
+    /* Line 2 */
+
+position: static;
+width: 335px;
+height: 0px;
+left: 0px;
+bottom: 0px;
+margin-left: 2px;
+margin-right: 2px;
+
+border: 1px dashed #B5B5B5;
+padding-left: 2px;
+padding-right: 2px;
+
+/* Inside Auto Layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 0px;
+}

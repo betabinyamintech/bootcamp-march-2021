@@ -1,9 +1,9 @@
-.back-button{
+/* .back-button{
    display: flex;
    align-self: flex-start;
    justify-content: space-between;
    width:15%;
-}
+} */
 .profile-edit-container{
     height:  calc(100vh - 40px);;
     direction: rtl;
@@ -49,7 +49,7 @@ letter-spacing: 0.05em;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 109%;
+    width: 100%;
   }
 
 .input-div{
