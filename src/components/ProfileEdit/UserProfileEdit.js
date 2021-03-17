@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import "./UserProfileEdit.css";
 // import Avatar from "../Avatar/Avatar";
@@ -5,7 +6,6 @@ import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
@@ -25,7 +25,7 @@ const UserProfileEdit = () => {
 
   return (
     <div className="profile-edit-container">
-      <PreviousButton label="   חזרה " />
+      <PreviousButton onClick={() => history.push("/more-menu")} />
       <div className="profile-details">
         {/* <Avatar /> */}
         <h4 className="user-name">ישראל ישראלי</h4>

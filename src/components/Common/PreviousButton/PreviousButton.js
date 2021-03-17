@@ -1,7 +1,7 @@
 import "../Common.css";
-function PreviousButton({ onClick: onClick, label, ...props }) {
+function PreviousButton({ onClick, label, ...props }) {
   return (
-    <div className="back-button">
+    <div className="back-button" onClick={onClick}>
       <span className="previous-icon">
         <svg
           width="25"
