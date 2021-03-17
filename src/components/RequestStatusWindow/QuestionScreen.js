@@ -14,7 +14,7 @@ const QuestionScreen = ({ questionText, labelText }) => {
   return (
     <div className="questionScreen">
       <div className="question-invisible-box">
-        <div className="question-title">{questionText} </div>
+        <div className="question-title"> </div>
         <div className="input-with-label">
           <div className="question-box">
             <textarea

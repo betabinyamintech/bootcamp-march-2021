@@ -4,6 +4,5 @@ import "./Test.css";
 const Test = () => <StageStatuses />;
 
 export default Test;
-
 //<ProfileView />
 //<UserProfileEdit />
