@@ -19,20 +19,18 @@ function register(email, password) {
 const LoginRegister = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
-  const [errorMessage, setErrorMessage] = useState()
   const userState = useUserState();
   const dispatch = useUserDispatch();
   // isLogin ? (
-  console.log('userState.error', userState)
+  console.log("userState.error", userState);
 
   const onClick = useCallback(async () => {
     if (isLogin) {
-      const error = await loginUser(dispatch, loginDetails);
-    } else {    
-      const error = await registerUser(dispatch, loginDetails)
+      await loginUser(dispatch, loginDetails);
+    } else {
+      await registerUser(dispatch, loginDetails);
     }
-
-  }, [loginDetails, errorMessage, isLogin])
+  }, [loginDetails, isLogin, dispatch]);
   return (
     <div className="container">
       <img
@@ -58,18 +56,14 @@ const LoginRegister = () => {
         {/* <button className="email-button" style={{ top: "470px" }}>
           התחברות באמצעות גוגל
         </button> */}
-        <Link to={isProfileFullFilled ? "/home" : "/profile/edit"}>
-            </Link>
-          <Button
-            onClick={() => {
-              if ((isLogin) login(loginDetails);
-              else register(loginDetails);
-              //   onLogin(loginDetails);
-            }}
-          >
-            {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
-          </Button>
-
+        {/* <Link to={isProfileFullFilled ? "/home" : "/profile/edit"}></Link> */}
+        <Button
+          onClick={() => {
+            onClick(loginDetails);
+          }}
+        >
+          {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
+        </Button>
       </div>
 
       <h4 className="footer">
