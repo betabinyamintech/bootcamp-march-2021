@@ -1,7 +1,9 @@
 import "./App.css";
 import Test from "./components/Test/Test";
-import { UserStateProvider } from "./contexts/context";
+import { refreshUserByToken } from "./contexts/actions";
+import { UserStateProvider, useUserDispatch, useUserState } from "./contexts/context";
 function App() {
+  
   return (
     <UserStateProvider>
       <div className="App">
