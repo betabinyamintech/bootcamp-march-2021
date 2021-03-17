@@ -1,10 +1,9 @@
-import ProfileView from "../ProfileView/ProfileView";
-import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
-
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 import "./Test.css";
 
-function Test() {
-  return <UserProfileEdit />;
-}
+const Test = () => <StageStatuses />;
 
 export default Test;
+
+//<ProfileView />
+//<UserProfileEdit />
