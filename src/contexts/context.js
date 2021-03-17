@@ -10,8 +10,7 @@ export function UserStateProvider({ children }) {
   </UserContext.Provider>
 }
 export function useUserState() {
-  const state = useContext(UserContext);
-  return state;
+  return useContext(UserContext).state;
 }
 export function useUserDispatch() {
   return useContext(UserContext).dispatch;
