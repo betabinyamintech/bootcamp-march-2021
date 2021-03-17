@@ -11,7 +11,7 @@
         "buttonText": "השלם פרטים"
       },
       "matchesFound": {
-        "message": "נמצאו מספר מומחים מתאימים", //??
+        "message": "נמצאו מספר מומחים מתאימים",
         "trueFalseButton": true,
         "buttonText": "בחירת מומחה"
       },
@@ -24,7 +24,6 @@
         "trueFalseButton": true,
         "buttonText": "צפיה בתגובה"
       },
-      //   "meetingScheduled":{},
       "meetingWas": {
         "message": "הפגישה התקיימה",
         "trueFalseButton": false
@@ -43,7 +42,6 @@
         "message": "??????????????",
         "trueFalseButton": "???"
       },
-      //   "meetingScheduled": {},
       "meetingWas": {
         "message": "הפגישה התקיימה",
         "trueFalseButton": false
@@ -77,7 +75,6 @@
         "trueFalseButton": true,
         "buttonText": "צפיה בתגובה"
       },
-      //   "meetingScheduled": {},
       "meetingWas": {
         "message": "הפגישה התקיימה",
         "trueFalseButton": false
