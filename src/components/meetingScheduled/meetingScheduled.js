@@ -10,7 +10,7 @@ import Avatar from "../Avatar/Avatar";
 
 const MeetingScheduled = () => {
   const user = useContext(UserContext).user;
-  const { name, avatarImg } = user;
+  const { name } = user;
 
   const {
     user: { firstName, lastName, city, phone, imageSrc },
