@@ -15,10 +15,10 @@ import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
 import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
 import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import { useUserState } from "./contexts/context";
-const MainRouter = () => {
-  
-export default () => {
-    const userState = useUserState();
+
+export default MainRouter = () => {
+  const userState = useUserState();
+
   return (
     <Router>
       <Switch>
@@ -44,7 +44,11 @@ export default () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user !== null ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
+          {userState.user !== null ? (
+            <Home />
+          ) : (
+            <Redirect to={{ pathname: "/login" }} />
+          )}
         </Route>
       </Switch>
     </Router>

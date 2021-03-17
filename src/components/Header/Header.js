@@ -32,9 +32,9 @@ const Header = ({ numExperts = 167, isCommunityManager }) => {
       </div>
       {!isCommunityManager && (
         <div>
-          <Link to="/question-screen">
-            <InputQuestion />
-          </Link>
+          {/* <Link to="/question-screen"> */}
+          <InputQuestion />
+          {/* </Link> */}
         </div>
       )}
     </div>
