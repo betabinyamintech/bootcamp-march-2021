@@ -73,7 +73,7 @@ export async function registerUser(dispatch, registerPayload) {
     return null
 }
 
-export async function logout(dispatch) {
+export async function Logout(dispatch) {
     dispatch({ type: 'LOGOUT' });
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');

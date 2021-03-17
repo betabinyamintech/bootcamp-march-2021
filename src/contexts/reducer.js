@@ -17,6 +17,8 @@ export function reducer(state = initialState, action) {
             return { ...state, user: action.payload, loading: false };
         case 'SET_inquries':
             return { ...state, inquries: action.inquries };
+        case 'SET_LOGOUT':
+            return { ...state,user: action.payload };
         default:
             console.log('reducer: unknown type: ' + action.type)
         //throw new Error();

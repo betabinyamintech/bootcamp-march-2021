@@ -1,3 +1,4 @@
+import { Logout } from "../../contexts/actions";
 import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
 const MoreMenu = () => {
@@ -74,7 +75,8 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span>התנתקות</span>
+            <button onClick={Logout}>
+            <span>התנתקות</span></button>
           </div>
         </button>
         <button className="close-button">סגירה</button>
