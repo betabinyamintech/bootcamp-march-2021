@@ -5,7 +5,6 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "./components/Home/Home";
-import { useUserState } from "./contexts/UserContext";
 import LoginRegister from "./components/Login/LoginRegister";
 import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import ProfileView from "./components/ProfileView/ProfileView";
@@ -15,9 +14,11 @@ import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment"
 import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
 import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
 import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
+import { useUserState } from "./contexts/context";
 const MainRouter = () => {
-  const [user, setUser] = useUserState(true);
-  const a = false;
+  
+export default () => {
+    const userState = useUserState();
   return (
     <Router>
       <Switch>
@@ -43,7 +44,7 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {a ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
+          {userState.user !== null ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
         </Route>
       </Switch>
     </Router>

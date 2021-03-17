@@ -1,24 +1,15 @@
-import { Route, Router } from "react-router";
 import "./App.css";
-import LoginRegister from "./components/Login/LoginRegister";
 import Test from "./components/Test/Test";
-import { GlobalStateProvider } from "./contexts/UserContext";
+import { UserStateProvider } from "./contexts/context";
 import MainRouter from "./MainRouter";
 function App() {
   return (
-    <GlobalStateProvider>
+    <UserStateProvider>
       <div className="App">
         <Test />
         <MainRouter />
       </div>
-      {/* <Router>
-        <switch>
-          <Route path="/login">
-            <LoginRegister />
-          </Route>
-        </switch>
-      </Router> */}
-    </GlobalStateProvider>
+    </UserStateProvider>
   );
 }
 

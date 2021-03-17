@@ -1,10 +1,9 @@
 // import React from "react";
-import { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import { useUserState } from "../../contexts/context";
 import "./Avatar.css";
 
 const Avatar = (props) => {
-  const avatarImg = useContext(UserContext).user.avatarImg;
+  const avatarImg = useUserState().user.avatarImg;
   return <img src={avatarImg} {...props} className="imgAvatar" alt="" />;
 };
 export default Avatar;
