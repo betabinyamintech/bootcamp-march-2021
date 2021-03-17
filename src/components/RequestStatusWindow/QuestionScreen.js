@@ -1,7 +1,5 @@
 import react, { useContext, useState } from "react";
-import UserContext from "../../contexts/UserContext";
 import InputLabelWithIcon from "./InputLabelWithIcon";
-import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 //import "../Common/InputField/Style.css";
 import "./RequestStyle.css";
 import Button from "../Common/Button/Button";
