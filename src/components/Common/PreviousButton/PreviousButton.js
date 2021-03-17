@@ -1,4 +1,4 @@
-import "./PreviousButton.css";
+import "../Common.css";
 function PreviousButton({ onClick: onClick, label, ...props }) {
   return (
     <div className="back-button">

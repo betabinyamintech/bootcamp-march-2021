@@ -1,5 +1,5 @@
 import React from "react";
-import "./StatusIcon.css";
+import "../../Common.css";
 import tickmark from "./tick.svg";
 import blackTick from "./blackTick.svg";
 import grayTick from "./grayTick.svg";

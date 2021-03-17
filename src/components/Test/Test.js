@@ -4,6 +4,3 @@ import "./Test.css";
 const Test = () => <RequestStatus />;
 
 export default Test;
-
-//<ProfileView />
-//<UserProfileEdit />
