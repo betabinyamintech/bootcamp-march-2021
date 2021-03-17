@@ -1,0 +1,150 @@
+/* for Button */
+.email-button {
+    width: 335px;
+    height: 50px;
+    margin-top: 4px;
+    background: #414141;
+    border-radius: 12px;
+    color: white;
+    margin: 0 auto;
+}
+
+/* for Hashtag */
+.hashtag{
+
+    padding: 4px 12px;
+    text-align: center;
+    display: flex;
+    
+    background: #F3F3F3;
+    border-radius: 40px;
+    
+    flex: none;
+    order: 7;
+    flex-grow: 0;
+    margin: 10px 10px;
+    cursor: pointer;
+    }
+    
+    .hashtag.active{
+        background: #606060;
+    
+    }
+    
+    .hashtag.inactive{
+        background: #F3F3F3;
+    }
+    
+    /* input-div for InputField.js */
+    /*
+    .input-div{
+        margin-top: 20px;
+      }
+      .input-div label {
+        margin:13px 0;
+        position:relative;
+        display: flex;  }
+        
+      .input-div span {
+        padding:10px;
+        pointer-events: none;
+        position:absolute;
+ 
+        transition: 0.2s;
+        transition-timing-function: ease;
+        transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        opacity:0.5;
+      }
+      
+      .input-div input {
+        padding:10px;
+        border: none;
+        border-bottom: 1px solid black;
+        font-size: 15px;
+        margin: 2px;
+      }
+      
+      .input-div input:focus + span, input:not(:placeholder-shown) + span {
+        opacity:1;
+        transform: scale(0.75) translateY(-80%) translateX(10px);
+        
+      }
+      .input-div input:focus{
+        outline: none;
+        
+      }
+*/
+     
+/* for Input Question */
+.iconQuestion {
+    height: 20px;
+    float: right;
+}
+.inputNewQuestion {
+    width: 90%;
+    border: none;
+    border-bottom: 2px dotted rgb(105, 101, 101);
+    text-align: right;
+}
+
+/* for PreviousButton */
+.back-button{
+    display: block;
+    align-self: end;
+    width: 61%;
+    font-size: 14px;
+    color:#606060;
+ }
+ .previous-icon{
+     margin-top:2px
+ }
+ 
+ /* for Status Icon inside RequestStage */
+
+ .outerdiv{
+    width: 90%;
+    height: 100px;
+    display: flex;
+    padding: 10px;
+}
+
+.finishedicon{
+    background-color: #ababab;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.currenticon{
+    background-color: #000000;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.unstartedicon{
+    background-color: #E8E8E8;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.infoIcon{
+width: 10px;
+height: 10px;
+border-radius: 10px;
+background-color: #575757;
+color: white;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+font-size: 16px;
+font-style: normal;
+font-weight: 900;
+line-height: 17px;
+letter-spacing: 0.01em;
+text-align: right;
+padding: 5px;
+text-align: center;
+vertical-align: middle;
+;
+}
+
