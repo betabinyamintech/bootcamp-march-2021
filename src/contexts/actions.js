@@ -1,5 +1,5 @@
 
-const ROOT_URL = 'https://binyamin-tech-march-2021.herokuapp.com/';
+const ROOT_URL = 'https://binyamin-tech-march-2021.herokuapp.com';
 
 
 export async function loginUser(dispatch, loginPayload) {
