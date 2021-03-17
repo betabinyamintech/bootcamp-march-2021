@@ -17,6 +17,7 @@ import MoreMenu from "./MoreMenu/MoreMenu";
 
 const MainRouter = () => {
   const userState = useUserState();
+
   return (
     <Router>
       <Switch>
@@ -30,7 +31,11 @@ const MainRouter = () => {
           <ProfileView />
         </Route>
         <Route path="/login">
-          <LoginRegister />
+          {!userState.user ? (
+            <LoginRegister />
+          ) : (
+            <Redirect to={{ pathname: "/" }} />
+          )}
         </Route>
         <Route path="/meeting-arrangment">
           <MeetingArrangment />
@@ -48,7 +53,7 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user !== null ? (
+          {userState.user ? (
             <Home />
           ) : (
             <Redirect to={{ pathname: "/login" }} />

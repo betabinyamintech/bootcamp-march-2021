@@ -5,7 +5,7 @@ import StageStatuses from "../StageStatuses";
 
 const StatusIcon = ({ status }) => {
   let comp;
-  console.log(status);
+
   switch (status) {
     case StageStatuses.FINISHED:
       comp = (
