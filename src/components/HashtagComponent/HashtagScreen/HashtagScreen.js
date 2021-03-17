@@ -3,9 +3,6 @@ import HashtagList from "./HashtagList";
 
 const hashtags = [
   {
-    title: "אחר",
-  },
-  {
     title: "אינטרנט",
   },
   {

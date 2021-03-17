@@ -1,7 +1,6 @@
-import HashtagComponent from "../HashtagComponent/HashtagComponent";
-import MeetingScheduled from "../meetingScheduled/meetingScheduled";
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 import "./Test.css";
 
-const Test = () => <HashtagComponent />;
+const Test = () => <StageStatuses />;
 
 export default Test;
