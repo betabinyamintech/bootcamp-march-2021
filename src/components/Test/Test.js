@@ -1,7 +1,7 @@
-import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
+import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
 import "./Test.css";
 
-const Test = () => <StageStatuses />;
+const Test = () => <RequestStatus />;
 
 export default Test;
 
