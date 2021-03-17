@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../Common/InputField/InputField";
-import HashtagScreen from "../HashtagScreen/HashtagScreen";
+import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
 
 const ExpertProfileEdit = () => {

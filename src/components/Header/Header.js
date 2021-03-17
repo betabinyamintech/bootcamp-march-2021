@@ -2,6 +2,7 @@ import "./Header.css";
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
+import { Link } from "react-router-dom";
 import { useUserState } from "../../contexts/context";
 
 const Header = ({ numExperts = 167, isCommunityManager }) => {
@@ -9,7 +10,6 @@ const Header = ({ numExperts = 167, isCommunityManager }) => {
   const { name } = user;
   return (
     <div className="headerBox">
-
       <div>
         <span className="profileSpan">
           <svg
@@ -32,7 +32,9 @@ const Header = ({ numExperts = 167, isCommunityManager }) => {
       </div>
       {!isCommunityManager && (
         <div>
-          <InputQuestion />
+          <Link to="/question-screen">
+            <InputQuestion />
+          </Link>
         </div>
       )}
     </div>
