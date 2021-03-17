@@ -1,5 +1,5 @@
 import React from "react";
-import Hashtag from "./Hashtag/Hashtag";
+import Hashtag from "../Common/Hashtag/Hashtag";
 import "./HashtagList.css";
 
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
@@ -15,8 +15,8 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
             setSelectedHashtags(
               active
                 ? selectedHashtags.filter((hashtag) => title !== hashtag.title)
-                : [...selectedHashtags,{ title }])
-            
+                : [...selectedHashtags, { title }]
+            )
           }
           title={title}
           active={active}
