@@ -2,16 +2,11 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import StatusIcon from "../Common/RequestStatusWindow/StatusIcon/StatusIcon";
 import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 import "./MeetingScheduled.css";
-import UserContext from "../../contexts/UserContext";
-import React, { useContext } from "react";
 import Button from "../Common/Button/Button";
 import inquiries from "../Home/inquiries.json";
 import Avatar from "../Avatar/Avatar";
 
 const MeetingScheduled = () => {
-  const user = useContext(UserContext).user;
-  const { name } = user;
-
   const {
     user: { firstName, lastName, city, phone, imageSrc },
     inquiryTitle,
@@ -29,7 +24,7 @@ const MeetingScheduled = () => {
       <div className="statusMtngScdl">
         <StatusIcon status={StageStatuses.FINISHED} />
         <div className="statusMtngScdlMessage">
-          מעולה, נקבעה פגישה עם {name}
+          מעולה, נקבעה פגישה עם {firstName}
         </div>
       </div>
       <div className="meetingScdlDetails">

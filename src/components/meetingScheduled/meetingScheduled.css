@@ -1,7 +1,7 @@
 .meetingScheduled {
     display: flex;
     flex-flow: column nowrap;
-    margin: 20px;
+    margin: 15px;
     /* justify-content: center; */
     /* align-items: center; */
 }
@@ -10,13 +10,13 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .statusMtngScdlMessage {
     font-family: Heebo;
     font-style: normal;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 20px;
     line-height: 29px;
     text-align: right;
@@ -32,7 +32,7 @@
     display: flex;
     flex-flow: column nowrap;
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     background: #F3F3F3;
     border-radius: 4px;
     font-family: Heebo;
@@ -47,7 +47,7 @@
 }
 
 .mtngScdlDate, .mtngScdlTime, .mtngScdlAddress {
-    margin: 15px 0;
+    margin: 10px 0;
     font-family: Heebo;
     font-style: normal;
     font-weight: bold;
@@ -60,7 +60,7 @@
 }
 
 .addToCalendarButtonDiv {
-    margin-top: 50px;
+    margin-top: 30px;
     justify-content: flex-end;
     /* align-self: center; */
 }
