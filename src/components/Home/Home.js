@@ -2,8 +2,8 @@ import "./Home.css";
 import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
-import Profile from "../Profile/Profile";
-import inquiries from "./inquires.json";
+// import Profile from "../Profile/Profile";
+import inquiries from "./inquiries.json";
 
 const Home = () => {
   return (

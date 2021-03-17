@@ -1,4 +1,5 @@
-import MeetingScheduled from "../meetingScheduled/meetingScheduled";
+import MeetingScheduled from "../MeetingScheduled/MeetingScheduled";
+// import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import "./Test.css";
 
 const Test = () => <MeetingScheduled />;

@@ -1,7 +1,7 @@
-import react from "react";
+import React from "react";
 import Inquiry from "../Inquiry/Inquiry";
 import "./OpenInquiries.css";
-let placeholder = 0;
+// let placeholder = 0;
 
 const OpenInquiries = ({ inquiries }) => {
   if (inquiries.length === 0) {
@@ -23,7 +23,6 @@ const OpenInquiries = ({ inquiries }) => {
   );
 };
 
-
 // const OpenInquiries = (props) =>{
 
 //     if (props.inquiries.length === 0){
@@ -38,7 +37,7 @@ const OpenInquiries = ({ inquiries }) => {
 //         {props.inquiries.map((inquiry) => {
 //             <Inquiry id = {placeholder} props = {inquiry} /> //place holder values!!
 //         })}
-        
+
 //     </div>
 //     )
 // }
