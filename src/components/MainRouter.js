@@ -10,11 +10,11 @@ import ProfileEdit from "./ProfileEdit/UserProfileEdit";
 import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
-
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
-import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
-import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
 import { useUserState } from "../contexts/context";
+import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
+import MoreMenu from "./MoreMenu/MoreMenu";
+
 const MainRouter = () => {
   const userState = useUserState();
   return (
@@ -35,6 +35,13 @@ const MainRouter = () => {
         <Route path="/meeting-arrangment">
           <MeetingArrangment />
         </Route>
+        <Route path="/meeting-scheduled">
+          <MeetingScheduled />
+        </Route>
+        <Route path="/more-menu">
+          <MoreMenu />
+        </Route>
+
         <Route path="/search-for-expert">
           <SearchForExpert />
         </Route>
