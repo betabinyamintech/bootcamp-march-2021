@@ -4,7 +4,7 @@ import QuestionScreen from "../RequestStatusWindow/QuestionScreen";
 import "./Test.css";
 
 function Test() {
-  return <QuestionScreen />;
+  return <MainRouter />;
 }
 export default Test;
 //<ProfileView />
