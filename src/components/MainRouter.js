@@ -4,17 +4,17 @@ import {
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
-import Home from "./components/Home/Home";
-import LoginRegister from "./components/Login/LoginRegister";
-import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
-import ProfileView from "./components/ProfileView/ProfileView";
-import SearchForExpert from "./components/SearchForExpert/SearchForExpert";
-import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment";
+import Home from "./Home/Home";
+import LoginRegister from "./Login/LoginRegister";
+import ProfileEdit from "./ProfileEdit/UserProfileEdit";
+import ProfileView from "./ProfileView/ProfileView";
+import SearchForExpert from "./SearchForExpert/SearchForExpert";
+import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 
-import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
-import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
-import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
-import { useUserState } from "./contexts/context";
+import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
+import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
+import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
+import { useUserState } from "../contexts/context";
 const MainRouter = () => {
   const userState = useUserState();
   return (
