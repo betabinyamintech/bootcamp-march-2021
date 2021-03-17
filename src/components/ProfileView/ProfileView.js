@@ -1,7 +1,7 @@
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import HashtagScreen from "../HashtagScreen/HashtagScreen";
+import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ProfileView.css";
 import Button from "../Common/Button/Button";
 
