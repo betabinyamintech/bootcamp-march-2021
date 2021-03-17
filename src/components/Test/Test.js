@@ -6,9 +6,10 @@ import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import MainRouter from "../../MainRouter";
 
 import "./Test.css";
+import Inquiry from "../Inquiry/Inquiry";
 
 function Test() {
-  return <MainRouter />;
+  return <Inquiry />;
 }
 
 export default Test;
