@@ -1,7 +1,7 @@
-.back-button{
+/* .back-button{
   display: flex;
   align-self: flex-start;
-}
+} */
 .profile-edit-container{
    height: auto;
    direction: rtl;
@@ -15,12 +15,11 @@
   color: #414141;
 }
 
-.input-fields{
+.input-fieldss{
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   width: 115%;
-}
+   width: 125%}
 
 .input-div{
   margin-top: 30px;
@@ -88,7 +87,9 @@
   font-weight: bold;
   margin-top: 39px;
   display: flex;
-  justify-content: space-between;}
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
 
 .meeting-kind{
   font-family: Heebo;

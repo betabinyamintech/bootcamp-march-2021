@@ -1,15 +1,13 @@
-import SearchForExpert from "../SearchForExpert/SearchForExpert";
+import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
+import ProfileView from "../ProfileView/ProfileView";
+
 import "./Test.css";
 
-const requestDetails = {
-  questionText: "איך אני מחזיר את העסק שלי לאיזון?",
-  labelText: "בחירת מומחה לסיוע בשאלה:",
-};
-const Test = () => (
-  <SearchForExpert
-    questionText={requestDetails.questionText}
-    labelText={requestDetails.labelText}
-  />
-);
+function Test() {
+  return <ProfileView />;
+}
 
 export default Test;
+
+//<ProfileView />
+//<UserProfileEdit />
