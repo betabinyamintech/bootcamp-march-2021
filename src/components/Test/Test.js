@@ -1,9 +1,9 @@
-import MeetingScheduled from "../MeetingScheduled/MeetingScheduled";
-
+import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
 import "./Test.css";
 
-function Test() {
-  return <MeetingScheduled />;
-}
+const Test = () => <StageStatuses />;
 
 export default Test;
+
+//<ProfileView />
+//<UserProfileEdit />
