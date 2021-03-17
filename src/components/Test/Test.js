@@ -1,9 +1,10 @@
-import MeetingScheduled from "../MeetingScheduled/MeetingScheduled";
+import ProfileView from "../ProfileView/ProfileView";
+import UserProfileEdit from "../ProfileEdit/UserProfileEdit";
 
 import "./Test.css";
 
 function Test() {
-  return <MeetingScheduled />;
+  return <UserProfileEdit />;
 }
 
 export default Test;
