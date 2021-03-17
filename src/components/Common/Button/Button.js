@@ -1,17 +1,10 @@
-<<<<<<< HEAD
 import "./Button.css";
 
-function Button({ label, isIcon, ...props }) {
-=======
-import "../Common.css";
-
-function Button(props) {
->>>>>>> ff20557457969908ae1734064a0ed035771a93fe
+function Button({ isIcon, ...props }) {
   return (
     <button
       {...props}
       className={
-<<<<<<< HEAD
         "common-button" + (props.className ? " " + props.className : "")
       }
     >
@@ -32,12 +25,6 @@ function Button(props) {
           </svg>
         </span>
       )}
-=======
-        "email-button" + (props.className ? " " + props.className : "")
-      }
-    >
-      {props.children}
->>>>>>> ff20557457969908ae1734064a0ed035771a93fe
     </button>
   );
 }

@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 .common-button {
-  /* display: flex;
-  flex-flow: row nowrap; */
   width: 335px;
   height: 50px;
   margin-top: 4px;
@@ -20,14 +17,3 @@
 .spanSvgIcon {
   margin-right: 13px;
 }
-=======
-/*.email-button {
-    width: 335px;
-    height: 50px;
-    margin-top: 4px;
-    background: #414141;
-    border-radius: 12px;
-    color: white;
-    margin: 0 auto;
-}*/
->>>>>>> ff20557457969908ae1734064a0ed035771a93fe
