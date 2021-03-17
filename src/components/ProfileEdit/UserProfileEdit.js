@@ -28,10 +28,7 @@ const UserProfileEdit = () => {
       <PreviousButton label="   חזרה " />
       <div className="profile-details">
         {/* <Avatar /> */}
-        <h4 className="user-name" onClick={() => console.log(userDetails)}>
-          {" "}
-          ישראל ישראלי
-        </h4>
+        <h4 className="user-name">ישראל ישראלי</h4>
         <h6 className="user-city"> כוכב השחר</h6>
       </div>
       <div className="input-fields">
