@@ -48,7 +48,6 @@ const ProfileView = ({ user }) => {
         <span className="row-title"> מיילה </span>
         <span className="row-description"> adflja@akldfj.asd </span>
       </div>
-      <Button>בחירה</Button>
     </div>
   );
 };
