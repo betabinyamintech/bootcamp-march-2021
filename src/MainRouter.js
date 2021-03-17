@@ -6,27 +6,29 @@ import {
 } from "react-router-dom";
 import Home from "./components/Home/Home";
 import LoginRegister from "./components/Login/LoginRegister";
-import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import ProfileView from "./components/ProfileView/ProfileView";
 import SearchForExpert from "./components/SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment";
-
 import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
-import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
+// import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
 import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
-import { useUserState } from "./contexts/context";
-
-export default MainRouter = () => {
-  const userState = useUserState();
-
+import { useUserState } from "../src/contexts/context";
+import MoreMenu from "./components/MoreMenu/MoreMenu";
+const MainRouter = () => {
   return (
     <Router>
       <Switch>
         <Route path="/question-screen">
           <QuestionScreen />
         </Route>
+        <Route path="/more-menu">
+          <MoreMenu />
+        </Route>
+        <Route path="/question-screen">
+          <QuestionScreen />
+        </Route>
         <Route path="/profile/edit">
-          <ProfileEdit />
+          <UserProfileEdit />
         </Route>
         <Route path="/profile">
           <ProfileView />
@@ -44,7 +46,7 @@ export default MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user !== null ? (
+          {useUserState.user !== null ? (
             <Home />
           ) : (
             <Redirect to={{ pathname: "/login" }} />
