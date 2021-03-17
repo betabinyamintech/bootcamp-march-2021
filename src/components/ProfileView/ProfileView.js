@@ -3,6 +3,7 @@ import Avatar from "../Avatar/Avatar";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import HashtagScreen from "../HashtagScreen/HashtagScreen";
 import "./ProfileView.css";
+import Button from "../Common/Button/Button";
 
 const ProfileView = ({ user }) => {
   return (
@@ -47,6 +48,7 @@ const ProfileView = ({ user }) => {
         <span className="row-title"> מיילה </span>
         <span className="row-description"> adflja@akldfj.asd </span>
       </div>
+      <Button>בחירה</Button>
     </div>
   );
 };
