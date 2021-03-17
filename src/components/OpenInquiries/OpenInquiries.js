@@ -7,7 +7,7 @@ const OpenInquiries = ({ inquiries }) => {
   if (inquiries.length === 0) {
     console.log("sss");
     return (
-      <div className="emptyInquiries">
+      <div className="inquiriesBox">
         <h3>אין שאלות</h3>
         <h4>הכל ברור לך, אחלה!</h4>
       </div>

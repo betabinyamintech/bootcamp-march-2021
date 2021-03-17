@@ -1,7 +1,7 @@
-.imgProfile {
-    display: flex;
-    border-radius: 50%;
-    height: 70px;
-    border: groove;
-    margin: auto;
+.imgAvatar {
+  border-radius: 50%;
+  height: 70px;
+
+  float: right;
+  margin: 10px;
 }
