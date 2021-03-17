@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
-  const history = useHistory();
+  let history = useHistory();
   const [userDetails, setUserDetails] = useState({
     firstName: "",
     lastName: "",
@@ -25,7 +25,9 @@ const UserProfileEdit = () => {
 
   return (
     <div className="profile-edit-container">
-      <PreviousButton label="   חזרה " />
+      <div style={{ alignSelf: "flex-start" }}>
+        <PreviousButton linkTo="/more-menu" />
+      </div>
       <div className="profile-details">
         {/* <Avatar /> */}
         <h4 className="user-name">ישראל ישראלי</h4>
