@@ -4,6 +4,8 @@ import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import Profile from "../Profile/Profile";
 import inquiries from "./inquires.json";
+import { useUserState } from "../../contexts/UserContext";
+import { RedirectRoute } from "react-router-dom";
 
 const Home = () => {
   return (

@@ -1,15 +1,14 @@
 import "./App.css";
 import Test from "./components/Test/Test";
-import { GlobalStateProvider} from "./contexts/UserContext";
-import {BrowserRouter as Router } from 'react-router-dom';
+import { GlobalStateProvider } from "./contexts/UserContext";
+import MainRouter from "./MainRouter";
 function App() {
   return (
     <GlobalStateProvider>
-      <Router>
-        <div className="App">
-          <Test />
+      <div className="App">
+        <Test />
+        <MainRouter  />
         </div>
-      </Router>
     </GlobalStateProvider>
   );
 }
