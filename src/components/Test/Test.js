@@ -1,14 +1,6 @@
-import { useUserState } from "../../contexts/context";
-import LoginDetails from "../Login/LoginDetails";
-import LoginRegister from "../Login/LoginRegister";
-import "../Login/Style.css";
-import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
-import MainRouter from "../../MainRouter";
-
+import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
 import "./Test.css";
 
-function Test() {
-  return <MainRouter />;
-}
+const Test = () => <RequestStatus />;
 
 export default Test;

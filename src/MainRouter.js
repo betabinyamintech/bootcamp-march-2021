@@ -15,7 +15,9 @@ import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import { useUserState } from "../src/contexts/context";
 import MoreMenu from "./components/MoreMenu/MoreMenu";
 const MainRouter = () => {
-  const userState = useUserState();
+  
+export default () => {
+    const userState = useUserState();
   return (
     <Router>
       <Switch>
@@ -47,11 +49,7 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user !== null ? (
-            <Home />
-          ) : (
-            <Redirect to={{ pathname: "/login" }} />
-          )}
+          {userState.user !== null ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
         </Route>
       </Switch>
     </Router>
