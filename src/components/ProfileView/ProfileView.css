@@ -1,0 +1,70 @@
+.profile-view-container{
+    height:  calc(100vh - 40px);;
+    direction: rtl;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    margin: 21px;
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    color: #414141;
+}
+.user-details{
+    text-align: center;
+}
+
+.user-name{
+    margin: 0px;
+    margin-top: 9px;
+}
+.user-city{
+    font-family: Heebo;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+
+letter-spacing: 0.05em;
+
+color: #414141;
+}
+.row-details{
+    align-items: flex-end;
+    display: grid;
+    font-weight: bold;
+    margin-top: 39px;
+    margin-bottom: 34px;
+}
+.row-title{
+    font-family: Heebo;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+
+text-align: right;
+letter-spacing: 0.01em;
+
+color: #606060;
+}
+.row-decription{
+    font-family: Heebo;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 23px;
+/* identical to box height */
+
+text-align: right;
+letter-spacing: 0.01em;
+
+color: #414141;
+}
+
+.avatar-container{
+    display: flex;
+    justify-content: center;
+}

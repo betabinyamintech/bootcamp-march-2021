@@ -1,4 +1,8 @@
-.inquiriesTitle{
-    text-align: right;
-    margin-right: 12px;
+.inquiriesTitle {
+  text-align: right;
+  margin-right: 12px;
+}
+.selectStatus {
+  width: 80%;
+  margin: 0 auto;
 }

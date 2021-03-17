@@ -1,10 +1,11 @@
 .back-button{
-    color:#606060;
     display: block;
     align-self: end;
     width: 61%;
-    font-size: 19px;
+    font-size: 14px;
+    color:#606060;
  }
  .previous-icon{
      margin-top:2px
  }
+ 
