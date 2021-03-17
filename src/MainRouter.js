@@ -9,13 +9,18 @@ import { useUserState } from "./contexts/UserContext";
 import LoginRegister from "./components/Login/LoginRegister";
 import ProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 import ProfileView from "./components/ProfileView/ProfileView";
-
+import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
+import InputLabelWithIcon from "./components/RequestStatusWindow/InputLabelWithIcon";
+import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
 const MainRouter = () => {
   const [user, setUser] = useUserState(true);
   const a = false;
   return (
     <Router>
       <Switch>
+        <Route path="/question-screen">
+          <QuestionScreen />
+        </Route>
         <Route path="/profile/edit">
           <ProfileEdit />
         </Route>
