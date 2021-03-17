@@ -1,8 +1,13 @@
-function InputField({ onChange, label, ...props }) {
+function InputField({ onChange, label, required, ...props }) {
   return (
     <div className="input-div">
       <label>
-        <input placeholder=" " onChange={onChange} {...props}></input>
+        <input
+          placeholder=" "
+          onChange={onChange}
+          {...props}
+          required={required}
+        ></input>
         <span>{label}</span>
       </label>
     </div>
