@@ -1,0 +1,28 @@
+
+.hashtags{
+  display: flex;
+  flex-flow: row wrap;
+justify-content: baseline;
+align-items: baseline;
+width: 100%;  
+}
+
+.newHashtag{
+
+  padding: 4px 12px;
+  text-align: center;
+  display: flex;
+  
+  
+  
+  background: #F3F3F3;
+  border-radius: 40px;
+  
+  
+  /* flex: none;
+  order: 7;
+  flex-grow: 0;
+  margin: 10px 10px;
+  cursor: pointer; */
+  }
+

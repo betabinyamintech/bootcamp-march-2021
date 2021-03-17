@@ -5,9 +5,12 @@ import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
+  const history = useHistory();
+
   return (
     <div className="profile-edit-container">
       <PreviousButton label="   חזרה " />
@@ -36,7 +39,7 @@ const UserProfileEdit = () => {
         </div>
         {exportOn && <ExpertProfileEdit />}
         {/* <button className="save-button">שמירה</button> */}
-        <Button className="save-button">
+        <Button className="save-button" onClick={() => history.push("/home")}>
           <svg
             width="13"
             height="10"

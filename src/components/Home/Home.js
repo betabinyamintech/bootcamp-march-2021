@@ -7,7 +7,7 @@ import { useUserState } from "../../contexts/UserContext";
 import { RedirectRoute } from "react-router-dom";
 
 const Home = () => {
-  const communityManager = true;
+  const communityManager = false;
   const relevantInquries = inquiries;
   return (
     <div style={{ display: "flex", flexFlow: "column nowrap" }}>

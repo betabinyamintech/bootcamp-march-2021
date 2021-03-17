@@ -1,7 +1,6 @@
 .imgAvatar {
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-  float: right;
-  margin: 10px;
+    border-radius: 50%;
+    height: 70px;
+    float: right;
+    margin: 10px;
 }
