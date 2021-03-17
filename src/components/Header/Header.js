@@ -1,11 +1,12 @@
 import "./Header.css";
-import React, { useContext } from "react";
+import React from "react";
 import Avatar from "../Avatar/Avatar";
-import UserContext from "../../contexts/UserContext";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
+import { Link } from "react-router-dom";
+import { useUserState } from "../../contexts/context";
 
 const Header = ({ numExperts = 167, isCommunityManager }) => {
-  const user = useContext(UserContext).user;
+  const user = useUserState().user;
   const { name } = user;
   return (
     <div className="headerBox">
@@ -31,7 +32,9 @@ const Header = ({ numExperts = 167, isCommunityManager }) => {
       </div>
       {!isCommunityManager && (
         <div>
-          <InputQuestion />
+          <Link to="/question-screen">
+            <InputQuestion />
+          </Link>
         </div>
       )}
     </div>

@@ -1,9 +1,8 @@
 import "./Home.css";
-import React, { useState } from "react";
+import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquiries.json";
-import { useUserState } from "../../contexts/UserContext";
 import { RedirectRoute } from "react-router-dom";
 
 const Home = () => {

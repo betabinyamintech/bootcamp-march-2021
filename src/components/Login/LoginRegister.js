@@ -1,5 +1,7 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCallback, useState } from "react";
+import { loginUser, registerUser } from "../../contexts/actions";
+import { useUserDispatch, useUserState } from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
 import "./Style.css";
@@ -14,10 +16,21 @@ function register(email, password) {
   console.log("register", email, password);
 }
 
-const LoginRegister = ({ onLogin }) => {
+const LoginRegister = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+  const userState = useUserState();
+  const dispatch = useUserDispatch();
   // isLogin ? (
+  console.log("userState.error", userState);
+
+  const onClick = useCallback(async () => {
+    if (isLogin) {
+      await loginUser(dispatch, loginDetails);
+    } else {
+      await registerUser(dispatch, loginDetails);
+    }
+  }, [loginDetails, isLogin, dispatch]);
   return (
     <div className="container">
       <img
@@ -43,17 +56,14 @@ const LoginRegister = ({ onLogin }) => {
         {/* <button className="email-button" style={{ top: "470px" }}>
           התחברות באמצעות גוגל
         </button> */}
-        <Link to={isProfileFullFilled ? "/home" : "/profile/edit"}>
-          <Button
-            onClick={() => {
-              if (isLogin) login(loginDetails);
-              else register(loginDetails);
-              //   onLogin(loginDetails);
-            }}
-          >
-            {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
-          </Button>
-        </Link>
+        {/* <Link to={isProfileFullFilled ? "/home" : "/profile/edit"}></Link> */}
+        <Button
+          onClick={() => {
+            onClick(loginDetails);
+          }}
+        >
+          {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
+        </Button>
       </div>
 
       <h4 className="footer">
