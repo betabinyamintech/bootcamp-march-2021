@@ -1,22 +1,24 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { loginUser, registerUser } from "../../contexts/actions";
+import { useUserDispatch } from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
 import "./Style.css";
 
-function login(email, password) {
-  console.log("login", email, password);
-  
-
-}
-
-function register(email, password) {
-  console.log("register", email, password);
-}
-
-const LoginRegister = ({onLogin}) => {
+const LoginRegister = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState()
+  const dispatch = useUserDispatch();
   // isLogin ? (
+
+  const onClick = useCallback(() => {
+    if (isLogin) loginUser(dispatch, loginDetails);
+    else {
+      setErrorMessage(registerUser(dispatch, loginDetails))
+    }
+
+  }, [loginDetails])
   return (
     <div className="container">
       <img
@@ -30,17 +32,13 @@ const LoginRegister = ({onLogin}) => {
       </div>
 
       <LoginDetails loginDetails={loginDetails} setLoginDetails={setLoginDetails} isLogin={!isLogin} />
-
+      <div>{errorMessage && errorMessage}</div>
       <div className="buttons">
         {/* <button className="email-button" style={{ top: "470px" }}>
           התחברות באמצעות גוגל
         </button> */}
         <Button
-          onClick={() => {
-            if (isLogin) login(loginDetails);
-            else register(loginDetails);
-            onLogin(loginDetails);
-          }}
+          onClick={() => onClick()}
         >
           {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
         </Button>

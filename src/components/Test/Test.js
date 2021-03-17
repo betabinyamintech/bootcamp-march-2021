@@ -7,8 +7,7 @@ import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import "./Test.css";
 
 function Test() {
-    const user = useUserState();
-    console.log('user', user)
+
   return <LoginRegister />;
 }
 
