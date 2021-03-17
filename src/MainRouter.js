@@ -5,11 +5,11 @@ import {
   Switch,
 } from "react-router-dom";
 import Home from "./components/Home/Home";
-import { useUserState } from "./contexts/UserContext";
 import LoginRegister from "./components/Login/LoginRegister";
+import { useUserState } from "./contexts/context";
 
 export default () => {
-  const [user, setUser] = useUserState();
+  const user = useUserState().user;
   return (
     <Router>
       <Switch>

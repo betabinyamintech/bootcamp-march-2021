@@ -1,15 +1,15 @@
 import "./App.css";
 import Test from "./components/Test/Test";
-import { GlobalStateProvider } from "./contexts/UserContext";
+import { UserStateProvider } from "./contexts/context";
 import MainRouter from "./MainRouter";
 function App() {
   return (
-    <GlobalStateProvider>
+    <UserStateProvider>
       <div className="App">
         <Test />
         <MainRouter  />
         </div>
-    </GlobalStateProvider>
+    </UserStateProvider>
   );
 }
 
