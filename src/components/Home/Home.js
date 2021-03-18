@@ -3,7 +3,6 @@ import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquiries.json";
-import { RedirectRoute } from "react-router-dom";
 
 const Home = () => {
   const communityManager = false;
@@ -21,11 +20,16 @@ const Home = () => {
             id="filterMeetings"
             name="filterMeetings"
           >
-            <option value="">כל הסטטוסים</option>
-            <option value="">ממתין לשיוך למומחים</option>
-            <option value="">ממתין לבחירת מומחה</option>
-            <option value="">נקבעה פגישה</option>
-            <option value="">עבר מועד הפגישה</option>
+            <option value="opened">כל הפניות</option>
+            <option value="missingDetails">פניות עם פרטים חסרים</option>
+            <option value="matchesFound">התאמות נמצאו</option>
+            <option value="movedToExpert">פניות שעברו למומחה</option>
+            <option value="responseFromExpert">
+              פניות שקיבלו תגובה ממומחה
+            </option>
+            <option value="meetingScheduled">פניות עם פגישה מתוזמנת</option>
+            <option value="meetingWas">הייתה פגישה</option>
+            <option value="irrelevant">פניות לא רלוונטיות</option>
           </select>
         </>
       ) : (

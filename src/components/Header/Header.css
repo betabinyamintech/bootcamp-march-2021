@@ -1,34 +1,38 @@
-.profileSpan {
-    float: left;
-    margin: 20px;
-    /* font-family: Material-Design-Iconic-Font;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 23px;
-  line-height: 25px;
-  letter-spacing: 0.01em;
-
-  color: #414141; */
-}
-
 .headerBox {
-    display: flex;
-    flex-flow: column nowrap;
-    background-color: #ffffff;
-    border-radius: 4px;
-    margin: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #ffffff;
+  border-radius: 4px;
+  margin: 30px 10px 20px 10px;
 }
 
-.divProfile {
-    height: 80px;
-    margin: 10px;
+.headerOfHeader {
+  display: flex;
+}
+
+.profileImg {
+  margin: auto;
+}
+
+.homeMenuIcon {
+  float: left;
+  margin: 10px;
 }
 
 .profileMessage {
-    text-align: right;
-    margin: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 129.5%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #000000;
 }
 
 .divInputQuestion {
-    margin: 10px;
+  margin: 10px;
 }
