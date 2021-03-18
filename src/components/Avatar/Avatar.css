@@ -1,7 +1,15 @@
 .imgAvatar {
+<<<<<<< HEAD
+    border-radius: 50%;
+   /* height: 70px;*/
+    float: right;
+    margin: 10px;
+}
+=======
   border-radius: 50%;
   height: 70px;
   width: 70px;
   float: right;
   margin: 10px;
 }
+>>>>>>> 798826f87d309acd54d8ee01253ba34f4cc7a5e8

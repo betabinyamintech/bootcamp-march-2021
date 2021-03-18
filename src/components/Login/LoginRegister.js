@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { loginUser, registerUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";

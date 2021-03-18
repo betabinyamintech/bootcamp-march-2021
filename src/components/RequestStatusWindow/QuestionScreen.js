@@ -19,10 +19,7 @@ const QuestionScreen = ({ questionText, labelText }) => {
 
   return (
     <div className="questionScreen">
-      <PreviousButton
-        onClick={() => history.push("/more-menu")}
-        style={{ marginTop: "15px" }}
-      />
+      <PreviousButton linkTo="/more-menu" />
       <div className="question-invisible-box">
         <div className="question-title"> </div>
         <div className="input-with-label">

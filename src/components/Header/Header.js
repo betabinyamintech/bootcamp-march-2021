@@ -2,16 +2,19 @@ import "./Header.css";
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useUserState } from "../../contexts/context";
-
 const Header = ({ numExperts = 167, isCommunityManager }) => {
   const user = useUserState().user;
   const { name } = user;
+  let history = useHistory();
   return (
     <div className="headerBox">
       <div>
-        <span className="profileSpan">
+        <span
+          className="profileSpan"
+          onClick={() => history.push("/more-menu")}
+        >
           <svg
             width="16"
             height="5"
