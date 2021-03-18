@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "../Common/InputField/InputField";
 import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
@@ -6,22 +6,27 @@ import "./ExpertProfileEdit.css";
 const ExpertProfileEdit = ({ setUserDetailsField, userDetails }) => {
   const [exportOn, setExportOn] = useState(true);
   const [favMeetKind, setFavMeetKind] = useState("physically");
+  // const [selectedHashtagsUser, setSelectedHashtagsUser] = useState([]);
+  const [selectedHashtags, setSelectedHashtags] = useState([]);
 
   const favMeetingFunc = (value) => {
     setFavMeetKind(value);
     setUserDetailsField("preferredMeetingType", value);
   };
-
+  useEffect(() => {
+    setUserDetailsField("inquiryTags", selectedHashtags);
+  }, [selectedHashtags]);
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
         <InputField
-          label="כמה מילים על עצמך"
+          // value={userDetails.aboutMe}
+          label="כמה מילים על עצמך :"
           onChange={(e) =>
             setUserDetailsField({ ...userDetails, aboutMe: e.target.value })
           }
-          value={userDetails.aboutMe}
         />
+
         <div className="input-div">
           <label>
             <textarea
@@ -34,16 +39,16 @@ const ExpertProfileEdit = ({ setUserDetailsField, userDetails }) => {
           </label>
         </div>
         <span className="titles"> באילו נושאים תוכל לסייע?</span>
-        <HashtagScreen />
-
+        <HashtagScreen
+          selectedHashtags={selectedHashtags}
+          setSelectedHashtags={setSelectedHashtags}
+        />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
-
         <InputField
           value={userDetails.question1}
           label="שאלה 1:"
           onChange={(e) => setUserDetailsField("question1", e.target.value)}
         />
-
         <InputField
           value={userDetails.question2}
           label="שאלה 2:"
@@ -70,7 +75,9 @@ const ExpertProfileEdit = ({ setUserDetailsField, userDetails }) => {
         <select
           className="meeting-kind"
           defaultValue="30"
-          onChange={(e) => setUserDetailsField("meetingLength", e.target.value)}
+          onChange={(e) =>
+            setUserDetailsField("meetingLength", +e.target.value)
+          }
         >
           <option value={15}>00:15 </option>
           <option value={30}>00:30 </option>

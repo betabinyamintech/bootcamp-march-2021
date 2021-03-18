@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./UserProfileEdit.css";
-// import Avatar from "../Avatar/Avatar";
+import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
@@ -11,22 +11,23 @@ const UserProfileEdit = () => {
   const [exportOn, setExpertOn] = useState(false);
   let history = useHistory();
   const [userDetails, setUserDetails] = useState({
-    firstName: "ישראל",
-    lastName: "ישראלי",
-    phone: "054",
-    city: "תל אביב",
+    profileFullFields: false,
+    imageSrc: null,
+    firstName: null,
+    lastName: null,
+    phone: null,
+    city: null,
     isExpert: false,
     isAdmin: false,
-    profession: "דשגדשג",
-    aboutMe: "אודותיי",
-    helpKind: "סוג עזרה",
-    inquiryTags: [null],
-    questionsBeforeMeeting: [""],
-    question1: "שאלה 1",
-    question2: "שאלה 2",
-    meetingLength: "",
+    profession: null,
+    aboutMe: null,
+    helpKind: null,
+    inquiryTags: null,
+    question1: null,
+    question2: null,
+    meetingLength: null,
     preferredMeetingType: "physically",
-    meetingAdress: "כתובת",
+    meetingAdress: null,
   });
 
   const setUserDetailsField = (field, value) => {
@@ -36,14 +37,19 @@ const UserProfileEdit = () => {
     setExpertOn(!exportOn);
     setUserDetailsField("isExpert", exportOn);
   };
-  console.log(userDetails.profession);
+  // const prepareToPost = () => {
+  //   userDetails.map((field) => {
+  //     field !== null;
+  //   });
+  // };
+  console.log(userDetails);
   return (
     <div className="profile-edit-container">
       <div style={{ alignSelf: "flex-start" }}>
         <PreviousButton linkTo="/more-menu" />
       </div>
       <div className="profile-details">
-        {/* <Avatar /> */}
+        <Avatar />
         <h4 className="user-name">
           {userDetails.firstName + " " + userDetails.lastName}
         </h4>
@@ -81,7 +87,7 @@ const UserProfileEdit = () => {
           required={true}
           label="טלפון"
           onChange={(e) =>
-            setUserDetails({ ...userDetails, phone: e.target.value })
+            setUserDetails({ ...userDetails, phone: +e.target.value })
           }
         />
 
