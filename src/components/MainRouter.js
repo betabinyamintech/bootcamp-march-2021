@@ -13,6 +13,7 @@ import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
 import { useUserDispatch, useUserState } from "../contexts/context";
 import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
+import Test from "./Test";
 import MoreMenu from "./MoreMenu/MoreMenu";
 import { useEffect } from "react";
 import { refreshUserByToken } from "../contexts/actions";
@@ -30,6 +31,10 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/question-screen">
+          <Test />
+        </Route>
+
         <Route path="/question-screen">
           <QuestionScreen />
         </Route>
