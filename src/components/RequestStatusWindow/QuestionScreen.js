@@ -11,9 +11,9 @@ import InputField from "../Common/InputField/InputField";
 const QuestionScreen = ({ questionText, labelText }) => {
   const arrowSign = "&gt";
   const buttonText = "הבא";
-  const [question, setQuestion] = useState("בכמה מילים , מה האתגר שלך? ");
+  const [question, setQuestion] = useState("בכמה מילים, מה האתגר שלך?");
   const [information, setInformation] = useState(
-    "הכל טוב,בשלב הבא ניתן לפרט יותר "
+    "הכל טוב, בשלב הבא ניתן לפרט יותר "
   );
   let history = useHistory();
 

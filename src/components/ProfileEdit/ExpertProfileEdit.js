@@ -21,7 +21,7 @@ const ExpertProfileEdit = ({ setUserDetailsField, userDetails }) => {
       <div className="input-fieldss">
         <InputField
           // value={userDetails.aboutMe}
-          label="כמה מילים על עצמך :"
+          label="כמה מילים על עצמך:"
           onChange={(e) =>
             setUserDetailsField({ ...userDetails, aboutMe: e.target.value })
           }
