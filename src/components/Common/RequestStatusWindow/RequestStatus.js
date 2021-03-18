@@ -1,7 +1,9 @@
-import react, { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
-import Inquiry from "../Inquiry/Inquiry";
+// /import react, { useContext } from "react";
+// import UserContext from "../../contexts/UserContext";
+// import Inquiry from "../Inquiry/Inquiry";
+import PreviousButton from "../PreviousButton/PreviousButton";
 import RequestStage from "./RequestStage";
+import "./RequestStatus.css";
 
 import StageStatuses from "./StageStatuses";
 const stages = [
@@ -33,6 +35,8 @@ const stages = [
 const RequestStatus = ({ name, status }) => {
   return (
     <div>
+      <PreviousButton label="חזרה לראשי" />
+
       <div className="">{name}</div>
       {stages.map((stage) => (
         <RequestStage
@@ -42,6 +46,7 @@ const RequestStatus = ({ name, status }) => {
           stageNum={stage.stageNum}
         />
       ))}
+      <div className="sharing">אהבת? זמן לשתף!</div>
     </div>
   );
 };

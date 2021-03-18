@@ -3,9 +3,10 @@ import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquiries.json";
+import CommunityManager from "../CommunityManager/CommunityManager.js";
 
 const Home = () => {
-  const communityManager = false;
+  const communityManager = true;
   const relevantInquries = inquiries;
   return (
     <div style={{ display: "flex", flexFlow: "column nowrap" }}>
@@ -13,20 +14,7 @@ const Home = () => {
         <Header isCommunityManager={communityManager} />
       </div>
       {communityManager ? (
-        <>
-          <div className="inquiriesTitle">שאלות פתוחות</div>
-          <select
-            className="selectStatus"
-            id="filterMeetings"
-            name="filterMeetings"
-          >
-            <option value="">כל הסטטוסים</option>
-            <option value="">ממתין לשיוך למומחים</option>
-            <option value="">ממתין לבחירת מומחה</option>
-            <option value="">נקבעה פגישה</option>
-            <option value="">עבר מועד הפגישה</option>
-          </select>
-        </>
+        <CommunityManager />
       ) : (
         <>
           <div className="inquiriesTitle">פניות נכנסות</div>

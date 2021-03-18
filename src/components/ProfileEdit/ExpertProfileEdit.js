@@ -9,10 +9,7 @@ const ExpertProfileEdit = ({ setUserDetailsField }) => {
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
-        <InputField
-          label="מה המקצוע שלך?"
-          onChange={(e) => setUserDetailsField("profession", e.target.value)}
-        />
+        <InputField required={true} label="מה המקצוע שלך?" />
         <span className="titles"> באילו נושאים תוכל לסייע?</span>
         <HashtagScreen />
         <div className="input-div">

@@ -1,3 +1,4 @@
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import "./UserProfileEdit.css";
 // import Avatar from "../Avatar/Avatar";
@@ -5,25 +6,21 @@ import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
-  let history = useHistory();
+  const history = useHistory();
   const [userDetails, setUserDetails] = useState({
-    email: "",
     firstName: "",
     lastName: "",
-    profession: "",
     phone: "",
+    email: "",
     city: "",
-    isExpert: false,
+    profession: "",
     hashtags: null,
     helpDescription: "",
     expertQuestions: { question1: "", question2: "" },
-    meetingLength: "",
-    preferredMeetingType: "",
-    meetingAdress: "",
+    meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
   });
 
   const setUserDetailsField = (field, value) => {
@@ -32,9 +29,7 @@ const UserProfileEdit = () => {
   console.log(userDetails);
   return (
     <div className="profile-edit-container">
-      <div style={{ alignSelf: "flex-start" }}>
-        <PreviousButton linkTo="/more-menu" />
-      </div>
+      <PreviousButton onClick={() => history.push("/more-menu")} />
       <div className="profile-details">
         {/* <Avatar /> */}
         <h4 className="user-name">ישראל ישראלי</h4>

@@ -1,6 +1,6 @@
-import { Logout } from "../../contexts/actions";
-import Avatar from "../Avatar/Avatar";
 import { useHistory } from "react-router-dom";
+import Avatar from "../Avatar/Avatar";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import "./MoreMenu.css";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 const MoreMenu = () => {
@@ -8,7 +8,7 @@ const MoreMenu = () => {
   let history = useHistory();
   return (
     <div className="more-menu-container">
-      <PreviousButton linkTo="/home" />
+      <PreviousButton onClick={() => history.push("/home")} />
       <div className="user-details">
         <Avatar />
         <div>
@@ -37,7 +37,7 @@ const MoreMenu = () => {
           </div>
         </button>
         <button>
-          <div>
+          <div onClick={() => history.push("/question-screen")}>
             <i>
               <svg
                 width="10"
@@ -58,7 +58,8 @@ const MoreMenu = () => {
           </div>
         </button>
         <button>
-          <div>
+          {/* <Link to="/profile/edit" style={{ textDecoration: "none" }}> */}
+          <div onClick={() => history.push("/profile/edit")}>
             <i>
               <svg
                 width="12"
@@ -77,6 +78,7 @@ const MoreMenu = () => {
               עריכת פרופיל
             </span>
           </div>
+          {/* </Link> */}
         </button>
         <button>
           <div>
@@ -114,7 +116,8 @@ const MoreMenu = () => {
               </svg>
             </i>
             <button onClick={Logout}>
-            <span>התנתקות</span></button>
+              <span>התנתקות</span>
+            </button>
           </div>
         </button>
         <button className="close-button" onClick={() => history.push("/home")}>
