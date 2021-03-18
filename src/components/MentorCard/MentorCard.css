@@ -1,9 +1,21 @@
+.hashtag{
+    padding: 4px 12px;
+    text-align: center;
+    border-radius: 40px;
+    margin: 10px 10px;
+    background: #F3F3F3;
+    }
 .mentorcard{
-display: flex;
-
+    display: flex;
+margin: 20px;
 padding: 4px, 12px, 4px, 12px;
 
 }
 .mentorcardnextimg {
-    padding: 20px;
+    
 }
+.tagsBox{
+    display: flex;
+    
+}
+
