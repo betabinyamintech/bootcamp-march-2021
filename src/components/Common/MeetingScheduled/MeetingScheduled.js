@@ -1,10 +1,10 @@
-import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import StatusIcon from "../Common/RequestStatusWindow/StatusIcon/StatusIcon";
-import StageStatuses from "../Common/RequestStatusWindow/StageStatuses";
+import PreviousButton from "../PreviousButton/PreviousButton";
+import StatusIcon from "../RequestStatusWindow/StatusIcon/StatusIcon";
+import StageStatuses from "../RequestStatusWindow/StageStatuses";
 import "./MeetingScheduled.css";
-import Button from "../Common/Button/Button";
-import inquiries from "../Home/inquiries.json";
-import Avatar from "../Avatar/Avatar";
+import Button from "../Button/Button";
+import inquiries from "../../Home/inquiries.json";
+import Avatar from "../../Avatar/Avatar";
 
 const MeetingScheduled = () => {
   const {
@@ -12,10 +12,7 @@ const MeetingScheduled = () => {
     inquiryTitle,
     meetingOptions: { lengthMeeting, meetingAddress, scheduledDate },
   } = inquiries[0];
-
   const addToCalendar = () => {};
-
-  //   const {} = meeting;
   return (
     <div className="meetingScheduled">
       <div className="preBtnMeetingScheudled">
