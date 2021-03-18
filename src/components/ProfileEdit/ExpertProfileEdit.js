@@ -80,9 +80,9 @@ const ExpertProfileEdit = ({ setUserDetailsField }) => {
             setUserDetailsField("favMeetingKind", e.target.value)
           }
         >
-          <option value="face2face">פגישה פיזית</option>
-          <option value="phone">שיחת טלפון</option>
-          <option value="zoom">שיחת וידאו בזום</option>
+          <option value="physically">פגישה פיזית</option>
+          <option value="virtual">שיחת טלפון</option>
+          <option value="virtual">שיחת וידאו בזום</option>
         </select>
         {favMeetKind === "face2face" && (
           <InputField

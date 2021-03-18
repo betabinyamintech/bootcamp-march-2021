@@ -11,17 +11,18 @@ const UserProfileEdit = () => {
   const [exportOn, setExportOn] = useState(false);
   let history = useHistory();
   const [userDetails, setUserDetails] = useState({
+    email: "",
     firstName: "",
     lastName: "",
-    phone: "",
-    email: "",
-    city: "",
     profession: "",
+    phone: "",
+    city: "",
+    isExpert: false,
     hashtags: null,
     helpDescription: "",
     expertQuestions: { question1: "", question2: "" },
     meetingLength: "",
-    favMeetingKind: "",
+    preferredMeetingType: "",
     meetingAdress: "",
   });
 
