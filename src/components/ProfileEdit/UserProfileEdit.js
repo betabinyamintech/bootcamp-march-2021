@@ -8,63 +8,91 @@ import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 
 const UserProfileEdit = () => {
-  const [exportOn, setExportOn] = useState(false);
-  const history = useHistory();
+  const [exportOn, setExpertOn] = useState(true);
+  let history = useHistory();
   const [userDetails, setUserDetails] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    city: "",
-    profession: "",
-    hashtags: null,
-    helpDescription: "",
-    expertQuestions: { question1: "", question2: "" },
-    meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
+    profileFullFields: false,
+    imageSrc: null,
+    firstName: null,
+    lastName: null,
+    phone: null,
+    city: null,
+    isExpert: false,
+    isAdmin: false,
+    profession: null,
+    aboutMe: null,
+    helpKind: null,
+    inquiryTags: null,
+    question1: null,
+    question2: null,
+    meetingLength: null,
+    preferredMeetingType: "physically",
+    meetingAdress: null,
   });
 
+  const setUserDetailsField = (field, value) => {
+    setUserDetails({ ...userDetails, [field]: value });
+  };
+  const expertFunc = () => {
+    setExpertOn(!exportOn);
+    setUserDetailsField("isExpert", exportOn);
+  };
+  // const prepareToPost = () => {
+  //   userDetails.map((field) => {
+  //     field !== null;
+  //   });
+  // };
+  console.log(userDetails);
   return (
     <div className="profile-edit-container">
-      <PreviousButton onClick={() => history.push("/more-menu")} />
+      <div style={{ alignSelf: "flex-start" }}>
+        <PreviousButton linkTo="/more-menu" />
+      </div>
       <div className="profile-details">
-        {/* <Avatar /> */}
-        <h4 className="user-name">ישראל ישראלי</h4>
-        <h6 className="user-city"> כוכב השחר</h6>
+        <Avatar />
+        <h4 className="user-name">
+          {userDetails.firstName + " " + userDetails.lastName}
+        </h4>
+        <h6 className="user-city">{userDetails.city} </h6>
       </div>
       <div className="input-fields">
         <InputField
+          value={userDetails.firstName}
           required={true}
           label="שם פרטי:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, firstName: e.target.value })
           }
         />
-
         <InputField
+          value={userDetails.lastName}
           required={true}
           label="שם משפחה:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, lastName: e.target.value })
           }
         />
+        <InputField
+          max={10}
+          value={userDetails.profession}
+          label="מה המקצוע שלך?"
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, profession: e.target.value })
+          }
+        />
 
         <InputField
+          value={userDetails.phone}
+          type="number"
           required={true}
           label="טלפון"
           onChange={(e) =>
-            setUserDetails({ ...userDetails, phone: e.target.value })
+            setUserDetails({ ...userDetails, phone: +e.target.value })
           }
         />
 
         <InputField
-          required={true}
-          label="מייל"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, email: e.target.value })
-          }
-        />
-
-        <InputField
+          value={userDetails.city}
           required={true}
           label="יישוב"
           onChange={(e) =>
@@ -74,14 +102,22 @@ const UserProfileEdit = () => {
 
         <div className="mentor-switch">
           <label className="switch">
-            <input type="checkbox" onChange={() => setExportOn(!exportOn)} />
+            <input type="checkbox" onChange={expertFunc} />
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
-        {exportOn && <ExpertProfileEdit />}
+        {exportOn && (
+          <ExpertProfileEdit
+            setUserDetailsField={setUserDetailsField}
+            userDetails={userDetails}
+          />
+        )}
         {/* <button className="save-button">שמירה</button> */}
-        <Button className="save-button" onClick={() => history.push("/home")}>
+        <Button
+          className="save-button"
+          onClick={() => console.log(userDetails)}
+        >
           <svg
             width="13"
             height="10"

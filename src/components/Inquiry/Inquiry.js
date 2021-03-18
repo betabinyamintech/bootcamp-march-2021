@@ -5,10 +5,14 @@ import inquiryType from "./inquiry-type.json";
 const Inquiry = ({ inquiry }) => {
   const type = "communityManager";
   const { inquiryTitle, timePassed, statusMessage } = inquiry;
+  const routeToLogin = () => {
+    <Link to="/login"></Link>;
+  };
+
   return (
     <Link to={"/searchforexpert"}>
       <div>
-        <div className="inquiryBox">
+        <div className="inquiryBox" onClick={routeToLogin}>
           <div className="inquiryTitle">{inquiryTitle}</div>
           <div className="timePassed">{timePassed}</div>
           <div className="statusMessage">

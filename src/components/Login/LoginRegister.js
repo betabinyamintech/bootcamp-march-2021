@@ -22,7 +22,7 @@ const LoginRegister = () => {
   const userState = useUserState();
   const dispatch = useUserDispatch();
   // isLogin ? (
-  console.log("userState.error", userState);
+  //console.log("LoginRegister userState", userState);
 
   const onClick = useCallback(async () => {
     if (isLogin) {

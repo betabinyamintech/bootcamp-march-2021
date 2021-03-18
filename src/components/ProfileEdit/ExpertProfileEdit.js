@@ -1,35 +1,63 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "../Common/InputField/InputField";
 import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
 
-const ExpertProfileEdit = () => {
+const ExpertProfileEdit = ({ setUserDetailsField, userDetails }) => {
   const [exportOn, setExportOn] = useState(true);
-  const [favMeetKind, setFavMeetKind] = useState("face2face");
-  console.log(favMeetKind);
+  const [favMeetKind, setFavMeetKind] = useState("physically");
+  // const [selectedHashtagsUser, setSelectedHashtagsUser] = useState([]);
+  const [selectedHashtags, setSelectedHashtags] = useState([]);
+
+  const favMeetingFunc = (value) => {
+    setFavMeetKind(value);
+    setUserDetailsField("preferredMeetingType", value);
+  };
+  useEffect(() => {
+    setUserDetailsField("inquiryTags", selectedHashtags);
+  }, [selectedHashtags]);
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
-        <InputField required={true} label="מה המקצוע שלך?" />
-        <span className="titles"> באילו נושאים תוכל לסייע?</span>
-        <HashtagScreen />
+        <InputField
+          // value={userDetails.aboutMe}
+          label="כמה מילים על עצמך :"
+          onChange={(e) =>
+            setUserDetailsField({ ...userDetails, aboutMe: e.target.value })
+          }
+        />
+
         <div className="input-div">
           <label>
-            <textarea placeholder=" " type="email"></textarea>
+            <textarea
+              value={userDetails.helpKind}
+              placeholder=" "
+              type="text"
+              onChange={(e) => setUserDetailsField("helpKind", e.target.value)}
+            ></textarea>
             <span>בכמה מילים, במה בדיוק תוכל לסייע?</span>
           </label>
         </div>
-
+        <span className="titles"> באילו נושאים תוכל לסייע?</span>
+        <HashtagScreen
+          selectedHashtags={selectedHashtags}
+          setSelectedHashtags={setSelectedHashtags}
+        />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
-
-        <InputField required={true} label="שאלה 1:" />
-
-        <InputField required={true} label="שאלה 2:" />
+        <InputField
+          value={userDetails.question1}
+          label="שאלה 1:"
+          onChange={(e) => setUserDetailsField("question1", e.target.value)}
+        />
+        <InputField
+          value={userDetails.question2}
+          label="שאלה 2:"
+          onChange={(e) => setUserDetailsField("question2", e.target.value)}
+        />
         <span className="titles"> קבע את פרטי הפגישה: </span>
         <div className="titles">
           <span>אורך הפגישה </span>
           <span style={{ alignSelf: "flex-start" }}>
-            {" "}
             <svg
               width="21"
               height="20"
@@ -44,26 +72,37 @@ const ExpertProfileEdit = () => {
             </svg>
           </span>
         </div>
-        <select className="meeting-kind" defaultValue="בחר">
-          <option value="15">00:15 </option>
-          <option value="30">00:30 </option>
-          <option value="45">00:45 </option>
-          <option value="60">01:00 </option>
+        <select
+          className="meeting-kind"
+          defaultValue="30"
+          onChange={(e) =>
+            setUserDetailsField("meetingLength", +e.target.value)
+          }
+        >
+          <option value={15}>00:15 </option>
+          <option value={30}>00:30 </option>
+          <option value={45}>00:45 </option>
+          <option value={60}>01:00 </option>
         </select>
         <span className="titles">סוג פגישה מועדף</span>
         <select
           className="meeting-kind "
-          defaultValue="בחר"
-          onChange={(e) => setFavMeetKind(e.target.value)}
+          onChange={(e) => favMeetingFunc(e.target.value)}
         >
-          <option value="face2face">פגישה פיזית</option>
-          <option value="phone">שיחת טלפון</option>
-          <option value="zoom">שיחת וידאו בזום</option>
+          <option value="physically">פגישה פיזית</option>
+          <option value="virtual">שיחת טלפון</option>
+          <option value="virtual">שיחת וידאו בזום</option>
         </select>
-        {favMeetKind === "face2face" && (
-          <InputField required={true} label="כתובת לפגישה:" />
+        {userDetails.preferredMeetingType === "physically" && (
+          <InputField
+            value={userDetails.meetingAdress}
+            label="כתובת לפגישה:"
+            onChange={(e) =>
+              setUserDetailsField("meetingAdress", e.target.value)
+            }
+          />
         )}
-        {favMeetKind === "face2face" && (
+        {userDetails.preferredMeetingType === "physically" && (
           <span className="beta-gift">
             <svg
               width="15"
