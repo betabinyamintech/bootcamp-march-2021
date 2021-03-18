@@ -8,7 +8,7 @@ const MoreMenu = () => {
   let history = useHistory();
   return (
     <div className="more-menu-container">
-      <PreviousButton onClick={() => history.push("/home")} />
+      <PreviousButton linkTo="/home" />
       <div className="user-details">
         <Avatar />
         <div>

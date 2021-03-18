@@ -8,7 +8,7 @@ import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 
 const UserProfileEdit = () => {
-  const [exportOn, setExpertOn] = useState(true);
+  const [exportOn, setExpertOn] = useState(false);
   let history = useHistory();
   const [userDetails, setUserDetails] = useState({
     profileFullFields: false,
