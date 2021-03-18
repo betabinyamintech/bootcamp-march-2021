@@ -16,19 +16,7 @@ import Inquiry from "../Inquiry/Inquiry";
 // };
 
 function Test() {
-<<<<<<< HEAD
-  return (
-    <div>
-      <ChooseMeetingSchedule />
-    </div>
-  );
-}
-// <ChooseMeetingSchedule />
-{
-  /* <MeetingArrangment /> */
-=======
   return <Inquiry />;
->>>>>>> a0c6591084d7c703b8d24a5583518518e2c9cf42
 }
 
 export default Test;
