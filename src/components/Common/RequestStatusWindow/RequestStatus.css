@@ -1,0 +1,67 @@
+.sharing{
+/* Frame 97 */
+
+/* Auto Layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 375px;
+height: 54px;
+/* left: 0px;
+bottom: 0px; */
+
+background: #E8E8E8;
+
+
+/* Frame 11 */
+
+/* Auto Layout */
+/* display: flex;
+flex-direction: row; */
+align-items: center;
+padding: 0px;
+
+/* position: static;
+width: 119px;
+height: 24px;
+left: 128px;
+top: 15px; */
+
+
+/* Inside Auto Layout */
+/* flex: none;
+order: 0;
+flex-grow: 0;
+margin: 10px 0px; */
+
+
+/* !ףתשל ןמז ?תבהא */
+/* 
+position: static;
+width: 119px;
+height: 24px;
+left: 0px;
+top: calc(50% - 24px/2); */
+
+font-family: Heebo;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 23px;
+/* identical to box height */
+text-decoration-line: underline;
+
+color: #414141;
+
+
+/* Inside Auto Layout */
+/* flex: none;
+order: 0;
+flex-grow: 0; */
+margin: 0px 13px;
+
+}

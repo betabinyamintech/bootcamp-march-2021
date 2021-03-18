@@ -4,28 +4,31 @@ import {
   BrowserRouter as Router,
   Switch,
 } from "react-router-dom";
-import Home from "./Home/Home";
-import LoginRegister from "./Login/LoginRegister";
-import ProfileEdit from "./ProfileEdit/UserProfileEdit";
-import ProfileView from "./ProfileView/ProfileView";
-import SearchForExpert from "./SearchForExpert/SearchForExpert";
-import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
-
-import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
-import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
-import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
-import { useUserState } from "../contexts/context";
+import Home from "./components/Home/Home";
+import LoginRegister from "./components/Login/LoginRegister";
+import ProfileView from "./components/ProfileView/ProfileView";
+import SearchForExpert from "./components/SearchForExpert/SearchForExpert";
+import MeetingArrangment from "./components/MeetingArrangment/MeetingArrangment";
+import QuestionScreen from "./components/RequestStatusWindow/QuestionScreen";
+// import InputLabelWithIcon from "./RequestStatusWindow/InputLabelWithIcon";
+import UserProfileEdit from "./components/ProfileEdit/UserProfileEdit";
+import { useUserState } from "../src/contexts/context";
+import MoreMenu from "./components/MoreMenu/MoreMenu";
 const MainRouter = () => {
-  const userState = useUserState();
-
   return (
     <Router>
       <Switch>
         <Route path="/question-screen">
           <QuestionScreen />
         </Route>
+        <Route path="/more-menu">
+          <MoreMenu />
+        </Route>
+        <Route path="/question-screen">
+          <QuestionScreen />
+        </Route>
         <Route path="/profile/edit">
-          <ProfileEdit />
+          <UserProfileEdit />
         </Route>
         <Route path="/profile">
           <ProfileView />
@@ -47,7 +50,7 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
-          {userState.user ? (
+          {useUserState.user !== null ? (
             <Home />
           ) : (
             <Redirect to={{ pathname: "/login" }} />

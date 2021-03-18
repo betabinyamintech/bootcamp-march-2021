@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect } from "react";
 import { refreshUserByToken } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
@@ -18,5 +19,12 @@ function Test() {
 
   return <MainRouter />;
 }
+=======
+import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
+import HashtagComponent from "../HashtagComponent/HashtagComponent";
+import "./Test.css";
+
+const Test = () => <HashtagComponent />;
+>>>>>>> 798826f87d309acd54d8ee01253ba34f4cc7a5e8
 
 export default Test;
