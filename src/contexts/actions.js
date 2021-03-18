@@ -1,18 +1,42 @@
-const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+//const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
-export async function refreshUserByToken(dispatch) {
+const ROOT_URL = "http://localhost:5000";
+
+async function fetchLog(location, requestOptions) {
+  console.log("fetch", location, requestOptions);
+  const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
+  console.log("response", response);
+  return response;
+}
+
+function addToken(options) {
+  return {
+    ...options,
+    headers: {
+      ...options.headers,
+      authorization: "Bearer " + localStorage.getItem("currentUser"),
+    },
+  };
+}
+
+export async function putUser(dispatch, user) {
+  const response = await fetchLog(
+    "/users/me",
+    addToken({ method: "PUT", body: JSON.stringify(user) })
+  );
+  const data = await response.json();
+  dispatch({ type: "USER_UPDATE", user: data });
+}
+
+export async function getUser(dispatch) {
   try {
-    console.log("checking for token");
-    const localToken = localStorage.getItem("currentUser");
-    if (!localToken) return;
-    console.log("token exists");
-    const { token } = JSON.parse(localToken);
     const requestOptions = {
       method: "GET",
-      headers: { Authentication: "Bearer " + token },
     };
-    let data = { name: "hello", _id: "asdas" }; //await fetch(`${ROOT_URL}/hi`, requestOptions);
-    dispatch({ type: "LOGIN_SUCCESS", payload: data });
+    const response = await fetchLog("/users/me", addToken(requestOptions));
+    const data = await response.json();
+
+    dispatch({ type: "LOGIN_SUCCESS", user: data });
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
   }
@@ -27,18 +51,17 @@ export async function loginUser(dispatch, loginPayload) {
 
   try {
     dispatch({ type: "REQUEST_LOGIN" });
-    let response = await fetch(`${ROOT_URL}/login`, requestOptions);
+    let response = await fetchLog("/login", requestOptions);
     let data = await response.json();
-    console.log("data", data);
 
     if (data) {
-      //TODO get user
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: { name: "sadasf", _id: "sdfsd" },
+        user: data,
       });
-      localStorage.setItem("currentUser", JSON.stringify(data));
-      return data;
+
+      localStorage.setItem("currentUser", data.token);
+      return;
     }
 
     dispatch({ type: "LOGIN_ERROR", error: data });
@@ -57,20 +80,20 @@ export async function registerUser(dispatch, registerPayload) {
 
   try {
     dispatch({ type: "REQUEST_LOGIN" });
-    let response = await fetch(`${ROOT_URL}/register`, requestOptions);
+    let response = await fetchLog("/register", requestOptions);
     let data = await response.json();
 
     if (data) {
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
-      localStorage.setItem("currentUser", JSON.stringify(data));
-      return data;
+      localStorage.setItem("currentUser", data.token);
+      return;
     }
 
     dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
-    return data.error;
+    return;
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
-    return error;
+    return;
   }
 
   return null;

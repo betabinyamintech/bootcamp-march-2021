@@ -6,22 +6,27 @@ import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import { putUser } from "../../contexts/actions";
+import { useUserDispatch, useUserState } from "../../contexts/context";
 
 const UserProfileEdit = () => {
+  const userState = useUserState();
+  const userDispatch = useUserDispatch();
   const [exportOn, setExportOn] = useState(false);
   const history = useHistory();
-  const [userDetails, setUserDetails] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    city: "",
-    profession: "",
-    hashtags: null,
-    helpDescription: "",
-    expertQuestions: { question1: "", question2: "" },
-    meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
-  });
+  const [userDetails, setUserDetails] = useState(userState.user);
+  //   {
+  //   firstName: "",
+  //   lastName: "",
+  //   phone: "",
+  //   email: "",
+  //   city: "",
+  //   profession: "",
+  //   hashtags: null,
+  //   helpDescription: "",
+  //   expertQuestions: { question1: "", question2: "" },
+  //   meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
+  // }
 
   const setUserDetailsField = (field, value) => {
     setUserDetails({ ...userDetails, [field]: value });
@@ -87,7 +92,12 @@ const UserProfileEdit = () => {
           <ExpertProfileEdit setUserDetailsField={setUserDetailsField} />
         )}
         {/* <button className="save-button">שמירה</button> */}
-        <Button className="save-button" onClick={() => history.push("/home")}>
+        <Button
+          className="save-button"
+          onClick={() => {
+            putUser(userDispatch, { ...userDetails, profileFullFields: true });
+          }}
+        >
           <svg
             width="13"
             height="10"

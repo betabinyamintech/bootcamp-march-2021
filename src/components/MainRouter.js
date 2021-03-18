@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import Home from "./Home/Home";
 import LoginRegister from "./Login/LoginRegister";
-import ProfileEdit from "./ProfileEdit/UserProfileEdit";
 import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
@@ -16,17 +15,18 @@ import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
 import Test from "./Test/Test";
 import MoreMenu from "./MoreMenu/MoreMenu";
 import { useEffect } from "react";
-import { refreshUserByToken } from "../contexts/actions";
+import { getUser } from "../contexts/actions";
+import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
 
 const MainRouter = () => {
   const userState = useUserState();
   const userDispatch = useUserDispatch();
   useEffect(() => {
-    console.log("userState", userState);
     if (userState.user == null) {
-      refreshUserByToken(userDispatch);
+      if (!localStorage.getItem("currentUser")) return;
+        getUser(userDispatch);
     }
-  });
+  }, [userDispatch]);
 
   return (
     <Router>
@@ -38,7 +38,7 @@ const MainRouter = () => {
           <QuestionScreen />
         </Route>
         <Route path="/profile/edit">
-          <ProfileEdit />
+          <UserProfileEdit />
         </Route>
         <Route path="/profile">
           <ProfileView />
@@ -62,11 +62,16 @@ const MainRouter = () => {
         <Route path="/search-for-expert">
           <SearchForExpert />
         </Route>
-        <Route path="/home">
-          <Home />
-        </Route>
         <Route path="/">
-          {userState.user ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
+          {userState.user ? (
+            userState.user.profileFullFields ? (
+              <Home />
+            ) : (
+              <Redirect to="/profile/edit" />
+            )
+          ) : (
+            <Redirect to={{ pathname: "/login" }} />
+          )}
         </Route>
       </Switch>
     </Router>
