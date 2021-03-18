@@ -1,10 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { loginUser, registerUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
 import img from "../commonsSVG/login-register.svg";
 import "./Style.css";
+import { useHistory, useLocation } from "react-router";
 
 let isProfileFullFilled = true;
 
@@ -17,7 +18,9 @@ function register(email, password) {
 }
 
 const LoginRegister = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const {pathname} = useLocation();
+  const history = useHistory();
+  const isLogin = pathname.replace(/\//g,'') === 'login'
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const userState = useUserState();
   const dispatch = useUserDispatch();
@@ -66,7 +69,7 @@ const LoginRegister = () => {
         {isLogin ? "אין לך חשבון? " : "יש לך חשבון? "}
         <span
           style={{ textDecoration: "underline" }}
-          onClick={() => setIsLogin(!isLogin)}
+          onClick={() => {history.push(isLogin?'/register':'/login')}}
         >
           {isLogin ? "הירשם עכשיו." : "היכנס עכשיו."}
         </span>

@@ -1,47 +1,24 @@
-import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./UserProfileEdit.css";
 import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import { putUser } from "../../contexts/actions";
+import { useUserDispatch, useUserState } from "../../contexts/context";
 
 const UserProfileEdit = () => {
-  const [exportOn, setExpertOn] = useState(false);
-  let history = useHistory();
-  const [userDetails, setUserDetails] = useState({
-    profileFullFields: false,
-    imageSrc: null,
-    firstName: null,
-    lastName: null,
-    phone: null,
-    city: null,
-    isExpert: false,
-    isAdmin: false,
-    profession: null,
-    aboutMe: null,
-    helpKind: null,
-    inquiryTags: null,
-    question1: null,
-    question2: null,
-    meetingLength: null,
-    preferredMeetingType: "physically",
-    meetingAdress: null,
-  });
+  const userState = useUserState();
+  console.log("userState", userState);
+  const userDispatch = useUserDispatch();
+  const [userDetails, setUserDetails] = useState(userState.user);
 
-  const setUserDetailsField = (field, value) => {
-    setUserDetails({ ...userDetails, [field]: value });
-  };
-  const expertFunc = () => {
-    setExpertOn(!exportOn);
-    setUserDetailsField("isExpert", exportOn);
-  };
-  // const prepareToPost = () => {
-  //   userDetails.map((field) => {
-  //     field !== null;
-  //   });
-  // };
+  const setExpertDetails = useCallback(
+    (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
+    [userDetails, setUserDetails]
+  );
+
   console.log(userDetails);
   return (
     <div className="profile-edit-container">
@@ -57,7 +34,7 @@ const UserProfileEdit = () => {
       </div>
       <div className="input-fields">
         <InputField
-          value={userDetails.firstName}
+          value={userDetails.firstName || ""}
           required={true}
           label="שם פרטי:"
           onChange={(e) =>
@@ -102,21 +79,29 @@ const UserProfileEdit = () => {
 
         <div className="mentor-switch">
           <label className="switch">
-            <input type="checkbox" onChange={expertFunc} />
+            <input
+              type="checkbox"
+              value={userDetails.isExpert}
+              onChange={(e) =>
+                setUserDetails({ ...userDetails, isExpert: !e.target.value })
+              }
+            />
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
-        {exportOn && (
+        {userDetails.isExpert && (
           <ExpertProfileEdit
-            setUserDetailsField={setUserDetailsField}
-            userDetails={userDetails}
+            setExpertDetails={setExpertDetails}
+            expertDetails={userDetails.expertDetails}
           />
         )}
         {/* <button className="save-button">שמירה</button> */}
         <Button
           className="save-button"
-          onClick={() => console.log(userDetails)}
+          onClick={() => {
+            putUser(userDispatch, { ...userDetails, profileFullFields: true });
+          }}
         >
           <svg
             width="13"

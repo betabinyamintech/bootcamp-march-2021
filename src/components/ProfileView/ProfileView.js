@@ -1,9 +1,9 @@
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ProfileView.css";
 import Button from "../Common/Button/Button";
+import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 
 const ProfileView = ({ user }) => {
   return (
@@ -23,7 +23,7 @@ const ProfileView = ({ user }) => {
         <span className="row-title">תיאור נושא הסיוע</span>
         <span className="row-description">התמודדות עם משטרת ההגירה</span>
       </div>
-      <HashtagScreen />
+      <HashtagList s />
       <div className="row-details">
         <span className="row-title">סוג פגישה מועדף</span>
         <span className="row-description"> פגישה פיזית </span>

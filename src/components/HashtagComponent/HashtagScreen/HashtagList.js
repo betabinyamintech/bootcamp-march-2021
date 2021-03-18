@@ -10,26 +10,40 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
     return hashtag;
   });
   return (
-    <div className="hashtags">
-      <div className="newHashtag">
-        <img src={plusImg} alt="" />
-        אחר
-      </div>
+    <div
+      style={{
+        display: "flex",
+        width: " 400p",
+        height: "200px",
+        alignitems: "center",
+      }}
+    >
+      <div className="hashtags">
+        <div className="newHashtag">
+          <img src={plusImg} alt="" />
+          אחר
+        </div>
 
-      {hashtagsWithState.map(({ title, active }) => (
-        <Hashtag
-          onClick={() => {
-            // newHashtag()=>{}
-            setSelectedHashtags(
-              active
-                ? selectedHashtags.filter((hashtag) => title !== hashtag.title)
-                : [...selectedHashtags, { title }]
-            );
-          }}
-          title={title}
-          active={active}
-        />
-      ))}
+        {hashtagsWithState.map(({ title, active }) => (
+          <Hashtag
+            onClick={
+              typeof setSelectedHashTag === "function" &&
+              (() => {
+                // newHashtag()=>{}
+                setSelectedHashtags(
+                  active
+                    ? selectedHashtags.filter(
+                        (hashtag) => title !== hashtag.title
+                      )
+                    : [...selectedHashtags, { title }]
+                );
+              })
+            }
+            title={title}
+            active={active}
+          />
+        ))}
+      </div>
     </div>
   );
 };
