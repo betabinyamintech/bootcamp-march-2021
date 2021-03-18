@@ -8,28 +8,35 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
-  const [exportOn, setExportOn] = useState(false);
+  const [exportOn, setExpertOn] = useState(false);
   let history = useHistory();
   const [userDetails, setUserDetails] = useState({
-    email: "",
-    firstName: "",
-    lastName: "",
-    profession: "",
-    phone: "",
-    city: "",
+    firstName: "ישראל",
+    lastName: "ישראלי",
+    phone: "054",
+    city: "תל אביב",
     isExpert: false,
-    hashtags: null,
-    helpDescription: "",
-    expertQuestions: { question1: "", question2: "" },
+    isAdmin: false,
+    profession: "דשגדשג",
+    aboutMe: "אודותיי",
+    helpKind: "סוג עזרה",
+    inquiryTags: [null],
+    questionsBeforeMeeting: [""],
+    question1: "שאלה 1",
+    question2: "שאלה 2",
     meetingLength: "",
-    preferredMeetingType: "",
-    meetingAdress: "",
+    preferredMeetingType: "physically",
+    meetingAdress: "כתובת",
   });
 
   const setUserDetailsField = (field, value) => {
     setUserDetails({ ...userDetails, [field]: value });
   };
-  console.log(userDetails);
+  const expertFunc = () => {
+    setExpertOn(!exportOn);
+    setUserDetailsField("isExpert", exportOn);
+  };
+  console.log(userDetails.profession);
   return (
     <div className="profile-edit-container">
       <div style={{ alignSelf: "flex-start" }}>
@@ -37,27 +44,40 @@ const UserProfileEdit = () => {
       </div>
       <div className="profile-details">
         {/* <Avatar /> */}
-        <h4 className="user-name">ישראל ישראלי</h4>
-        <h6 className="user-city"> כוכב השחר</h6>
+        <h4 className="user-name">
+          {userDetails.firstName + " " + userDetails.lastName}
+        </h4>
+        <h6 className="user-city">{userDetails.city} </h6>
       </div>
       <div className="input-fields">
         <InputField
+          value={userDetails.firstName}
           required={true}
           label="שם פרטי:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, firstName: e.target.value })
           }
         />
-
         <InputField
+          value={userDetails.lastName}
           required={true}
           label="שם משפחה:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, lastName: e.target.value })
           }
         />
+        <InputField
+          max={10}
+          value={userDetails.profession}
+          label="מה המקצוע שלך?"
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, profession: e.target.value })
+          }
+        />
 
         <InputField
+          value={userDetails.phone}
+          type="number"
           required={true}
           label="טלפון"
           onChange={(e) =>
@@ -66,14 +86,7 @@ const UserProfileEdit = () => {
         />
 
         <InputField
-          required={true}
-          label="מייל"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, email: e.target.value })
-          }
-        />
-
-        <InputField
+          value={userDetails.city}
           required={true}
           label="יישוב"
           onChange={(e) =>
@@ -83,16 +96,22 @@ const UserProfileEdit = () => {
 
         <div className="mentor-switch">
           <label className="switch">
-            <input type="checkbox" onChange={() => setExportOn(!exportOn)} />
+            <input type="checkbox" onChange={expertFunc} />
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
         {exportOn && (
-          <ExpertProfileEdit setUserDetailsField={setUserDetailsField} />
+          <ExpertProfileEdit
+            setUserDetailsField={setUserDetailsField}
+            userDetails={userDetails}
+          />
         )}
         {/* <button className="save-button">שמירה</button> */}
-        <Button className="save-button" onClick={() => history.push("/home")}>
+        <Button
+          className="save-button"
+          onClick={() => console.log(userDetails)}
+        >
           <svg
             width="13"
             height="10"
