@@ -16,17 +16,17 @@ const arrayOf3DateTimes = [
   "05/12/2021 08:00 AM",
 ];
 
-
-
 const expert = {
   firstName: "אליה",
   lastName: "לוי",
   profession: "רופא שיניים",
   city: "ירושלים",
-  expertDetails.meetingPlace: "zoom",
-  expertDetails.lengthMeeting: "30 דקות",
-  Avatar:
+  imageSrc:
     "https://thumbnail.imgbin.com/17/14/1/imgbin-user-ms-attendant-avatar-vRH5HKwaP0G2ABiJFCqhiGjT5_t.jpg",
+  expertDetails: {
+    meetingPlace: "zoom",
+    lengthMeeting: "30 דקות",
+  },
 };
 /* schema of user/expert :
 
