@@ -23,6 +23,10 @@ const UserProfileEdit = () => {
     meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
   });
 
+  const setUserDetailsField = (field, value) => {
+    setUserDetails({ ...userDetails, [field]: value });
+  };
+  console.log(userDetails);
   return (
     <div className="profile-edit-container">
       <PreviousButton onClick={() => history.push("/more-menu")} />
@@ -79,7 +83,9 @@ const UserProfileEdit = () => {
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
-        {exportOn && <ExpertProfileEdit />}
+        {exportOn && (
+          <ExpertProfileEdit setUserDetailsField={setUserDetailsField} />
+        )}
         {/* <button className="save-button">שמירה</button> */}
         <Button className="save-button" onClick={() => history.push("/home")}>
           <svg

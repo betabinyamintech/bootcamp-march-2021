@@ -1,5 +1,5 @@
 import React from "react";
-import "../Common.css";
+import "./Hashtag.css";
 import hashtagImg from "./Hashtag.svg";
 
 const Hashtag = ({ active, title, ...props }) => {

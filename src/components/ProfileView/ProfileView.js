@@ -11,7 +11,7 @@ const ProfileView = ({ user }) => {
       <PreviousButton />
       <div className="profile-details">
         <div className="avatar-container">
-          <Avatar />
+          <Avatar height="70px" />
         </div>
         <div className="user-details">
           <h4 className="user-name"> ישראל ישראלי</h4>
