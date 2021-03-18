@@ -12,7 +12,7 @@ import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
 import { useUserState } from "../contexts/context";
-import MeetingScheduled from "./MeetingScheduled/meetingScheduled";
+import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
 import MoreMenu from "./MoreMenu/MoreMenu";
 
 const MainRouter = () => {
