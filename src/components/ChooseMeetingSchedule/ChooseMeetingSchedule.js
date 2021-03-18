@@ -1,13 +1,17 @@
 import React from "react";
 import OneMeetingDetailsDisplay from "./OneMeetingDetailsDisplay";
 import ExpertDetailsHeader from "./ExpertDetailsHeader";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import tickForButton from "../Common/tickForButton.svg";
+
+import Button from "../Common/Button/Button";
 
 // user is offered 3 dates, each is a string in format: 03/10/2021 12:00 AM
 
 let d = new Date();
 const arrayOf3DateTimes = [
   "03/10/2021 12:00 PM",
-  "04/10/2021 10:00 AM",
+  "08/10/2021 10:00 AM",
   "05/12/2021 08:00 AM",
 ];
 
@@ -16,30 +20,36 @@ const expert = {
   lastName: "לוי",
   profession: "רופא שיניים",
   city: "ירושלים",
-  meetingPlace: "שער בנימין",
+  meetingPlace: "zoom",
   meetingTime: "30 דקות",
+  Avatar:
+    "https://thumbnail.imgbin.com/17/14/1/imgbin-user-ms-attendant-avatar-vRH5HKwaP0G2ABiJFCqhiGjT5_t.jpg",
 };
 
 const ChooseMeetingSchedule = () => {
   return (
     <div>
-      <h1>בחירת מועד לפגישה</h1>
-      <h2>{expert.meetingTime} פגישה</h2>
+      <div className="pageTitle">בחירת מועד לפגישה</div>
+      <div className="subTitle">{expert.meetingTime} פגישה</div>
       <ExpertDetailsHeader expert={expert} />
       {arrayOf3DateTimes.map((dateTime) => (
         <OneMeetingDetailsDisplay dateTime={dateTime} />
       ))}
+      <div className="buttonDiv">
+        <Button img={tickForButton}>אישור </Button>
+      </div>
+      <div
+        className="footerText"
+        onClick={() => {
+          alert(
+            "Stopping request process, set route to go back to login screen"
+          );
+        }}
+      >
+        תודה, כבר הסתדרתי
+      </div>
     </div>
   );
 };
-
-/* {arrayOf3DateTimes.map(({ date, time }) => (
-        <OneMeetingDetailsDisplay date={date} time={time} />
-      ))} */
-/* 
-   {hashtagsWithState.map(({ title, active }) => (
-        <Hashtag
-          onClick={() => {
-*/
 
 export default ChooseMeetingSchedule;

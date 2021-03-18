@@ -1,8 +1,9 @@
-import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
+// import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
+import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 import "./Test.css";
 
 import Home from "../Home/Home";
 function Test() {
-  return <Home />;
+  return <ChooseMeetingSchedule />;
 }
 export default Test;
