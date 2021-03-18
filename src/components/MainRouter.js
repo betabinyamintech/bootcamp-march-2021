@@ -10,6 +10,7 @@ import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
+// import ChooseMeetingSchedule from "./ChooseMeetingSchedule/ChooseMeetingSchedule";
 import { useUserDispatch, useUserState } from "../contexts/context";
 import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
 import Test from "./Test/Test";
@@ -24,24 +25,40 @@ const MainRouter = () => {
   useEffect(() => {
     if (userState.user == null) {
       if (!localStorage.getItem("currentUser")) return;
-        getUser(userDispatch);
+      getUser(userDispatch);
     }
   }, [userDispatch]);
 
   return (
     <Router>
+      {userState.user && (
+        <Switch>
+          <Route path="/question-screen">
+            <QuestionScreen />
+          </Route>
+          <Route path="/profile/edit">
+            <UserProfileEdit />
+          </Route>
+          <Route path="/profile">
+            <ProfileView />
+          </Route>
+          <Route path="/meeting-arrangment">
+            <MeetingArrangment />
+          </Route>
+          <Route path="/meeting-scheduled">
+            <MeetingScheduled />
+          </Route>
+          <Route path="/more-menu">
+            <MoreMenu />
+          </Route>
+          <Route path="/search-for-expert">
+            <SearchForExpert />
+          </Route>
+        </Switch>
+      )}
       <Switch>
         <Route path="/test">
           <Test />
-        </Route>
-        <Route path="/question-screen">
-          <QuestionScreen />
-        </Route>
-        <Route path="/profile/edit">
-          <UserProfileEdit />
-        </Route>
-        <Route path="/profile">
-          <ProfileView />
         </Route>
         <Route path="/login">
           {!userState.user ? (
@@ -50,17 +67,12 @@ const MainRouter = () => {
             <Redirect to={{ pathname: "/" }} />
           )}
         </Route>
-        <Route path="/meeting-arrangment">
-          <MeetingArrangment />
-        </Route>
-        <Route path="/meeting-scheduled">
-          <MeetingScheduled />
-        </Route>
-        <Route path="/more-menu">
-          <MoreMenu />
-        </Route>
-        <Route path="/search-for-expert">
-          <SearchForExpert />
+        <Route path="/register">
+          {!userState.user ? (
+            <LoginRegister />
+          ) : (
+            <Redirect to={{ pathname: "/" }} />
+          )}
         </Route>
         <Route path="/">
           {userState.user ? (

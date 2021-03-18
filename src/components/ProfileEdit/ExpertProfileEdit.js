@@ -1,45 +1,65 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputField from "../Common/InputField/InputField";
-import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
+import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 import "./ExpertProfileEdit.css";
+import hashtagsFromServer from "../Common/Hashtags";
 
-const ExpertProfileEdit = ({ setUserDetailsField }) => {
-  const [exportOn, setExportOn] = useState(true);
-  const [favMeetKind, setFavMeetKind] = useState("face2face");
+const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
-        <InputField required={true} label="מה המקצוע שלך?" />
-        <span className="titles"> באילו נושאים תוכל לסייע?</span>
-        <HashtagScreen />
+        <InputField
+          // value={userDetails.aboutMe}
+          label="כמה מילים על עצמך :"
+          onChange={(e) =>
+            setExpertDetails({ ...expertDetails, aboutMe: e.target.value })
+          }
+        />
+
         <div className="input-div">
           <label>
             <textarea
+              value={expertDetails.helpDescription}
               placeholder=" "
-              type="email"
+              type="text"
               onChange={(e) =>
-                setUserDetailsField("helpDescription", e.target.value)
+                setExpertDetails({
+                  ...expertDetails,
+                  helpDescription: e.target.value,
+                })
               }
             ></textarea>
             <span>בכמה מילים, במה בדיוק תוכל לסייע?</span>
           </label>
         </div>
-
+        <span className="titles"> באילו נושאים תוכל לסייע?</span>
+        <HashtagList
+          hashtags={hashtagsFromServer}
+          selectedHashtags={expertDetails.inquiryTags}
+          setSelectedHashtags={() =>
+            setExpertDetails({
+              ...expertDetails,
+              inquiryTags: expertDetails.inquiryTags,
+            })
+          }
+        />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
-
-        <InputField
-          label="שאלה 1:"
-          onChange={(e) =>
-            setUserDetailsField("expertQuestions", e.target.value)
-          }
-        />
-
-        <InputField
-          label="שאלה 2:"
-          onChange={(e) =>
-            setUserDetailsField("expertQuestions", e.target.value)
-          }
-        />
+        {[
+          { label: "שאלה 1:", index: 0 },
+          { label: "שאלה 2:", index: 1 },
+        ].map((question) => (
+          <InputField
+            value={expertDetails.questionsBeforeMeeting[question.index]}
+            label={question.label}
+            onChange={(e) =>
+              setExpertDetails((e) => {
+                const { questionsBeforeMeeting } = expertDetails;
+                questionsBeforeMeeting[question.index] = e.target.value;
+                return { ...expertDetails, questionsBeforeMeeting };
+              })
+            }
+          />
+        ))}
         <span className="titles"> קבע את פרטי הפגישה: </span>
         <div className="titles">
           <span>אורך הפגישה </span>
@@ -61,33 +81,45 @@ const ExpertProfileEdit = ({ setUserDetailsField }) => {
         <select
           className="meeting-kind"
           defaultValue="30"
-          onChange={(e) => setUserDetailsField("meetingLength", e.target.value)}
+          onChange={(e) =>
+            setExpertDetails({
+              ...expertDetails,
+              lengthMeeting: e.target.value,
+            })
+          }
         >
-          <option value="15">00:15 </option>
-          <option value="30">00:30 </option>
-          <option value="45">00:45 </option>
-          <option value="60">01:00 </option>
+          <option value={15}>00:15 </option>
+          <option value={30}>00:30 </option>
+          <option value={45}>00:45 </option>
+          <option value={60}>01:00 </option>
         </select>
         <span className="titles">סוג פגישה מועדף</span>
         <select
           className="meeting-kind "
-          defaultValue="בחר"
-          onChange={(e) => setFavMeetKind(e.target.value)}
           onChange={(e) =>
-            setUserDetailsField("favMeetingKind", e.target.value)
+            setExpertDetails({
+              ...expertDetails,
+              preferredMeetingType: e.target.value,
+            })
           }
         >
           <option value="physically">פגישה פיזית</option>
           <option value="virtual">שיחת טלפון</option>
           <option value="virtual">שיחת וידאו בזום</option>
         </select>
-        {favMeetKind === "face2face" && (
+        {expertDetails.preferredMeetingType === "physically" && (
           <InputField
+            value={expertDetails.meetingAdress}
             label="כתובת לפגישה:"
-            onChange={(e) => setUserDetailsField("meeting", e.target.value)}
+            onChange={(e) =>
+              setExpertDetails({
+                ...expertDetails,
+                meetingAdress: e.target.value,
+              })
+            }
           />
         )}
-        {favMeetKind === "face2face" && (
+        {expertDetails.preferredMeetingType === "physically" && (
           <span className="beta-gift">
             <svg
               width="15"

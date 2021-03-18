@@ -1,7 +1,6 @@
-import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./UserProfileEdit.css";
-// import Avatar from "../Avatar/Avatar";
+import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
@@ -11,69 +10,66 @@ import { useUserDispatch, useUserState } from "../../contexts/context";
 
 const UserProfileEdit = () => {
   const userState = useUserState();
+  console.log("userState", userState);
   const userDispatch = useUserDispatch();
-  const [exportOn, setExportOn] = useState(false);
-  const history = useHistory();
   const [userDetails, setUserDetails] = useState(userState.user);
-  //   {
-  //   firstName: "",
-  //   lastName: "",
-  //   phone: "",
-  //   email: "",
-  //   city: "",
-  //   profession: "",
-  //   hashtags: null,
-  //   helpDescription: "",
-  //   expertQuestions: { question1: "", question2: "" },
-  //   meetingDetails: { meetingLength: "", favMeetingKind: "", meetingAdres: "" },
-  // }
 
-  const setUserDetailsField = (field, value) => {
-    setUserDetails({ ...userDetails, [field]: value });
-  };
+  const setExpertDetails = useCallback(
+    (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
+    [userDetails, setUserDetails]
+  );
+
   console.log(userDetails);
   return (
     <div className="profile-edit-container">
-      <PreviousButton onClick={() => history.push("/more-menu")} />
+      <div style={{ alignSelf: "flex-start" }}>
+        <PreviousButton linkTo="/more-menu" />
+      </div>
       <div className="profile-details">
-        {/* <Avatar /> */}
-        <h4 className="user-name">ישראל ישראלי</h4>
-        <h6 className="user-city"> כוכב השחר</h6>
+        <Avatar />
+        <h4 className="user-name">
+          {userDetails.firstName + " " + userDetails.lastName}
+        </h4>
+        <h6 className="user-city">{userDetails.city} </h6>
       </div>
       <div className="input-fields">
         <InputField
+          value={userDetails.firstName || ""}
           required={true}
           label="שם פרטי:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, firstName: e.target.value })
           }
         />
-
         <InputField
+          value={userDetails.lastName}
           required={true}
           label="שם משפחה:"
           onChange={(e) =>
             setUserDetails({ ...userDetails, lastName: e.target.value })
           }
         />
+        <InputField
+          max={10}
+          value={userDetails.profession}
+          label="מה המקצוע שלך?"
+          onChange={(e) =>
+            setUserDetails({ ...userDetails, profession: e.target.value })
+          }
+        />
 
         <InputField
+          value={userDetails.phone}
+          type="number"
           required={true}
           label="טלפון"
           onChange={(e) =>
-            setUserDetails({ ...userDetails, phone: e.target.value })
+            setUserDetails({ ...userDetails, phone: +e.target.value })
           }
         />
 
         <InputField
-          required={true}
-          label="מייל"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, email: e.target.value })
-          }
-        />
-
-        <InputField
+          value={userDetails.city}
           required={true}
           label="יישוב"
           onChange={(e) =>
@@ -83,13 +79,22 @@ const UserProfileEdit = () => {
 
         <div className="mentor-switch">
           <label className="switch">
-            <input type="checkbox" onChange={() => setExportOn(!exportOn)} />
+            <input
+              type="checkbox"
+              value={userDetails.isExpert}
+              onChange={(e) =>
+                setUserDetails({ ...userDetails, isExpert: !e.target.value })
+              }
+            />
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
-        {exportOn && (
-          <ExpertProfileEdit setUserDetailsField={setUserDetailsField} />
+        {userDetails.isExpert && (
+          <ExpertProfileEdit
+            setExpertDetails={setExpertDetails}
+            expertDetails={userDetails.expertDetails}
+          />
         )}
         {/* <button className="save-button">שמירה</button> */}
         <Button
