@@ -2,6 +2,7 @@
 import "./Inquiry.css";
 import inquiryType from "./inquiry-type.json";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
+import { useUserState } from "../../contexts/context";
 
 const Inquiry = ({ inquiry }) => {
   const type = "user";
