@@ -8,7 +8,7 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { useHistory } from "react-router-dom";
 
 const UserProfileEdit = () => {
-  const [exportOn, setExpertOn] = useState(false);
+  const [exportOn, setExpertOn] = useState(true);
   let history = useHistory();
   const [userDetails, setUserDetails] = useState({
     profileFullFields: false,
