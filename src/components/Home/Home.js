@@ -3,7 +3,6 @@ import React from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquiries.json";
-import { RedirectRoute } from "react-router-dom";
 
 const Home = () => {
   const communityManager = false;

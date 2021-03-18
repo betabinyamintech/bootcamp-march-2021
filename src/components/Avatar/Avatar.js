@@ -1,5 +1,3 @@
-// import React from "react";
-import { useUserState } from "../../contexts/context";
 import "./Avatar.css";
 
 const Avatar = (props) => {

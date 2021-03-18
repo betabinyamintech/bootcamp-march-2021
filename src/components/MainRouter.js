@@ -11,12 +11,21 @@ import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
-import { useUserState } from "../contexts/context";
+import { useUserDispatch, useUserState } from "../contexts/context";
 import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
 import MoreMenu from "./MoreMenu/MoreMenu";
+import { useEffect } from "react";
+import { refreshUserByToken } from "../contexts/actions";
 
 const MainRouter = () => {
   const userState = useUserState();
+  const userDispatch = useUserDispatch();
+  useEffect(() => {
+    console.log("userState", userState);
+    if (userState.user == null) {
+      refreshUserByToken(userDispatch);
+    }
+  });
 
   return (
     <Router>
