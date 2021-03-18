@@ -1,13 +1,13 @@
+import { Logout } from "../../contexts/actions";
 import { useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
-import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import "./MoreMenu.css";
 const MoreMenu = () => {
   const [firstName, lastName, city] = ["מעיין", "נווה-גונן", "כוכב-השחר"];
   let history = useHistory();
   return (
     <div className="more-menu-container">
-      <PreviousButton linkTo="/home" />
+      <PreviousButton onClick={() => history.push("/home")} />
       <div className="user-details">
         <Avatar />
         <div>
@@ -114,7 +114,9 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span>התנתקות</span>
+            <button onClick={Logout}>
+              <span>התנתקות</span>
+            </button>
           </div>
         </button>
         <button className="close-button" onClick={() => history.push("/home")}>

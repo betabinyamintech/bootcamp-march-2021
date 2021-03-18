@@ -37,7 +37,14 @@ const selectedHashtagsMock = [];
 
 const HashtagScreen = ({ selectedHashtags, setSelectedHashtags }) => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        width: " 400p",
+        height: "200px",
+        alignitems: "center",
+      }}
+    >
       <HashtagList
         hashtags={hashtags}
         selectedHashtags={selectedHashtags}

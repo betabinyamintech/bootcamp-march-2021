@@ -1,0 +1,121 @@
+.mentorcard{
+    display: flex;
+    
+    padding: 4px, 12px, 4px, 12px;
+    
+    }
+    .mentorcardnextimg {
+        padding: 20px;
+    }
+
+    .pageTitle{
+        font-family: Heebo;
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 26px;
+letter-spacing: 0.01em;
+text-align: right;
+
+padding: 20px;
+padding-bottom: 0px;
+    }
+
+    .subTitle {
+        font-family: Heebo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.01em;
+text-align: right;
+margin-bottom: 10px;
+margin-top: 0px;
+padding-right: 20px;
+padding-left: 20px;
+
+    }
+ 
+    .daytimebox{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .outerbox{
+        padding: 30px;
+        border: 1px solid #ECECEC;
+        margin: 20px;
+        border-radius: 5px;
+    }
+
+    .boxTitleHeading{
+        display: flex;
+        font-family: Heebo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0.01em;
+text-align: right;
+padding-right: 10px;
+    }
+
+    .subDetails {
+        display: flex;
+        margin-bottom: 0px;
+        margin-top: 0px;
+        font-family: Heebo;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0.01em;
+text-align: right;
+padding-bottom: 10px;
+padding-right: 10px;
+    }
+    .meetingPlace{
+display: flex;
+align-items: center;
+        font-family: Heebo;
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        letter-spacing: 0.01em;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .expertDetails{
+        display: flex;
+        flex-direction: row;
+        background: #F8F8F8;
+padding: 10px;
+margin: 10px 20px;
+    }
+
+    .expertDetailsText{
+display: flex;
+flex-direction: column;
+    }
+
+    .buttonDiv{
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+    }
+    
+    .footerText{
+        font-family: Heebo;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+letter-spacing: 0em;
+text-align: center;
+text-decoration: underline; 
+color: #ABABAB;
+
+
+    }

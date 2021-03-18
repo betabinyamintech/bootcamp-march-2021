@@ -1,34 +1,18 @@
-/*
+.hashtag {
+  padding: 4px 12px;
+  text-align: center;
+  display: flex;
 
-.hashtag{
+  background: var(--light-grey);
+  border-radius: 40px;
 
-padding: 4px 12px;
-text-align: center;
-display: flex;
-
-
-
-background: #F3F3F3;
-border-radius: 40px;
-
-
-flex: none;
-order: 7;
-flex-grow: 0;
-margin: 10px 10px;
-cursor: pointer;
+  flex: none;
+  order: 7;
+  flex-grow: 0;
+  margin: 10px 10px;
+  cursor: pointer;
 }
 
-.hashtag.active{
-    background: #606060;
-
+.hashtag.active {
+  background: #606060;
 }
-
-.hashtag.inactive{
-    background: #F3F3F3;
-}
-
-*/
-
-
-

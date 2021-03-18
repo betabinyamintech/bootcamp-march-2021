@@ -11,7 +11,7 @@ const ProfileView = ({ user }) => {
       <PreviousButton />
       <div className="profile-details">
         <div className="avatar-container">
-          <Avatar />
+          <Avatar height="70px" />
         </div>
         <div className="user-details">
           <h4 className="user-name"> ישראל ישראלי</h4>
@@ -39,14 +39,6 @@ const ProfileView = ({ user }) => {
       <div className="row-details">
         <span className="row-title"> אורך פגישה </span>
         <span className="row-description"> 00:30 </span>
-      </div>
-      <div className="row-details">
-        <span className="row-title"> טלפון </span>
-        <span className="row-description"> 050-4458384 </span>
-      </div>
-      <div className="row-details">
-        <span className="row-title"> מיילה </span>
-        <span className="row-description"> adflja@akldfj.asd </span>
       </div>
     </div>
   );

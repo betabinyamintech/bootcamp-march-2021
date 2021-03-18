@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { loginUser, registerUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
+import img from "../commonsSVG/login-register.svg";
 import "./Style.css";
 
 let isProfileFullFilled = true;
@@ -33,11 +33,7 @@ const LoginRegister = () => {
   }, [loginDetails, isLogin, dispatch]);
   return (
     <div className="container">
-      <img
-        className="logo"
-        alt="logo_image"
-        src="https://binyamintech.co.il/wp-content/uploads/2020/07/favicon-01.png"
-      ></img>
+      <img className="logo" alt="logo_image" src={img}></img>
       <div className="details">
         <h3 className="login-title">{isLogin ? "התחברות" : "הרשמה"}</h3>
         <p className="description">
