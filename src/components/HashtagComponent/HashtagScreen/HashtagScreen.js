@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import HashtagList from "./HashtagList";
 
 const hashtags = [
@@ -35,10 +35,7 @@ const hashtags = [
 
 const selectedHashtagsMock = [];
 
-const HashtagScreen = () => {
-  const [selectedHashtags, setSelectedHashtags] = useState(
-    selectedHashtagsMock
-  );
+const HashtagScreen = ({ selectedHashtags, setSelectedHashtags }) => {
   return (
     <div
       style={{

@@ -16,7 +16,7 @@ const MeetingScheduled = () => {
   return (
     <div className="meetingScheduled">
       <div className="preBtnMeetingScheudled">
-        <PreviousButton label={"חזרה"} />
+        <PreviousButton linkTo="more-menu" />
       </div>
       <div className="statusMtngScdl">
         <StatusIcon status={StageStatuses.FINISHED} />
