@@ -18,6 +18,7 @@ import Test from "./Test/Test";
 import MoreMenu from "./MoreMenu/MoreMenu";
 import { useEffect } from "react";
 import { refreshUserByToken } from "../contexts/actions";
+import FullScreenLoader from "./FullScreenLoader/FullScreenLoader";
 
 const MainRouter = () => {
   const userState = useUserState();
@@ -27,10 +28,11 @@ const MainRouter = () => {
     if (userState.user == null) {
       refreshUserByToken(userDispatch);
     }
-  });
+  },[]);
 
   return (
     <Router>
+      {userState?.loading && <FullScreenLoader active />}
       <Switch>
         {/* <Route path="/choose-meeting-schedule">
           <ChooseMeetingSchedule />
