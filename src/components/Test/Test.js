@@ -1,5 +1,5 @@
 import "./Test.css";
 
-const Test = () => <HashtagComponent />;
+function Test() {}
 
 export default Test;
