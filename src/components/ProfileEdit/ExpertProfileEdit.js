@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputField from "../Common/InputField/InputField";
-import HashtagScreen from "../HashtagScreen/HashtagScreen";
+import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
 
 const ExpertProfileEdit = () => {
@@ -10,7 +10,7 @@ const ExpertProfileEdit = () => {
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
-        <InputField label="מה המקצוע שלך?" />
+        <InputField required={true} label="מה המקצוע שלך?" />
         <span className="titles"> באילו נושאים תוכל לסייע?</span>
         <HashtagScreen />
         <div className="input-div">
@@ -22,9 +22,9 @@ const ExpertProfileEdit = () => {
 
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
-        <InputField label="שאלה 1:" />
+        <InputField required={true} label="שאלה 1:" />
 
-        <InputField label="שאלה 2:" />
+        <InputField required={true} label="שאלה 2:" />
         <span className="titles"> קבע את פרטי הפגישה: </span>
         <div className="titles">
           <span>אורך הפגישה </span>
@@ -60,7 +60,9 @@ const ExpertProfileEdit = () => {
           <option value="phone">שיחת טלפון</option>
           <option value="zoom">שיחת וידאו בזום</option>
         </select>
-        {favMeetKind === "face2face" && <InputField label="כתובת לפגישה:" />}
+        {favMeetKind === "face2face" && (
+          <InputField required={true} label="כתובת לפגישה:" />
+        )}
         {favMeetKind === "face2face" && (
           <span className="beta-gift">
             <svg

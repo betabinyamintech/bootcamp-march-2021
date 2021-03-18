@@ -1,8 +1,8 @@
-import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
-import { useState } from "react";
+import RequestStatus from "../Common/RequestStatusWindow/RequestStatus";
 import "./Test.css";
 
+import Home from "../Home/Home";
 function Test() {
-  <div></div>;
+  return <Home />;
 }
 export default Test;
