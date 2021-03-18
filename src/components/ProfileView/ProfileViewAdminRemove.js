@@ -1,9 +1,8 @@
 import React from "react";
 import ProfileView from "./ProfileView";
 import Button from "../Common/Button";
-import tick from "../Common/tickForButton.svg";
 
-const ProfileViewAdminChoose = ({ user }) => {
+const ProfileViewAdminRemove = ({ user }) => {
   return (
     <div>
       <ProfileView />
@@ -15,10 +14,8 @@ const ProfileViewAdminChoose = ({ user }) => {
         <span className="row-title"> מיילה </span>
         <span className="row-description"> adflja@akldfj.asd </span>
       </div>
-      <Button>
-        בחירה <img src={tick} alt="tick" />
-      </Button>
+      <Button style={{ backgroundColor: "#F8F8F8" }}>הסרה</Button>
     </div>
   );
 };
-export default ProfileViewAdminChoose;
+export default ProfileViewAdminRemove;

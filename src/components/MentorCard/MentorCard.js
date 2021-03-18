@@ -5,30 +5,69 @@ import { useContext } from "react";
 import UserContext from "../../contexts/UserContext";
 import NextIcon from "./NextArrow.svg";
 
-function MentorCard(props) {
+const users = [
+  {
+    name: "שוקי",
+    lastName: "כהן",
+    profesion: "רואה חשבון",
+
+    avatarImg:
+      "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/07/07cd7653b80c8c72fe816bafa9e25d32d5a882da_full.jpg",
+    expertDetails: {
+      helpKind: "יכול לעזור בכל מיני דברים",
+      otherproperties: "vewvfc",
+    },
+  },
+  {
+    name: "שוקי",
+    lastName: "כהן",
+    profesion: "רואה חשבון",
+
+    avatarImg:
+      "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/07/07cd7653b80c8c72fe816bafa9e25d32d5a882da_full.jpg",
+    expertDetails: {
+      helpKind: "יכול לעזור בכל מיני דברים",
+      otherproperties: "vewvfc",
+    },
+  },
+  {
+    name: "שוקי",
+    lastName: "כהן",
+    profesion: "רואה חשבון",
+
+    avatarImg:
+      "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/07/07cd7653b80c8c72fe816bafa9e25d32d5a882da_full.jpg",
+    expertDetails: {
+      helpKind: "יכול לעזור בכל מיני דברים",
+      otherproperties: "vewvfc",
+    },
+  },
+];
+
+const Hashtags = ["aaa", "bbb", "cba", "cbc"];
+
+function MentorCard({ user }) {
   return (
-    <div {...props} className={"mentorcard" + ""}>
+    <div className={"mentorcard" + ""}>
       <Avatar />
       <div className="middlementordiv">
         <h2>
-          {props.firstName} {props.lastName}
+          {user.firstName} {user.lastName}
         </h2>
         <h5>
-          {props.profession}
-          {props.city}
+          {user.profession}, {user.city}
         </h5>
-        <p>
-          משפט על עצמו, צריך להגיע ממאגר המידע או מיוזר קונטקסט אבל אני צריכה
-          עוד לחשוב איך
-        </p>
+        <p>משפט על עצמו, לשאוב אותו ממאגר המידע בצורה שאלעד יגיד כשנשאל אותו</p>
         <div>
-          {" "}
-          כאן תבוא קומפוננטה של האשתגים שהמומחה בחר שזה בעצם האשתגים מהיוזר של
-          המשתמש שנכנסים לקומפוננטה hashtaglist
+          <div className="tagsBox">
+            {user.expertDetails.inquiryTags.map((tag) => (
+              <div className="hashtag">{tag} </div>
+            ))}
+          </div>
         </div>
       </div>
       <div>
-        {/* the same icon looks diferent in inquiry.js */}
+        {/* the same icon looks diferent in inquiry.js and this needs a proper rauting */}
         <a href="/">
           <img className="mentorcardnextimg" src={NextIcon} />
         </a>
