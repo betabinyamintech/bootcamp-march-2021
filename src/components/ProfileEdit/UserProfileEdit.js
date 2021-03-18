@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import "./UserProfileEdit.css";
-// import Avatar from "../Avatar/Avatar";
+import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";

@@ -1,9 +1,7 @@
 import { useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import { useHistory } from "react-router-dom";
 import "./MoreMenu.css";
-import PreviousButton from "../Common/PreviousButton/PreviousButton";
 const MoreMenu = () => {
   const [firstName, lastName, city] = ["מעיין", "נווה-גונן", "כוכב-השחר"];
   let history = useHistory();
