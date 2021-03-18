@@ -66,7 +66,15 @@ const MainRouter = () => {
           <Home />
         </Route>
         <Route path="/">
+<<<<<<< HEAD
+          {useUserState.user !== null ? (
+            <Home />
+          ) : (
+            <Redirect to={{ pathname: "/login" }} />
+          )}
+=======
           {userState.user ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
+>>>>>>> 333926e4a2ca678a538a89c540733b3eebbfd65a
         </Route>
       </Switch>
     </Router>

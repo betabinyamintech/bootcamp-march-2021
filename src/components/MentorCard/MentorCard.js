@@ -49,7 +49,7 @@ const Hashtags = ["aaa", "bbb", "cba", "cbc"];
 function MentorCard({ user }) {
   return (
     <div className={"mentorcard" + ""}>
-      <Avatar />
+      <Avatar height="70px" />
       <div className="middlementordiv">
         <h2>
           {user.firstName} {user.lastName}
