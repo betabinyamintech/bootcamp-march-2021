@@ -31,10 +31,9 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/question-screen">
+        <Route path="/test">
           <Test />
         </Route>
-
         <Route path="/question-screen">
           <QuestionScreen />
         </Route>
