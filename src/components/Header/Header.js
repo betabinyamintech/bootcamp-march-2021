@@ -2,7 +2,7 @@ import "./Header.css";
 import React from "react";
 import Avatar from "../Avatar/Avatar";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useUserState } from "../../contexts/context";
 import img from "../commonsSVG/home.svg";
 import img2 from "../commonsSVG/menu-icon.svg";
@@ -10,6 +10,7 @@ import img2 from "../commonsSVG/menu-icon.svg";
 const Header = ({ numExperts = 167, isCommunityManager }) => {
   const user = useUserState().user;
   const { name } = user;
+  let history = useHistory();
   return (
     <div className="headerBox">
       <div className="headerOfHeader">

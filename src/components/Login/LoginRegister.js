@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { loginUser, registerUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
@@ -23,7 +22,7 @@ const LoginRegister = () => {
   const userState = useUserState();
   const dispatch = useUserDispatch();
   // isLogin ? (
-  console.log("userState.error", userState);
+  //console.log("LoginRegister userState", userState);
 
   const onClick = useCallback(async () => {
     if (isLogin) {

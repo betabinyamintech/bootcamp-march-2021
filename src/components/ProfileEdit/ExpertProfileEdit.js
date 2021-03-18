@@ -3,10 +3,9 @@ import InputField from "../Common/InputField/InputField";
 import HashtagScreen from "../HashtagComponent/HashtagScreen/HashtagScreen";
 import "./ExpertProfileEdit.css";
 
-const ExpertProfileEdit = () => {
+const ExpertProfileEdit = ({ setUserDetailsField }) => {
   const [exportOn, setExportOn] = useState(true);
   const [favMeetKind, setFavMeetKind] = useState("face2face");
-  console.log(favMeetKind);
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
@@ -15,21 +14,36 @@ const ExpertProfileEdit = () => {
         <HashtagScreen />
         <div className="input-div">
           <label>
-            <textarea placeholder=" " type="email"></textarea>
+            <textarea
+              placeholder=" "
+              type="email"
+              onChange={(e) =>
+                setUserDetailsField("helpDescription", e.target.value)
+              }
+            ></textarea>
             <span>בכמה מילים, במה בדיוק תוכל לסייע?</span>
           </label>
         </div>
 
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
-        <InputField required={true} label="שאלה 1:" />
+        <InputField
+          label="שאלה 1:"
+          onChange={(e) =>
+            setUserDetailsField("expertQuestions", e.target.value)
+          }
+        />
 
-        <InputField required={true} label="שאלה 2:" />
+        <InputField
+          label="שאלה 2:"
+          onChange={(e) =>
+            setUserDetailsField("expertQuestions", e.target.value)
+          }
+        />
         <span className="titles"> קבע את פרטי הפגישה: </span>
         <div className="titles">
           <span>אורך הפגישה </span>
           <span style={{ alignSelf: "flex-start" }}>
-            {" "}
             <svg
               width="21"
               height="20"
@@ -44,7 +58,11 @@ const ExpertProfileEdit = () => {
             </svg>
           </span>
         </div>
-        <select className="meeting-kind" defaultValue="בחר">
+        <select
+          className="meeting-kind"
+          defaultValue="30"
+          onChange={(e) => setUserDetailsField("meetingLength", e.target.value)}
+        >
           <option value="15">00:15 </option>
           <option value="30">00:30 </option>
           <option value="45">00:45 </option>
@@ -55,13 +73,19 @@ const ExpertProfileEdit = () => {
           className="meeting-kind "
           defaultValue="בחר"
           onChange={(e) => setFavMeetKind(e.target.value)}
+          onChange={(e) =>
+            setUserDetailsField("favMeetingKind", e.target.value)
+          }
         >
-          <option value="face2face">פגישה פיזית</option>
-          <option value="phone">שיחת טלפון</option>
-          <option value="zoom">שיחת וידאו בזום</option>
+          <option value="physically">פגישה פיזית</option>
+          <option value="virtual">שיחת טלפון</option>
+          <option value="virtual">שיחת וידאו בזום</option>
         </select>
         {favMeetKind === "face2face" && (
-          <InputField required={true} label="כתובת לפגישה:" />
+          <InputField
+            label="כתובת לפגישה:"
+            onChange={(e) => setUserDetailsField("meeting", e.target.value)}
+          />
         )}
         {favMeetKind === "face2face" && (
           <span className="beta-gift">

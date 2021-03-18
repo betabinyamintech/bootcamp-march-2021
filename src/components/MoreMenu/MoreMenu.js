@@ -1,7 +1,9 @@
+
+import { Logout } from "../../contexts/actions";
 import { useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
-import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import "./MoreMenu.css";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
 const MoreMenu = () => {
   const [firstName, lastName, city] = ["מעיין", "נווה-גונן", "כוכב-השחר"];
   let history = useHistory();
@@ -51,7 +53,9 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span>הוספת אתגר חדש</span>
+            <span onClick={() => history.push("/question-screen")}>
+              הוספת אתגר חדש
+            </span>
           </div>
         </button>
         <button>
@@ -71,7 +75,9 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span>עריכת פרופיל</span>
+            <span onClick={() => history.push("/profile/edit")}>
+              עריכת פרופיל
+            </span>
           </div>
           {/* </Link> */}
         </button>
@@ -110,10 +116,14 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span>התנתקות</span>
+            <button onClick={Logout}>
+              <span>התנתקות</span>
+            </button>
           </div>
         </button>
-        <button className="close-button">סגירה</button>
+        <button className="close-button" onClick={() => history.push("/home")}>
+          סגירה
+        </button>
       </div>
     </div>
   );
