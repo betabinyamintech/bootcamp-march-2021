@@ -54,6 +54,13 @@ const MainRouter = () => {
             <Redirect to={{ pathname: "/" }} />
           )}
         </Route>
+        <Route path="/register">
+          {!userState.user ? (
+            <LoginRegister />
+          ) : (
+            <Redirect to={{ pathname: "/" }} />
+          )}
+        </Route>
         <Route path="/meeting-arrangment">
           <MeetingArrangment />
         </Route>
