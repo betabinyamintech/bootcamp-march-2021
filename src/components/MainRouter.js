@@ -11,6 +11,7 @@ import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
 import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
+// import ChooseMeetingSchedule from './ChooseMeetingSchedule/ChooseMeetingSchedule'
 import { useUserDispatch, useUserState } from "../contexts/context";
 import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
 import Test from "./Test/Test";
@@ -31,6 +32,9 @@ const MainRouter = () => {
   return (
     <Router>
       <Switch>
+        {/* <Route path="/choose-meeting-schedule">
+          <ChooseMeetingSchedule />
+        </Route> */}
         <Route path="/test">
           <Test />
         </Route>
