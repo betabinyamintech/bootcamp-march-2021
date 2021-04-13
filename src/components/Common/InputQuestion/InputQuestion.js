@@ -1,5 +1,6 @@
 import "../Common.css";
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 
 const InputQuestion = () => {
@@ -11,8 +12,8 @@ const InputQuestion = () => {
         alt=""
       />
       <Link path="">
-      <Button>
-        השאלה החדשה שלך...</Button></Link>
+        <Button>השאלה החדשה שלך...</Button>
+      </Link>
       {/* <input className="inputNewQuestion" placeholder="השאלה החדשה שלך..." /> */}
     </div>
   );
