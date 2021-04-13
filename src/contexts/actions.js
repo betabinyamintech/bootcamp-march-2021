@@ -27,7 +27,8 @@ export async function putUser(dispatch, user) {
     addToken({ method: "PUT", body: JSON.stringify(user) })
   );
   const data = await response.json();
-  dispatch({ type: ActionTypes, user: data });
+  console.log("user data", data);
+  dispatch({ type: ActionTypes.UPDATE_USER, user: data });
 }
 
 export async function getUser(dispatch) {
@@ -38,9 +39,9 @@ export async function getUser(dispatch) {
     const response = await fetchLog("/users/me", addToken(requestOptions));
     const data = await response.json();
 
-    dispatch({ type: "LOGIN_SUCCESS", user: data });
+    dispatch({ type: ActionTypes.LOGIN_SUCCESS, user: data });
   } catch (error) {
-    dispatch({ type: "LOGIN_ERROR", error: error });
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: error });
   }
 }
 
@@ -58,7 +59,7 @@ export async function loginUser(dispatch, loginPayload) {
 
     if (data) {
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: ActionTypes.LOGIN_SUCCESS,
         user: data,
       });
 
@@ -66,7 +67,7 @@ export async function loginUser(dispatch, loginPayload) {
       return;
     }
 
-    dispatch({ type: "LOGIN_ERROR", error: data });
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: data });
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
   }

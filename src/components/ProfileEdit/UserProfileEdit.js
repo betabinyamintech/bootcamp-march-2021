@@ -8,13 +8,14 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 
+const missingMessage = "שדה חובה";
+
 const UserProfileEdit = () => {
   const userState = useUserState();
-  console.log("userState", userState);
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
-  const [warningLabel, setWarningLabel] = useState({});
   const [warnings, setWarnings] = useState({});
+  console.log("userState", userState, "warnings", warnings);
 
   const setExpertDetails = useCallback(
     (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
@@ -32,7 +33,7 @@ const UserProfileEdit = () => {
     (e, value) => {
       if (requiredFields[e.target.id]) {
         if (e.target.value === null || e.target.value === "") {
-          warnings[e.target.id] = "שדה חובה";
+          warnings[e.target.id] = missingMessage;
         } else {
           delete warnings[e.target.id];
         }
@@ -40,8 +41,26 @@ const UserProfileEdit = () => {
       }
       setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
     },
-    [warnings]
+    [warnings, userDetails]
   );
+
+  const submit = useCallback(() => {
+    const requiredFieldsKeys = Object.keys(requiredFields);
+    const fieldsWithWarnings = requiredFieldsKeys.filter(
+      (field) => !(userDetails[field] && userDetails[field] !== "")
+    );
+    fieldsWithWarnings.forEach((field) => (warnings[field] = missingMessage));
+    if (fieldsWithWarnings.length > 0) {
+      console.log("has warnings", warnings);
+      setWarnings(warnings);
+      return;
+    }
+    console.log("submit", userDetails);
+    putUser(userDispatch, {
+      ...userDetails,
+      profileFullFields: true,
+    });
+  }, [userDetails, warnings, setWarnings]);
 
   console.log(userDetails);
   return (
@@ -76,9 +95,6 @@ const UserProfileEdit = () => {
           warning={warnings.firstName}
           onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="firstName">
-          {warningLabel.firstName}
-        </label>
         <InputField
           value={userDetails.lastName}
           id="lastName"
@@ -87,9 +103,6 @@ const UserProfileEdit = () => {
           warning={warnings.lastName}
           onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="firstName">
-          {warningLabel.lastName}
-        </label>
         <InputField
           max={10}
           value={userDetails.profession}
@@ -106,9 +119,6 @@ const UserProfileEdit = () => {
           warning={warnings.phone}
           onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="phone">
-          {warningLabel.phone}
-        </label>
         <InputField
           value={userDetails.city}
           id="city"
@@ -117,9 +127,6 @@ const UserProfileEdit = () => {
           warning={warnings.city}
           onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="city">
-          {warningLabel.city}
-        </label>
         <div className="mentor-switch">
           <label className="switch">
             <input
@@ -138,22 +145,7 @@ const UserProfileEdit = () => {
           />
         )}
         {/* <button className="save-button">שמירה</button> */}
-        <Button
-          className="save-button"
-          id="submitButton"
-          onClick={() => {
-            // check if obligatory field have been filled in before updating profile
-            // obligatory fields are: firstName, lastName, phone number
-            // these are not obligatory: email, profession
-            if (Object.keys(warnings).length > 0) {
-              return;
-            }
-            putUser(userDispatch, {
-              ...userDetails,
-              profileFullFields: true,
-            });
-          }}
-        >
+        <Button className="save-button" id="submitButton" onClick={submit}>
           <svg
             width="13"
             height="10"
@@ -168,13 +160,6 @@ const UserProfileEdit = () => {
           </svg>
           שמירה
         </Button>
-        <label
-          className="warning-label"
-          for="submitButton"
-          style={{ textAlign: "center" }}
-        >
-          {warningLabel.submit}
-        </label>
       </div>
     </div>
   );
