@@ -1,6 +1,6 @@
-//const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
-const ROOT_URL = "http://localhost:5000";
+//const ROOT_URL = "http://localhost:5000";
 
 async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
