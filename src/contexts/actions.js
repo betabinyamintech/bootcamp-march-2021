@@ -1,3 +1,5 @@
+import { ActionTypes } from "./reducer";
+
 const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
 //const ROOT_URL = "http://localhost:5000";
@@ -25,7 +27,7 @@ export async function putUser(dispatch, user) {
     addToken({ method: "PUT", body: JSON.stringify(user) })
   );
   const data = await response.json();
-  dispatch({ type: "USER_UPDATE", user: data });
+  dispatch({ type: ActionTypes, user: data });
 }
 
 export async function getUser(dispatch) {
