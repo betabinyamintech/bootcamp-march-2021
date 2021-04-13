@@ -2,7 +2,7 @@ import React from "react";
 import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
 import plusImg from "./PlusImg.svg";
 
-import "./HashtagList.css";
+//import "./HashtagList.css";
 
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   const hashtagsWithState = hashtags.map((hashtag) => {

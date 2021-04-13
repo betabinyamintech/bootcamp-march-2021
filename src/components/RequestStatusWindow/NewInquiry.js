@@ -8,7 +8,6 @@ import arrowIcon from "../Common/RequestStatusWindow/StatusIcon/arrow.svg";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import InputField from "../Common/InputField/InputField";
 import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
-import Hashtags from "../Common/Hashtags";
 
 const QuestionTypes = {
   TEXT: "TEXT",
@@ -20,12 +19,23 @@ const steps = [
     type: QuestionTypes.TEXT,
     title: "בכמה מילים, מה האתגר שלך?",
     comment: "הכל טוב, בשלב הבא ניתן לפרט יותר ",
+    buttonText: "הבא",
     field: "inquiryTitle",
   },
-  { type: QuestionTypes.TEXT, title: "", field: "inquiryContent", comment: "" },
+  {
+    type: QuestionTypes.TEXT,
+    title: "הנה, זה המקום לפרט יותר...",
+
+    comment:
+      "מה לפרט כאן? קצת על הרקע שלך, תיאור של מה שמביא אותך לאתגר הזה ועל מה הפתרון שלו צפוי להשפיע.",
+    buttonText: "הבא",
+    field: "inquiryContent",
+  },
   {
     type: QuestionTypes.HASHTAG,
     title: "בחירת האשטגים רלוונטיים",
+    comment: "זה פשוט עוזר לנו לאתר את המומחית/מומחה שתדע/ידע לעזור לך.",
+    buttonText: "שליחת השאלה ✓",
     field: "inquiryTags",
   },
 ];
@@ -37,10 +47,32 @@ const NewInquiry = ({ questionText, labelText }) => {
   const [question, setQuestion] = useState("");
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
+  const [hashtags, setHashtags] = useState([]);
+
+  const fetchHashtags = () =>
+    fetch({ ROOT_URL } + "/new")
+      .then((response) => response.json())
+      .then((data) => setHashtags(data));
+  useEffect(() => {
+    fetchHashtags();
+  }, []);
+
+  //updating request element for sending to the server
   const setRequestCallback = useCallback(
     (value) => setRequest({ ...request, [step.field]: value }),
     [step.field, request]
   );
+  //final sending to the server
+  const postNewInquiry = async (request) => {
+    const res = await fetch({ ROOT_URL } + "/new", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ request }),
+    });
+    const newInquiry = await res.json();
+
+    setInquirys([newInquirys, ...newInquiry]);
+  };
 
   return (
     <div className="questionScreen">
@@ -59,7 +91,7 @@ const NewInquiry = ({ questionText, labelText }) => {
             )}
             {step.type === QuestionTypes.HASHTAG && (
               <HashtagList
-                hashtags={Hashtags}
+                hashtags={hashtags}
                 selectedHashtags={request[step.field]}
                 setSelectedHashtags={setRequestCallback}
               />
@@ -82,9 +114,20 @@ const NewInquiry = ({ questionText, labelText }) => {
           </div>
         </div>
       </div>
-      <Button style={{ marginTop: "55px" }}>
-        {buttonText} <img src={arrowIcon} alt="exclamation mark" />
-      </Button>
+      {step.type === QuestionTypes.TEXT && (
+        <Button
+          style={{ marginTop: "55px" }}
+          onClick={(setCurrentStep = currentStep++)}
+        >
+          {step.buttonText} <Button />
+        </Button>
+      )}
+      {step.type === QuestionTypes.HASHTAG && (
+        <Button style={{ marginTop: "55px" }} onClick={postNewInquiry}>
+          {step.buttonText} <Button />
+        </Button>
+      )}
+      ; ;
     </div>
   );
 };
