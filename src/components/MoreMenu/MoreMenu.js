@@ -1,3 +1,4 @@
+import { Logout } from "../../contexts/actions";
 import { useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
