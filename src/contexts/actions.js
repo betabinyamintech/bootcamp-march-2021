@@ -20,12 +20,16 @@ function addToken(options) {
 }
 
 export async function putUser(dispatch, user) {
-  const response = await fetchLog(
-    "/users/me",
-    addToken({ method: "PUT", body: JSON.stringify(user) })
-  );
-  const data = await response.json();
-  dispatch({ type: "USER_UPDATE", user: data });
+  if (user.firstName === undefined || user.firstName === "") {
+    // don't update user details
+  } else {
+    const response = await fetchLog(
+      "/users/me",
+      addToken({ method: "PUT", body: JSON.stringify(user) })
+    );
+    const data = await response.json();
+    dispatch({ type: "USER_UPDATE", user: data });
+  }
 }
 
 export async function getUser(dispatch) {
