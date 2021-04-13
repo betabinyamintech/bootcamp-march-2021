@@ -54,7 +54,7 @@ const NewInquiry = ({ questionText, labelText }) => {
               <textarea
                 className="question-input"
                 onChange={setRequestCallback}
-                value={requst[step.field]}
+                value={request[step.field]}
               ></textarea>
             )}
             {step.type === QuestionTypes.HASHTAG && (
