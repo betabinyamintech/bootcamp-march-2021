@@ -1,5 +1,5 @@
 import React from "react";
-import Hashtag from "../../Common/Hashtag/Hashtag";
+import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
 import plusImg from "./PlusImg.svg";
 
 import "./HashtagList.css";
@@ -25,7 +25,7 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
         </div>
 
         {hashtagsWithState.map(({ title, active }) => (
-          <Hashtag
+          <HashtagLabel
             onClick={
               typeof setSelectedHashTag === "function" &&
               (() => {

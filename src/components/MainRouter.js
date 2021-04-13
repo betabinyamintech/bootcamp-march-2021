@@ -9,7 +9,7 @@ import LoginRegister from "./Login/LoginRegister";
 import ProfileView from "./ProfileView/ProfileView";
 import SearchForExpert from "./SearchForExpert/SearchForExpert";
 import MeetingArrangment from "./MeetingArrangment/MeetingArrangment";
-import QuestionScreen from "./RequestStatusWindow/QuestionScreen";
+import NewInquiry from "./RequestStatusWindow/NewInquiry";
 // import ChooseMeetingSchedule from "./ChooseMeetingSchedule/ChooseMeetingSchedule";
 import { useUserDispatch, useUserState } from "../contexts/context";
 import MeetingScheduled from "./MeetingScheduled/MeetingScheduled";
@@ -33,8 +33,8 @@ const MainRouter = () => {
     <Router>
       {userState.user && (
         <Switch>
-          <Route path="/question-screen">
-            <QuestionScreen />
+          <Route path="/inquiry/new">
+            <NewInquiry />
           </Route>
           <Route path="/profile/edit">
             <UserProfileEdit />
