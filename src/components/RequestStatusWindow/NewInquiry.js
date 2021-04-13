@@ -1,13 +1,10 @@
-import react, { useCallback, useContext, useState } from "react";
-import InputLabelWithIcon from "./InputLabelWithIcon";
-import { useHistory } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import Button from "../Common/Button/Button";
+import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 //import "../Common/InputField/Style.css";
 import "./RequestStyle.css";
-import Button from "../Common/Button/Button";
-import arrowIcon from "../Common/RequestStatusWindow/StatusIcon/arrow.svg";
-import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import InputField from "../Common/InputField/InputField";
-import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
+import { fetchLogWithToken } from "../../contexts/actions";
 
 const QuestionTypes = {
   TEXT: "TEXT",
@@ -40,19 +37,22 @@ const steps = [
   },
 ];
 
-const NewInquiry = ({ questionText, labelText }) => {
+const NewInquiry = ({ questionText, labelText, history }) => {
   const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
   const buttonText = "הבא";
-  const [question, setQuestion] = useState("");
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
   const [hashtags, setHashtags] = useState([]);
 
-  const fetchHashtags = () =>
-    fetch({ ROOT_URL } + "/new")
-      .then((response) => response.json())
-      .then((data) => setHashtags(data));
+  const fetchHashtags = useCallback(
+    () =>
+      fetchLogWithToken("/tags")
+        .then((response) => response.json())
+        .then((data) => setHashtags(data)),
+    [setHashtags]
+  );
+
   useEffect(() => {
     fetchHashtags();
   }, []);
@@ -64,14 +64,12 @@ const NewInquiry = ({ questionText, labelText }) => {
   );
   //final sending to the server
   const postNewInquiry = async (request) => {
-    const res = await fetch({ ROOT_URL } + "/new", {
+    const res = await fetchLogWithToken("/inquiry/new", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ request }),
     });
-    const newInquiry = await res.json();
-
-    setInquirys([newInquirys, ...newInquiry]);
+    history.push("/");
   };
 
   return (

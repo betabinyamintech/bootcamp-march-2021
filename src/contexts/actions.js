@@ -1,10 +1,10 @@
 import { ActionTypes } from "./reducer";
 
-const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
 //const ROOT_URL = "http://localhost:5000";
 
-async function fetchLog(location, requestOptions) {
+export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
   console.log("response", response);
@@ -19,6 +19,10 @@ function addToken(options) {
       authorization: "Bearer " + localStorage.getItem("currentUser"),
     },
   };
+}
+
+export async function fetchLogWithToken(location, requestOptions) {
+  return fetchLog(location, addToken(requestOptions));
 }
 
 export async function putUser(dispatch, user) {
