@@ -14,6 +14,7 @@ export async function fetchLog(location, requestOptions) {
 function addToken(options) {
   return {
     ...options,
+    mode: "cors",
     headers: {
       ...options.headers,
       authorization: "Bearer " + localStorage.getItem("currentUser"),
@@ -26,12 +27,13 @@ export async function fetchLogWithToken(location, requestOptions) {
 }
 
 export async function putUser(dispatch, user) {
+  console.log("user for putting", user);
   const response = await fetchLog(
     "/users/me",
     addToken({ method: "PUT", body: JSON.stringify(user) })
   );
   const data = await response.json();
-  console.log("user data", data);
+  console.log("returned user data", data);
   dispatch({ type: ActionTypes.UPDATE_USER, user: data });
 }
 

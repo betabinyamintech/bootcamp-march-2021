@@ -11,12 +11,14 @@ const QuestionTypes = {
   HASHTAG: "HASHTAG",
 };
 
+const nextMessage = "הבא";
+const lastMessage = "שליחת השאלה ✓";
+
 const steps = [
   {
     type: QuestionTypes.TEXT,
     title: "בכמה מילים, מה האתגר שלך?",
     comment: "הכל טוב, בשלב הבא ניתן לפרט יותר ",
-    buttonText: "הבא",
     field: "inquiryTitle",
   },
   {
@@ -25,14 +27,12 @@ const steps = [
 
     comment:
       "מה לפרט כאן? קצת על הרקע שלך, תיאור של מה שמביא אותך לאתגר הזה ועל מה הפתרון שלו צפוי להשפיע.",
-    buttonText: "הבא",
     field: "inquiryContent",
   },
   {
     type: QuestionTypes.HASHTAG,
     title: "בחירת האשטגים רלוונטיים",
     comment: "זה פשוט עוזר לנו לאתר את המומחית/מומחה שתדע/ידע לעזור לך.",
-    buttonText: "שליחת השאלה ✓",
     field: "inquiryTags",
   },
 ];
@@ -71,6 +71,8 @@ const NewInquiry = ({ questionText, labelText, history }) => {
     });
     history.push("/");
   };
+
+  const lastQuestion = currentStep < steps.length - 1;
 
   return (
     <div className="questionScreen">
@@ -112,20 +114,15 @@ const NewInquiry = ({ questionText, labelText, history }) => {
           </div>
         </div>
       </div>
-      {step.type === QuestionTypes.TEXT && (
-        <Button
-          style={{ marginTop: "55px" }}
-          onClick={(setCurrentStep = currentStep++)}
-        >
-          {step.buttonText} <Button />
-        </Button>
-      )}
-      {step.type === QuestionTypes.HASHTAG && (
-        <Button style={{ marginTop: "55px" }} onClick={postNewInquiry}>
-          {step.buttonText} <Button />
-        </Button>
-      )}
-      ; ;
+      <Button
+        style={{ marginTop: "55px" }}
+        onClick={() => {
+          if (lastQuestion) postNewInquiry();
+          else setCurrentStep(currentStep++);
+        }}
+      >
+        {lastQuestion ? lastMessage : nextMessage} <Button />
+      </Button>
     </div>
   );
 };

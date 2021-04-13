@@ -60,7 +60,7 @@ const UserProfileEdit = () => {
       ...userDetails,
       profileFullFields: true,
     });
-  }, [userDetails, warnings, setWarnings]);
+  }, [userDetails, warnings, setWarnings, requiredFields, userDispatch]);
 
   console.log(userDetails);
   return (
