@@ -27,9 +27,15 @@ const UserProfileEdit = () => {
       </div>
       <div className="profile-details">
         <Avatar />
-        <h4 className="user-name">
-          {userDetails.firstName + " " + userDetails.lastName}
-        </h4>
+        {userDetails.firstName && userDetails.lastName && (
+          <h4 className="user-name">
+            {userDetails.firstName + " " + userDetails.lastName}
+          </h4>
+        )}
+        {(userDetails.firstName === undefined ||
+          userDetails.lastName === undefined) && (
+          <h4 className="user-name"> הכנסת פרטי משתמש</h4>
+        )}
         <h6 className="user-city">{userDetails.city} </h6>
       </div>
       <div className="input-fields">
