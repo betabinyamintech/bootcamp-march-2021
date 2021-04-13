@@ -1,6 +1,6 @@
 import "./CommunityManager.css";
 
-const CommunityManager = ({ inquiry }) => {
+const InquiryFilter = ({ inquiry }) => {
   return (
     <>
       <div className="inquiriesTitle">שאלות פתוחות</div>
@@ -22,4 +22,4 @@ const CommunityManager = ({ inquiry }) => {
   );
 };
 
-export default CommunityManager;
+export default InquiryFilter;

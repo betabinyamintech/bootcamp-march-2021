@@ -2,7 +2,7 @@ import React from "react";
 import "./Hashtag.css";
 import hashtagImg from "./Hashtag.svg";
 
-const Hashtag = ({ active, title, ...props }) => {
+const HashtagLabel = ({ active, title, ...props }) => {
   return (
     <div>
       <div {...props} className={"hashtag" + (active ? " active" : "") + ""}>
@@ -11,4 +11,4 @@ const Hashtag = ({ active, title, ...props }) => {
     </div>
   );
 };
-export default Hashtag;
+export default HashtagLabel;

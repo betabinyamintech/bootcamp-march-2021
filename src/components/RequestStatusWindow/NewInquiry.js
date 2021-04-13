@@ -1,4 +1,4 @@
-import react, { useContext, useState } from "react";
+import react, { useCallback, useContext, useState } from "react";
 import InputLabelWithIcon from "./InputLabelWithIcon";
 import { useHistory } from "react-router-dom";
 //import "../Common/InputField/Style.css";
@@ -7,15 +7,40 @@ import Button from "../Common/Button/Button";
 import arrowIcon from "../Common/RequestStatusWindow/StatusIcon/arrow.svg";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import InputField from "../Common/InputField/InputField";
+import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
+import Hashtags from "../Common/Hashtags";
 
-const QuestionScreen = ({ questionText, labelText }) => {
+const QuestionTypes = {
+  TEXT: "TEXT",
+  HASHTAG: "HASHTAG",
+};
+
+const steps = [
+  {
+    type: QuestionTypes.TEXT,
+    title: "בכמה מילים, מה האתגר שלך?",
+    comment: "הכל טוב, בשלב הבא ניתן לפרט יותר ",
+    field: "inquiryTitle",
+  },
+  { type: QuestionTypes.TEXT, title: "", field: "inquiryContent", comment: "" },
+  {
+    type: QuestionTypes.HASHTAG,
+    title: "בחירת האשטגים רלוונטיים",
+    field: "inquiryTags",
+  },
+];
+
+const NewInquiry = ({ questionText, labelText }) => {
   const arrowSign = "&gt";
+  const [currentStep, setCurrentStep] = useState(0);
   const buttonText = "הבא";
-  const [question, setQuestion] = useState("בכמה מילים, מה האתגר שלך?");
-  const [information, setInformation] = useState(
-    "הכל טוב, בשלב הבא ניתן לפרט יותר "
+  const [question, setQuestion] = useState("");
+  const [request, setRequest] = useState({});
+  const step = steps[currentStep];
+  const setRequestCallback = useCallback(
+    (value) => setRequest({ ...request, [step.field]: value }),
+    [step.field, request]
   );
-  let history = useHistory();
 
   return (
     <div className="questionScreen">
@@ -24,8 +49,21 @@ const QuestionScreen = ({ questionText, labelText }) => {
         <div className="question-title"> </div>
         <div className="input-with-label">
           <div className="question-box">
-            <span className="input-label"> {question}</span>
-            <textarea className="question-input"></textarea>
+            <span className="input-label"> {step.title}</span>
+            {step.type === QuestionTypes.TEXT && (
+              <textarea
+                className="question-input"
+                onChange={setRequestCallback}
+                value={request[step.field]}
+              ></textarea>
+            )}
+            {step.type === QuestionTypes.HASHTAG && (
+              <HashtagList
+                hashtags={Hashtags}
+                selectedHashtags={request[step.field]}
+                setSelectedHashtags={setRequestCallback}
+              />
+            )}
             <div className="information">
               <svg
                 width="14"
@@ -39,7 +77,7 @@ const QuestionScreen = ({ questionText, labelText }) => {
                   fill="#606060"
                 />
               </svg>
-              <span> {information}</span>
+              <span> {step.comment}</span>
             </div>
           </div>
         </div>
@@ -50,4 +88,4 @@ const QuestionScreen = ({ questionText, labelText }) => {
     </div>
   );
 };
-export default QuestionScreen;
+export default NewInquiry;

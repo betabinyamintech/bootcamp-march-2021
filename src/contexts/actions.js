@@ -1,3 +1,5 @@
+import { ActionTypes } from "./reducer";
+
 const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
 //const ROOT_URL = "http://localhost:5000";
@@ -20,16 +22,12 @@ function addToken(options) {
 }
 
 export async function putUser(dispatch, user) {
-  if (user.firstName === undefined || user.firstName === "") {
-    // don't update user details
-  } else {
-    const response = await fetchLog(
-      "/users/me",
-      addToken({ method: "PUT", body: JSON.stringify(user) })
-    );
-    const data = await response.json();
-    dispatch({ type: "USER_UPDATE", user: data });
-  }
+  const response = await fetchLog(
+    "/users/me",
+    addToken({ method: "PUT", body: JSON.stringify(user) })
+  );
+  const data = await response.json();
+  dispatch({ type: ActionTypes, user: data });
 }
 
 export async function getUser(dispatch) {
