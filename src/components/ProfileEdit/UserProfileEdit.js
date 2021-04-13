@@ -13,36 +13,35 @@ const UserProfileEdit = () => {
   console.log("userState", userState);
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
-  const [warningLabel, setWarningLabel] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    city: "",
-    submit: "",
-  });
+  const [warningLabel, setWarningLabel] = useState({});
+  const [warnings, setWarnings] = useState({});
 
   const setExpertDetails = useCallback(
     (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
     [userDetails, setUserDetails]
   );
 
-  const setWarningLabelOnFormSubmit = () => {
-    let fnReturnVal = true;
-
-    if (
-      userDetails.city === "" ||
-      userDetails.city === undefined ||
-      userDetails.firstName === "" ||
-      userDetails.firstName === undefined ||
-      userDetails.lastName === "" ||
-      userDetails.lastName === undefined ||
-      userDetails.phone === "" ||
-      userDetails.phone === undefined
-    ) {
-      fnReturnVal = false;
-    }
-    return fnReturnVal;
+  const requiredFields = {
+    city: true,
+    lastName: true,
+    firstName: true,
+    phone: true,
   };
+
+  const setUserDetailsWithWarning = useCallback(
+    (e, value) => {
+      if (requiredFields[e.target.id]) {
+        if (e.target.value === null || e.target.value === "") {
+          warnings[e.target.id] = "שדה חובה";
+        } else {
+          delete warnings[e.target.id];
+        }
+        setWarnings(warnings);
+      }
+      setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
+    },
+    [warnings]
+  );
 
   console.log(userDetails);
   return (
@@ -71,85 +70,54 @@ const UserProfileEdit = () => {
       <div className="input-fields">
         <InputField
           value={userDetails.firstName || ""}
-          id="firstNameInput"
+          id="firstName"
           required={true}
           label="שם פרטי:"
-          onChange={(e) => {
-            // first name is obligatory field
-            // show warning label only if user initially entered value and then erased
-            // i.e. don't show warning label if field is initally empty when user first reaches the form
-            setWarningLabel({
-              ...warningLabel,
-              firstName: e.target.value !== "" ? "" : "שדה חובה",
-              submit: "",
-            });
-            setUserDetails({ ...userDetails, firstName: e.target.value });
-          }}
+          warning={warnings.firstName}
+          onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="firstNameInput">
+        <label className="warning-label" for="firstName">
           {warningLabel.firstName}
         </label>
         <InputField
           value={userDetails.lastName}
-          id="lastNameInput"
+          id="lastName"
           required={true}
           label="שם משפחה:"
-          onChange={(e) => {
-            // last name is obligatory field
-            setWarningLabel({
-              ...warningLabel,
-              lastName: e.target.value !== "" ? "" : "שדה חובה",
-              submit: "",
-            });
-            setUserDetails({ ...userDetails, lastName: e.target.value });
-          }}
+          warning={warnings.lastName}
+          onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="firstNameInput">
+        <label className="warning-label" for="firstName">
           {warningLabel.lastName}
         </label>
         <InputField
           max={10}
           value={userDetails.profession}
-          id="professionInput"
+          id="profession"
           label="מה המקצוע שלך?"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, profession: e.target.value })
-          }
+          onChange={setUserDetailsWithWarning}
         />
 
         <InputField
           value={userDetails.phone}
-          id="phoneInput"
-          type="number"
+          id="phone"
           required={true}
           label="טלפון"
-          onChange={(e) => {
-            setWarningLabel({
-              ...warningLabel,
-              phone: e.target.value !== "" ? "" : "שדה חובה",
-              submit: "",
-            });
-            setUserDetails({ ...userDetails, phone: +e.target.value });
-          }}
+          warning={warnings.phone}
+          onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="phoneInput">
+        <label className="warning-label" for="phone">
           {warningLabel.phone}
         </label>
         <InputField
           value={userDetails.city}
-          id="cityInput"
+          id="city"
           required={true}
           label="ישוב"
-          onChange={(e) => {
-            setWarningLabel({
-              ...warningLabel,
-              city: e.target.value !== "" ? "" : "שדה חובה",
-              submit: "",
-            });
-            setUserDetails({ ...userDetails, city: e.target.value });
-          }}
+          warning={warnings.city}
+          onChange={setUserDetailsWithWarning}
         />
-        <label className="warning-label" for="firstNameInput">
+        <label className="warning-label" for="city">
           {warningLabel.city}
         </label>
         <div className="mentor-switch">
@@ -157,14 +125,7 @@ const UserProfileEdit = () => {
             <input
               type="checkbox"
               value={userDetails.isExpert}
-              onChange={(e) => {
-                setUserDetails({ ...userDetails, isExpert: !e.target.value });
-                setWarningLabel({
-                  ...warningLabel,
-                  city: e.target.value !== "" ? "" : "שדה חובה",
-                  submit: "",
-                });
-              }}
+              onChange={setUserDetailsWithWarning}
             />
             <span className="slider round"></span>
           </label>
@@ -184,24 +145,13 @@ const UserProfileEdit = () => {
             // check if obligatory field have been filled in before updating profile
             // obligatory fields are: firstName, lastName, phone number
             // these are not obligatory: email, profession
-            if (setWarningLabelOnFormSubmit()) {
-              // setWarningLabelOnFormSubmit fn has checked that all data correctly filled in by user.
-              // Send user profile update to server.
-              setWarningLabel({
-                ...warningLabel,
-                submit: "",
-              });
-              putUser(userDispatch, {
-                ...userDetails,
-                profileFullFields: true,
-              });
-            } else {
-              // don't update user profile if obligatory field info hasn't been filled in
-              setWarningLabel({
-                ...warningLabel,
-                submit: "שם פרטי, שם משפחה, טלפון ועיר הינם שדות חובה",
-              });
+            if (Object.keys(warnings).length > 0) {
+              return;
             }
+            putUser(userDispatch, {
+              ...userDetails,
+              profileFullFields: true,
+            });
           }}
         >
           <svg

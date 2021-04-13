@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div style={{ display: "flex", flexFlow: "column nowrap" }}>
       <div>
-        <Header isCommunityManager={communityManager} />
+        <Header />
       </div>
       <Link>
         <Button>is Admin</Button>
