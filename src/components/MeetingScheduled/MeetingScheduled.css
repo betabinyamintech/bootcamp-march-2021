@@ -1,0 +1,106 @@
+.meetingScheduled {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 15px;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+
+.statusMtngScdl {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.statusMtngScdlMessage {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 29px;
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #414141;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  margin: 10px 0px;
+}
+
+.meetingScdlDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 20px;
+  margin-top: 10px;
+  background: #f3f3f3;
+  border-radius: 4px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #414141;
+}
+
+.mtngScdlDate,
+.mtngScdlTime,
+.mtngScdlAddress {
+  margin: 10px 0;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 22px;
+  /* identical to box height */
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #414141;
+}
+
+.addToCalendarButtonDiv {
+  margin-top: 30px;
+  justify-content: flex-end;
+  /* align-self: center; */
+}
+
+.addToCalendarButton {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 23px;
+  /* identical to box height */
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  align-self: center;
+  width: max-content;
+}
+
+.mtngScdlConcatInfo {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.mtngScdlConcatInfoText {
+  margin-right: 10px;
+}
+
+.mtngScdlConcatInfoTitle,
+.mtngScdlInquiryTitleTitle {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #a5a5a5;
+  margin-top: 20px;
+}

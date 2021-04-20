@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { loginUser, registerUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import LoginDetails from "./LoginDetails";
+import img from "../commonsSVG/login-register.svg";
 import "./Style.css";
+import { useHistory, useLocation } from "react-router";
 
 let isProfileFullFilled = true;
 
@@ -17,12 +18,14 @@ function register(email, password) {
 }
 
 const LoginRegister = () => {
-  const [isLogin, setIsLogin] = useState(true);
+  const {pathname} = useLocation();
+  const history = useHistory();
+  const isLogin = pathname.replace(/\//g,'') === 'login'
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const userState = useUserState();
   const dispatch = useUserDispatch();
   // isLogin ? (
-  console.log("userState.error", userState);
+  //console.log("LoginRegister userState", userState);
 
   const onClick = useCallback(async () => {
     if (isLogin) {
@@ -33,11 +36,7 @@ const LoginRegister = () => {
   }, [loginDetails, isLogin, dispatch]);
   return (
     <div className="container">
-      <img
-        className="logo"
-        alt="logo_image"
-        src="https://binyamintech.co.il/wp-content/uploads/2020/07/favicon-01.png"
-      ></img>
+      <img className="logo" alt="logo_image" src={img}></img>
       <div className="details">
         <h3 className="login-title">{isLogin ? "התחברות" : "הרשמה"}</h3>
         <p className="description">
@@ -70,7 +69,7 @@ const LoginRegister = () => {
         {isLogin ? "אין לך חשבון? " : "יש לך חשבון? "}
         <span
           style={{ textDecoration: "underline" }}
-          onClick={() => setIsLogin(!isLogin)}
+          onClick={() => {history.push(isLogin?'/register':'/login')}}
         >
           {isLogin ? "הירשם עכשיו." : "היכנס עכשיו."}
         </span>

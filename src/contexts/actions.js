@@ -1,61 +1,115 @@
+import { ActionTypes } from "./reducer";
 
-const ROOT_URL = 'https://binyamin-tech-march-2021.herokuapp.com/';
+export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
+//const ROOT_URL = "http://localhost:5000";
+
+export async function fetchLog(location, requestOptions) {
+  console.log("fetch", location, requestOptions);
+  const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
+  console.log("response", response);
+  return response;
+}
+
+function addToken(options) {
+  return {
+    ...options,
+    mode: "cors",
+    headers: {
+      ...options.headers,
+      authorization: "Bearer " + localStorage.getItem("currentUser"),
+    },
+  };
+}
+
+export async function fetchLogWithToken(location, requestOptions) {
+  return fetchLog(location, addToken(requestOptions));
+}
+
+export async function putUser(dispatch, user) {
+  console.log("user for putting", user);
+  const response = await fetchLog(
+    "/users/me",
+    addToken({ method: "PUT", body: JSON.stringify(user) })
+  );
+  const data = await response.json();
+  console.log("returned user data", data);
+  dispatch({ type: ActionTypes.UPDATE_USER, user: data });
+}
+
+export async function getUser(dispatch) {
+  try {
+    const requestOptions = {
+      method: "GET",
+    };
+    const response = await fetchLog("/users/me", addToken(requestOptions));
+    const data = await response.json();
+
+    dispatch({ type: ActionTypes.LOGIN_SUCCESS, user: data });
+  } catch (error) {
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: error });
+  }
+}
 
 export async function loginUser(dispatch, loginPayload) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginPayload),
-    };
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(loginPayload),
+  };
 
-    try {
-        dispatch({ type: 'REQUEST_LOGIN' });
-        let response = await fetch(`${ROOT_URL}/login`, requestOptions);
-        let data = await response.json();
+  try {
+    dispatch({ type: "REQUEST_LOGIN" });
+    let response = await fetchLog("/login", requestOptions);
+    let data = await response.json();
 
-        if (data.user) {
-            dispatch({ type: 'LOGIN_SUCCESS', payload: data });
-            localStorage.setItem('currentUser', JSON.stringify(data));
-            return data
-        }
+    if (data) {
+      dispatch({
+        type: ActionTypes.LOGIN_SUCCESS,
+        user: data,
+      });
 
-        dispatch({ type: 'LOGIN_ERROR', error: data.errors[0] });
-    } catch (error) {
-        dispatch({ type: 'LOGIN_ERROR', error: error });
+      localStorage.setItem("currentUser", data.token);
+      return;
     }
+
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: data });
+  } catch (error) {
+    dispatch({ type: "LOGIN_ERROR", error: error });
+  }
 }
 
 export async function registerUser(dispatch, registerPayload) {
-    console.log('registerUser', dispatch, registerPayload)
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(registerPayload),
-    };
+  console.log("registerUser", dispatch, registerPayload);
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(registerPayload),
+  };
 
-    try {
-        dispatch({ type: 'REQUEST_LOGIN' });
-        let response = await fetch(`${ROOT_URL}/register`, requestOptions);
-        let data = await response.json();
+  try {
+    dispatch({ type: "REQUEST_LOGIN" });
+    let response = await fetchLog("/register", requestOptions);
+    let data = await response.json();
 
-        if (data.user) {
-            dispatch({ type: 'LOGIN_SUCCESS', payload: data });
-            localStorage.setItem('currentUser', JSON.stringify(data));
-            return data
-        }
-
-        dispatch({ type: 'LOGIN_ERROR', error: data.errors[0] });
-        return data.error;
-    } catch (error) {
-        dispatch({ type: 'LOGIN_ERROR', error: error });
-        return error;
+    if (data) {
+      dispatch({ type: "LOGIN_SUCCESS", payload: data });
+      localStorage.setItem("currentUser", data.token);
+      return;
     }
-    return null
+
+    dispatch({ type: "LOGIN_ERROR", error: data.errors[0] });
+    return;
+  } catch (error) {
+    dispatch({ type: "LOGIN_ERROR", error: error });
+    return;
+  }
+
+  return null;
 }
 
-export async function logout(dispatch) {
-    dispatch({ type: 'LOGOUT' });
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('token');
+export async function Logout(dispatch) {
+  dispatch({ type: "LOGOUT" });
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("token");
 }

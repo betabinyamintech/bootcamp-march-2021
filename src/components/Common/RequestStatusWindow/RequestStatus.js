@@ -21,7 +21,7 @@ const stages = [
   },
   {
     stageNum: 3,
-    name: "המידע המלא הועבר למומחה ",
+    name: "המידע המלא הועבר למומחה",
     status: StageStatuses.UNSTARTED,
     timestamp: "",
   },

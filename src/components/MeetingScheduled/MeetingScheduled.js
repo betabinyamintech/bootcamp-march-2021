@@ -12,14 +12,11 @@ const MeetingScheduled = () => {
     inquiryTitle,
     meetingOptions: { lengthMeeting, meetingAddress, scheduledDate },
   } = inquiries[0];
-
   const addToCalendar = () => {};
-
-  //   const {} = meeting;
   return (
     <div className="meetingScheduled">
       <div className="preBtnMeetingScheudled">
-        <PreviousButton label={"חזרה"} />
+        <PreviousButton linkTo="more-menu" />
       </div>
       <div className="statusMtngScdl">
         <StatusIcon status={StageStatuses.FINISHED} />

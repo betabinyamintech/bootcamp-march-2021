@@ -1,0 +1,30 @@
+:root {
+  --background-color: #ffffff;
+  --light-grey: #f3f3f3;
+}
+
+body {
+  background-color: var(--background-color);
+}
+h1 {
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 129.5%;
+  /* or 41px */
+
+  text-align: center;
+  letter-spacing: 0.01em;
+
+  /* Black */
+
+  color: #000000;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 9px 0px;
+}

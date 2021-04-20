@@ -36,7 +36,7 @@ const getMonth = (dateString) => {
         "באוקטובר",
         "בנובמבר",
         "בדצמבר",
-      ][monthNum];
+      ][+monthNum - 1];
 };
 
 const getDayOfMonth = (dateString) => {
