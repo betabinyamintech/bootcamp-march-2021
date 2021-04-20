@@ -11,7 +11,7 @@ const InputQuestion = () => {
         src={import("../../../Icons/question-mark.svg")}
         alt=""
       />
-      <Link path="">
+      <Link path="/inquiry/new">
         <Button>השאלה החדשה שלך...</Button>
       </Link>
       {/* <input className="inputNewQuestion" placeholder="השאלה החדשה שלך..." /> */}

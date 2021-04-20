@@ -38,10 +38,15 @@ const steps = [
 ];
 
 const NewInquiry = ({ questionText, labelText, history }) => {
-  const arrowSign = "&gt";
+  console.log("New Inquiry");
+  //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
   const buttonText = "הבא";
-  const [request, setRequest] = useState({});
+  const [request, setRequest] = useState({
+    inquiryTitle: "",
+    inquiryContent: "",
+    inquiryTags: "",
+  });
   const step = steps[currentStep];
   const [hashtags, setHashtags] = useState([]);
 
@@ -73,10 +78,10 @@ const NewInquiry = ({ questionText, labelText, history }) => {
   };
 
   const lastQuestion = currentStep < steps.length - 1;
+  console.log("step", step);
 
   return (
     <div className="questionScreen">
-      <PreviousButton linkTo="/more-menu" />
       <div className="question-invisible-box">
         <div className="question-title"> </div>
         <div className="input-with-label">
@@ -121,7 +126,7 @@ const NewInquiry = ({ questionText, labelText, history }) => {
           else setCurrentStep(currentStep++);
         }}
       >
-        {lastQuestion ? lastMessage : nextMessage} <Button />
+        {lastQuestion ? lastMessage : nextMessage}
       </Button>
     </div>
   );
