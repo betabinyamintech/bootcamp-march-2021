@@ -16,9 +16,9 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
         alignitems: "center",
       }}
     >
-      <div className="hashtags">
-        <div className="newHashtag">
-          <img src={plusImg} alt="" />
+      <div className="hashtagList">
+        <div className="hashtag newHashtag">
+          <img className="hashtagIcon" src={plusImg} alt="" />
           אחר
         </div>
 

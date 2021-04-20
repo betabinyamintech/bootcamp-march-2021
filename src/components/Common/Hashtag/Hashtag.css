@@ -3,7 +3,12 @@
   text-align: center;
   display: flex;
 
-  background: var(--light-grey);
+  flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 4px 12px;
+
+  background: #F7F7F9;
   border-radius: 40px;
 
   flex: none;
@@ -11,8 +16,23 @@
   flex-grow: 0;
   margin: 10px 10px;
   cursor: pointer;
+
+  height: 32px;
+top: 0px;
+
+}
+
+.hashtagList {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
 }
 
 .hashtag.active {
   background: #1ee8b7;
+}
+
+.hashtagIcon {
+  padding-left: 10px;
 }
