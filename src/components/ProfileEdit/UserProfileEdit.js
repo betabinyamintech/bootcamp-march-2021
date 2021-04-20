@@ -20,6 +20,7 @@ const UserProfileEdit = () => {
   );
 
   console.log(userDetails);
+
   return (
     <div className="profile-edit-container">
       <div style={{ alignSelf: "flex-start" }}>
