@@ -75,15 +75,7 @@ const MainRouter = () => {
           )}
         </Route>
         <Route path="/">
-          {userState.user ? (
-            userState.user.profileFullFields ? (
-              <Home />
-            ) : (
-              <Redirect to="/profile/edit" />
-            )
-          ) : (
-            <Redirect to={{ pathname: "/login" }} />
-          )}
+          {userState.user ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
         </Route>
       </Switch>
     </Router>
