@@ -27,8 +27,8 @@ const Header = ({ numExperts = 167 }) => {
       <div className="profileMessage">
         <span>{name},</span>
         <span>{numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך.</span>
+        {!user.isAdmin && <InputQuestion />}
       </div>
-      {!user.isAdmin && <InputQuestion />}
     </div>
   );
 };
