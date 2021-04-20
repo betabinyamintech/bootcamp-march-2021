@@ -1,32 +1,130 @@
-// import { Link } from "react-router-dom";
 import "./Inquiry.css";
-import inquiryType from "./inquiry-type.json";
+import inquiryTypes from "./InquiryType";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import { useUserState } from "../../contexts/context";
+import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 
 const Inquiry = ({ inquiry }) => {
-  const type = "user";
-  // const inquiryTitle = "כותרת_כותרת";
-  const timePassed = "לפני 3 שעות";
-  const { status, inquiryTitle, inquiryType } = inquiry;
-  const statusMessage = "meetingScheduled";
-  return statusMessage === "meetingScheduled" ? (
-    <InquiryMeetingScheduled />
-  ) : (
-    // <Link to={"/searchforexpert"}>
-    <div className="inquiryBox">
-      <div className="inquiryTitle">{inquiryTitle}</div>
-      <div className="timePassed">{timePassed}</div>
-      <div className="statusMessage">
-        &bull; {inquiryType[type][statusMessage].message}
+  const InquiryType = {
+    user: {
+      opened: {
+        message: "פניה חדשה",
+        trueFalseButton: false,
+      },
+      missingDetails: {
+        message: "חסרים פרטים",
+        trueFalseButton: true,
+        buttonText: "השלם פרטים",
+      },
+      matchesFound: {
+        message: "נמצאו xxxxx מומחים מתאימים",
+        trueFalseButton: true,
+        buttonText: "בחירת מומחה",
+      },
+      movedToExpert: {
+        message: "עבר למומחה",
+        trueFalseButton: false,
+      },
+      responseFromExpert: {
+        message: "קיבלת תגובה ממומחה!",
+        trueFalseButton: true,
+        buttonText: "צפיה בתגובה",
+      },
+      meetingScheduled: {
+        message: "נקבע תאריך לפגישה!",
+        trueFalseButton: true,
+        buttonText: "צפיה בפגישה",
+      },
+      meetingWas: {
+        message: "הפגישה התקיימה",
+        trueFalseButton: false,
+      },
+      irrelevant: {
+        message: "לא רלוונטי",
+        trueFalseButton: false,
+      },
+    },
+    expert: {
+      movedToExpert: {
+        message: "",
+        trueFalseButton: "?",
+      },
+      responseFromExpert: {
+        message: "??????????????",
+        trueFalseButton: "???",
+      },
+      meetingWas: {
+        message: "הפגישה התקיימה",
+        trueFalseButton: false,
+      },
+      irrelevant: {
+        message: "לא רלוונטי",
+        trueFalseButton: false,
+      },
+    },
+    admin: {
+      open: {
+        message: "ממתין לשיוך למומחים",
+        trueFalseButton: true,
+        buttonText: "צפיה בפניה",
+      },
+      missingDetails: {
+        message: "חסרים פרטים",
+        trueFalseButton: true,
+        buttonText: "השלם פרטים",
+      },
+      matchesFound: {
+        message: "ממתין לבחירת מומחה",
+        trueFalseButton: false,
+      },
+      movedToExpert: {
+        message: "עבר למומחה",
+        trueFalseButton: false,
+      },
+      responseFromExpert: {
+        message: "קיבלת תגובה ממומחה!",
+        trueFalseButton: true,
+        buttonText: "צפיה בתגובה",
+      },
+      meetingWas: {
+        message: "הפגישה התקיימה",
+        trueFalseButton: false,
+      },
+      irrelevant: {
+        message: "לא רלוונטי",
+        trueFalseButton: false,
+      },
+    },
+  };
+  const user = useUserState().user;
+  const { isAdmin, isExpert } = user;
+  const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
+  const { inquiryTitle, timePassed, inquiryContent } = inquiry;
+  // const status = "responseFromExpert";
+  const status = "meetingScheduled";
+  console.log(status);
+  const { message, trueFalseButton, buttonText } = InquiryType[type][status];
+  console.log(inquiry);
+  // const status = "meetingScheduled";
+  return (
+    <>
+      <div className="inquiryBox">
+        <div className="timePassed">{timePassed}</div>
+        <div className="statusMessage">&bull; {message}</div>
+        <div className="inquiryTitle">&bull; {inquiryContent}</div>
       </div>
-      {inquiryType[type][statusMessage].trueFalseButton && (
+      {status === "responseFromExpert" && (
+        <ChooseMeetingSchedule inquiry={inquiry} />
+      )}
+      {status === "meetingScheduled" && (
+        <InquiryMeetingScheduled inquiry={inquiry} />
+      )}
+      {inquiryTypes && (
         <button className="nextStepButton">
-          {inquiryType[type][statusMessage].buttonText} &nbsp;&nbsp;&gt;
+          {buttonText} &nbsp;&nbsp;&gt;
         </button>
       )}
-    </div>
-    // </Link>
+    </>
   );
 };
 
