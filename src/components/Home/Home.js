@@ -20,9 +20,6 @@ const Home = () => {
       <div>
         <Header />
       </div>
-      <Link>
-        <Button>is Admin</Button>
-      </Link>
       )
       {isAdmin ? (
         <>
