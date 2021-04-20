@@ -6,7 +6,7 @@ function App() {
   return (
     <UserStateProvider>
       <div className="App">
-        <MainRouter />;
+        <MainRouter />
       </div>
     </UserStateProvider>
   );
