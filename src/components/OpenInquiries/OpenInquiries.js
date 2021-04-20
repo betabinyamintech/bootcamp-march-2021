@@ -1,11 +1,11 @@
 import React from "react";
 import Inquiry from "../Inquiry/Inquiry";
 import "./OpenInquiries.css";
+import inquiriesJson from "../Home/inquiries.json";
 // let placeholder = 0;
 
 const OpenInquiries = ({ inquiries }) => {
   if (inquiries.length === 0) {
-    console.log("sss");
     return (
       <div className="inquiriesBox">
         <h3>אין שאלות</h3>
@@ -13,7 +13,6 @@ const OpenInquiries = ({ inquiries }) => {
       </div>
     );
   }
-
   return (
     <div className="inquiriesBox">
       {inquiries.map((inquiry) => (

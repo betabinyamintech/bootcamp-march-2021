@@ -12,6 +12,8 @@ export async function fetchLog(location, requestOptions) {
 }
 
 function addToken(options) {
+  if (options == undefined) options = {};
+  if (options.headers == undefined) options.headers = {};
   return {
     ...options,
     mode: "cors",
@@ -106,6 +108,18 @@ export async function registerUser(dispatch, registerPayload) {
   }
 
   return null;
+}
+
+export async function getInquiries() {
+  const requestOptions = {
+    method: "GET",
+  };
+  const response = await fetchLogWithToken(
+    "/inquiries/user",
+    addToken(requestOptions)
+  );
+  const data = await response.json();
+  return data;
 }
 
 export async function Logout(dispatch) {

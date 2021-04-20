@@ -17,9 +17,11 @@ const Header = ({ numExperts = 167 }) => {
         <span className="profileImg">
           <img alt="home" src={img}></img>
         </span>
-        <span className="homeMenuIcon">
-          <img alt="home" src={img2}></img>
-        </span>
+        <Link to="/more-menu">
+          <span className="homeMenuIcon">
+            <img alt="home" src={img2}></img>
+          </span>
+        </Link>
       </div>
 
       <div className="profileMessage">
