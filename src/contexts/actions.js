@@ -108,6 +108,18 @@ export async function registerUser(dispatch, registerPayload) {
   return null;
 }
 
+export async function getInquiries() {
+  const requestOptions = {
+    method: "GET",
+  };
+  const response = await fetchLogWithToken(
+    "/inquiries/user",
+    addToken(requestOptions)
+  );
+  const data = await response.json();
+  return data;
+}
+
 export async function Logout(dispatch) {
   dispatch({ type: "LOGOUT" });
   localStorage.removeItem("currentUser");
