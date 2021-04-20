@@ -71,11 +71,16 @@ const NewInquiry = ({}) => {
   );
   //final sending to the server
   const postNewInquiry = useCallback(
+    // (request) => {
+    //   console.log(
+    //     "jsonthing" + JSON.stringify({ request }) + "nojson" + { request }
+    //   );
+    // },
     async (request) => {
-      const res = await fetchLogWithToken("/inquiry/new", {
+      const res = await fetchLogWithToken("/inquiries/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ request }),
+        body: JSON.stringify(request),
       });
       history.push("/home");
     },
@@ -131,7 +136,7 @@ const NewInquiry = ({}) => {
         onClick={() => {
           if (lastQuestion) {
             console.log(lastQuestion);
-            postNewInquiry();
+            postNewInquiry(request);
           } else setCurrentStep(currentStep + 1);
         }}
       >
