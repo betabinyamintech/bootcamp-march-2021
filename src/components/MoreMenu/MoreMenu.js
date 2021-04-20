@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
@@ -52,7 +52,7 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <span onClick={() => history.push("/question-screen")}>
+            <span onClick={() => history.push("/inquiry/new")}>
               הוספת אתגר חדש
             </span>
           </div>
