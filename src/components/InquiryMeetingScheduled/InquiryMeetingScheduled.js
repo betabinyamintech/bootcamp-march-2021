@@ -1,6 +1,7 @@
 import "./InquiryMeetingScheduled.css";
 import diaryImg from "../commonsSVG/diary.svg";
 import zoomImg from "../commonsSVG/zoom.svg";
+import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 
 const InquiryMeetingScheduled = ({ inquiry }) => {
   const expert = 'רו"ח משה ארביב';
@@ -26,6 +27,9 @@ const InquiryMeetingScheduled = ({ inquiry }) => {
         ) : (
           <div>{address}</div>
         )}
+        {/* <div className="chooseTimeOnHome">
+          <ChooseMeetingSchedule />
+        </div> */}
       </div>
     </div>
   );

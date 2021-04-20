@@ -1,6 +1,7 @@
 import React from "react";
 import Inquiry from "../Inquiry/Inquiry";
 import "./OpenInquiries.css";
+import inquiriesJson from "../Home/inquiries.json";
 // let placeholder = 0;
 
 const OpenInquiries = ({ inquiries }) => {

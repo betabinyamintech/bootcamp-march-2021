@@ -1,7 +1,10 @@
 .InquiryMeetingScheduled {
-  display: flex;
+  /* display: flex; */
   margin: auto;
   background: #ffffff;
   border-radius: 4px;
   margin: 10px;
+}
+.chooseTimeOnHome {
+  width: 84%;
 }

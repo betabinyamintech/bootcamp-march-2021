@@ -6,10 +6,10 @@ import { useUserState } from "../../contexts/context";
 
 const Inquiry = ({ inquiry }) => {
   const type = "user";
-  const inquiryTitle = "כותרת_כותרת";
+  // const inquiryTitle = "כותרת_כותרת";
   const timePassed = "לפני 3 שעות";
+  const { status, inquiryTitle, inquiryType } = inquiry;
   const statusMessage = "meetingScheduled";
-
   return statusMessage === "meetingScheduled" ? (
     <InquiryMeetingScheduled />
   ) : (

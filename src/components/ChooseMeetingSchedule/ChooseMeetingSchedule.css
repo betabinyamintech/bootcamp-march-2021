@@ -1,121 +1,119 @@
-.mentorcard{
-    display: flex;
-    
-    padding: 4px, 12px, 4px, 12px;
-    
-    }
-    .mentorcardnextimg {
-        padding: 20px;
-    }
+.mentorcard {
+  display: flex;
 
-    .pageTitle{
-        font-family: Heebo;
-font-size: 18px;
-font-style: normal;
-font-weight: 700;
-line-height: 26px;
-letter-spacing: 0.01em;
-text-align: right;
+  padding: 4px, 12px, 4px, 12px;
+}
+.mentorcardnextimg {
+  padding: 20px;
+}
 
-padding: 20px;
-padding-bottom: 0px;
-    }
+.pageTitle {
+  font-family: Heebo;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0.01em;
+  text-align: right;
 
-    .subTitle {
-        font-family: Heebo;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
-letter-spacing: 0.01em;
-text-align: right;
-margin-bottom: 10px;
-margin-top: 0px;
-padding-right: 20px;
-padding-left: 20px;
+  padding: 20px;
+  padding-bottom: 0px;
+}
 
-    }
- 
-    .daytimebox{
-        display: flex;
-        justify-content: space-between;
-    }
+.subTitle {
+  font-family: Heebo;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: right;
+  margin-bottom: 10px;
+  margin-top: 0px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
 
-    .outerbox{
-        padding: 30px;
-        border: 1px solid #ECECEC;
-        margin: 20px;
-        border-radius: 5px;
-    }
+.daytimebox {
+  display: flex;
+  justify-content: space-between;
+}
 
-    .boxTitleHeading{
-        display: flex;
-        font-family: Heebo;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
-letter-spacing: 0.01em;
-text-align: right;
-padding-right: 10px;
-    }
+.outerbox {
+  padding: 30px;
+  border: 1px solid #ececec;
+  margin: 20px;
+  border-radius: 5px;
+  width: 85%;
+}
 
-    .subDetails {
-        display: flex;
-        margin-bottom: 0px;
-        margin-top: 0px;
-        font-family: Heebo;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px;
-letter-spacing: 0.01em;
-text-align: right;
-padding-bottom: 10px;
-padding-right: 10px;
-    }
-    .meetingPlace{
-display: flex;
-align-items: center;
-        font-family: Heebo;
-        font-size: 11px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 16px;
-        letter-spacing: 0.01em;
-        text-align: right;
-        padding-right: 10px;
-    }
+.boxTitleHeading {
+  display: flex;
+  font-family: Heebo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+  text-align: right;
+  padding-right: 10px;
+}
 
-    .expertDetails{
-        display: flex;
-        flex-direction: row;
-        background: #F8F8F8;
-padding: 10px;
-margin: 10px 20px;
-    }
+.subDetails {
+  display: flex;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-family: Heebo;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.01em;
+  text-align: right;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+.meetingPlace {
+  display: flex;
+  align-items: center;
+  font-family: Heebo;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0.01em;
+  text-align: right;
+  padding-right: 10px;
+}
 
-    .expertDetailsText{
-display: flex;
-flex-direction: column;
-    }
+.expertDetails {
+  display: flex;
+  flex-direction: row;
+  background: #f8f8f8;
+  padding: 10px;
+  margin: 10px 20px;
+  width: 97%;
+}
 
-    .buttonDiv{
-        display: flex;
-        align-items: center;
-        padding-bottom: 20px;
-    }
-    
-    .footerText{
-        font-family: Heebo;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
-letter-spacing: 0em;
-text-align: center;
-text-decoration: underline; 
-color: #ABABAB;
+.expertDetailsText {
+  display: flex;
+  flex-direction: column;
+}
 
+.buttonDiv {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+}
 
-    }
+.footerText {
+  font-family: Heebo;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  text-decoration: underline;
+  color: #ababab;
+}
