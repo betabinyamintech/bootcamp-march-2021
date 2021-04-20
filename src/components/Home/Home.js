@@ -25,9 +25,14 @@ const Home = ({ numExperts = 167 }) => {
   if (userInquiries === null) {
     return <div>loading</div>;
   } else {
-    const ownedInquries = userInquiries.filter(
-      (inq) => inq.userId === user._id
+    const ownedInquiries = userInquiries.filter(
+      (ownedInq) => ownedInq.userId === user._id
     );
+    const expertInquiries = user.isExpert
+      ? userInquiries.filter(
+          (expertInq) => expertInq.movedToExpert.expertId === user._id
+        )
+      : null;
 
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
@@ -50,11 +55,11 @@ const Home = ({ numExperts = 167 }) => {
           {user.isExpert && (
             <>
               <div className="inquiriesTitle">פניות נכנסות</div>
-              <OpenInquiries inquiries={ownedInquries} />
+              <OpenInquiries inquiries={expertInquiries} />
             </>
           )}
           <div className="inquiriesTitle">פניות פתוחות</div>
-          <OpenInquiries inquiries={ownedInquries} />
+          <OpenInquiries inquiries={ownedInquiries} />
         </>
       </div>
     );
