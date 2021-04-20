@@ -67,19 +67,19 @@ const NewInquiry = ({ history }) => {
     [step.field, request]
   );
   //final sending to the server
-  const postNewInquiry = useCallback(
-    async (request) => {
-      const res = await fetchLogWithToken("/inquiry/new", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ request }),
-      });
-      history.push("/");
-    },
-    [request]
-  );
+  // const postNewInquiry = useCallback(
+  //   async (request) => {
+  //     const res = await fetchLogWithToken("/inquiry/new", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ request }),
+  //     });
+  //     history.push("/home");
+  //   },
+  //   [request]
+  // );
 
-  const lastQuestion = currentStep < steps.length - 1;
+  const lastQuestion = currentStep >= steps.length - 1;
   console.log("step", step, "request", request);
 
   return (
@@ -125,8 +125,9 @@ const NewInquiry = ({ history }) => {
         style={{ marginTop: "55px" }}
         onClick={() => {
           if (lastQuestion) {
-            postNewInquiry();
-          } else setCurrentStep(currentStep++);
+            console.log(lastQuestion);
+            // postNewInquiry();
+          } else setCurrentStep(currentStep + 1);
         }}
       >
         {lastQuestion ? lastMessage : nextMessage}
