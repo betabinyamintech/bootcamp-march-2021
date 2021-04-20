@@ -7,7 +7,7 @@ import { useUserState } from "../../contexts/context";
 import img from "../commonsSVG/home.svg";
 import img2 from "../commonsSVG/menu-icon.svg";
 
-const Header = ({ numExperts = 167, isCommunityManager }) => {
+const Header = ({ numExperts = 167 }) => {
   const user = useUserState().user;
   const { name } = user;
   let history = useHistory();
@@ -26,13 +26,7 @@ const Header = ({ numExperts = 167, isCommunityManager }) => {
         <span>{name},</span>
         <span>{numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך.</span>
       </div>
-      {!isCommunityManager && (
-        <div>
-          {/* <Link to="/question-screen"> */}
-          <InputQuestion />
-          {/* </Link> */}
-        </div>
-      )}
+      {!user.isAdmin && <InputQuestion />}
     </div>
   );
 };

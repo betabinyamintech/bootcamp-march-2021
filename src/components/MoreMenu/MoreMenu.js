@@ -1,8 +1,8 @@
-import { Logout } from "../../contexts/actions";
 import { useHistory } from "react-router-dom";
 import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import { Logout } from "../../contexts/actions";
 const MoreMenu = () => {
   const [firstName, lastName, city] = ["מעיין", "נווה-גונן", "כוכב-השחר"];
   let history = useHistory();

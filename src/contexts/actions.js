@@ -1,8 +1,10 @@
-const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+import { ActionTypes } from "./reducer";
 
-// const ROOT_URL = "http://localhost:5000";
+export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
 
-async function fetchLog(location, requestOptions) {
+//const ROOT_URL = "http://localhost:5000";
+
+export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
   console.log("response", response);
@@ -12,6 +14,7 @@ async function fetchLog(location, requestOptions) {
 function addToken(options) {
   return {
     ...options,
+    mode: "cors",
     headers: {
       ...options.headers,
       authorization: "Bearer " + localStorage.getItem("currentUser"),
@@ -19,13 +22,19 @@ function addToken(options) {
   };
 }
 
+export async function fetchLogWithToken(location, requestOptions) {
+  return fetchLog(location, addToken(requestOptions));
+}
+
 export async function putUser(dispatch, user) {
+  console.log("user for putting", user);
   const response = await fetchLog(
     "/users/me",
     addToken({ method: "PUT", body: JSON.stringify(user) })
   );
   const data = await response.json();
-  dispatch({ type: "USER_UPDATE", user: data });
+  console.log("returned user data", data);
+  dispatch({ type: ActionTypes.UPDATE_USER, user: data });
 }
 
 export async function getUser(dispatch) {
@@ -36,9 +45,9 @@ export async function getUser(dispatch) {
     const response = await fetchLog("/users/me", addToken(requestOptions));
     const data = await response.json();
 
-    dispatch({ type: "LOGIN_SUCCESS", user: data });
+    dispatch({ type: ActionTypes.LOGIN_SUCCESS, user: data });
   } catch (error) {
-    dispatch({ type: "LOGIN_ERROR", error: error });
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: error });
   }
 }
 
@@ -56,7 +65,7 @@ export async function loginUser(dispatch, loginPayload) {
 
     if (data) {
       dispatch({
-        type: "LOGIN_SUCCESS",
+        type: ActionTypes.LOGIN_SUCCESS,
         user: data,
       });
 
@@ -64,7 +73,7 @@ export async function loginUser(dispatch, loginPayload) {
       return;
     }
 
-    dispatch({ type: "LOGIN_ERROR", error: data });
+    dispatch({ type: ActionTypes.LOGIN_ERROR, error: data });
   } catch (error) {
     dispatch({ type: "LOGIN_ERROR", error: error });
   }

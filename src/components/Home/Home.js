@@ -3,35 +3,45 @@ import React, { useState } from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import inquiries from "./inquiries.json";
-import CommunityManager from "../CommunityManager/CommunityManager.js";
+import InquiryFilter from "../CommunityManager/CommunityManager.js";
 import Button from "../Common/Button/Button";
 import { Link, useLocation } from "react-router-dom";
+import { useUserState } from "../../contexts/context";
+
 const Home = () => {
-  const communityManager = true; //לפי הראוטר
-  const relevantInquries = inquiries;
-  const isAdmin = useLocation();
+  const userInquiries = inquiries;
+  const filteredInquiries = inquiries;
+  const openInquiries = inquiries;
+  const user = useUserState().user;
+  const isAdmin = user.isAdmin;
   console.log(isAdmin); //לפי הכפתור
   return (
     <div style={{ display: "flex", flexFlow: "column nowrap" }}>
       <div>
-        <Header isCommunityManager={communityManager} />
+        <Header />
       </div>
-      {communityManager && (
-        <Link>
-          {" "}
-          <Button> is Admin</Button>
-        </Link>
-      )}
-      {communityManager && isAdmin ? (
-        <CommunityManager />
+      <Link>
+        <Button>is Admin</Button>
+      </Link>
+      )
+      {isAdmin ? (
+        <>
+          <div className="inquiriesTitle">פניות מסוננות</div>
+          <InquiryFilter />
+          <OpenInquiries inquiries={filteredInquiries} />
+        </>
       ) : (
         <>
-          <div className="inquiriesTitle">פניות נכנסות</div>
-          <OpenInquiries inquiries={inquiries} />
+          {user.isExpert && (
+            <>
+              <div className="inquiriesTitle">פניות נכנסות</div>
+              <OpenInquiries inquiries={openInquiries} />
+            </>
+          )}
           <div className="inquiriesTitle">פניות פתוחות</div>
+          <OpenInquiries inquiries={userInquiries} />
         </>
       )}
-      <OpenInquiries inquiries={relevantInquries} />
     </div>
   );
 };

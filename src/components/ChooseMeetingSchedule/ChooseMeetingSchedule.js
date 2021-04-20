@@ -60,7 +60,7 @@ const ChooseMeetingSchedule = () => {
         <OneMeetingDetailsDisplay dateTime={dateTime} />
       ))}
       <div className="buttonDiv">
-        <Button img={tickForButton}>אישור </Button>
+        <Button img={tickForButton}>אישור</Button>
       </div>
       <div
         className="footerText"
@@ -70,7 +70,7 @@ const ChooseMeetingSchedule = () => {
           );
         }}
       >
-        תודה, כבר הסתדרתי
+        .תודה, כבר הסתדרתי
       </div>
     </div>
   );

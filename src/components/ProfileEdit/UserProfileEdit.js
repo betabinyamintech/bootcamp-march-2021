@@ -8,16 +8,59 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 
+const missingMessage = "שדה חובה";
+
 const UserProfileEdit = () => {
   const userState = useUserState();
-  console.log("userState", userState);
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
+  const [warnings, setWarnings] = useState({});
+  console.log("userState", userState, "warnings", warnings);
 
   const setExpertDetails = useCallback(
     (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
     [userDetails, setUserDetails]
   );
+
+  const requiredFields = {
+    city: true,
+    lastName: true,
+    firstName: true,
+    phone: true,
+  };
+
+  const setUserDetailsWithWarning = useCallback(
+    (e, value) => {
+      if (requiredFields[e.target.id]) {
+        if (e.target.value === null || e.target.value === "") {
+          warnings[e.target.id] = missingMessage;
+        } else {
+          delete warnings[e.target.id];
+        }
+        setWarnings(warnings);
+      }
+      setUserDetails({ ...userDetails, [e.target.id]: e.target.value });
+    },
+    [warnings, userDetails]
+  );
+
+  const submit = useCallback(() => {
+    const requiredFieldsKeys = Object.keys(requiredFields);
+    const fieldsWithWarnings = requiredFieldsKeys.filter(
+      (field) => !(userDetails[field] && userDetails[field] !== "")
+    );
+    fieldsWithWarnings.forEach((field) => (warnings[field] = missingMessage));
+    if (fieldsWithWarnings.length > 0) {
+      console.log("has warnings", warnings);
+      setWarnings(warnings);
+      return;
+    }
+    console.log("submit", userDetails);
+    putUser(userDispatch, {
+      ...userDetails,
+      profileFullFields: true,
+    });
+  }, [userDetails, warnings, setWarnings, requiredFields, userDispatch]);
 
   console.log(userDetails);
 
@@ -28,64 +71,69 @@ const UserProfileEdit = () => {
       </div>
       <div className="profile-details">
         <Avatar />
-        <h4 className="user-name">
-          {userDetails.firstName + " " + userDetails.lastName}
-        </h4>
+        {(userDetails.firstName === undefined ||
+          userDetails.lastName === undefined ||
+          userDetails.firstName === "" ||
+          userDetails.lastName === "") && (
+          <h4 className="user-name"> הכנסת פרטי משתמש</h4>
+        )}
+        {userDetails.firstName !== undefined &&
+          userDetails.lastName !== undefined &&
+          userDetails.firstName !== "" &&
+          userDetails.lastName !== "" && (
+            <h4 className="user-name">
+              {userDetails.firstName} {userDetails.lastName}
+            </h4>
+          )}
         <h6 className="user-city">{userDetails.city} </h6>
       </div>
       <div className="input-fields">
         <InputField
           value={userDetails.firstName || ""}
+          id="firstName"
           required={true}
           label="שם פרטי:"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, firstName: e.target.value })
-          }
+          warning={warnings.firstName}
+          onChange={setUserDetailsWithWarning}
         />
         <InputField
           value={userDetails.lastName}
+          id="lastName"
           required={true}
           label="שם משפחה:"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, lastName: e.target.value })
-          }
+          warning={warnings.lastName}
+          onChange={setUserDetailsWithWarning}
         />
         <InputField
           max={10}
           value={userDetails.profession}
+          id="profession"
           label="מה המקצוע שלך?"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, profession: e.target.value })
-          }
+          onChange={setUserDetailsWithWarning}
         />
 
         <InputField
           value={userDetails.phone}
-          type="number"
+          id="phone"
           required={true}
           label="טלפון"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, phone: +e.target.value })
-          }
+          warning={warnings.phone}
+          onChange={setUserDetailsWithWarning}
         />
-
         <InputField
           value={userDetails.city}
+          id="city"
           required={true}
-          label="יישוב"
-          onChange={(e) =>
-            setUserDetails({ ...userDetails, city: e.target.value })
-          }
+          label="ישוב"
+          warning={warnings.city}
+          onChange={setUserDetailsWithWarning}
         />
-
         <div className="mentor-switch">
           <label className="switch">
             <input
               type="checkbox"
               value={userDetails.isExpert}
-              onChange={(e) =>
-                setUserDetails({ ...userDetails, isExpert: !e.target.value })
-              }
+              onChange={setUserDetailsWithWarning}
             />
             <span className="slider round"></span>
           </label>
@@ -98,12 +146,7 @@ const UserProfileEdit = () => {
           />
         )}
         {/* <button className="save-button">שמירה</button> */}
-        <Button
-          className="save-button"
-          onClick={() => {
-            putUser(userDispatch, { ...userDetails, profileFullFields: true });
-          }}
-        >
+        <Button className="save-button" id="submitButton" onClick={submit}>
           <svg
             width="13"
             height="10"

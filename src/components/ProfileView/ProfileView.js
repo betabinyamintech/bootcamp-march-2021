@@ -14,9 +14,9 @@ const ProfileView = ({ user }) => {
           <Avatar height="70px" />
         </div>
         <div className="user-details">
-          <h4 className="user-name"> ישראל ישראלי</h4>
-          <span className="user-city">רו"ח </span>,
-          <span className="user-city"> כוכב השחר</span>
+          <h4 className="user-name">ישראל ישראלי</h4>
+          <span className="user-city">רו"ח</span>,
+          <span className="user-city">כוכב השחר</span>
         </div>
       </div>
       <div className="row-details">
@@ -25,12 +25,12 @@ const ProfileView = ({ user }) => {
       </div>
       <HashtagList s />
       <div className="row-details">
-        <span className="row-title">סוג פגישה מועדף </span>
+        <span className="row-title">סוג פגישה מועדף</span>
         <span className="row-description"> פגישה פיזית </span>
       </div>
       <div className="row-details">
-        <span className="row-title">משך הפגישה </span>
-        <span className="row-description">00:30 </span>
+        <span className="row-title">משך הפגישה</span>
+        <span className="row-description">00:30</span>
       </div>
       <div className="row-details">
         <span className="row-title"> כתובת הפגישה </span>
