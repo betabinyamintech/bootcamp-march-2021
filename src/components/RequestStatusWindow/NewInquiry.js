@@ -59,7 +59,6 @@ const NewInquiry = ({}) => {
 
     [setHashtags]
   );
-  console.log("hashtags" + " " + typeof hashtags + hashtags);
 
   useEffect(() => {
     fetchHashtags();
@@ -129,10 +128,11 @@ const NewInquiry = ({}) => {
       <Button
         style={{ marginTop: "55px" }}
         onClick={() => {
-          if (lastQuestion) {
-            console.log(lastQuestion);
+          if (!lastQuestion) {
+            setCurrentStep(currentStep + 1);
+          } else {
             postNewInquiry(request);
-          } else setCurrentStep(currentStep + 1);
+          }
         }}
       >
         {lastQuestion ? lastMessage : nextMessage}

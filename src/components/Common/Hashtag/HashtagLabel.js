@@ -3,7 +3,6 @@ import "./Hashtag.css";
 import hashtagImg from "./Hashtag.svg";
 
 const HashtagLabel = ({ selected, title, ...props }) => {
-  console.log(title);
   return (
     <div>
       <div {...props} className={"hashtag" + (selected ? " active" : "") + ""}>
