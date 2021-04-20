@@ -12,6 +12,8 @@ export async function fetchLog(location, requestOptions) {
 }
 
 function addToken(options) {
+  if (options == undefined) options = {};
+  if (options.headers == undefined) options.headers = {};
   return {
     ...options,
     mode: "cors",
