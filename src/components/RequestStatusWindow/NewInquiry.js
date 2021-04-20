@@ -5,6 +5,7 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 //import "../Common/InputField/Style.css";
 import "./RequestStyle.css";
 import { fetchLogWithToken } from "../../contexts/actions";
+import { useHistory } from "react-router";
 
 const QuestionTypes = {
   TEXT: "TEXT",
@@ -37,7 +38,8 @@ const steps = [
   },
 ];
 
-const NewInquiry = ({ history }) => {
+const NewInquiry = ({}) => {
+  const history = useHistory();
   console.log("New Inquiry");
   //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
@@ -54,30 +56,31 @@ const NewInquiry = ({ history }) => {
       fetchLogWithToken("/tags")
         .then((response) => response.json())
         .then((data) => setHashtags(data)),
+
     [setHashtags]
   );
+  console.log("hashtags" + " " + typeof hashtags + hashtags);
 
   useEffect(() => {
     fetchHashtags();
   }, []);
-
   //updating request element for sending to the server
   const setRequestCallback = useCallback(
-    (event) => setRequest({ ...request, [step.field]: event.value }),
+    (value) => setRequest({ ...request, [step.field]: value }),
     [step.field, request]
   );
   //final sending to the server
-  // const postNewInquiry = useCallback(
-  //   async (request) => {
-  //     const res = await fetchLogWithToken("/inquiry/new", {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify({ request }),
-  //     });
-  //     history.push("/home");
-  //   },
-  //   [request]
-  // );
+  const postNewInquiry = useCallback(
+    async (request) => {
+      const res = await fetchLogWithToken("/inquiry/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ request }),
+      });
+      history.push("/home");
+    },
+    [request]
+  );
 
   const lastQuestion = currentStep >= steps.length - 1;
   console.log("step", step, "request", request);
@@ -92,7 +95,9 @@ const NewInquiry = ({ history }) => {
             {step.type === QuestionTypes.TEXT && (
               <textarea
                 className="question-input"
-                onChange={setRequestCallback}
+                onChange={(e) => {
+                  setRequestCallback(e.target.value);
+                }}
                 value={request[step.field]}
               ></textarea>
             )}
@@ -126,7 +131,7 @@ const NewInquiry = ({ history }) => {
         onClick={() => {
           if (lastQuestion) {
             console.log(lastQuestion);
-            // postNewInquiry();
+            postNewInquiry();
           } else setCurrentStep(currentStep + 1);
         }}
       >

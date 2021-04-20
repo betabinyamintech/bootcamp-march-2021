@@ -5,10 +5,8 @@ import plusImg from "./PlusImg.svg";
 //import "./HashtagList.css";
 
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
-  const hashtagsWithState = hashtags.map((hashtag) => {
-    hashtag.active = selectedHashtags.find((x) => x.title === hashtag.title);
-    return hashtag;
-  });
+  if (selectedHashtags === undefined) selectedHashtags = [];
+
   return (
     <div
       style={{
@@ -24,23 +22,24 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
           אחר
         </div>
 
-        {hashtagsWithState.map(({ title, active }) => (
+        {hashtags.map((hashtag) => (
           <HashtagLabel
             onClick={
-              typeof setSelectedHashTag === "function" &&
+              typeof setSelectedHashtags === "function" &&
               (() => {
                 // newHashtag()=>{}
                 setSelectedHashtags(
-                  active
+                  selectedHashtags.includes(hashtag)
                     ? selectedHashtags.filter(
-                        (hashtag) => title !== hashtag.title
+                        (selectedHashtag) => selectedHashtag !== hashtag
                       )
-                    : [...selectedHashtags, { title }]
+                    : [...selectedHashtags, hashtag],
+                  hashtags
                 );
               })
             }
-            title={title}
-            active={active}
+            title={hashtag}
+            selected={selectedHashtags.includes(hashtag)}
           />
         ))}
       </div>
