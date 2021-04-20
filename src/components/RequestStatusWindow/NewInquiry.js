@@ -71,11 +71,6 @@ const NewInquiry = ({}) => {
   );
   //final sending to the server
   const postNewInquiry = useCallback(
-    // (request) => {
-    //   console.log(
-    //     "jsonthing" + JSON.stringify({ request }) + "nojson" + { request }
-    //   );
-    // },
     async (request) => {
       const res = await fetchLogWithToken("/inquiries/new", {
         method: "POST",
