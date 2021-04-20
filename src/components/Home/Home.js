@@ -33,9 +33,6 @@ const Home = () => {
         <div>
           <Header />
         </div>
-        <Link>
-          <Button>is Admin</Button>
-        </Link>
         {isAdmin && (
           <>
             <div className="inquiriesTitle">פניות מסוננות</div>
