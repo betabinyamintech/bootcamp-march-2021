@@ -37,23 +37,22 @@ const Home = () => {
           <Button>is Admin</Button>
         </Link>
         )
-        {isAdmin ? (
+        {isAdmin && (
           <>
             <div className="inquiriesTitle">פניות מסוננות</div>
             <InquiryFilter />
           </>
-        ) : (
-          <>
-            {user.isExpert && (
-              <>
-                <div className="inquiriesTitle">פניות נכנסות</div>
-                <OpenInquiries inquiries={ownedInquries} />
-              </>
-            )}
-            <div className="inquiriesTitle">פניות פתוחות</div>
-            <OpenInquiries inquiries={ownedInquries} />
-          </>
         )}
+        <>
+          {user.isExpert && (
+            <>
+              <div className="inquiriesTitle">פניות נכנסות</div>
+              <OpenInquiries inquiries={ownedInquries} />
+            </>
+          )}
+          <div className="inquiriesTitle">פניות פתוחות</div>
+          <OpenInquiries inquiries={ownedInquries} />
+        </>
       </div>
     );
   }

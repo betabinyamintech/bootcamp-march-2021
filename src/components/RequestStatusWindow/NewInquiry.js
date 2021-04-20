@@ -37,13 +37,17 @@ const steps = [
   },
 ];
 
-const NewInquiry = ({ questionText, labelText, history }) => {
-  const arrowSign = "&gt";
+const NewInquiry = ({ history }) => {
+  console.log("New Inquiry");
+  //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
   const buttonText = "הבא";
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
+  console.log("step", step);
   const [hashtags, setHashtags] = useState([]);
+
+  console.log("request", request);
 
   const fetchHashtags = useCallback(
     () =>
@@ -59,24 +63,27 @@ const NewInquiry = ({ questionText, labelText, history }) => {
 
   //updating request element for sending to the server
   const setRequestCallback = useCallback(
-    (value) => setRequest({ ...request, [step.field]: value }),
+    (event) => setRequest({ ...request, [step.field]: event.value }),
     [step.field, request]
   );
   //final sending to the server
-  const postNewInquiry = async (request) => {
-    const res = await fetchLogWithToken("/inquiry/new", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ request }),
-    });
-    history.push("/");
-  };
+  const postNewInquiry = useCallback(
+    async (request) => {
+      const res = await fetchLogWithToken("/inquiry/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ request }),
+      });
+      history.push("/");
+    },
+    [request]
+  );
 
   const lastQuestion = currentStep < steps.length - 1;
+  console.log("step", step, "request", request);
 
   return (
     <div className="questionScreen">
-      <PreviousButton linkTo="/more-menu" />
       <div className="question-invisible-box">
         <div className="question-title"> </div>
         <div className="input-with-label">
@@ -117,11 +124,12 @@ const NewInquiry = ({ questionText, labelText, history }) => {
       <Button
         style={{ marginTop: "55px" }}
         onClick={() => {
-          if (lastQuestion) postNewInquiry();
-          else setCurrentStep(currentStep++);
+          if (lastQuestion) {
+            postNewInquiry();
+          } else setCurrentStep(currentStep++);
         }}
       >
-        {lastQuestion ? lastMessage : nextMessage} <Button />
+        {lastQuestion ? lastMessage : nextMessage}
       </Button>
     </div>
   );
