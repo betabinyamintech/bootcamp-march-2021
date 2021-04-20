@@ -6,3 +6,49 @@
   width: 80%;
   margin: 0 auto;
 }
+
+.profileMessage {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 129.5%;
+  text-align: center;
+  letter-spacing: 0.01em;
+  color: #000000;
+
+  /* Frame 105 */
+
+  /* Auto Layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 20px 20px;
+
+  position: static;
+  /* width: 335px; */
+  /* height: 205px; */
+  /* left: calc(50% - 335px / 2); */
+  top: 0px;
+
+  /* White */
+
+  background: #ffffff;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 16px;
+
+  /* Inside Auto Layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  /* margin: 28px 0px; */
+}
+
+.divInputQuestion {
+  margin: 10px;
+}

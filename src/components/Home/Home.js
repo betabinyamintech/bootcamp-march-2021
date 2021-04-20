@@ -7,8 +7,9 @@ import Button from "../Common/Button/Button";
 import { Link, useLocation } from "react-router-dom";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import { getInquiries } from "../../contexts/actions";
+import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
-const Home = () => {
+const Home = ({ numExperts = 167 }) => {
   const user = useUserState().user;
   const [userInquiries, setUserInquiries] = useState(null);
 
@@ -33,6 +34,12 @@ const Home = () => {
         <div>
           <Header />
         </div>
+        <div className="profileMessage">
+          <span>{user.name},</span>
+          <span>{numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך.</span>
+          {!user.isAdmin && <InputQuestion />}
+        </div>
+
         {isAdmin && (
           <>
             <div className="inquiriesTitle">פניות מסוננות</div>
