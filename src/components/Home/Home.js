@@ -36,7 +36,6 @@ const Home = () => {
         <Link>
           <Button>is Admin</Button>
         </Link>
-        )
         {isAdmin && (
           <>
             <div className="inquiriesTitle">פניות מסוננות</div>
