@@ -3,9 +3,7 @@ import React, { useEffect, useState } from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import InquiryFilter from "../CommunityManager/CommunityManager.js";
-import Button from "../Common/Button/Button";
-import { Link, useLocation } from "react-router-dom";
-import { useUserDispatch, useUserState } from "../../contexts/context";
+import { useUserState } from "../../contexts/context";
 import { getInquiries } from "../../contexts/actions";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
