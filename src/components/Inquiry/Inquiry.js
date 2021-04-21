@@ -5,7 +5,7 @@ import { useUserState } from "../../contexts/context";
 import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 import InquiryStatus from "./InquiryStatus";
 
-const Inquiry = ({ inquiry }) => {
+export const Inquiry = ({ inquiry }) => {
   const user = useUserState().user;
   const { isAdmin, isExpert } = user;
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
@@ -39,7 +39,7 @@ const Inquiry = ({ inquiry }) => {
   );
 };
 
-const InquiryType = {
+export const InquiryType = {
   user: {
     [InquiryStatus.OPENED]: {
       message: "קיבלנו את פנייתך",
@@ -131,4 +131,5 @@ const InquiryType = {
   },
 };
 
-export default Inquiry;
+//commented out since instead we need to export both modules:
+// export default {Inquiry};
