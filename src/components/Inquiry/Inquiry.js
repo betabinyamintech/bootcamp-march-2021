@@ -80,11 +80,11 @@ export const InquiryType = {
   },
   expert: {
     movedToExpert: {
-      message: "",
+      message: "הועבר למומחה",
       trueFalseButton: "?",
     },
     responseFromExpert: {
-      message: "??????????????",
+      message: "התקבלה תגובה ממומחה",
       trueFalseButton: "???",
     },
     meetingWas: {
