@@ -1,0 +1,87 @@
+{
+  "user": {
+    "opened": {
+      "message": "פניה חדשה",
+      "trueFalseButton": false
+    },
+    "missingDetails": {
+      "message": "חסרים פרטים",
+      "trueFalseButton": true,
+      "buttonText": "השלם פרטים"
+    },
+    "matchesFound": {
+      "message": "נמצאו xxxxx מומחים מתאימים",
+      "trueFalseButton": true,
+      "buttonText": "בחירת מומחה"
+    },
+    "movedToExpert": {
+      "message": "עבר למומחה",
+      "trueFalseButton": false
+    },
+    "responseFromExpert": {
+      "message": "קיבלת תגובה ממומחה!",
+      "trueFalseButton": true,
+      "buttonText": "צפיה בתגובה"
+    },
+    "meetingWas": {
+      "message": "הפגישה התקיימה",
+      "trueFalseButton": false
+    },
+    "irrelevant": {
+      "message": "לא רלוונטי",
+      "trueFalseButton": false
+    }
+  },
+  "expert": {
+    "movedToExpert": {
+      "message": "הועבר למומחה",
+      "trueFalseButton": "?"
+    },
+    "responseFromExpert": {
+      "message": "אדמין - הגיעה תשובה ממומחה",
+      "trueFalseButton": "???"
+    },
+    "meetingWas": {
+      "message": "הפגישה התקיימה",
+      "trueFalseButton": false
+    },
+    "irrelevant": {
+      "message": "לא רלוונטי",
+      "trueFalseButton": false
+    }
+  },
+  "communityManager": {
+    "opened": {
+      "message": "ממתין לשיוך למומחים",
+      "trueFalseButton": true,
+      "buttonText": "צפיה בפניה"
+    },
+    "missingDetails": {
+      "message": "חסרים פרטים",
+      "trueFalseButton": true,
+      "buttonText": "השלם פרטים"
+    },
+    "matchesFound": {
+      "message": "ממתין לבחירת מומחה",
+      "trueFalseButton": false
+    },
+    "movedToExpert": {
+      "message": "עבר למומחה",
+      "trueFalseButton": false
+    },
+    "responseFromExpert": {
+      "message": "קיבלת תגובה ממומחה!",
+      "trueFalseButton": true,
+      "buttonText": "צפיה בתגובה"
+    },
+    "meetingWas": {
+      "message": "הפגישה התקיימה",
+      "trueFalseButton": false
+    },
+    "irrelevant": {
+      "message": "לא רלוונטי",
+      "trueFalseButton": false
+    }
+    
+  }
+}
