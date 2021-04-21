@@ -4,6 +4,7 @@ import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingSc
 import { useUserState } from "../../contexts/context";
 import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 import InquiryStatus from "./InquiryStatus";
+import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
 
 export const Inquiry = ({ inquiry }) => {
   const user = useUserState().user;
@@ -29,6 +30,9 @@ export const Inquiry = ({ inquiry }) => {
       )}
       {status === "meetingScheduled" && (
         <InquiryMeetingScheduled inquiry={inquiry} />
+      )}
+      {status === "open" && type === "expert" && (
+        <AdminChooseMentor inquiry={inquiry} />
       )}
       {inquiryTypes && (
         <button className="nextStepButton">

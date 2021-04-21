@@ -2,7 +2,7 @@ import userEvent from "@testing-library/user-event";
 import Avatar from "../Avatar/Avatar";
 import "./MentorCard.css";
 import { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import UserContext from "../../contexts/context";
 import NextIcon from "./NextArrow.svg";
 
 const users = [

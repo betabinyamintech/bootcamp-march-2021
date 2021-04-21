@@ -13,12 +13,24 @@ const Hashtags = ["aaa", "bbb", "cba", "cbc"];
 //the next information will come as props from previous page, afterwards we will delete the next line
 const inquiry = { inquiryTitle: "מה אני יכולה לעשות..." };
 
-const AdminChooseMentor = ({
-  //inquiry,
-  changeHashtag,
-  chosenHashtag,
-  ...props
-}) => {
+// const AdminChooseMentor = ({
+//   //inquiry,
+//   changeHashtag,
+//   chosenHashtag,
+//   ...props
+// }) => {
+
+
+  const AdminChooseMentor = ({
+    inquiry
+  }) => {
+
+  const [chosenHashtag, setChosenHashtag] = useState(null);
+
+  const changeHashtag = (hashtag) => {
+    setChosenHashtag(hashtag);
+    }
+    
   //fetch hashtags from server to const hashtags
   const hashtagsOptions = Hashtags.map((option) => (
     <option value={option}>{option}</option>
