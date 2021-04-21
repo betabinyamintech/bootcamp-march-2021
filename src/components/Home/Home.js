@@ -10,7 +10,7 @@ import InputQuestion from "../Common/InputQuestion/InputQuestion";
 const Home = ({ numExperts = 167 }) => {
   const user = useUserState().user;
   const [userInquiries, setUserInquiries] = useState(null);
-
+const [filteredInquiries, setFilteredInquiries] = useState(null);
   const isAdmin = user.isAdmin;
 
   useEffect(() => {
@@ -45,8 +45,10 @@ const Home = ({ numExperts = 167 }) => {
 
         {isAdmin && (
           <>
-            <div className="inquiriesTitle">פניות מסוננות</div>
-            <InquiryFilter />
+            <InquiryFilter 
+            allInquiries={ownedInquiries}
+            filteredInquiries={filteredInquiries}
+            setFilteredInquiries={setFilteredInquiries}/>
           </>
         )}
         <>

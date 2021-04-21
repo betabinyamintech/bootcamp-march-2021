@@ -1,25 +1,67 @@
+import {useState } from "react";
 import "./CommunityManager.css";
 
-const InquiryFilter = ({ inquiry }) => {
+import {InquiryType} from "../Inquiry/Inquiry.js";
+const allEnquiryTypesExpert = InquiryType.expert;
+
+
+const groupByForObject = (xs, key) => 
+Object.values(xs).reduce((rv, x) => {
+  rv[x[[key]]] = true || [];
+  return rv;
+}, {});
+
+
+
+const InquiryFilter = ({ allInquiries, filteredInquiries, setFilteredInquiries }) => {
+  const [selectedStatus, setSelectedStatus] = useState("כל הפניות");
+
+  const searchStatus = (statusChoice) => {
+    const data = allInquiries.filter((i) => i.statusMessage === statusChoice);
+    if (statusChoice === "") {
+      setFilteredInquiries(allInquiries);
+      setSelectedStatus("כל הפניות"); 
+    } else {
+      setFilteredInquiries(data);
+      setSelectedStatus(statusChoice);
+    }
+  };
+  
   return (
     <>
-      <div className="inquiriesTitle">שאלות פתוחות</div>
+      <div className="inquiriesTitle">פניות מסוננות: {selectedStatus}</div>
       <select
         className="selectStatus"
         id="filterMeetings"
         name="filterMeetings"
+        value={selectedStatus}
+        onChange={(e) => searchStatus(e.target.value)}
       >
-        <option value="opened">כל הפניות</option>
-        <option value="missingDetails">פניות עם פרטים חסרים</option>
-        <option value="matchesFound">התאמות נמצאו</option>
-        <option value="movedToExpert">פניות שעברו למומחה</option>
-        <option value="responseFromExpert">פניות שקיבלו תגובה ממומחה</option>
-        <option value="meetingScheduled">פניות עם פגישה מתוזמנת</option>
-        <option value="meetingWas">הייתה פגישה</option>
-        <option value="irrelevant">פניות לא רלוונטיות</option>
+         <option value="">כל הפניות</option>
+        {Object.keys(groupByForObject(allEnquiryTypesExpert, "message")).map(
+          (category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          )
+        )}
       </select>
     </>
   );
 };
 
 export default InquiryFilter;
+
+        /*
+        this code will only give list of status codes in the dropDown (e.g. matchesFound)
+        without giving the Hebrew text:
+
+          {Object.values(InquiryStatus).map(
+          (category) => (
+            <option value={category} key={category}>
+              {category}
+            </option>
+          )
+        )}
+
+        */
