@@ -10,7 +10,7 @@ import InputQuestion from "../Common/InputQuestion/InputQuestion";
 const Home = ({ numExperts = 167 }) => {
   const user = useUserState().user;
   const [userInquiries, setUserInquiries] = useState(null);
-const [filteredInquiries, setFilteredInquiries] = useState(null);
+  const [filteredInquiries, setFilteredInquiries] = useState(null);
   const isAdmin = user.isAdmin;
 
   useEffect(() => {
@@ -31,24 +31,24 @@ const [filteredInquiries, setFilteredInquiries] = useState(null);
           (expertInq) => expertInq.movedToExpert.expertId === user._id
         )
       : null;
-
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
         <div>
           <Header />
         </div>
         <div className="profileMessage">
-          <span>{user.firstName?user.firstName:"היי"},</span>
+          <span>{user.firstName ? user.firstName : "היי"},</span>
           <span>{numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך.</span>
           {!user.isAdmin && <InputQuestion />}
         </div>
 
         {isAdmin && (
           <>
-            <InquiryFilter 
-            allInquiries={ownedInquiries}
-            filteredInquiries={filteredInquiries}
-            setFilteredInquiries={setFilteredInquiries}/>
+            <InquiryFilter
+              allInquiries={ownedInquiries}
+              filteredInquiries={filteredInquiries}
+              setFilteredInquiries={setFilteredInquiries}
+            />
           </>
         )}
         <>

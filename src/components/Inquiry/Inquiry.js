@@ -10,16 +10,24 @@ export const Inquiry = ({ inquiry }) => {
   const user = useUserState().user;
   const { isAdmin, isExpert } = user;
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
-  const { status, inquiryTitle, timePassed, inquiryContent } = inquiry;
+  const { status, inquiryTitle, timePassed, inquiryContent, createdAt } =
+    inquiry;
   const values = InquiryType[type][status];
   // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
+  console.log("created" + createdAt);
+  let creationDate = new Date(createdAt).toLocaleDateString();
+  let creationTime = new Date(createdAt).toLocaleTimeString();
   return (
     <>
       <div className="inquiryBox">
         <div className="timePassed">{timePassed}</div>
         <div className="inquiryTitle">&bull; {inquiryTitle}</div>
         <div className="statusMessage">&bull; {message}</div>
+        <div className="statusMessage">
+          &bull; {creationTime.slice(0, 4) + creationDate}
+        </div>
+
         {status === "responseFromExpert" && (
           <ChooseMeetingSchedule inquiry={inquiry} />
         )}
