@@ -18,9 +18,9 @@ function register(email, password) {
 }
 
 const LoginRegister = () => {
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const history = useHistory();
-  const isLogin = pathname.replace(/\//g,'') === 'login'
+  const isLogin = pathname.replace(/\//g, "") === "login";
   const [loginDetails, setLoginDetails] = useState({ email: "", password: "" });
   const userState = useUserState();
   const dispatch = useUserDispatch();
@@ -52,10 +52,6 @@ const LoginRegister = () => {
       />
 
       <div className="buttons">
-        {/* <button className="email-button" style={{ top: "470px" }}>
-          התחברות באמצעות גוגל
-        </button> */}
-        {/* <Link to={isProfileFullFilled ? "/home" : "/profile/edit"}></Link> */}
         <Button
           onClick={() => {
             onClick(loginDetails);
@@ -69,7 +65,9 @@ const LoginRegister = () => {
         {isLogin ? "אין לך חשבון? " : "יש לך חשבון? "}
         <span
           style={{ textDecoration: "underline" }}
-          onClick={() => {history.push(isLogin?'/register':'/login')}}
+          onClick={() => {
+            history.push(isLogin ? "/register" : "/login");
+          }}
         >
           {isLogin ? "הירשם עכשיו." : "היכנס עכשיו."}
         </span>

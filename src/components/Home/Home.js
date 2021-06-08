@@ -38,7 +38,7 @@ const [filteredInquiries, setFilteredInquiries] = useState(null);
           <Header />
         </div>
         <div className="profileMessage">
-          <span>{user.name},</span>
+          <span>{user.firstName?user.firstName:"היי"},</span>
           <span>{numExperts} מומחים כאן בקהילת מטה בנימין ישמחו לעזור לך.</span>
           {!user.isAdmin && <InputQuestion />}
         </div>

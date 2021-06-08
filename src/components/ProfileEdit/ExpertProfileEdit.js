@@ -5,6 +5,15 @@ import "./ExpertProfileEdit.css";
 import hashtagsFromServer from "../Common/Hashtags";
 
 const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
+  const [preferredMeetingType, setPreferredMeetingType] =
+    useState("physically");
+  const localPreferredMeetingType = (value) => {
+    setPreferredMeetingType(value);
+    setExpertDetails({
+      ...expertDetails,
+      preferredMeetingType: value,
+    });
+  };
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
@@ -33,7 +42,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           </label>
         </div>
         <span className="titles"> באילו נושאים תוכל לסייע?</span>
-        <HashtagList
+        {/* <HashtagList
           hashtags={hashtagsFromServer}
           selectedHashtags={expertDetails.inquiryTags}
           setSelectedHashtags={() =>
@@ -42,7 +51,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
               inquiryTags: expertDetails.inquiryTags,
             })
           }
-        />
+        /> */}
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
         {[
           { label: "שאלה 1:", index: 0 },
@@ -96,18 +105,19 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
         <span className="titles">סוג פגישה מועדף</span>
         <select
           className="meeting-kind "
-          onChange={(e) =>
-            setExpertDetails({
-              ...expertDetails,
-              preferredMeetingType: e.target.value,
-            })
-          }
+          onChange={(e) => localPreferredMeetingType(e.target.value)}
+
+          // (e) =>
+          // setExpertDetails({
+          //   ...expertDetails,
+          //   preferredMeetingType: e.target.value,
+          // })
         >
           <option value="physically">פגישה פיזית</option>
           <option value="virtual">שיחת טלפון</option>
           <option value="virtual">שיחת וידאו בזום</option>
         </select>
-        {expertDetails.preferredMeetingType === "physically" && (
+        {preferredMeetingType === "physically" && (
           <InputField
             value={expertDetails.meetingAdress}
             label="כתובת לפגישה:"
@@ -119,7 +129,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             }
           />
         )}
-        {expertDetails.preferredMeetingType === "physically" && (
+        {preferredMeetingType === "physically" && (
           <span className="beta-gift">
             <svg
               width="15"

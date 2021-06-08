@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../Common.css";
 function PreviousButton({ onClick, label, linkTo, ...props }) {
   return (
-    <Link to={linkTo}>
+    <Link to={linkTo} onClick={onClick}>
       <div className="back-button">
         <span className="previous-icon">
           <svg

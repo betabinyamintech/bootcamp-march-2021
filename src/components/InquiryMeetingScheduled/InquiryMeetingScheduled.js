@@ -13,7 +13,6 @@ const InquiryMeetingScheduled = ({ inquiry }) => {
   const address = "בנימין טק, שער בנימין";
   return (
     <div className="InquiryMeetingScheduled">
-      <img src={diaryImg} alt="" />
       <div style={{ margin: "inherit" }}>
         <div>{expert}</div>
         {/* <div className="inquiryTitle" style={{ margin: "0" }}>

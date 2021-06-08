@@ -3,17 +3,35 @@ import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { Logout } from "../../contexts/actions";
+import { useUserState } from "../../contexts/context";
 const MoreMenu = () => {
-  const [firstName, lastName, city] = ["מעיין", "נווה-גונן", "כוכב-השחר"];
   let history = useHistory();
+  const userState = useUserState();
+  console.log(userState.user);
+  const logout = () => {
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("token");
+    document.location.reload();
+  };
   return (
     <div className="more-menu-container">
       <PreviousButton linkTo="/home" />
       <div className="user-details">
         <Avatar />
         <div>
-          <h3>{`${firstName} ${lastName}`}</h3>
-          <h5>{city}</h5>
+          <h3>{`${
+            userState.user.firstName ? userState.user.firstName + "," : ""
+          } ${
+            userState.user.lastName ? userState.user.lastName : "ברוך/ה הבא/ה!"
+          }`}</h3>
+          <h5>{`${userState.user.city ? userState.user.city : ""}`}</h5>
+          <h5>{`${
+            userState.user.profession
+              ? userState.user.profession
+              : userState.user.city
+              ? userState.user.city
+              : "הכנס/י ללשונית 'עריכת פרופיל' להשלמת הפרטים החסרים"
+          }`}</h5>{" "}
         </div>
       </div>
       <div className="more-menu-buttons">
@@ -37,7 +55,7 @@ const MoreMenu = () => {
           </div>
         </button>
         <button>
-          <div onClick={() => history.push("/question-screen")}>
+          <div onClick={() => history.push("/inquiry/new")}>
             <i>
               <svg
                 width="10"
@@ -115,7 +133,7 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <button onClick={Logout}>
+            <button onClick={logout}>
               <span>התנתקות</span>
             </button>
           </div>

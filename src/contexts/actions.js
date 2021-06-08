@@ -1,9 +1,6 @@
 import { ActionTypes } from "./reducer";
-
 export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-
-//const ROOT_URL = "http://localhost:5000";
-
+// const ROOT_URL = "http://localhost:5000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
@@ -14,6 +11,7 @@ export async function fetchLog(location, requestOptions) {
 function addToken(options) {
   if (options == undefined) options = {};
   if (options.headers == undefined) options.headers = {};
+  console.log(options + "options");
   return {
     ...options,
     mode: "cors",

@@ -6,7 +6,6 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 import "./RequestStyle.css";
 import { fetchLogWithToken } from "../../contexts/actions";
 import { useHistory } from "react-router";
-
 const QuestionTypes = {
   TEXT: "TEXT",
   HASHTAG: "HASHTAG",
@@ -25,7 +24,6 @@ const steps = [
   {
     type: QuestionTypes.TEXT,
     title: "הנה, זה המקום לפרט יותר...",
-
     comment:
       "מה לפרט כאן? קצת על הרקע שלך, תיאור של מה שמביא אותך לאתגר הזה ועל מה הפתרון שלו צפוי להשפיע.",
     field: "inquiryContent",
@@ -40,16 +38,12 @@ const steps = [
 
 const NewInquiry = ({}) => {
   const history = useHistory();
-  console.log("New Inquiry");
   //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
   const buttonText = "הבא";
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
-  console.log("step", step);
   const [hashtags, setHashtags] = useState([]);
-
-  console.log("request", request);
 
   const fetchHashtags = useCallback(
     () =>
@@ -83,15 +77,37 @@ const NewInquiry = ({}) => {
 
   const lastQuestion = currentStep >= steps.length - 1;
   console.log("step", step, "request", request);
+  console.log("currentStep", currentStep);
 
   return (
     <div className="questionScreen">
+      {currentStep === 0 ? (
+        <PreviousButton linkTo="/home" />
+      ) : (
+        <PreviousButton
+          onClick={() => {
+            setCurrentStep(currentStep - 1);
+          }}
+        />
+      )}
       <div className="question-invisible-box">
         <div className="question-title"> </div>
         <div className="input-with-label">
           <div className="question-box">
             <span className="input-label"> {step.title}</span>
-            {step.type === QuestionTypes.TEXT && (
+            {currentStep === 1 && (
+              <h3 className="input-label">{request.inquiryTitle}</h3>
+            )}
+            {step.type === QuestionTypes.TEXT && currentStep === 0 && (
+              <textarea
+                className="question-input"
+                onChange={(e) => {
+                  setRequestCallback(e.target.value);
+                }}
+                value={request[step.field]}
+              ></textarea>
+            )}
+            {step.type === QuestionTypes.TEXT && currentStep === 1 && (
               <textarea
                 className="question-input"
                 onChange={(e) => {

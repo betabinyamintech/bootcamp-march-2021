@@ -11,34 +11,30 @@ export const Inquiry = ({ inquiry }) => {
   const { isAdmin, isExpert } = user;
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
   const { status, inquiryTitle, timePassed, inquiryContent } = inquiry;
-  // const status = "responseFromExpert";
-  // const status = "meetingScheduled";
-  console.log(type, status);
   const values = InquiryType[type][status];
-  console.log("values", values);
+  // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
-  // const status = "meetingScheduled";
   return (
     <>
       <div className="inquiryBox">
         <div className="timePassed">{timePassed}</div>
         <div className="inquiryTitle">&bull; {inquiryTitle}</div>
         <div className="statusMessage">&bull; {message}</div>
+        {status === "responseFromExpert" && (
+          <ChooseMeetingSchedule inquiry={inquiry} />
+        )}
+        {status === "meetingScheduled" && (
+          <InquiryMeetingScheduled inquiry={inquiry} />
+        )}
+        {status === "open" && type === "expert" && (
+          <AdminChooseMentor inquiry={inquiry} />
+        )}
+        {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
+          <button className="nextStepButton">
+            {buttonText} &nbsp;&nbsp;&gt;
+          </button>
+        )}
       </div>
-      {status === "responseFromExpert" && (
-        <ChooseMeetingSchedule inquiry={inquiry} />
-      )}
-      {status === "meetingScheduled" && (
-        <InquiryMeetingScheduled inquiry={inquiry} />
-      )}
-      {status === "open" && type === "expert" && (
-        <AdminChooseMentor inquiry={inquiry} />
-      )}
-      {inquiryTypes && (
-        <button className="nextStepButton">
-          {buttonText} &nbsp;&nbsp;&gt;
-        </button>
-      )}
     </>
   );
 };
@@ -46,7 +42,7 @@ export const Inquiry = ({ inquiry }) => {
 export const InquiryType = {
   user: {
     [InquiryStatus.OPENED]: {
-      message: "קיבלנו את פנייתך",
+      message: "פנייה חדשה",
       trueFalseButton: false,
     },
     [InquiryStatus.MISSING_DETAILS]: {

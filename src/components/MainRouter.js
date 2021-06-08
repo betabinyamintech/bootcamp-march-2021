@@ -28,11 +28,11 @@ const MainRouter = () => {
       getUser(userDispatch);
     }
   }, [userDispatch]);
-
+let check = false
   return (
     <Router>
       {userState.user && (
-        <Switch>
+        <Switch >
           <Route path="/inquiry/new">
             <NewInquiry />
           </Route>
@@ -49,10 +49,13 @@ const MainRouter = () => {
             <MeetingScheduled />
           </Route>
           <Route path="/more-menu">
-            <MoreMenu />
+            <MoreMenu/>
           </Route>
           <Route path="/search-for-expert">
             <SearchForExpert />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       )}
@@ -75,7 +78,7 @@ const MainRouter = () => {
           )}
         </Route>
         <Route path="/">
-          {userState.user ? <Home /> : <Redirect to={{ pathname: "/login" }} />}
+          {!userState.user && <Redirect to={{ pathname: "/login" }} />}
         </Route>
       </Switch>
     </Router>

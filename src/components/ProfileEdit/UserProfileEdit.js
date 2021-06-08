@@ -7,7 +7,6 @@ import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
-
 const missingMessage = "שדה חובה";
 
 const UserProfileEdit = () => {
@@ -15,6 +14,10 @@ const UserProfileEdit = () => {
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
   const [warnings, setWarnings] = useState({});
+  const [checkIsExpert, setCheckIsExpert] = useState(
+    userDetails.isExpert ? userDetails.isExpert : false
+  );
+  const [localIsExpert, setLocalIsExpert] = useState(checkIsExpert);
   console.log("userState", userState, "warnings", warnings);
 
   const setExpertDetails = useCallback(
@@ -56,12 +59,20 @@ const UserProfileEdit = () => {
       return;
     }
     console.log("submit", userDetails);
-    putUser(userDispatch, {
-      ...userDetails,
-      profileFullFields: true,
-    });
+    putUser(
+      userDispatch,
+      {
+        userDetails,
+        profileFullFields: true,
+      },
+      console.log("putUser works" + userDetails)
+    );
   }, [userDetails, warnings, setWarnings, requiredFields, userDispatch]);
-
+  const setIsExpertFinal = (e) => {
+    setLocalIsExpert(!localIsExpert);
+    setUserDetails({ ...userDetails, isExpert: !localIsExpert });
+  };
+  console.log(localIsExpert + "local expert");
   console.log(userDetails);
 
   return (
@@ -75,7 +86,7 @@ const UserProfileEdit = () => {
           userDetails.lastName === undefined ||
           userDetails.firstName === "" ||
           userDetails.lastName === "") && (
-          <h4 className="user-name"> הכנסת פרטי משתמש</h4>
+          <h4 className="user-name"> הזנת פרטים</h4>
         )}
         {userDetails.firstName !== undefined &&
           userDetails.lastName !== undefined &&
@@ -111,7 +122,6 @@ const UserProfileEdit = () => {
           label="מה המקצוע שלך?"
           onChange={setUserDetailsWithWarning}
         />
-
         <InputField
           value={userDetails.phone}
           id="phone"
@@ -133,13 +143,14 @@ const UserProfileEdit = () => {
             <input
               type="checkbox"
               value={userDetails.isExpert}
-              onChange={setUserDetailsWithWarning}
+              id="isExpert"
+              onChange={(e) => setIsExpertFinal(e)}
             />
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
         </div>
-        {userDetails.isExpert && (
+        {localIsExpert && (
           <ExpertProfileEdit
             setExpertDetails={setExpertDetails}
             expertDetails={userDetails.expertDetails}
