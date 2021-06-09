@@ -40,6 +40,7 @@ const NewInquiry = ({}) => {
   const history = useHistory();
   //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
+  const [error, setError] = useState(false);
   const buttonText = "הבא";
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
@@ -77,7 +78,6 @@ const NewInquiry = ({}) => {
 
   const lastQuestion = currentStep >= steps.length - 1;
   console.log("step", step, "request", request);
-  console.log("currentStep", currentStep);
 
   return (
     <div className="questionScreen">
@@ -138,15 +138,37 @@ const NewInquiry = ({}) => {
               </svg>
               <span> {step.comment}</span>
             </div>
+            {error && (
+              <span style={{ color: "red" }}> {"מילוי שדה זה הוא חובה"}</span>
+            )}
           </div>
         </div>
       </div>
       <Button
         style={{ marginTop: "55px" }}
         onClick={() => {
-          if (!lastQuestion) {
+          if (currentStep === 0 && !lastQuestion && request.inquiryTitle) {
             setCurrentStep(currentStep + 1);
-          } else {
+            setError(false);
+          }
+          if (currentStep === 1 && !lastQuestion && request.inquiryContent) {
+            setCurrentStep(currentStep + 1);
+            setError(false);
+          }
+          if (currentStep === 0 && !request.inquiryTitle) {
+            setError(true);
+          }
+          if (currentStep === 1 && !request.inquiryContent) {
+            setError(true);
+          }
+          if (currentStep === 2 && !request.inquiryTags) {
+            setError(true);
+          }
+          if (
+            request.inquiryTitle &&
+            request.inquiryContent &&
+            request.inquiryTags
+          ) {
             postNewInquiry(request);
           }
         }}

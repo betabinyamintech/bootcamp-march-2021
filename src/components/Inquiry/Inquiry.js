@@ -5,40 +5,64 @@ import { useUserState } from "../../contexts/context";
 import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
 import InquiryStatus from "./InquiryStatus";
 import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
+import menuIcon from "../commonsSVG/menu-icon.svg";
+import { deleteInquiry } from "../../contexts/actions";
+import { useState } from "react";
 
 export const Inquiry = ({ inquiry }) => {
   const user = useUserState().user;
+  const [clicked, setClicked] = useState(false);
   const { isAdmin, isExpert } = user;
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
-  const { status, inquiryTitle, timePassed, inquiryContent, createdAt } =
+  const { status, inquiryTitle, timePassed, inquiryContent, createdAt, _id } =
     inquiry;
   const values = InquiryType[type][status];
   // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
-  console.log("created" + createdAt);
   let creationDate = new Date(createdAt).toLocaleDateString();
   let creationTime = new Date(createdAt).toLocaleTimeString();
   return (
     <>
-      <div className="inquiryBox">
-        <div className="timePassed">{timePassed}</div>
+      <div
+        className="inquiryBox"
+        onClick={() => {
+          console.log("inquiry id" + " " + _id);
+        }}
+      >
+        <span
+          className="homeMenuIcon"
+          onClick={() => {
+            deleteInquiry(_id);
+          }}
+        >
+          <img alt="home" src={menuIcon}></img>
+        </span>
         <div className="inquiryTitle">&bull; {inquiryTitle}</div>
-        <div className="statusMessage">&bull; {message}</div>
+        <div className="timePassed">{`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(
+          0,
+          5
+        )}`}</div>
         <div className="statusMessage">
-          &bull; {creationTime.slice(0, 4) + creationDate}
+          <h6 style={{ fontSize: "13px" }}></h6>
         </div>
+        <div className="statusMessage">&bull; {message}</div>
 
-        {status === "responseFromExpert" && (
+        {status === "responseFromExpert" && clicked && (
           <ChooseMeetingSchedule inquiry={inquiry} />
         )}
-        {status === "meetingScheduled" && (
+        {status === "meetingScheduled" && clicked && (
           <InquiryMeetingScheduled inquiry={inquiry} />
         )}
         {status === "open" && type === "expert" && (
           <AdminChooseMentor inquiry={inquiry} />
         )}
         {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
-          <button className="nextStepButton">
+          <button
+            className="nextStepButton"
+            onClick={() => {
+              setClicked(!clicked);
+            }}
+          >
             {buttonText} &nbsp;&nbsp;&gt;
           </button>
         )}

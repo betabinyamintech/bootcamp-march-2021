@@ -72,9 +72,7 @@ const UserProfileEdit = () => {
     setLocalIsExpert(!localIsExpert);
     setUserDetails({ ...userDetails, isExpert: !localIsExpert });
   };
-  console.log(localIsExpert + "local expert");
   console.log(userDetails);
-
   return (
     <div className="profile-edit-container">
       <div style={{ alignSelf: "flex-start" }}>

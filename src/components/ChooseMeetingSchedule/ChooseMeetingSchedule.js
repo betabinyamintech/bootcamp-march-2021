@@ -29,7 +29,7 @@ const ChooseMeetingSchedule = ({ optinalDates }) => {
   const optionalDates = inquiries[0].user.meetingOptions.optionalDates;
   const inquiryStatus = inquiries[0].user.status;
   return (
-    <div>
+    <div className="container">
       <div className="pageTitle">בחירת מועד לפגישה</div>
       <div className="subTitle">{expert.expertDetails.lengthMeeting} פגישה</div>
       <ExpertDetailsHeader expert={expert} />

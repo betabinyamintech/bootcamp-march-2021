@@ -119,6 +119,40 @@ export async function getInquiries() {
   const data = await response.json();
   return data;
 }
+// export async function deleteInquiry
+// await fetch("/inquiries/" + { inquiryId }, {
+//   method: "DELETE",
+//   headers: {
+//     authorization: "Bearer " + localStorage.getItem("currentUser"),
+//   },
+// });
+
+export async function deleteInquiry(inquiryId) {
+  console.log(inquiryId);
+  console.log("start deleting");
+  await fetch("/inquiries/" + inquiryId, {
+    method: "DELETE",
+    headers: {
+      authorization: "Bearer " + localStorage.getItem("currentUser"),
+    },
+  });
+  console.log("start deleting");
+
+  return;
+}
+// export async function deleteInquiryNotWork(inquiryId) {
+//   console.log(inquiryId);
+//   const requestOptions = {
+//     method: "DELETE",
+//     _id: inquiryId,
+//   };
+//   const response = await fetchLogWithToken(
+//     "/inquiries/" + { inquiryId },
+//     addToken(requestOptions)
+//   );
+//   const data = await response.json();
+//   return data;
+// }
 
 export async function Logout(dispatch) {
   dispatch({ type: "LOGOUT" });

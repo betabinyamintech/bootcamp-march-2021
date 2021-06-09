@@ -41,6 +41,7 @@
 
 .outerbox {
   padding: 30px;
+  background: #e7e7ec;
   border: 1px solid #ececec;
   margin: 20px;
   border-radius: 5px;
@@ -89,7 +90,7 @@
 .expertDetails {
   display: flex;
   flex-direction: row;
-  background: #f8f8f8;
+  background: #f0f0f5;
   padding: 10px;
   margin: 10px 20px;
   width: 97%;

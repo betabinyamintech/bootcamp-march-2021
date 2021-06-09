@@ -39,7 +39,7 @@ const ExpertDetailsHeader = ({ expert }) => {
           </div>
           <div className="meetingPlace">
             נפגש בדרך כלל ב:{" "}
-            {expert.expertDetails.meetingAddress === "zoom" ? (
+            {expert.expertDetails.meetingAddress === "virtual" ? (
               <Zoom />
             ) : (
               expert.expertDetails.meetingAddress
