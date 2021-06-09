@@ -121,6 +121,7 @@ const UserProfileEdit = () => {
           onChange={setUserDetailsWithWarning}
         />
         <InputField
+          type="number"
           value={userDetails.phone}
           id="phone"
           required={true}

@@ -15,6 +15,10 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
     });
   };
   let keys = 0;
+  const labelsForExpertQuestions = [
+    { label: "שאלה 1:", index: 0 },
+    { label: "שאלה 2:", index: 1 },
+  ];
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
@@ -54,10 +58,8 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           }
         />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
-        {[
-          { label: "שאלה 1:", index: 0 },
-          { label: "שאלה 2:", index: 1 },
-        ].map((question) => (
+
+        {labelsForExpertQuestions.map((question) => (
           <InputField
             value={expertDetails.questionsBeforeMeeting[question.index]}
             label={question.label}
@@ -99,10 +101,10 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             })
           }
         >
-          <option value={15}>00:15 </option>
-          <option value={30}>00:30 </option>
-          <option value={45}>00:45 </option>
-          <option value={60}>01:00 </option>
+          <option value={15}>רבע שעה</option>
+          <option value={30}>חצי שעה </option>
+          <option value={45}>45 דקות </option>
+          <option value={60}>שעה </option>
         </select>
         <span className="titles">סוג פגישה מועדף</span>
         <select
