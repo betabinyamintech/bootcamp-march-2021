@@ -17,6 +17,7 @@ function addToken(options) {
     mode: "cors",
     headers: {
       ...options.headers,
+      "Content-Type": "application/json",
       authorization: "Bearer " + localStorage.getItem("currentUser"),
     },
   };
@@ -27,16 +28,13 @@ export async function fetchLogWithToken(location, requestOptions) {
 }
 
 export async function putUser(dispatch, user) {
-  console.log("user for putting", user);
-  const response = await fetchLog(
-    "/users/me",
-    addToken({ method: "PUT", body: JSON.stringify(user) })
-  );
+  const options = addToken({ method: "PUT", body: JSON.stringify(user) });
+  console.log("user for putting", options);
+  const response = await fetchLog("/users/me", options);
   const data = await response.json();
   console.log("returned user data", data);
   dispatch({ type: ActionTypes.UPDATE_USER, user: data });
 }
-
 export async function getUser(dispatch) {
   try {
     const requestOptions = {
@@ -108,7 +106,7 @@ export async function registerUser(dispatch, registerPayload) {
   return null;
 }
 
-export async function getInquiries() {
+export async function getInquiries(dispatch) {
   const requestOptions = {
     method: "GET",
   };
@@ -117,20 +115,13 @@ export async function getInquiries() {
     addToken(requestOptions)
   );
   const data = await response.json();
-  return data;
+  dispatch({ type: ActionTypes.UPDATE_INQUIRIES, inquiries: data });
 }
-// export async function deleteInquiry
-// await fetch("/inquiries/" + { inquiryId }, {
-//   method: "DELETE",
-//   headers: {
-//     authorization: "Bearer " + localStorage.getItem("currentUser"),
-//   },
-// });
 
 export async function deleteInquiry(inquiryId) {
   console.log(inquiryId);
   console.log("start deleting");
-  await fetch("/inquiries/" + inquiryId, {
+  await fetch(ROOT_URL + "/inquiries/" + inquiryId, {
     method: "DELETE",
     headers: {
       authorization: "Bearer " + localStorage.getItem("currentUser"),
@@ -140,19 +131,6 @@ export async function deleteInquiry(inquiryId) {
 
   return;
 }
-// export async function deleteInquiryNotWork(inquiryId) {
-//   console.log(inquiryId);
-//   const requestOptions = {
-//     method: "DELETE",
-//     _id: inquiryId,
-//   };
-//   const response = await fetchLogWithToken(
-//     "/inquiries/" + { inquiryId },
-//     addToken(requestOptions)
-//   );
-//   const data = await response.json();
-//   return data;
-// }
 
 export async function Logout(dispatch) {
   dispatch({ type: "LOGOUT" });

@@ -6,7 +6,8 @@ const HashtagLabel = ({ selected, title, ...props }) => {
   return (
     <>
       <div {...props} className={"hashtag" + (selected ? " active" : "") + ""}>
-        {selected && <img src={hashtagImg} alt="" />} {title}
+        {title.title}
+        {selected && <img src={hashtagImg} alt="" />}
       </div>
     </>
   );

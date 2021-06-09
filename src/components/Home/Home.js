@@ -3,21 +3,21 @@ import React, { useEffect, useState } from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import InquiryFilter from "../CommunityManager/CommunityManager.js";
-import { useUserState } from "../../contexts/context";
+import { useUserDispatch, useUserState } from "../../contexts/context";
 import { getInquiries } from "../../contexts/actions";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
 const Home = ({ numExperts = 167 }) => {
-  const user = useUserState().user;
-  const [userInquiries, setUserInquiries] = useState(null);
+  const { user, inquiries: userInquiries } = useUserState();
   const [filteredInquiries, setFilteredInquiries] = useState(null);
   const isAdmin = user.isAdmin;
+  const userDispatch = useUserDispatch();
 
+  // console.log("home user", user);
   useEffect(() => {
-    async function getData() {
-      setUserInquiries(await getInquiries());
-    }
-    getData();
+    getInquiries(userDispatch);
+
+    // getData();
   }, []);
 
   if (userInquiries === null) {

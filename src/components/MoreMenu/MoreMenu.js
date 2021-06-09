@@ -133,9 +133,7 @@ const MoreMenu = () => {
                 />
               </svg>
             </i>
-            <button onClick={logout}>
-              <span>התנתקות</span>
-            </button>
+            <span onClick={logout}>התנתקות</span>
           </div>
         </button>
         <button className="close-button" onClick={() => history.push("/home")}>

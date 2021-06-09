@@ -21,6 +21,7 @@ import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
 
 const MainRouter = () => {
   const userState = useUserState();
+  console.log("main router user", userState);
   const userDispatch = useUserDispatch();
   useEffect(() => {
     if (userState.user == null) {
@@ -28,11 +29,11 @@ const MainRouter = () => {
       getUser(userDispatch);
     }
   }, [userDispatch]);
-let check = false
+  let check = false;
   return (
     <Router>
       {userState.user && (
-        <Switch >
+        <Switch>
           <Route path="/inquiry/new">
             <NewInquiry />
           </Route>
@@ -49,7 +50,7 @@ let check = false
             <MeetingScheduled />
           </Route>
           <Route path="/more-menu">
-            <MoreMenu/>
+            <MoreMenu />
           </Route>
           <Route path="/search-for-expert">
             <SearchForExpert />

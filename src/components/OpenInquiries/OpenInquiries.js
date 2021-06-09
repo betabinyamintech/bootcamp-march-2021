@@ -1,5 +1,5 @@
 import React from "react";
-import {Inquiry} from "../Inquiry/Inquiry";
+import { Inquiry } from "../Inquiry/Inquiry";
 import "./OpenInquiries.css";
 import inquiriesJson from "../Home/inquiries.json";
 // let placeholder = 0;
@@ -16,7 +16,7 @@ const OpenInquiries = ({ inquiries }) => {
   return (
     <div className="inquiriesBox">
       {inquiries.map((inquiry) => (
-        <Inquiry inquiry={inquiry} /> //place holder values!!
+        <Inquiry inquiry={inquiry} key={inquiry._id} /> //place holder values!!
       ))}
     </div>
   );

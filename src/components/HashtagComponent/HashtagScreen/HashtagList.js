@@ -6,13 +6,13 @@ import plusImg from "./PlusImg.svg";
 
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   if (selectedHashtags === undefined) selectedHashtags = [];
-
+  let keys = 0;
   return (
     <div
       style={{
         display: "flex",
         width: " 400p",
-        height: "200px",
+        height: "auto",
         alignitems: "center",
       }}
     >
@@ -24,6 +24,7 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
 
         {hashtags.map((hashtag) => (
           <HashtagLabel
+            key={keys++}
             onClick={
               typeof setSelectedHashtags === "function" &&
               (() => {

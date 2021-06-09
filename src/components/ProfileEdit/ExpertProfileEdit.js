@@ -14,6 +14,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
       preferredMeetingType: value,
     });
   };
+  let keys = 0;
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
@@ -42,7 +43,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           </label>
         </div>
         <span className="titles"> באילו נושאים תוכל לסייע?</span>
-        {/* <HashtagList
+        <HashtagList
           hashtags={hashtagsFromServer}
           selectedHashtags={expertDetails.inquiryTags}
           setSelectedHashtags={() =>
@@ -51,7 +52,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
               inquiryTags: expertDetails.inquiryTags,
             })
           }
-        /> */}
+        />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
         {[
           { label: "שאלה 1:", index: 0 },
@@ -60,6 +61,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           <InputField
             value={expertDetails.questionsBeforeMeeting[question.index]}
             label={question.label}
+            key={keys++}
             onChange={(e) =>
               setExpertDetails((e) => {
                 const { questionsBeforeMeeting } = expertDetails;
@@ -148,30 +150,30 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
               <path
                 d="M13.7226 4.56494H0.94751V7.75871H13.7226V4.56494Z"
                 stroke="#828282"
-                stroke-width="1.27751"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.27751"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M7.33496 14.1462V4.56494"
                 stroke="#828282"
-                stroke-width="1.27751"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.27751"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M7.33504 4.56486H4.46065C4.03713 4.56486 3.63096 4.39662 3.33149 4.09714C3.03201 3.79767 2.86377 3.3915 2.86377 2.96798C2.86377 2.54446 3.03201 2.13828 3.33149 1.83881C3.63096 1.53934 4.03713 1.37109 4.46065 1.37109C6.69629 1.37109 7.33504 4.56486 7.33504 4.56486Z"
                 stroke="#828282"
-                stroke-width="1.27751"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.27751"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <path
                 d="M7.33496 4.56486H10.2094C10.6329 4.56486 11.039 4.39662 11.3385 4.09714C11.638 3.79767 11.8062 3.3915 11.8062 2.96798C11.8062 2.54446 11.638 2.13828 11.3385 1.83881C11.039 1.53934 10.6329 1.37109 10.2094 1.37109C7.97371 1.37109 7.33496 4.56486 7.33496 4.56486Z"
                 stroke="#828282"
-                stroke-width="1.27751"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.27751"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
             תוכלו להיפגש בחינם בבנימין טק
