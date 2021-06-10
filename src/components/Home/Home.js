@@ -9,6 +9,7 @@ import InputQuestion from "../Common/InputQuestion/InputQuestion";
 
 const Home = ({ numExperts = 167 }) => {
   const { user, inquiries: userInquiries } = useUserState();
+  const [inquiriesForAdmin, setInquiriesForAdmin] = useState();
   const [filteredInquiries, setFilteredInquiries] = useState(null);
   const isAdmin = user.isAdmin;
   const userDispatch = useUserDispatch();
@@ -16,9 +17,26 @@ const Home = ({ numExperts = 167 }) => {
   // console.log("home user", user);
   useEffect(() => {
     getInquiries(userDispatch);
-
-    // getData();
   }, []);
+
+  useEffect(() => {
+    if (isAdmin) {
+      const adminFunc = async () => {
+        let response = await fetch("http://localhost:5000/admin/inquiries", {
+          method: "GET",
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("currentUser"),
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        });
+        let allInq = await response.json();
+        setInquiriesForAdmin(allInq);
+        // console.log("inq admin", inquiriesForAdmin);
+      };
+      adminFunc();
+    }
+  }, [isAdmin]);
 
   if (userInquiries === null) {
     return <div>loading</div>;
@@ -31,6 +49,8 @@ const Home = ({ numExperts = 167 }) => {
           (expertInq) => expertInq.movedToExpert.expertId === user._id
         )
       : null;
+    // console.log("inq admin", inquiriesForAdmin);
+    // console.log("filtered inquiries", filteredInquiries);
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
         <div>
@@ -45,7 +65,7 @@ const Home = ({ numExperts = 167 }) => {
         {isAdmin && (
           <>
             <InquiryFilter
-              allInquiries={ownedInquiries}
+              allInquiries={inquiriesForAdmin}
               filteredInquiries={filteredInquiries}
               setFilteredInquiries={setFilteredInquiries}
             />
@@ -58,8 +78,13 @@ const Home = ({ numExperts = 167 }) => {
               <OpenInquiries inquiries={expertInquiries} />
             </>
           )}
-          <div className="inquiriesTitle">פניות פתוחות</div>
-          <OpenInquiries inquiries={ownedInquiries} />
+          {!isAdmin && (
+            <>
+              {" "}
+              <div className="inquiriesTitle">פניות פתוחות</div>
+              <OpenInquiries inquiries={ownedInquiries} />
+            </>
+          )}
         </>
       </div>
     );

@@ -7,6 +7,8 @@ import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
+import vIcon from "../commonsSVG/v-icon.svg";
+
 const missingMessage = "שדה חובה";
 
 const UserProfileEdit = () => {
@@ -141,6 +143,7 @@ const UserProfileEdit = () => {
           <label className="switch">
             <input
               type="checkbox"
+              checked={userDetails.isExpert}
               value={userDetails.isExpert}
               id="isExpert"
               onChange={(e) => setIsExpertFinal(e)}
@@ -157,18 +160,7 @@ const UserProfileEdit = () => {
         )}
         {/* <button className="save-button">שמירה</button> */}
         <Button className="save-button" id="submitButton" onClick={submit}>
-          <svg
-            width="13"
-            height="10"
-            viewBox="0 0 13 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4.21875 7.8125L11.3125 0.71875L12.2188 1.65625L4.21875 9.65625L0.5 5.9375L1.4375 5L4.21875 7.8125Z"
-              fill="white"
-            />
-          </svg>
+          <img src={vIcon}></img>
           שמירה
         </Button>
       </div>

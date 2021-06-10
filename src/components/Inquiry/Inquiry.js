@@ -17,18 +17,13 @@ export const Inquiry = ({ inquiry }) => {
   const { status, inquiryTitle, timePassed, inquiryContent, createdAt, _id } =
     inquiry;
   const values = InquiryType[type][status];
-  // console.log("values", values);
+  console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
   let creationDate = new Date(createdAt).toLocaleDateString();
   let creationTime = new Date(createdAt).toLocaleTimeString();
   return (
     <>
-      <div
-        className="inquiryBox"
-        onClick={() => {
-          console.log("inquiry id" + " " + _id);
-        }}
-      >
+      <div className="inquiryBox">
         <span
           className="homeMenuIcon"
           onClick={() => {
@@ -101,7 +96,7 @@ export const InquiryType = {
       trueFalseButton: true,
       buttonText: "צפיה בפגישה",
     },
-    meetingDatePassed: {
+    meetingWas: {
       message: "הפגישה התקיימה",
       trueFalseButton: false,
     },
@@ -111,6 +106,21 @@ export const InquiryType = {
     },
   },
   expert: {
+    [InquiryStatus.OPENED]: {
+      message: "פנייה חדשה",
+      trueFalseButton: false,
+    },
+    [InquiryStatus.MISSING_DETAILS]: {
+      message: "חסרים פרטים",
+      trueFalseButton: true,
+      buttonText: "השלם פרטים",
+    },
+    matchesFound: {
+      message: "נמצאו xxxxx מומחים מתאימים",
+      trueFalseButton: true,
+      buttonText: "בחירת מומחה",
+    },
+
     movedToExpert: {
       message: "הועבר למומחה",
       trueFalseButton: "?",
@@ -118,6 +128,11 @@ export const InquiryType = {
     responseFromExpert: {
       message: "התקבלה תגובה ממומחה",
       trueFalseButton: "???",
+    },
+    meetingScheduled: {
+      message: "נקבע תאריך לפגישה!",
+      trueFalseButton: true,
+      buttonText: "צפיה בפגישה",
     },
     meetingWas: {
       message: "הפגישה התקיימה",
@@ -129,7 +144,7 @@ export const InquiryType = {
     },
   },
   admin: {
-    open: {
+    opened: {
       message: "ממתין לשיוך למומחים",
       trueFalseButton: true,
       buttonText: "צפיה בפניה",
