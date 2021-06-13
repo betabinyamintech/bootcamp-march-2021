@@ -69,76 +69,93 @@ export const Inquiry = ({ inquiry }) => {
 export const InquiryType = {
   user: {
     [InquiryStatus.OPENED]: {
+      type: "opened",
       message: "פנייה חדשה",
       trueFalseButton: false,
     },
     [InquiryStatus.MISSING_DETAILS]: {
+      type: "missingDetails",
       message: "חסרים פרטים",
       trueFalseButton: true,
       buttonText: "השלם פרטים",
     },
     matchesFound: {
+      type: "matchesFound",
       message: "נמצאו xxxxx מומחים מתאימים",
       trueFalseButton: true,
       buttonText: "בחירת מומחה",
     },
     movedToExpert: {
+      type: "movedToExpert",
       message: "עבר למומחה",
       trueFalseButton: false,
     },
     responseFromExpert: {
+      type: "responseFromExpert",
       message: "קיבלת תגובה ממומחה!",
       trueFalseButton: true,
       buttonText: "צפיה בתגובה",
     },
     meetingScheduled: {
+      type: "meetingScheduled",
       message: "נקבע תאריך לפגישה!",
       trueFalseButton: true,
       buttonText: "צפיה בפגישה",
     },
     meetingWas: {
+      type: "meetingWas",
       message: "הפגישה התקיימה",
       trueFalseButton: false,
     },
     irrelevant: {
+      type: "irrelevant",
       message: "לא רלוונטי",
       trueFalseButton: false,
     },
   },
   expert: {
     [InquiryStatus.OPENED]: {
+      type: "opened",
       message: "פנייה חדשה",
       trueFalseButton: false,
     },
     [InquiryStatus.MISSING_DETAILS]: {
+      type: "missingDetails",
       message: "חסרים פרטים",
       trueFalseButton: true,
       buttonText: "השלם פרטים",
     },
     matchesFound: {
+      type: "matchesFound",
       message: "נמצאו xxxxx מומחים מתאימים",
       trueFalseButton: true,
       buttonText: "בחירת מומחה",
     },
 
     movedToExpert: {
-      message: "הועבר למומחה",
-      trueFalseButton: "?",
+      type: "movedToExpert",
+      message: "עבר למומחה",
+      trueFalseButton: false,
     },
     responseFromExpert: {
-      message: "התקבלה תגובה ממומחה",
-      trueFalseButton: "???",
+      type: "responseFromExpert",
+      message: "קיבלת תגובה ממומחה!",
+      trueFalseButton: true,
+      buttonText: "צפיה בתגובה",
     },
     meetingScheduled: {
+      type: "meetingScheduled",
       message: "נקבע תאריך לפגישה!",
       trueFalseButton: true,
       buttonText: "צפיה בפגישה",
     },
     meetingWas: {
+      type: "meetingWas",
       message: "הפגישה התקיימה",
       trueFalseButton: false,
     },
     irrelevant: {
+      type: "irrelevant",
       message: "לא רלוונטי",
       trueFalseButton: false,
     },

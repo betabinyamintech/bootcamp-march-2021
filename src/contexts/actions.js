@@ -1,6 +1,6 @@
 import { ActionTypes } from "./reducer";
 // export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-const ROOT_URL = "http://localhost:5000";
+export const ROOT_URL = "http://localhost:5000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
@@ -119,6 +119,20 @@ export async function getInquiries(dispatch) {
 }
 
 export async function deleteInquiry(inquiryId) {
+  console.log(inquiryId);
+  console.log("start deleting");
+  await fetch(ROOT_URL + "/inquiries/" + inquiryId, {
+    method: "DELETE",
+    headers: {
+      authorization: "Bearer " + localStorage.getItem("currentUser"),
+    },
+  });
+  console.log("start deleting");
+
+  return;
+}
+
+export async function putInquiry(inquiryId) {
   console.log(inquiryId);
   console.log("start deleting");
   await fetch(ROOT_URL + "/inquiries/" + inquiryId, {

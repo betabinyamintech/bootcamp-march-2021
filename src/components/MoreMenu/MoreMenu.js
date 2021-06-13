@@ -24,9 +24,7 @@ const MoreMenu = () => {
       <div className="user-details">
         <Avatar />
         <div>
-          <h3>{`${
-            userState.user.firstName ? userState.user.firstName + "," : ""
-          } ${
+          <h3>{`${userState.user.firstName ? userState.user.firstName : ""} ${
             userState.user.lastName ? userState.user.lastName : "ברוך/ה הבא/ה!"
           }`}</h3>
           <h5>{`${userState.user.city ? userState.user.city : ""}`}</h5>

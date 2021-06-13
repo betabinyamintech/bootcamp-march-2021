@@ -7,8 +7,9 @@ import giftSVG from "../commonsSVG/gift.svg";
 import clockIcon from "../commonsSVG/clock-icon.svg";
 
 const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
-  const [preferredMeetingType, setPreferredMeetingType] =
-    useState("physically");
+  const [preferredMeetingType, setPreferredMeetingType] = useState(
+    expertDetails.preferredMeetingType
+  );
   const localPreferredMeetingType = (value) => {
     setPreferredMeetingType(value);
     setExpertDetails({
@@ -115,17 +116,19 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
         >
           <option value="physically">פגישה פיזית</option>
           <option value="virtual">שיחת וידאו בזום</option>
+          <option value="phoneCall">שיחת טלפון</option>
         </select>
         {preferredMeetingType === "physically" && (
           <InputField
+            id="meetingAddress"
             value={
-              expertDetails.meetingAdress ? expertDetails.meetingAdress : null
+              expertDetails.meetingAddress ? expertDetails.meetingAddress : null
             }
             label="כתובת לפגישה:"
             onChange={(e) =>
               setExpertDetails({
                 ...expertDetails,
-                meetingAdress: e.target.value,
+                meetingAddress: e.target.value,
               })
             }
           />

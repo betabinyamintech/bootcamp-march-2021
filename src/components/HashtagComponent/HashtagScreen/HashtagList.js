@@ -7,8 +7,8 @@ import plusImg from "./PlusImg.svg";
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   if (selectedHashtags === undefined) selectedHashtags = [];
   let keys = 0;
-  console.log("selectedHashtags", selectedHashtags);
-  console.log("Hashtags", hashtags);
+  // console.log("selectedHashtags", selectedHashtags);
+  // console.log("Hashtags", hashtags);
   return (
     <div
       style={{

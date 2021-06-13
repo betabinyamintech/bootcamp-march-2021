@@ -53,3 +53,14 @@
 .divInputQuestion {
   margin: 10px;
 }
+.inquiry-admin {
+  font-family: HEEBO;
+  align-self: center;
+  margin-top: 15px;
+  width: 85%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  background: rgb(190, 186, 186);
+  border-radius: 2%;
+}
