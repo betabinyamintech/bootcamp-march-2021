@@ -1,14 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import OneMeetingDetailsDisplay from "./OneMeetingDetailsDisplay";
 import ExpertDetailsHeader from "./ExpertDetailsHeader";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import tickForButton from "../Common/tickForButton.svg";
-import inquiriesJson from "../Home/inquiries.json";
 import Button from "../Common/Button/Button";
+import { getSpecificUser, putInquiry } from "../../contexts/actions";
 // import experts from "./experts.json";
-
-// user is offered 3 dates, each is a string in format: 03/10/2021 12:00 AM
-
 let d = new Date();
 
 const expert = {
@@ -23,21 +20,49 @@ const expert = {
     lengthMeeting: "30 דקות",
   },
 };
+const ChooseMeetingSchedule = ({ inquiry }) => {
+  const [theExpert, setTheExpert] = useState();
+  const [chosenDate, setChosenDate] = useState();
+  const { optionalDates, lengthMeeting, meetingType, _id } =
+    inquiry.meetingOptions;
+  let putToServer = () => {
+    let inquiryId = inquiry._id;
+    let request = {
+      meetingOptions: { scheduledDate: chosenDate },
+      status: "meetingScheduled",
+    };
+    let response = putInquiry(inquiryId, request);
+  };
 
-const ChooseMeetingSchedule = ({ optinalDates }) => {
-  const inquiries = inquiriesJson;
-  const optionalDates = inquiries[0].user.meetingOptions.optionalDates;
-  const inquiryStatus = inquiries[0].user.status;
+  // useState(async () => {
+  //   let { expertId } = inquiry.movedToExpert;
+  //   let response = await getSpecificUser(expertId);
+  //   let data = await response.json();
+  //   setTheExpert(data);
+  // });
+  // console.log("the expert", theExpert);
+  // console.log("ssssssssssssss", inquiry);
+  // console.log("chosen date", chosenDate);
   return (
     <div className="container">
       <div className="pageTitle">בחירת מועד לפגישה</div>
-      <div className="subTitle">{expert.expertDetails.lengthMeeting} פגישה</div>
+      <div className="subTitle"> {`פגישה למשך ${lengthMeeting} דקות`}</div>
       <ExpertDetailsHeader expert={expert} />
       {optionalDates.map((dateTime) => (
-        <OneMeetingDetailsDisplay dateTime={dateTime} />
+        <OneMeetingDetailsDisplay
+          dateTime={dateTime}
+          chosenDate={chosenDate}
+          setChosenDate={(date) => {
+            setChosenDate(date);
+          }}
+        />
       ))}
       <div className="buttonDiv">
-        <Button img={tickForButton} style={{ width: "120%" }}>
+        <Button
+          img={tickForButton}
+          style={{ width: "120%" }}
+          onClick={putToServer}
+        >
           אישור
         </Button>
       </div>

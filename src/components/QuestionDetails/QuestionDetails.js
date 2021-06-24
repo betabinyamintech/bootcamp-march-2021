@@ -1,6 +1,6 @@
 import "./QuestionDetails.css";
 import React, { useContext } from "react";
-import UserContext from "../../contexts/UserContext";
+import UserContext from "../../contexts/context";
 import Button from "../Common/Button/Button";
 import Avatar from "../Avatar/Avatar";
 

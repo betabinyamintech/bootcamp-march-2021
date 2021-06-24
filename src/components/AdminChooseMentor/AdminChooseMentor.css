@@ -1,14 +1,14 @@
-
-.chooseMentorHeader{
-    background: #F8F8F8;
-    padding: 20px;
-margin: 20px;
+.chooseMentorHeader {
+  background: #d1cccc;
+  height: auto;
+  padding: 20px;
+  margin: 20px;
 }
-.searchMentor{
-    padding: 20px;
-    margin: 20px;
+.searchMentor {
+  padding: 10px;
+  margin: 20px;
 }
-.Mentorcards{
-    padding: 20px;
-    margin: 20px;
+.Mentorcards {
+  padding: 16px;
+  margin: 16px;
 }

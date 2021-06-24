@@ -6,6 +6,7 @@ import MentorCardGroup from "../MentorCardGroup/MentorCardGroup";
 import "./AdminChooseMentor.css";
 //temporary test import delete when server is working
 import experts from "./experts.json";
+import { useUserState } from "../../contexts/context";
 
 //delete the next line when hashtags are imported from server
 const Hashtags = ["aaa", "bbb", "cba", "cbc"];
@@ -20,54 +21,46 @@ const inquiry = { inquiryTitle: "מה אני יכולה לעשות..." };
 //   ...props
 // }) => {
 
-
-  const AdminChooseMentor = ({
-    inquiry
-  }) => {
-
+const AdminChooseMentor = ({ inquiry }) => {
   const [chosenHashtag, setChosenHashtag] = useState(null);
-
+  const [searchResult, setSearchResult] = useState();
+  const expertsUsers = useUserState().expertsByAdmin;
   const changeHashtag = (hashtag) => {
     setChosenHashtag(hashtag);
-    }
-    
+  };
   //fetch hashtags from server to const hashtags
   const hashtagsOptions = Hashtags.map((option) => (
     <option value={option}>{option}</option>
   ));
-  console.log(experts);
+  // console.log(experts);
   //fetch experts from server
-  const selectedMentors = experts.filter((mentor) =>
+  const selectedMentors = expertsUsers.filter((mentor) =>
     mentor.expertDetails.inquiryTags.includes(chosenHashtag)
   );
+  // console.log("experts by choose", expertsUsers);
   return (
     <div>
       <div className="chooseMentorHeader">
+        <span>basdhjasdbhjb</span>
         <h5>בחירת מומחה לסיוע בשאלה:</h5>
         <h2>{inquiry.inquiryTitle}</h2>
       </div>
 
-      <div className="searchMentor">
-        <div className="selectHashtags">
-          <select
-            placeholder="כל התחומים"
-            onChange={(e) => {
-              changeHashtag(e.target.value);
-            }}
-          >
-            {hashtagsOptions}
-          </select>
-        </div>
-      </div>
-
+      <div className="searchMentor"></div>
       <div>
-        <input type="text" id="name" name="name">
-          {/* <img src={magnifyingGlass} alt="magnifying glass icon" /> */}
-        </input>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          onChange={(e) => {
+            setSearchResult(e.target.value);
+          }}
+        ></input>
       </div>
-
       <MentorCardGroup
+        inquiry={inquiry}
         selectedMentors={selectedMentors}
+        searchResult={searchResult}
         className="Mentorcards"
       />
     </div>

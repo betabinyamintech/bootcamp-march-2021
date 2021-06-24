@@ -7,7 +7,7 @@ import plusImg from "./PlusImg.svg";
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   if (selectedHashtags === undefined) selectedHashtags = [];
   let keys = 0;
-  // console.log("selectedHashtags", selectedHashtags);
+  console.log("selectedHashtags", selectedHashtags);
   // console.log("Hashtags", hashtags);
   return (
     <div
@@ -30,6 +30,7 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
             onClick={
               typeof setSelectedHashtags === "function" &&
               (() => {
+                console.log("starts setting on hashtag list");
                 // newHashtag()=>{}
                 setSelectedHashtags(
                   selectedHashtags.includes(hashtag)

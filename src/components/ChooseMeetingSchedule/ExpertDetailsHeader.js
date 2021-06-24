@@ -28,7 +28,7 @@ expertDetails: {
 const ExpertDetailsHeader = ({ expert }) => {
   return (
     <div className="expertDetails">
-      <Avatar Avatar={expert.imageSrc} width="47px" height="47px" />
+      <Avatar width="47px" height="47px" />
       <div className="expertDetailsText">
         <div className="middlementordiv">
           <div className="boxTitleHeading">

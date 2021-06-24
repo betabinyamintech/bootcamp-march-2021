@@ -16,16 +16,20 @@ const UserProfileEdit = () => {
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
   const [warnings, setWarnings] = useState({});
+  const [questions, setQuestions] = useState([]);
   const [checkIsExpert, setCheckIsExpert] = useState(
     userDetails.isExpert ? userDetails.isExpert : false
   );
   const [localIsExpert, setLocalIsExpert] = useState(checkIsExpert);
-  console.log("userState", userState, "warnings", warnings);
+  // console.log("userState", userState, "warnings", warnings);
 
   const setExpertDetails = useCallback(
     (expertDetails) => setUserDetails({ ...userDetails, expertDetails }),
     [userDetails, setUserDetails]
   );
+  let setExpertQuestion = () => {
+    setExpertDetails({});
+  };
 
   const requiredFields = {
     city: true,
@@ -61,11 +65,13 @@ const UserProfileEdit = () => {
       return;
     }
     console.log("submit", userDetails);
+    let { city, firstName, profession, lastName, phone } = userDetails;
     putUser(
       userDispatch,
       {
         userDetails,
-        profileFullFields: true,
+        profileFullFields:
+          city && phone && profession && firstName && lastName ? true : false,
       },
       console.log("putUser works" + userDetails)
     );
@@ -74,7 +80,7 @@ const UserProfileEdit = () => {
     setLocalIsExpert(!localIsExpert);
     setUserDetails({ ...userDetails, isExpert: !localIsExpert });
   };
-  console.log(userDetails);
+  console.log("USER DETAILS", userDetails);
   return (
     <div className="profile-edit-container">
       <div style={{ alignSelf: "flex-start" }}>
@@ -156,6 +162,7 @@ const UserProfileEdit = () => {
           <ExpertProfileEdit
             setExpertDetails={setExpertDetails}
             expertDetails={userDetails.expertDetails}
+            setExpertQuestion={setExpertQuestion}
           />
         )}
         {/* <button className="save-button">שמירה</button> */}

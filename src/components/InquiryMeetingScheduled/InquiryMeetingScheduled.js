@@ -6,7 +6,7 @@ import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedul
 const InquiryMeetingScheduled = ({ inquiry }) => {
   console.log(inquiry);
   const expert = 'רו"ח משה ארביב';
-  const { inquiryTitle, inquiryContent } = inquiry;
+  // const { inquiryTitle, inquiryContent } = inquiry;
   const date = "15/03/2021";
   const hours = "12:30-13:30";
   const meetingType = "virtual"; //      physically

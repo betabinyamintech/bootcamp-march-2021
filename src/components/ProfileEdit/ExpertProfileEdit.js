@@ -9,6 +9,8 @@ import clockIcon from "../commonsSVG/clock-icon.svg";
 const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
   const [preferredMeetingType, setPreferredMeetingType] = useState(
     expertDetails.preferredMeetingType
+      ? expertDetails.preferredMeetingType
+      : "physically"
   );
   const localPreferredMeetingType = (value) => {
     setPreferredMeetingType(value);
@@ -18,10 +20,25 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
     });
   };
   let keys = 0;
+  const [question1, setQuestion1] = useState(
+    expertDetails.questionsBeforeMeeting
+      ? expertDetails.questionsBeforeMeeting[0]
+      : ""
+  );
+  const [question2, setQuestion2] = useState(
+    expertDetails.questionsBeforeMeeting
+      ? expertDetails.questionsBeforeMeeting[1]
+      : ""
+  );
   const labelsForExpertQuestions = [
     { label: "שאלה 1:", index: 0 },
     { label: "שאלה 2:", index: 1 },
   ];
+  let { questionsBeforeMeeting } = expertDetails;
+  console.log(
+    "selected hashtags by expert details page",
+    expertDetails.inquiryTags
+  );
   return (
     <div className="profile-edit-container">
       <div className="input-fieldss">
@@ -32,7 +49,6 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             setExpertDetails({ ...expertDetails, aboutMe: e.target.value })
           }
         />
-
         <div className="input-div">
           <label>
             <textarea
@@ -53,33 +69,45 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
         <HashtagList
           hashtags={hashtagsFromServer}
           selectedHashtags={expertDetails.inquiryTags}
-          setSelectedHashtags={() =>
+          setSelectedHashtags={(value) =>
             setExpertDetails({
               ...expertDetails,
-              inquiryTags: expertDetails.inquiryTags,
+              inquiryTags: value,
             })
           }
         />
         <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
-        {labelsForExpertQuestions.map((question) => (
-          <InputField
-            value={
-              expertDetails.questionsBeforeMeeting
-                ? expertDetails.questionsBeforeMeeting[question.index]
-                : ""
-            }
-            label={question.label}
-            key={keys++}
-            onChange={(e) =>
-              setExpertDetails((e) => {
-                const { questionsBeforeMeeting } = expertDetails;
-                questionsBeforeMeeting[question.index] = e.target.value;
-                return { ...expertDetails, questionsBeforeMeeting };
-              })
-            }
-          />
-        ))}
+        {/* //question 1 */}
+
+        <InputField
+          value={question1}
+          label={"שאלה 1"}
+          key={keys++}
+          onChange={(e) => setQuestion1(e.target.value)}
+          onBlur={() => {
+            setExpertDetails({
+              ...expertDetails,
+              questionsBeforeMeeting: [...questionsBeforeMeeting, question1],
+            });
+          }}
+        />
+
+        {/* //question2 */}
+        <InputField
+          value={question2}
+          label={"שאלה 2"}
+          key={keys++}
+          onChange={(e) => {
+            setQuestion2(e.target.value);
+          }}
+          onBlur={() => {
+            setExpertDetails({
+              ...expertDetails,
+              questionsBeforeMeeting: [...questionsBeforeMeeting, question2],
+            });
+          }}
+        />
         <span className="titles"> קבע את פרטי הפגישה: </span>
         <div className="titles">
           <span>אורך הפגישה </span>

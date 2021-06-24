@@ -18,6 +18,7 @@ import MoreMenu from "./MoreMenu/MoreMenu";
 import { useEffect } from "react";
 import { getUser } from "../contexts/actions";
 import UserProfileEdit from "./ProfileEdit/UserProfileEdit";
+import QuestionBeforeMeeting from "./QuestionsBeforeMeeting/QuestionsBeforeMeeting";
 
 const MainRouter = () => {
   const userState = useUserState();
@@ -36,6 +37,9 @@ const MainRouter = () => {
         <Switch>
           <Route path="/inquiry/new">
             <NewInquiry />
+          </Route>
+          <Route path="/questionsBeforeMeeting">
+            <QuestionBeforeMeeting />
           </Route>
           <Route path="/profile/edit">
             <UserProfileEdit />

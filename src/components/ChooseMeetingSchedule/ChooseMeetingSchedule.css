@@ -36,14 +36,24 @@
 
 .daytimebox {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
 .outerbox {
   padding: 30px;
   background: #e7e7ec;
   border: 1px solid #ececec;
-  margin: 20px;
+  margin: 6px;
+  border-radius: 5px;
+  width: 85%;
+}
+.outerboxChoosed {
+  padding: 30px;
+  background: #ace790;
+  border: 1px solid #ececec;
+  margin: 6px;
   border-radius: 5px;
   width: 85%;
 }

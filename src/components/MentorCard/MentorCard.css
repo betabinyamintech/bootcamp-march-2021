@@ -1,21 +1,50 @@
-.hashtag{
-    padding: 4px 12px;
-    text-align: center;
-    border-radius: 40px;
-    margin: 10px 10px;
-    background: #F3F3F3;
-    }
-.mentorcard{
-    display: flex;
-margin: 20px;
-padding: 4px, 12px, 4px, 12px;
-
+.hashtag {
+  padding: 4px 12px;
+  text-align: center;
+  border-radius: 40px;
+  margin: 10px 10px;
+  background: #c7c4c4;
+}
+.mentorcard {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 4px, 12px, 8px, 12px;
+  background: #e4dada;
+  border-radius: 6px;
+  align-items: center;
+}
+.mentorcardChosen {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 4px, 12px, 8px, 12px;
+  background: #91c978;
+  border-radius: 6px;
+  align-items: center;
+}
+span {
+  align-items: center;
 }
 .mentorcardnextimg {
-    
 }
-.tagsBox{
-    display: flex;
-    
+.tagsBox {
+  display: flex;
 }
+button {
+  width: auto;
+  background: #414141;
+  border-radius: 4px;
+  /* Inside Auto Layout */
 
+  margin: 8px 10px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height */
+
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
