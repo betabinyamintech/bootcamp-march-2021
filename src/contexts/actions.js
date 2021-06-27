@@ -191,7 +191,7 @@ export async function getAllInquiries(dispatch) {
       method: "GET",
     };
     const response = await fetchLog(
-      "/admin/inquiries/all",
+      "/admin/inquiries",
       addToken(requestOptions)
     );
     const data = await response.json();

@@ -15,36 +15,27 @@ const ActionPage = ({
   buttonValue,
   buttonText,
 }) => {
-  const user = useUserState();
+  const { user } = useUserState();
   const expertsUsers = useUserState();
-  console.log("user state", user);
+  //   console.log("user state", user);
   const { isAdmin, isExpert } = user;
   const { inquiryId: _id, status } = inquiry;
-
   //   console.log("localStatus", status);
   //   console.log("expert founds for iqnuiry", expertsFoundForInquiry);
-  console.log("all experts by actionPage", expertsUsers);
+  //   console.log("all experts by actionPage", expertsUsers);
 
   return (
     <Popup
       trigger={
         <button onclick={setButton}>
-          {!buttonValue ? "סגירה" : buttonText}
+          {buttonText ? buttonText : "buttonText"}
         </button>
       }
       modal
       nested
     >
       {(close) => (
-        <div
-          className="modal"
-          onClick={() => {
-            console.log(
-              "experts arrived to action page",
-              expertsFoundForInquiry
-            );
-          }}
-        >
+        <div className="modal">
           <button className="close" onClick={close}>
             &times;
           </button>
@@ -60,13 +51,11 @@ const ActionPage = ({
                 expertsFoundForInquiry={expertsFoundForInquiry}
               />
             )}
-            {status === "opened" && expertsUsers ? (
+            {status === "opened" && expertsUsers && (
               <AdminChooseMentor
                 inquiry={inquiry}
                 expertsUsers={expertsUsers}
               />
-            ) : (
-              <span>no</span>
             )}
             {status === "responseFromExpert" && (
               <ChooseMeetingSchedule inquiry={inquiry} />
@@ -82,15 +71,12 @@ const ActionPage = ({
             position="top center"
             nested
           ></Popup> */}
-            <button
+            {/* <button
               className="button"
-              onClick={() => {
-                console.log("modal closed ");
-                close();
-              }}
+            
             >
               סגירה
-            </button>
+            </button> */}
           </div>
         </div>
       )}

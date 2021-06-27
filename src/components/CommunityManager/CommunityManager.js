@@ -30,22 +30,6 @@ const InquiryFilter = ({
       setChosenStatus(statusChoice);
     }
   };
-  // console.log("all qnuiries by  inquiry filter", allInquiries);
-  // console.log("filtered inquiruies by inquiry filter", filteredInquiries);
-  // console.log("selected status", selectedStatus);
-  // const selectOptions = {
-  //   all: "כל הפניות",
-  //   opened: "פניה חדשה",
-  //   missingDetails: "חסרים פרטים",
-  //   matchesFound: "נמצאו XX מומחים מתאימים",
-  //   movedToExpert: "הועבר למומחה",
-  //   responseFromExpert: "התקבלה תגובה ממומחה",
-  //   meetingScheduled: "  נקבע תאריך לפגישה ",
-  //   irrelevant: "לא רלוונטי",
-  //   meetingWas: "הפגישה התקיימה",
-  //   check: "בדיקה",
-  // };
-
   return (
     <>
       <div className="inquiriesTitle">פניות מסוננות: {selectedStatus}</div>

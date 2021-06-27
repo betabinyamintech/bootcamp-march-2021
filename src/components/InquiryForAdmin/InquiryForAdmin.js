@@ -15,7 +15,7 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   const { inquiryTitle, inquiryContent, userId, updatedAt, status } = inquiry;
   const user = useUserState().user;
   const fromAdminSide = true;
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   const [inq, setInq] = useState();
   const { isAdmin, isExpert } = user;
   let creationDate = new Date(updatedAt).toLocaleDateString();
@@ -55,12 +55,12 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
         {status === "opened" && type === "admin" && clicked && (
           <ActionPage
             inquiry={inquiry}
-            expertsUsers={expertsUsers}
-            fromAdminSide={fromAdminSide}
-            status={status}
+            buttonText={buttonText}
+            buttonValue={clicked}
+            // setButton={setClicked(!clicked)}
           />
         )}
-        {inquiryTypes && status !== "irrelevant" && (
+        {/* {inquiryTypes && status !== "irrelevant" && (
           <button
             className="nextStepButton"
             onClick={() => {
@@ -69,7 +69,7 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
           >
             {clicked ? "סגירה" : buttonText} &nbsp;&nbsp;&gt;
           </button>
-        )}
+        )} */}
       </div>
     </>
   );

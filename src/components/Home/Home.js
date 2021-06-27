@@ -11,7 +11,7 @@ import {
 } from "../../contexts/actions";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
-import Lodaing from "../commonsSVG/three-dots-loader.svg";
+import loading from "../commonsSVG/loadingDots.gif";
 const Home = ({ numExperts = 167 }) => {
   const {
     user,
@@ -44,7 +44,7 @@ const Home = ({ numExperts = 167 }) => {
       <div>
         {" "}
         hello
-        <img src={Lodaing}></img>
+        <img src={loading}></img>
       </div>
     );
   } else {
@@ -61,9 +61,9 @@ const Home = ({ numExperts = 167 }) => {
     // isAdmin && console.log("experts by home", usersForAdmin);
     console.log("owned BY HOME", ownedInquiries);
     console.log("expert BY HOME", expertInquiries);
-    isAdmin &&
-      console.log("finally inquiries admin by dispatch", adminInquiries);
-    console.log("finally experts admin by dispatch", expertsByAdmin);
+    // isAdmin &&(
+    console.log("finally inquiries admin by dispatch", adminInquiries);
+    // console.log("finally experts admin by dispatch", expertsByAdmin);
 
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>

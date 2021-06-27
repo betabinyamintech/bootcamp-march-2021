@@ -44,7 +44,7 @@ const QuestionBeforeMeeting = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [error, setError] = useState(false);
   const buttonText = "הבא";
-  const [request, setRequest] = useState("s");
+  const [request, setRequest] = useState();
   const [requestLocal, setRequestLocal] = useState();
   const step = steps[currentStep];
   const [hashtags, setHashtags] = useState([]);
@@ -58,7 +58,6 @@ const QuestionBeforeMeeting = () => {
       setAnswer2({ question: step.field, ans: value });
     }
   };
-
   const submitQuestions = () => {
     setRequest({
       movedToExpert: {
@@ -67,15 +66,14 @@ const QuestionBeforeMeeting = () => {
       },
       status: "movedToExpert",
     });
-    setTimeout(() => {
-      console.log("start put after timeout");
-      put();
-    }, 3000);
-
-    const put = () => {
+    const putToServer = () => {
       putInquiry(inquiryId, request);
     };
+    setTimeout(() => {
+      putToServer();
+    }, 2000);
   };
+
   const lastQuestion = currentStep >= steps.length - 1;
 
   console.log("answer1", answer1);

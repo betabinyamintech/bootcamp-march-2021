@@ -30,21 +30,21 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   let creationDate = new Date(createdAt).toLocaleDateString();
   let creationTime = new Date(createdAt).toLocaleTimeString();
   let count = 0;
-  useEffect(() => {
-    expertsFound &&
-      expertsFound.map(async (expertId) => {
-        let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-          method: "GET",
-        });
-        status === "matchesFound" &&
-          console.log("experts found length", expertsFound.length);
-        let data = await response.json();
-        // console.log("expertsFound", expertsFound);
-        let expertsCheck = [...expertsFoundForInquiry];
-        expertsCheck.push(data);
-        setExpertsFoundForInquiry(expertsCheck);
-      });
-  }, [isAdmin]);
+  // useEffect(() => {
+  //   expertsFound &&
+  //     expertsFound.map(async (expertId) => {
+  //       let response = await fetch(`http://localhost:5000/users/${expertId}`, {
+  //         method: "GET",
+  //       });
+  //       status === "matchesFound" &&
+  //         console.log("experts found length", expertsFound.length);
+  //       let data = await response.json();
+  //       // console.log("expertsFound", expertsFound);
+  //       let expertsCheck = [...expertsFoundForInquiry];
+  //       expertsCheck.push(data);
+  //       setExpertsFoundForInquiry(expertsCheck);
+  //     });
+  // }, [isAdmin]);
   // useEffect(() => {
   //   let get = async () => {
   //     let expertId = inquiry.movedToExpert.expertId;
@@ -90,7 +90,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   // };
   // getTheExpert();
 
-  console.log("by inq", expertsFoundForInquiry);
+  // console.log("by inq", expertsFoundForInquiry);
 
   if (!expertsFoundForInquiry) {
     // Add loading animation
@@ -147,7 +147,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
               buttonText={buttonText}
             />
           )}
-          {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
+          {/* {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
             <button
               className="nextStepButton"
               onClick={() => {
@@ -156,7 +156,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
             >
               {!clicked ? buttonText : "סגירה"} &nbsp;&nbsp;&gt;
             </button>
-          )}
+          )} */}
         </div>
       </>
     );

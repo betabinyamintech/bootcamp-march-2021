@@ -41,7 +41,6 @@ const AdminChooseMentor = ({ inquiry }) => {
   return (
     <div>
       <div className="chooseMentorHeader">
-        <span>basdhjasdbhjb</span>
         <h5>בחירת מומחה לסיוע בשאלה:</h5>
         <h2>{inquiry.inquiryTitle}</h2>
       </div>
