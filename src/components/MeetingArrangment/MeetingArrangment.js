@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "../Common/Button/Button";
 import { putInquiry } from "../../contexts/actions";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { useUserState } from "../../contexts/context";
 import clockIcon from "../commonsSVG/clock-icon.svg";
 import InputField from "../Common/InputField/InputField";
@@ -24,13 +24,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const MeetingArrangment = ({ inquiry, closePop }) => {
+  const history = useHistory();
   const { user } = useUserState();
   const { expertDetails } = user;
   console.log("user", expertDetails);
-  const { lengthMeeting, preferredMeetingType, meetingAddress } = expertDetails;
+  const {
+    lengthMeeting,
+    preferredMeetingType,
+    meetingAddress,
+    questionsBeforeMeeting,
+  } = expertDetails;
   const location = useLocation();
   const { _id } = inquiry;
-  const [optinalDates, setOptinalDates] = useState();
+  const [optinalDates, setOptinalDates] = useState([]);
   const [date, setDate] = useState();
   const [step, setStep] = useState(0);
   const [updateDetails, setUpdateDetails] = useState({
@@ -41,7 +47,7 @@ const MeetingArrangment = ({ inquiry, closePop }) => {
   const setoptinalState = () => {
     let today = new Date().toJSON().slice(0, 10);
     console.log(date > today ? "ok" : "early");
-
+    optinalDates.length === 3 && optinalDates.shift();
     optinalDates && !optinalDates.includes(date)
       ? setOptinalDates([...optinalDates, date])
       : date && setOptinalDates([date]);
@@ -60,9 +66,8 @@ const MeetingArrangment = ({ inquiry, closePop }) => {
     console.log(request);
     putInquiry(_id, request);
     setTimeout(() => {
-      closePop();
-      // location.reload();
-    }, 25000);
+      history.push("/home");
+    }, 1500);
   };
 
   const classes = useStyles();

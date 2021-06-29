@@ -22,7 +22,7 @@ const MoreMenu = () => {
     <div className="more-menu-container">
       <PreviousButton linkTo="/home" />
       <div className="user-details">
-        <Avatar />
+        <Avatar avatar={userState.user.imageSrc} />
         <div>
           <h3>{`${userState.user.firstName ? userState.user.firstName : ""} ${
             userState.user.lastName ? userState.user.lastName : "ברוך/ה הבא/ה!"
@@ -38,15 +38,15 @@ const MoreMenu = () => {
         </div>
       </div>
       <div className="more-menu-buttons">
-        <button>
+        {/* <button>
           <div>
             <i>
               <img src={allChallengesIcon}></img>
             </i>
             <span>כל האתגרים</span>
           </div>
-        </button>
-        <button>
+        </button> */}
+        {/* <button>
           <div onClick={() => history.push("/inquiry/new")}>
             <i>
               <img src={plusIcon}></img>
@@ -55,7 +55,7 @@ const MoreMenu = () => {
               הוספת אתגר חדש
             </span>
           </div>
-        </button>
+        </button> */}
         <button>
           {/* <Link to="/profile/edit" style={{ textDecoration: "none" }}> */}
           <div onClick={() => history.push("/profile/edit")}>
@@ -63,7 +63,7 @@ const MoreMenu = () => {
               <img src={profileIcon}></img>
             </i>
             <span onClick={() => history.push("/profile/edit")}>
-              עריכת פרופיל
+              עריכת הפרופיל
             </span>
           </div>
           {/* </Link> */}

@@ -34,7 +34,7 @@ const InquiryFilter = ({
     <>
       <div className="inquiriesTitle">פניות מסוננות: {selectedStatus}</div>
       <select
-        className="selectStatus"
+        className="meeting-kind"
         id="filterMeetings"
         name="filterMeetings"
         value={selectedStatus}

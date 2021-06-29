@@ -4,40 +4,36 @@ import ExpertDetailsHeader from "./ExpertDetailsHeader";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import tickForButton from "../Common/tickForButton.svg";
 import Button from "../Common/Button/Button";
-import { getSpecificUser, putInquiry } from "../../contexts/actions";
+import { getSpecificUser, putInquiry, reload } from "../../contexts/actions";
 import loading from "../commonsSVG/loadingDots.gif";
+import { useHistory } from "react-router";
+import EditInquiry from "../EditInquiry/EditInquiry";
 
 // import experts from "./experts.json";
 let d = new Date();
 
 const ChooseMeetingSchedule = ({ inquiry }) => {
+  const history = useHistory();
   const [theExpert, setTheExpert] = useState(inquiry.movedToExpert.expertId);
   const [chosenDate, setChosenDate] = useState();
-  const { optionalDates, lengthMeeting, meetingType } = inquiry.meetingOptions;
+  const { optionalDates, lengthMeeting, meetingType, meetingAddress } =
+    inquiry.meetingOptions;
   const { expertId } = inquiry.movedToExpert;
   let putToServer = () => {
     let inquiryId = inquiry._id;
     let request = {
-      meetingOptions: { scheduledDate: chosenDate },
+      meetingOptions: {
+        scheduledDate: chosenDate,
+        meetingType,
+        lengthMeeting,
+        meetingAddress,
+      },
       status: "meetingScheduled",
     };
     let response = putInquiry(inquiryId, request);
+    reload();
   };
-  // useEffect(async () => {
-  //   let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-  //     method: "GET",
-  //   });
-  //   let expert = await response.json();
-  //   setTheExpert(expert);
-  // let get = ()=>{}
-  // let { expertId } = inquiry.movedToExpert;
-  // let response = await getSpecificUser(expertId);
-  // let data = await response.json();
-  // setTheExpert(data);
-  // }, []);
-  // console.log("the expert", theExpert);
-  // console.log("ssssssssssssss", inquiry);
-  // console.log("chosen date", chosenDate);
+
   if (!theExpert) {
     return <img src={loading}></img>;
   } else
@@ -45,7 +41,10 @@ const ChooseMeetingSchedule = ({ inquiry }) => {
       <div className="container">
         <div className="pageTitle">בחירת מועד לפגישה</div>
         <div className="subTitle"> {`פגישה למשך ${lengthMeeting} דקות`}</div>
-        <ExpertDetailsHeader expert={theExpert} />
+        <ExpertDetailsHeader
+          expert={theExpert}
+          meetingType={inquiry.meetingOptions.meetingType}
+        />
         {optionalDates.map((dateTime) => (
           <OneMeetingDetailsDisplay
             dateTime={dateTime}
@@ -64,14 +63,7 @@ const ChooseMeetingSchedule = ({ inquiry }) => {
             אישור
           </Button>
         </div>
-        <div
-          className="footerText"
-          onClick={() => {
-            alert(
-              "Stopping request process, set route to go back to login screen"
-            );
-          }}
-        >
+        <div className="footerText" onClick={<EditInquiry />}>
           .תודה, כבר הסתדרתי
         </div>
       </div>

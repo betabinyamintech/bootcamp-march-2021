@@ -4,6 +4,9 @@
   border-radius: 4px;
   margin: 10px;
   margin-bottom: 22px;
+  height: auto;
+  min-height: 150px;
+  /* box-shadow: px 4px 30px grey; */
 }
 
 .inquiryTitle {

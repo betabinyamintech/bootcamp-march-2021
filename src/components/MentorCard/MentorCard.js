@@ -43,7 +43,7 @@ function MentorCard({
                   : "mentorcard"
               }
             >
-              <Avatar height="50px" />
+              <Avatar height="50px" avatar={expert.imageSrc} />
               <div className="middlementordiv">
                 <h4>
                   {expert.firstName} {expert.lastName}
@@ -71,6 +71,7 @@ function MentorCard({
                   {/* <img className="mentorcardnextimg" src={NextIcon} /> */}
                 </a>
               </div>
+
               <button
                 onClick={() => {
                   setDetailsButton(!detailsButton);

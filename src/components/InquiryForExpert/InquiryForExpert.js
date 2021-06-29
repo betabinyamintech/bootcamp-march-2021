@@ -1,17 +1,12 @@
 import "./InquiryForExpert.css";
-import inquiryTypes from "../Inquiry/InquiryType";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import { useUserState } from "../../contexts/context";
-import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
-import InquiryStatus from "../Inquiry/InquiryStatus";
-import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
 import menuIcon from "../commonsSVG/menu-icon.svg";
 import downArrow from "../commonsSVG/down-arrow.svg";
 import upArrow from "../commonsSVG/up-arrow.svg";
-import { deleteInquiry, putInquiry } from "../../contexts/actions";
-import { useEffect, useState } from "react";
-import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
+import { useState } from "react";
 import ActionPage from "../ActionPage/ActionPage";
+import EditInquiry from "../EditInquiry/EditInquiry";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 const InquiryForExpert = ({ inquiry, expertsUsers }) => {
@@ -22,6 +17,7 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
     updatedAt,
     status,
     movedToExpert,
+    cancelReason,
   } = inquiry;
   const { answersToExpertQuestions } = movedToExpert;
   const user = useUserState().user;
@@ -32,14 +28,12 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
   let creationDate = new Date(updatedAt).toLocaleDateString();
   let creationTime = new Date(updatedAt).toLocaleTimeString();
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
-  console.log("status", status);
   const values = InquiryType[type][status];
   const { message = null, trueFalseButton, buttonText } = values;
-  // console.log("values", values);
-  const cancelInquiry = () => {
-    let request = { status: "canceledByExpert" };
-    putInquiry(inquiry._id, request);
-  };
+  // const cancelInquiry = () => {
+  //   let request = { status: "canceledByExpert" };
+  //   putInquiry(inquiry._id, request);
+  // };
   return (
     <>
       <div
@@ -57,7 +51,6 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
           ></img>
         </span>
         <div className="inquiryTitle">&bull; {inquiryTitle}</div>
-
         <div className="inquiryTitle" style={{ fontSize: "15px" }}>
           &bull; נשלחה על ידי: {userId.firstName} {userId.lastName}
         </div>
@@ -86,6 +79,7 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
                       </div>
                     </div>
                   )}
+
                   {/* {status === "meetingScheduled" && (
                     <InquiryMeetingScheduled inquiry={inquiry} />
                   )} */}
@@ -94,12 +88,20 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
             })}
           </>
         )}
+        {status === "canceledByUser" && (
+          <div className="questionAndAnswer">
+            <div className="statusMessage">&bull; סיבת הביטול </div>
+
+            <div className="inquiryTitle" style={{ fontSize: "15px" }}>
+              {cancelReason}
+            </div>
+          </div>
+        )}
         <div className="statusMessage">
           <h6 style={{ fontSize: "13px" }}></h6>
         </div>
         <div className="statusMessage">&bull; {message} </div>
-
-        {status === "movedToExpert" && infoClick && (
+        {status === "movedToExpert" && (
           // Component MeetingArrangment
           <ActionPage
             inquiry={inquiry}
@@ -109,38 +111,19 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
             buttonValue={infoClick}
           />
         )}
-        {status === "meetingScheduled" && infoClick && (
-          <InquiryMeetingScheduled inquiry={inquiry} />
+        {status === "meetingScheduled" && (
+          <ActionPage
+            inquiry={inquiry}
+            setButton={() => setInfoClick(!infoClick)}
+            buttonText={buttonText}
+            buttonValue={infoClick}
+          />
         )}
-        {/* {inquiryTypes && status === "movedToExpert" && infoClick && (
-          <Popup
-            trigger={
-              <button
-                className="nextStepButton"
-                onClick={() => {
-                  setActionClick(!actionClick);
-                }}
-              >
-                {"אני לא רוצה לקחת פנייה זו"} &nbsp;&nbsp;&gt;
-              </button>
-            }
-            position="center"
-            nested
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                fontSize: "16px",
-              }}
-            >
-              <span>אתה בטוח שברצונך לבטל פנייה זו?</span>
-              <span style={{ alignSelf: "center" }}>{inquiryTitle}</span>
-              <button onClick={cancelInquiry}>כן</button>
-              <button>לא</button>
-            </div>{" "}
-          </Popup>
-        )} */}
+        {status !== "irrelevant" &&
+          status !== "canceledByExpert" &&
+          status !== "canceledByUser" && (
+            <EditInquiry inquiry={inquiry} buttonText={"בטל פנייה זו"} />
+          )}
         {/* <button
           className="nextStepButton"
           onClick={() => {

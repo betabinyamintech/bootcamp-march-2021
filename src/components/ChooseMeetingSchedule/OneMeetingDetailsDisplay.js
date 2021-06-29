@@ -41,10 +41,10 @@ const getMonth = (dateString) => {
 const OneMeetingDetailsDisplay = ({ dateTime, setChosenDate, chosenDate }) => {
   let date = new Date(dateTime);
   let meetingDate = date.toLocaleDateString();
-  let meetingTime = date.toLocaleTimeString();
+  let meetingTime = date.toLocaleTimeString().slice(0, 5);
   let finalDate = `${computeDayOfWeek(
     dateTime
-  )} ,${meetingTime},${meetingDate}`;
+  )}   ,${meetingDate}     ,${meetingTime}`;
   const [checked, setChecked] = useState();
   return (
     <div

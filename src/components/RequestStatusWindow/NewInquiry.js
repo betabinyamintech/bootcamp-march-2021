@@ -5,7 +5,7 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 //import "../Common/InputField/Style.css";
 import "./RequestStyle.css";
 import informationIcon from "../commonsSVG/information-icon.svg";
-import { fetchLogWithToken } from "../../contexts/actions";
+import { fetchLogWithToken, reload } from "../../contexts/actions";
 import { useHistory } from "react-router";
 const QuestionTypes = {
   TEXT: "TEXT",
@@ -72,7 +72,7 @@ const NewInquiry = ({}) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
       });
-      history.push("/home");
+      reload();
     },
     [request]
   );

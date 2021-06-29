@@ -71,7 +71,8 @@ const QuestionBeforeMeeting = () => {
     };
     setTimeout(() => {
       putToServer();
-    }, 2000);
+      // history.push("/home");
+    }, 1200);
   };
 
   const lastQuestion = currentStep >= steps.length - 1;

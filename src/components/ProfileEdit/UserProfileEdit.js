@@ -8,10 +8,14 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import { putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import vIcon from "../commonsSVG/v-icon.svg";
+import informationIcon from "../commonsSVG/information-icon.svg";
+
+import { useHistory } from "react-router";
 
 const missingMessage = "שדה חובה";
 
 const UserProfileEdit = () => {
+  const history = useHistory();
   const userState = useUserState();
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
@@ -36,6 +40,7 @@ const UserProfileEdit = () => {
     lastName: true,
     firstName: true,
     phone: true,
+    profession: true,
   };
 
   const setUserDetailsWithWarning = useCallback(
@@ -69,11 +74,14 @@ const UserProfileEdit = () => {
     putUser(
       userDispatch,
       {
-        userDetails,
-        profileFullFields:
-          city && phone && profession && firstName && lastName ? true : false,
+        userDetails: {
+          ...userDetails,
+          profileFullFields:
+            city && phone && profession && firstName && lastName ? true : false,
+        },
       },
-      console.log("putUser works" + userDetails)
+      console.log("putUser works" + userDetails),
+      history.push("/home")
     );
   }, [userDetails, warnings, setWarnings, requiredFields, userDispatch]);
   const setIsExpertFinal = (e) => {
@@ -157,6 +165,15 @@ const UserProfileEdit = () => {
             <span className="slider round"></span>
           </label>
           <span>אשמח גם לסייע לאחרים</span>
+        </div>
+        <div className="information">
+          <img src={informationIcon}></img>{" "}
+          <span>
+            {" "}
+            {
+              "לחיצה על כפתור זה תוביל אותך למסך עם כמה שאלות לגבי אופי העזרה שתרצה לתת"
+            }
+          </span>
         </div>
         {localIsExpert && (
           <ExpertProfileEdit

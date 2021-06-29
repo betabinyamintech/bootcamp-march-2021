@@ -1,17 +1,13 @@
 import { useEffect, useState } from "react";
-import { putInquiry } from "../../contexts/actions";
+import { putInquiry, reload } from "../../contexts/actions";
 import { useUserState } from "../../contexts/context";
 import MentorCard from "../MentorCard/MentorCard";
 import loading from "../commonsSVG/loadingDots.gif";
+import { useHistory } from "react-router";
 
-const MentorCardGroup = ({
-  selectedMentors,
-  inquiry,
-  searchResult,
-  fromAdminSide,
-  fromUserSide,
-  // expertsFound,
-}) => {
+const MentorCardGroup = ({ inquiry, searchResult }) => {
+  const history = useHistory();
+
   const isAdmin = useUserState().user.isAdmin;
   const expertsUsers = useUserState().expertsByAdmin;
   const [selectedExpertsByAdmin, setSelectedExpertsByAdmin] = useState([]);
@@ -19,20 +15,6 @@ const MentorCardGroup = ({
   let [inquiryIdForPut, setInquiryIdForPut] = useState();
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
   const { status, expertsFound, inquiryTitle } = inquiry;
-  // useEffect(() => {
-  //   expertsFound &&
-  //     expertsFound.map(async (expertId) => {
-  //       console.log("statr get");
-  //       let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-  //         method: "GET",
-  //       });
-  //       let data = await response.json();
-  //       // console.log("expertsFound", expertsFound);
-  //       let expertsCheck = [...expertsFoundForInquiry];
-  //       expertsCheck.push(data);
-  //       setExpertsFoundForInquiry(expertsCheck);
-  //     });
-  // }, []);
   const setExpertFunc = (expertId, inquiryId) => {
     isAdmin &&
       (!selectedExpertsByAdmin
@@ -61,6 +43,9 @@ const MentorCardGroup = ({
         status: "matchesFound",
       };
       putInquiry(inquiryIdForPut, inquiryToPut);
+      reload();
+    } else {
+      alert("not enough mentors");
     }
   };
 
@@ -79,13 +64,8 @@ const MentorCardGroup = ({
   // console.log(" result input", searchResult);
   isAdmin && console.log("admin choise", selectedExpertsByAdmin);
   !isAdmin && console.log("user choise ", selectedExpertsByUser);
-  // console.log("expertsFoundForInquiry", expertsFoundForInquiry);
-  // console.log(
-  //   "expertsFoundLength",
-  //   expertsFound.length,
-  //   " expertsFoundForInquiry",
-  //   expertsFoundForInquiry.length
-  // );
+  console.log("is admin", isAdmin);
+
   return (
     <>
       {isAdmin && (
@@ -123,28 +103,31 @@ const MentorCardGroup = ({
           </div>
         </>
       ) : (
-        <div className="cardGroup">
-          <span>{`עליך לבחור במומחה 1 מתוך ${expertsFound.length}`}</span>
-          {expertsFound.map((expert) => (
-            <MentorCard
-              expert={expert}
-              inquiry={inquiry}
-              searchResult={searchResult}
-              selectedExpertsByUser={selectedExpertsByUser}
-              putToServerFromUser={putToServer}
-              setSelectedExperts={(expertId, inquiryId) => {
-                setExpertFunc(expertId, inquiryId);
-              }}
-              setInquiryIdForPut={(inquiryId) => {
-                setInquiryIdForPut(inquiryId);
-              }}
-            />
-          ))}
-          {/* {isAdmin && (
+        !isAdmin &&
+        expertsFound && (
+          <div className="cardGroup">
+            <span>{`עליך לבחור במומחה 1 מתוך ${expertsFound.length}`}</span>
+            {expertsFound.map((expert) => (
+              <MentorCard
+                expert={expert}
+                inquiry={inquiry}
+                searchResult={searchResult}
+                selectedExpertsByUser={selectedExpertsByUser}
+                putToServerFromUser={putToServer}
+                setSelectedExperts={(expertId, inquiryId) => {
+                  setExpertFunc(expertId, inquiryId);
+                }}
+                setInquiryIdForPut={(inquiryId) => {
+                  setInquiryIdForPut(inquiryId);
+                }}
+              />
+            ))}
+            {/* {isAdmin && (
             <button>אישור ושליחה</button>
             onClick={putExpertsFound}
           )} */}
-        </div>
+          </div>
+        )
       )}
     </>
   );

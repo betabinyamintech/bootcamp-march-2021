@@ -17,13 +17,8 @@ const ActionPage = ({
 }) => {
   const { user } = useUserState();
   const expertsUsers = useUserState();
-  //   console.log("user state", user);
   const { isAdmin, isExpert } = user;
   const { inquiryId: _id, status } = inquiry;
-  //   console.log("localStatus", status);
-  //   console.log("expert founds for iqnuiry", expertsFoundForInquiry);
-  //   console.log("all experts by actionPage", expertsUsers);
-
   return (
     <Popup
       trigger={
@@ -45,12 +40,7 @@ const ActionPage = ({
             {status === "movedToExpert" && isExpert && (
               <MeetingArrangment inquiry={inquiry} closePop={close} />
             )}
-            {status === "matchesFound" && expertsFoundForInquiry && (
-              <MentorCardGroup
-                inquiry={inquiry}
-                expertsFoundForInquiry={expertsFoundForInquiry}
-              />
-            )}
+            {status === "matchesFound" && <MentorCardGroup inquiry={inquiry} />}
             {status === "opened" && expertsUsers && (
               <AdminChooseMentor
                 inquiry={inquiry}

@@ -12,6 +12,8 @@ import {
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
 import loading from "../commonsSVG/loadingDots.gif";
+import { Link } from "react-router-dom";
+import Button from "../Common/Button/Button";
 const Home = ({ numExperts = 167 }) => {
   const {
     user,
@@ -56,13 +58,10 @@ const Home = ({ numExperts = 167 }) => {
           (expertInq) => expertInq.movedToExpert.expertId === user._id
         )
       : null;
-    // isAdmin && console.log("inq admin", inquiriesForAdmin);
-    // console.log("chosen from community manager", chosenStatus);
-    // isAdmin && console.log("experts by home", usersForAdmin);
     console.log("owned BY HOME", ownedInquiries);
     console.log("expert BY HOME", expertInquiries);
     // isAdmin &&(
-    console.log("finally inquiries admin by dispatch", adminInquiries);
+    console.log("inquiries admin by dispatch", adminInquiries);
     // console.log("finally experts admin by dispatch", expertsByAdmin);
 
     return (
@@ -84,8 +83,8 @@ const Home = ({ numExperts = 167 }) => {
           ) : (
             <span>תושבי בנימין מחכים שתקשר בינם לבין המומחים המתאימים</span>
           )}
-          {/* {!user.isAdmin && user.profileFullFields && <InputQuestion />}
-          {!user.profileFullFields && (
+          {!user.isAdmin && user.profileFullFields && <InputQuestion />}
+          {!user.profileFullFields && !user.isAdmin && (
             <>
               <span
                 style={{
@@ -103,8 +102,8 @@ const Home = ({ numExperts = 167 }) => {
                 </Button>
               </Link>
             </>
-          )} */}
-          <InputQuestion />
+          )}
+          {/* <InputQuestion /> */}
         </div>
 
         {isAdmin && (

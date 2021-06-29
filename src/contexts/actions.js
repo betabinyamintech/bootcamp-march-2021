@@ -88,7 +88,7 @@ export async function loginUser(dispatch, loginPayload) {
   }
 }
 
-//GET SELF-USER DETAILS BY ANY USER
+//GET USER DETAILS BY ANY USER
 export async function getUser(dispatch) {
   try {
     const requestOptions = {
@@ -127,6 +127,8 @@ export async function getSpecificUser(userId) {
 
 //UPDATE USER DETAILS
 export async function putUser(dispatch, user) {
+  console.log("dispatch by actions", dispatch);
+  console.log("user by actions", user);
   const options = addToken({ method: "PUT", body: JSON.stringify(user) });
   console.log("user for putting", options);
   const response = await fetchLog("/users/me", options);
@@ -134,14 +136,15 @@ export async function putUser(dispatch, user) {
   console.log("returned user data", data);
   dispatch({ type: ActionTypes.UPDATE_USER, user: data });
 }
-
-// PUT INQUIRY -TO DO
+//PUT INQUIRY
 export async function putInquiry(inquiryId, inquiryBody) {
-  console.log("inquiry on actions", inquiryId);
-  console.log("inquiry details on actions", inquiryBody);
+  console.log("inquiry ID on actions", inquiryId);
+  console.log("inquiry Body actions", inquiryBody);
   const options = addToken({
     method: "PUT",
     body: JSON.stringify(inquiryBody),
+    "Content-Type": "application/json",
+    Accept: "application/json",
   });
   const response = await fetchLog(`/inquiries/${inquiryId}`, options);
   const data = await response.json();
@@ -213,4 +216,24 @@ export async function getAllUsers(dispatch) {
   } catch (error) {
     dispatch({ type: ActionTypes.GET_ALL_EXPERTS, error: error });
   }
+}
+
+//POST NEW TAGS
+
+export async function postTag(tag) {
+  const options = addToken({
+    method: "POST",
+    body: JSON.stringify(tag),
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  });
+  const response = await fetchLog(`/tags`, options);
+  const data = await response.json();
+  return;
+}
+
+export function reload() {
+  setTimeout(() => {
+    window.location.reload();
+  }, 1100);
 }

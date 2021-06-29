@@ -10,13 +10,21 @@ import { deleteInquiry } from "../../contexts/actions";
 import { useEffect, useState } from "react";
 import ActionPage from "../ActionPage/ActionPage";
 import { Popover, Button } from "antd";
+import EditInquiry from "../EditInquiry/EditInquiry";
 const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   console.log("inq by inq admin", inquiry);
-  const { inquiryTitle, inquiryContent, userId, updatedAt, status } = inquiry;
+  const {
+    inquiryTitle,
+    inquiryContent,
+    userId,
+    updatedAt,
+    status,
+    movedToExpert,
+  } = inquiry;
   const user = useUserState().user;
   const fromAdminSide = true;
   const [clicked, setClicked] = useState(true);
-  const [inq, setInq] = useState();
+  const [cancel, setCancel] = useState();
   const { isAdmin, isExpert } = user;
   let creationDate = new Date(updatedAt).toLocaleDateString();
   let creationTime = new Date(updatedAt).toLocaleTimeString();
@@ -26,6 +34,7 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   const { message = null, trueFalseButton, buttonText } = values;
   //   console.log("iqnuiry", inquiry);
   console.log("experts by inq admin", expertsUsers);
+  console.log("inquiry", inquiry);
   return (
     <>
       <div className="inquiryBox">
@@ -49,7 +58,13 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
           <h6 style={{ fontSize: "13px" }}></h6>
         </div>
         <div className="statusMessage">&bull;סטטוס: {message}</div>
-        {status === "meetingScheduled" && clicked && (
+        {status === "movedToExpert" && (
+          <div className="statusMessage">
+            &bull;עבר אל:{" "}
+            {`${movedToExpert.expertId.firstName}   ${movedToExpert.expertId.lastName}, ${movedToExpert.expertId.profession}`}
+          </div>
+        )}
+        {status === "meetingScheduled" && (
           <InquiryMeetingScheduled inquiry={inquiry} />
         )}
         {status === "opened" && type === "admin" && clicked && (
@@ -60,115 +75,15 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
             // setButton={setClicked(!clicked)}
           />
         )}
+        {<EditInquiry inquiry={inquiry} buttonText={"ערוך פנייה זו"} />}
         {/* {inquiryTypes && status !== "irrelevant" && (
-          <button
-            className="nextStepButton"
-            onClick={() => {
-              setClicked(!clicked);
-            }}
-          >
-            {clicked ? "סגירה" : buttonText} &nbsp;&nbsp;&gt;
-          </button>
+          <button>בטל פנייה זו</button>
         )} */}
       </div>
     </>
   );
 };
-
 export const InquiryType = {
-  user: {
-    [InquiryStatus.OPENED]: {
-      type: "opened",
-      message: "פנייה חדשה",
-      trueFalseButton: false,
-    },
-    [InquiryStatus.MISSING_DETAILS]: {
-      type: "missingDetails",
-      message: "חסרים פרטים",
-      trueFalseButton: true,
-      buttonText: "השלם פרטים",
-    },
-    matchesFound: {
-      type: "matchesFound",
-      message: "נמצאו xxxxx מומחים מתאימים",
-      trueFalseButton: true,
-      buttonText: "בחירת מומחה",
-    },
-    movedToExpert: {
-      type: "movedToExpert",
-      message: "עבר למומחה",
-      trueFalseButton: false,
-    },
-    responseFromExpert: {
-      type: "responseFromExpert",
-      message: "קיבלת תגובה ממומחה!",
-      trueFalseButton: true,
-      buttonText: "צפיה בתגובה",
-    },
-    meetingScheduled: {
-      type: "meetingScheduled",
-      message: "נקבע תאריך לפגישה!",
-      trueFalseButton: true,
-      buttonText: "צפיה בפגישה",
-    },
-    meetingDatePassed: {
-      type: "meetingDatePassed",
-      message: "הפגישה התקיימה",
-      trueFalseButton: false,
-    },
-    irrelevant: {
-      type: "irrelevant",
-      message: "לא רלוונטי",
-      trueFalseButton: false,
-    },
-  },
-  expert: {
-    [InquiryStatus.OPENED]: {
-      type: "opened",
-      message: "פנייה חדשה",
-      trueFalseButton: false,
-    },
-    [InquiryStatus.MISSING_DETAILS]: {
-      type: "missingDetails",
-      message: "חסרים פרטים",
-      trueFalseButton: true,
-      buttonText: "השלם פרטים",
-    },
-    matchesFound: {
-      type: "matchesFound",
-      message: "נמצאו xxxxx מומחים מתאימים",
-      trueFalseButton: true,
-      buttonText: "בחירת מומחה",
-    },
-
-    movedToExpert: {
-      type: "movedToExpert",
-      message: "עבר למומחה",
-      trueFalseButton: false,
-    },
-    responseFromExpert: {
-      type: "responseFromExpert",
-      message: "קיבלת תגובה ממומחה!",
-      trueFalseButton: true,
-      buttonText: "צפיה בתגובה",
-    },
-    meetingScheduled: {
-      type: "meetingScheduled",
-      message: "נקבע תאריך לפגישה!",
-      trueFalseButton: true,
-      buttonText: "צפיה בפגישה",
-    },
-    meetingWas: {
-      type: "meetingWas",
-      message: "הפגישה התקיימה",
-      trueFalseButton: false,
-    },
-    irrelevant: {
-      type: "irrelevant",
-      message: "לא רלוונטי",
-      trueFalseButton: false,
-    },
-  },
   admin: {
     opened: {
       message: "ממתין לשיוך למומחים",
@@ -176,7 +91,7 @@ export const InquiryType = {
       buttonText: "חפש מומחים מתאימים",
     },
     missingDetails: {
-      message: "חסרים פרטים",
+      message: "נשלח לפונה לטובת השלמת פרטים ",
       trueFalseButton: true,
       buttonText: "בדוק אילו פרטים חסרים ",
     },
@@ -192,6 +107,22 @@ export const InquiryType = {
       message: "קיבלת תגובה ממומחה!",
       trueFalseButton: true,
       buttonText: "צפיה בתגובה",
+    },
+    meetingScheduled: {
+      type: "meetingScheduled",
+      message: "נקבע תאריך לפגישה!",
+      trueFalseButton: true,
+      buttonText: "צפיה בפגישה",
+    },
+    canceledByUser: {
+      type: "canceledByUser",
+      message: "פנייה בוטלה על ידי שולח הפנייה",
+      trueFalseButton: false,
+    },
+    canceledByExpert: {
+      type: "canceledByExpert",
+      message: "פנייה בוטלה על ידי המומחה",
+      trueFalseButton: false,
     },
     meetingDatePassed: {
       type: "meetingDatePassed",

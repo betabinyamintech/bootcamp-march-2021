@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import MentorCardGroup from "../MentorCardGroup/MentorCardGroup";
 import ActionPage from "../ActionPage/ActionPage";
+import EditInquiry from "../EditInquiry/EditInquiry";
 
 export const Inquiry = ({ inquiry, expertsUsers }) => {
   const user = useUserState().user;
@@ -22,75 +23,22 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
   const { isAdmin, isExpert } = user;
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
-  const { status, inquiryTitle, inquiryContent, createdAt, _id, expertsFound } =
-    inquiry;
+  const {
+    status,
+    inquiryTitle,
+    inquiryContent,
+    createdAt,
+    _id,
+    irrelevantDetails,
+    missingDetails,
+    cancelReason,
+    expertsFound,
+  } = inquiry;
   const values = InquiryType[type][status];
   // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
   let creationDate = new Date(createdAt).toLocaleDateString();
   let creationTime = new Date(createdAt).toLocaleTimeString();
-  let count = 0;
-  // useEffect(() => {
-  //   expertsFound &&
-  //     expertsFound.map(async (expertId) => {
-  //       let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-  //         method: "GET",
-  //       });
-  //       status === "matchesFound" &&
-  //         console.log("experts found length", expertsFound.length);
-  //       let data = await response.json();
-  //       // console.log("expertsFound", expertsFound);
-  //       let expertsCheck = [...expertsFoundForInquiry];
-  //       expertsCheck.push(data);
-  //       setExpertsFoundForInquiry(expertsCheck);
-  //     });
-  // }, [isAdmin]);
-  // useEffect(() => {
-  //   let get = async () => {
-  //     let expertId = inquiry.movedToExpert.expertId;
-  //     let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-  //       method: "GET",
-  //     });
-  //     let expert = await response.json();
-  //     setTheExpert(expert);
-  //   };
-  // });
-  // useEffect(() => {
-  //   let get = async () => {
-  //     const expertId = inquiry.movedToExpert.expertId;
-  //     let response = await fetch(`http://localhost:5000/users/${expertId}`, {
-  //       method: "GET",
-  //     });
-  //     let data = await response.json();
-  //     setTheExpert(data);
-  //   };
-  //   get();
-  // }, [isAdmin]);
-  // useEffect(() => {
-  //   let getTheExpert = async () => {
-  //     const expertId = inquiry.movedToExpert.expertId;
-
-  //     let response = fetch(`localhost:5000${expertId}`, { method: "GET" });
-  //     let data = (await response).json();
-
-  //     let response = await getSpecificUser(expertId);
-  //     let data = await response.json();
-  //     setTheExpert(data);
-  //     console.log("response by inquiry", response);
-  //   };
-  //   getTheExpert();
-  // }, []);
-  // let getTheExpert = async () => {
-  //   const expertId = inquiry.movedToExpert.expertId;
-  //   console.log("expertId", expertId);
-  //   let response = await getSpecificUser(expertId);
-  //   // let data = await response.json();
-  //   // setTheExpert(data);
-  //   console.log("response by inquiry", response);
-  // };
-  // getTheExpert();
-
-  // console.log("by inq", expertsFoundForInquiry);
 
   if (!expertsFoundForInquiry) {
     // Add loading animation
@@ -98,19 +46,8 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   } else {
     return (
       <>
-        <div
-          className="inquiryBox"
-          onClick={() => {
-            // console.log("inq id", inquiry._id);
-            // console.log("inquiry details", inquiry);
-          }}
-        >
-          <span
-            className="homeMenuIcon"
-            // onClick={() => {
-            //   deleteInquiry(_id);
-            // }}
-          >
+        <div className="inquiryBox">
+          <span className="homeMenuIcon">
             <img alt="home" src={menuIcon}></img>
           </span>
           <div className="inquiryTitle">&bull; {inquiryTitle}</div>
@@ -121,11 +58,43 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
           <div className="statusMessage">
             <h6 style={{ fontSize: "13px" }}></h6>
           </div>
-          <div className="statusMessage">&bull; {message}</div>
+          <div className="statusMessage">&bull; סטטוס: {message}</div>
+          {status === "irrelevant" && (
+            <div className="questionAndAnswer">
+              <div className="statusMessage">&bull; הודעת המנהל</div>
 
-          {status === "responseFromExpert" && clicked && (
+              <div className="inquiryTitle" style={{ fontSize: "15px" }}>
+                {irrelevantDetails}
+              </div>
+            </div>
+          )}
+          {status === "canceledByExpert" && (
+            <div className="questionAndAnswer">
+              <div className="statusMessage">&bull; סיבת הביטול </div>
+
+              <div className="inquiryTitle" style={{ fontSize: "15px" }}>
+                {cancelReason}
+              </div>
+            </div>
+          )}
+          {status === "missingDetails" && (
+            <div className="questionAndAnswer">
+              <div className="statusMessage">&bull; הודעת המנהל</div>
+              <div className="inquiryTitle" style={{ fontSize: "15px" }}>
+                {missingDetails}
+              </div>
+              <div className="statusMessage"></div>
+            </div>
+          )}
+
+          {status === "responseFromExpert" && (
             // Component - ChooseMeetingSchedule -V
-            <ActionPage inquiry={inquiry} />
+            <ActionPage
+              inquiry={inquiry}
+              buttonValue={clicked}
+              setButton={() => setClicked(!clicked)}
+              buttonText={buttonText}
+            />
           )}
           {status === "meetingScheduled" && (
             // Component - InquiryMeetingScheduled -V -- fetch?
@@ -141,12 +110,25 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
             <ActionPage
               inquiry={inquiry}
               theExpert={theExpert}
-              expertsFoundForInquiry={expertsFoundForInquiry}
               buttonValue={clicked}
               setButton={() => setClicked(!clicked)}
               buttonText={buttonText}
             />
           )}
+          {status === "missingDetails" && (
+            <ActionPage
+              inquiry={inquiry}
+              buttonValue={clicked}
+              setButton={() => setClicked(!clicked)}
+              buttonText={buttonText}
+            />
+          )}
+          {status !== "irrelevant" &&
+            status !== "canceledByExpert" &&
+            status !== "canceledByUser" && (
+              <EditInquiry inquiry={inquiry} buttonText={"בטל פנייה זו"} />
+            )}
+
           {/* {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
             <button
               className="nextStepButton"
@@ -191,7 +173,7 @@ export const InquiryType = {
       type: "responseFromExpert",
       message: "קיבלת תגובה ממומחה!",
       trueFalseButton: true,
-      buttonText: "צפיה בתגובה",
+      buttonText: "לבחירת תאריך לפגישה ",
     },
     meetingScheduled: {
       type: "meetingScheduled",

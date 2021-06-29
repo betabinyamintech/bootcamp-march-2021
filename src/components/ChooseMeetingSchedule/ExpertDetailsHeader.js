@@ -25,10 +25,10 @@ expertDetails: {
     },
     */
 
-const ExpertDetailsHeader = ({ expert }) => {
+const ExpertDetailsHeader = ({ expert, meetingType }) => {
   return (
     <div className="expertDetails">
-      <Avatar width="47px" height="47px" />
+      <Avatar width="47px" height="47px" avatar={expert.imageSrc} />
       <div className="expertDetailsText">
         <div className="middlementordiv">
           <div className="boxTitleHeading">
@@ -38,8 +38,8 @@ const ExpertDetailsHeader = ({ expert }) => {
             {expert.profession},{expert.city}
           </div>
           <div className="meetingPlace">
-            נפגש בדרך כלל ב:{" "}
-            {expert.expertDetails.meetingAddress === "virtual" ? (
+            הפגישה תיערך ב:{" "}
+            {meetingType === "virtual" ? (
               <Zoom />
             ) : (
               expert.expertDetails.meetingAddress
