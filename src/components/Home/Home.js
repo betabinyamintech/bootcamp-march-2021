@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import OpenInquiries from "../OpenInquiries/OpenInquiries";
 import Header from "../Header/Header";
 import InquiryFilter from "../CommunityManager/CommunityManager.js";
+import QuestionDetails from "../QuestionDetails/QuestionDetails.js";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import {
   getInquiries,
@@ -14,6 +15,9 @@ import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
 import loading from "../commonsSVG/loadingDots.gif";
 import { Link } from "react-router-dom";
 import Button from "../Common/Button/Button";
+import ProfileView from "../ProfileView/ProfileView";
+import ProfileViewAdminRemove from "../ProfileView/ProfileViewAdminRemove";
+
 const Home = ({ numExperts = 167 }) => {
   const {
     user,
@@ -61,9 +65,8 @@ const Home = ({ numExperts = 167 }) => {
     console.log("owned BY HOME", ownedInquiries);
     console.log("expert BY HOME", expertInquiries);
     // isAdmin &&(
-    console.log("inquiries admin by dispatch", adminInquiries);
+    // console.log("inquiries admin by dispatch", adminInquiries);
     // console.log("finally experts admin by dispatch", expertsByAdmin);
-
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
         <div>
@@ -83,7 +86,9 @@ const Home = ({ numExperts = 167 }) => {
           ) : (
             <span>תושבי בנימין מחכים שתקשר בינם לבין המומחים המתאימים</span>
           )}
-          {!user.isAdmin && user.profileFullFields && <InputQuestion />}
+          {!user.isAdmin && user.profileFullFields && (
+            <InputQuestion isButton={true} />
+          )}
           {!user.profileFullFields && !user.isAdmin && (
             <>
               <span
@@ -126,9 +131,9 @@ const Home = ({ numExperts = 167 }) => {
             );
           })}
         <>
-          {user.isExpert && (
+          {user.isExpert && expertInquiries.length > 0 && (
             <>
-              <div className="inquiriesTitle">פניות שנשלחו אליך</div>
+              <div className="inquiriesTitle">פניות נכנסות</div>
               <OpenInquiries
                 inquiries={expertInquiries}
                 // forExpert={true}
@@ -140,15 +145,11 @@ const Home = ({ numExperts = 167 }) => {
           )}
           {!isAdmin && ownedInquiries && (
             <>
-              <div className="inquiriesTitle">פניות ששלחת</div>
-              <OpenInquiries
-                // expertInquiries={expertInquiries}
-                inquiries={ownedInquiries}
-                // expertsUsers={adminUsers}
-                userId={user._id}
-              />
+              <div className="inquiriesTitle">פניות פתוחות</div>
+              <OpenInquiries inquiries={ownedInquiries} userId={user._id} />
             </>
           )}
+          {/* <QuestionDetails />{" "} */}
         </>
       </div>
     );

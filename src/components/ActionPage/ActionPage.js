@@ -40,7 +40,9 @@ const ActionPage = ({
             {status === "movedToExpert" && isExpert && (
               <MeetingArrangment inquiry={inquiry} closePop={close} />
             )}
-            {status === "matchesFound" && <MentorCardGroup inquiry={inquiry} />}
+            {status === "matchesFound" && (
+              <MentorCardGroup inquiry={inquiry} buttonText={buttonText} />
+            )}
             {status === "opened" && expertsUsers && (
               <AdminChooseMentor
                 inquiry={inquiry}

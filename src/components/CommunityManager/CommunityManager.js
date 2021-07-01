@@ -1,8 +1,9 @@
 import { useState } from "react";
 import "./CommunityManager.css";
 
-import { InquiryType } from "../Inquiry/Inquiry.js";
-const allEnquiryTypesExpert = InquiryType.expert;
+import { InquiryType } from "../InquiryForAdmin/InquiryForAdmin.js";
+const allInquiryTypesExpert = InquiryType.admin;
+console.log("all typs", allInquiryTypesExpert);
 
 const groupByForObject = (xs, key) =>
   Object.values(xs).reduce((rv, x) => {
@@ -41,7 +42,7 @@ const InquiryFilter = ({
         onChange={(e) => searchStatus(e.target.value)}
       >
         <option value="all">כל הפניות</option>
-        {Object.keys(groupByForObject(allEnquiryTypesExpert, "type")).map(
+        {Object.keys(groupByForObject(allInquiryTypesExpert, "type")).map(
           (category) => (
             <option value={category} key={category}>
               {category}

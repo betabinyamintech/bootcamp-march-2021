@@ -1,14 +1,14 @@
-import "./InquiryForExpert.css";
+import "./InquiryStyles.css";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import { useUserState } from "../../contexts/context";
-import menuIcon from "../commonsSVG/menu-icon.svg";
 import downArrow from "../commonsSVG/down-arrow.svg";
 import upArrow from "../commonsSVG/up-arrow.svg";
 import { useState } from "react";
 import ActionPage from "../ActionPage/ActionPage";
 import EditInquiry from "../EditInquiry/EditInquiry";
-import Popup from "reactjs-popup";
+import clockIcon from "../commonsSVG/clock-icon2.svg";
 import "reactjs-popup/dist/index.css";
+import QuestionDetails from "../QuestionDetails/QuestionDetails";
 const InquiryForExpert = ({ inquiry, expertsUsers }) => {
   const {
     inquiryTitle,
@@ -42,22 +42,25 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
           setInfoClick(!infoClick);
         }}
       >
-        <span className="homeMenuIcon">
-          <img alt="home" src={menuIcon}></img>
-          <img
+        {/* <span className="homeMenuIcon"> */}
+        {/* <img alt="home" src={menuIcon}></img> */}
+        {/* <img
             alt="home"
             src={infoClick ? upArrow : downArrow}
             style={{ marginTop: "10px" }}
           ></img>
-        </span>
-        <div className="inquiryTitle">&bull; {inquiryTitle}</div>
-        <div className="inquiryTitle" style={{ fontSize: "15px" }}>
+        </span> */}
+        <div className="inquiryTitle"> {inquiryTitle}</div>
+        {/* <div className="inquiryTitle" style={{ fontSize: "15px" }}>
           &bull; נשלחה על ידי: {userId.firstName} {userId.lastName}
-        </div>
-        <div className="timePassed">{`נוצרה ב:${creationDate} בשעה : ${creationTime.slice()}`}</div>
+        </div> */}
+        <div className="timePassed">
+          <img src={clockIcon} alt="clock"></img>
+          {`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(0, 5)}`}
+        </div>{" "}
         {infoClick && (
           <>
-            <div className="inquiryTitle">&bull; {inquiryContent}</div>
+            <div className="inquiryTitle"> {inquiryContent}</div>
 
             {answersToExpertQuestions.map((question) => {
               return (
@@ -103,13 +106,7 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
         <div className="statusMessage">&bull; {message} </div>
         {status === "movedToExpert" && (
           // Component MeetingArrangment
-          <ActionPage
-            inquiry={inquiry}
-            click={actionClick}
-            setButton={() => setInfoClick(!infoClick)}
-            buttonText={buttonText}
-            buttonValue={infoClick}
-          />
+          <QuestionDetails inquiry={inquiry} buttonText={buttonText} />
         )}
         {status === "meetingScheduled" && (
           <ActionPage
@@ -119,11 +116,11 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
             buttonValue={infoClick}
           />
         )}
-        {status !== "irrelevant" &&
+        {/* {status !== "irrelevant" &&
           status !== "canceledByExpert" &&
           status !== "canceledByUser" && (
             <EditInquiry inquiry={inquiry} buttonText={"בטל פנייה זו"} />
-          )}
+          )} */}
         {/* <button
           className="nextStepButton"
           onClick={() => {
@@ -142,7 +139,7 @@ export const InquiryType = {
       type: "movedToExpert",
       message: "הפונה בחר אותך מבין המומחים שהצענו לו",
       trueFalseButton: false,
-      buttonText: "קבע מועד לפגישה   ",
+      buttonText: "   אשמח לעזור! בואו נקבע מועד לפגישה  ",
     },
     meetingScheduled: {
       type: "meetingScheduled",
@@ -174,6 +171,11 @@ export const InquiryType = {
     canceledByExpert: {
       type: "canceledByExpert",
       message: "פנייה בוטלה על ידיך ",
+      trueFalseButton: false,
+    },
+    refusedByExpert: {
+      type: "refusedByExpert",
+      message: "המומחה דחה פנייה זו    ",
       trueFalseButton: false,
     },
   },

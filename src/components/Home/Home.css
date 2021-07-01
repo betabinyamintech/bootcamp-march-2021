@@ -2,6 +2,13 @@
   text-align: right;
   margin-right: 12px;
   font-family: HEEBO;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  font-style: normal;
+  color: #727280;
+  margin-bottom: 49px;
+  margin-top: 49px;
 }
 .selectStatus {
   width: 80%;

@@ -1,12 +1,11 @@
 .inquiryBox {
   margin: auto;
-  background: #f0f0f5;
-  border-radius: 4px;
   margin: 10px;
   margin-bottom: 22px;
   height: auto;
   min-height: 150px;
-  /* box-shadow: px 4px 30px grey; */
+  background: #f8f8fa;
+  border-radius: 10px;
 }
 
 .inquiryTitle {

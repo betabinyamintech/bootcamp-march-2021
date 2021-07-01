@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
+import SearchForHashtag from "../SearchForHahstag";
 import plusImg from "./PlusImg.svg";
-
 //import "./HashtagList.css";
-
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
+  let theHashtags = hashtags.slice(0, 11);
+  const [hashtagsPreview, setHashtagsPreview] = useState(theHashtags);
   if (selectedHashtags === undefined) selectedHashtags = [];
   let keys = 0;
-  console.log("selectedHashtags", selectedHashtags);
-  // console.log("Hashtags", hashtags);
   return (
     <div
       style={{
@@ -19,12 +18,24 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
       }}
     >
       <div className="hashtagList">
-        <div className="hashtag newHashtag">
+        {/* <div
+          className="hashtag newHashtag"
+          onClick={() => {
+            setAdd(!add);
+          }}
+        >
           <img className="hashtagIcon" src={plusImg} alt="" />
           אחר
-        </div>
-
-        {hashtags.map((hashtag) => (
+        </div> */}
+        {
+          <SearchForHashtag
+            hashtags={hashtags}
+            setHashtagsPreview={(value) => {
+              setHashtagsPreview([value, ...hashtagsPreview]);
+            }}
+          />
+        }
+        {hashtagsPreview.map((hashtag) => (
           <HashtagLabel
             key={keys++}
             onClick={

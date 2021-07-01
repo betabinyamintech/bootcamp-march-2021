@@ -1,3 +1,49 @@
 .inquiriesBox {
-  /* background-color: grey; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  /* padding: 20px 24px; */
+  /* background: #f8f8fa; */
+  border-radius: 10px;
+  margin: -31px;
+  width: 88%;
+  height: auto;
+  min-height: 198px;
+}
+.inquiriesBoxNoInqs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  padding: 20px 24px;
+  background: #f8f8fa;
+  border-radius: 10px;
+  margin: 22px 0px;
+  width: 81%;
+  height: 198px;
+}
+.noInq1 {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 137.1%;
+  /* or 22px */
+
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+.noInq2 {
+  font-family: Heebo;
+  font-style: normal;
+  /* font-weight: 300; */
+  font-size: 16px;
+  line-height: 137.1%;
+  /* or 22px */
+
+  text-align: center;
+  letter-spacing: 0.01em;
 }

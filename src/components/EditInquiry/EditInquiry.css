@@ -19,6 +19,7 @@
   transition-timing-function: ease;
   transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
   opacity: 0.5;
+  font-size: 17px;
 }
 .input-divs textarea {
   padding: 10px;
@@ -27,12 +28,13 @@
   font-size: 15px;
   width: 150%;
   margin: 2px;
-  height: 95px;
+  height: auto;
 }
 .input-divs textarea:focus + span,
 textarea:not(:placeholder-shown) + span {
   opacity: 1;
   transform: scale(0.75) translateY(-100%) translateX(10px);
+  font-size: 17px;
 }
 
 .input-divs textarea:focus {

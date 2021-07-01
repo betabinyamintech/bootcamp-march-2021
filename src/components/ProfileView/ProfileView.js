@@ -23,7 +23,7 @@ const ProfileView = ({ user }) => {
         <span className="row-title">תיאור נושא הסיוע</span>
         <span className="row-description">התמודדות עם משטרת ההגירה</span>
       </div>
-      <HashtagList s />
+      {/* <HashtagList  /> */}
       <div className="row-details">
         <span className="row-title">סוג פגישה מועדף</span>
         <span className="row-description"> פגישה פיזית </span>

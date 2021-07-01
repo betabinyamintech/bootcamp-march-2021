@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileView from "./ProfileView";
-import Button from "../Common/Button";
+import Button from "../Common/Button/Button";
 
 const ProfileViewAdminRemove = ({ user }) => {
   return (

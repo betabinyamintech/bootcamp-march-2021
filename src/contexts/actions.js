@@ -203,7 +203,6 @@ export async function getAllInquiries(dispatch) {
     dispatch({ type: ActionTypes.GET_ALL_INQUIRIES, error: error });
   }
 }
-
 //GET ALL USERS
 export async function getAllUsers(dispatch) {
   try {
@@ -218,9 +217,20 @@ export async function getAllUsers(dispatch) {
   }
 }
 
+//GET ALL TAGS
+
+export async function getTags(tag) {
+  console.log("tag by actions", tag);
+  const options = addToken();
+  const response = await fetchLog(`/tags`, options);
+  const data = await response.json();
+  return;
+}
+
 //POST NEW TAGS
 
 export async function postTag(tag) {
+  console.log("tag by actions", tag);
   const options = addToken({
     method: "POST",
     body: JSON.stringify(tag),
@@ -235,5 +245,5 @@ export async function postTag(tag) {
 export function reload() {
   setTimeout(() => {
     window.location.reload();
-  }, 1100);
+  }, 2100);
 }

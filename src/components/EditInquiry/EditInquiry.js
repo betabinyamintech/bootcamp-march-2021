@@ -20,7 +20,6 @@ const EditInquiry = ({ inquiry, buttonText }) => {
     userId,
     movedToExpert,
   } = inquiry;
-  console.log(userId);
   const [reason, setReason] = useState("missingDetails");
   const [reasonDetails, setReasonDetails] = useState();
   const { isAdmin } = user;

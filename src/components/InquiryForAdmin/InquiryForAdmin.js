@@ -1,15 +1,9 @@
-import "./InquiryForAdmin.css";
+import "../InquiryForExpert/InquiryStyles.css";
 import inquiryTypes from "../Inquiry/InquiryType";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import { useUserState } from "../../contexts/context";
-import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
-import InquiryStatus from "../Inquiry/InquiryStatus";
-import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
-import menuIcon from "../commonsSVG/menu-icon.svg";
-import { deleteInquiry } from "../../contexts/actions";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ActionPage from "../ActionPage/ActionPage";
-import { Popover, Button } from "antd";
 import EditInquiry from "../EditInquiry/EditInquiry";
 const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   console.log("inq by inq admin", inquiry);
@@ -32,20 +26,13 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   const values = InquiryType[type][status];
   console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
-  //   console.log("iqnuiry", inquiry);
-  console.log("experts by inq admin", expertsUsers);
-  console.log("inquiry", inquiry);
   return (
     <>
       <div className="inquiryBox">
-        <span className="homeMenuIcon">
-          <div>
-            {/* <Popover content={"options"} title="Title" trigger="click">
-              <Button>Click me</Button>
-            </Popover> */}
-          </div>
+        {/* <span className="homeMenuIcon">
+          <div></div>
           ,<img alt="home" src={menuIcon}></img>
-        </span>
+        </span> */}
         <div className="inquiryTitle">&bull; {inquiryTitle}</div>
         <div className="inquiryTitle">
           &bull; שם: {userId.firstName} {userId.lastName}
@@ -86,24 +73,32 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
 export const InquiryType = {
   admin: {
     opened: {
+      type: "opened",
       message: "ממתין לשיוך למומחים",
       trueFalseButton: true,
       buttonText: "חפש מומחים מתאימים",
     },
     missingDetails: {
+      type: "missingDetails",
+
       message: "נשלח לפונה לטובת השלמת פרטים ",
       trueFalseButton: true,
       buttonText: "בדוק אילו פרטים חסרים ",
     },
     matchesFound: {
+      type: "matchesFound",
+
       message: " ממתין לבחירת מומחה על ידי הפונה",
       trueFalseButton: false,
     },
     movedToExpert: {
+      type: "movedToExpert",
+
       message: "עבר למומחה",
       trueFalseButton: false,
     },
     responseFromExpert: {
+      type: "responseFromExpert",
       message: "קיבלת תגובה ממומחה!",
       trueFalseButton: true,
       buttonText: "צפיה בתגובה",
@@ -130,8 +125,16 @@ export const InquiryType = {
       trueFalseButton: false,
     },
     irrelevant: {
+      type: "irrelevant",
+
       message: "לא רלוונטי",
       trueFalseButton: false,
+    },
+    refusedByExpert: {
+      type: "refusedByExpert",
+      message: "המומחה דחה פנייה זו    ",
+      trueFalseButton: true,
+      buttonText: "מצא מומחים נוספים",
     },
   },
 };

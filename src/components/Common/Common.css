@@ -9,37 +9,36 @@
   margin: 0 auto;
   transition: background-color 0.2s 0.1s ease-in;
 }
-.common-button:hover{
+.common-button:hover {
   background-color: #665f5f;
 }
 
 /* for Hashtag */
-.hashtag{
-    padding: 4px 12px;
-    text-align: center;
-    display: flex;
-    
-    background: #F3F3F3;
-    border-radius: 40px;
-    
-    flex: none;
-    order: 7;
-    flex-grow: 0;
-    margin: 10px 10px;
-    cursor: pointer;
-    }
-    
-    .hashtag.active{
-        background: #606060;
-    
-    }
-    
-    .hashtag.inactive{
-        background: #F3F3F3;
-    }
-    
-    /* input-div for InputField.js */
-    /*
+.hashtag {
+  padding: 4px 12px;
+  text-align: center;
+  display: flex;
+
+  background: #f3f3f3;
+  border-radius: 40px;
+
+  flex: none;
+  order: 7;
+  flex-grow: 0;
+  margin: 10px 10px;
+  cursor: pointer;
+}
+
+.hashtag.active {
+  background: #606060;
+}
+
+.hashtag.inactive {
+  background: #f3f3f3;
+}
+
+/* input-div for InputField.js */
+/*
     .input-div{
         margin-top: 20px;
       }
@@ -77,76 +76,69 @@
         
       }
 */
-     
+
 /* for Input Question */
 .iconQuestion {
-    height: 20px;
-    float: right;
+  height: 20px;
+  float: right;
 }
-.inputNewQuestion {
-    width: 90%;
-    border: none;
-    border-bottom: 2px dotted rgb(105, 101, 101);
-    text-align: right;
-}
-
 /* for PreviousButton */
-.back-button{
-    display: block;
-    align-self: end;
-    width: 61%;
-    font-size: 14px;
-    color:#606060;
- }
- .previous-icon{
-     margin-top:2px
- }
- 
- /* for Status Icon inside RequestStage */
-
- .outerdiv{
-    width: 90%;
-    height: 100px;
-    display: flex;
-    padding: 10px;
+.back-button {
+  display: block;
+  align-self: end;
+  width: 61%;
+  font-size: 14px;
+  color: #606060;
+}
+.previous-icon {
+  margin-top: 2px;
 }
 
-.finishedicon{
-    background-color: #ababab;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+/* for Status Icon inside RequestStage */
+
+.outerdiv {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  padding: 10px;
 }
 
-.currenticon{
-    background-color: #000000;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+.finishedicon {
+  background-color: #ababab;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
 
-.unstartedicon{
-    background-color: #E8E8E8;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+.currenticon {
+  background-color: #000000;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
 
-.infoIcon{
-width: 10px;
-height: 10px;
-border-radius: 10px;
-background-color: #575757;
-color: white;
-font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-font-size: 16px;
-font-style: normal;
-font-weight: 900;
-line-height: 17px;
-letter-spacing: 0.01em;
-text-align: right;
-padding: 5px;
-text-align: center;
-vertical-align: middle;
+.unstartedicon {
+  background-color: #e8e8e8;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
 }
 
+.infoIcon {
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background-color: #575757;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 17px;
+  letter-spacing: 0.01em;
+  text-align: right;
+  padding: 5px;
+  text-align: center;
+  vertical-align: middle;
+}

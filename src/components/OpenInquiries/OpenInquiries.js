@@ -4,7 +4,7 @@ import "./OpenInquiries.css";
 import inquiriesJson from "../Home/inquiries.json";
 import InquiryForExpert from "../InquiryForExpert/InquiryForExpert";
 import ActionPage from "../ActionPage/ActionPage";
-// let placeholder = 0;
+import nightLight from "../commonsSVG/business-light.svg";
 
 const OpenInquiries = ({
   inquiries,
@@ -14,16 +14,18 @@ const OpenInquiries = ({
   isExpert,
   userId,
 }) => {
-  const [action, setAction] = useState(false);
-  // console.log("experts by open inq", expertsUsers);
-  if (!inquiries) {
+  if (inquiries.length < 1) {
     return (
       <div className="inquiriesBox">
-        <h3>אין שאלות</h3>
-        <h4>הכל ברור לך, אחלה!</h4>
+        <span className="nightLight">
+          <img src={nightLight} alt="nightLight"></img>
+        </span>
+        <span className="noInq1">אין פניות</span>
+        <span className="noInq2">העולם בהיר לך, אחלה!</span>
       </div>
     );
   }
+
   return (
     <div className="inquiriesBox">
       {inquiries.map((inquiry) => {
@@ -48,16 +50,6 @@ const OpenInquiries = ({
           );
         }
       })}
-
-      {/* {expertInquiries &&
-        inquiries.map((inquiry) => (
-          <InquiryForExpert
-            inquiry={inquiry}
-            key={inquiry._id}
-            expertsUsers={expertsUsers}
-            expertsFound={expertsFound}
-          />
-        ))} */}
     </div>
   );
 };

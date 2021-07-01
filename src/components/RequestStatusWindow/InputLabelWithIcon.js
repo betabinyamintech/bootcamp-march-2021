@@ -3,7 +3,6 @@ import react, { useContext, useState } from "react";
 import "../Common/RequestStatusWindow/StatusIcon/StatusIcon.css";
 // import infoIcon from "../StatusIcon/info.svg";
 import "./RequestStyle.css";
-
 const InputLabelWithIcon = ({ text }) => {
   return (
     <div className="div-input">

@@ -1,0 +1,35 @@
+.missingDetails {
+  display: flex;
+  flex-direction: column;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 26px;
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #414141;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 2px 10px;
+  margin-top: 10px;
+  background: rgb(235, 230, 229);
+  border-radius: 8px;
+}
+.statusMessage {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  align-items: center;
+  letter-spacing: 0.01em;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 10px;
+  background: #ffffff;
+  border-radius: 3px;
+}

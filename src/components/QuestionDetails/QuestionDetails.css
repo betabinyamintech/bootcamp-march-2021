@@ -1,26 +1,103 @@
 .openingText {
+  width: 92%;
   margin: 20px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: right;
+  letter-spacing: 0.01em;
+
+  color: #414141;
 }
 .questionDetails {
-  background-color: #f3f3f3;
   padding: 20px;
-  margin: 20px;
+  width: 91%;
+  /* margin-top: 25px; */
+  display: flex;
+  flex-flow: column nowrap;
+  background: #f3f3f3;
+  border-radius: 4px;
 }
 
-.imgSender {
+.askerImage {
   height: 20px;
 }
-.inquiryTitle {
+.title {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+  /* identical to box height */
+  text-align: right;
+  letter-spacing: 0.01em;
   margin-top: 10px;
-  font-weight: bold;
+  color: #414141;
 }
 .inquiryText {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: right;
+  letter-spacing: 0.01em;
   margin-top: 10px;
-  margin-bottom: 10px;
+  color: #414141;
 }
-.question {
+.questionAndAnswers {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #606060;
+  margin-top: 20px;
+}
+.questionBox {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: right;
+  letter-spacing: 0.01em;
+
   color: #606060;
 }
-.anser {
+.answerBox {
+  margin-top: 25px;
+  /* margin-bottom: 30px; */
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 23px;
+  /* identical to box height */
+
+  text-align: right;
+  letter-spacing: 0.01em;
+
   color: #101010;
+}
+.askerDetails {
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height */
+
+  text-align: right;
+  letter-spacing: 0.01em;
+
+  color: #7c7c7c;
+}
+.userDetails {
+  display: "flex";
+  align-items: "center";
 }

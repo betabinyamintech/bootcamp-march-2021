@@ -7,14 +7,18 @@ import { useHistory } from "react-router";
 
 const MentorCardGroup = ({ inquiry, searchResult }) => {
   const history = useHistory();
-
   const isAdmin = useUserState().user.isAdmin;
   const expertsUsers = useUserState().expertsByAdmin;
   const [selectedExpertsByAdmin, setSelectedExpertsByAdmin] = useState([]);
   const [selectedExpertsByUser, setSelectedExpertsByUser] = useState([]);
   let [inquiryIdForPut, setInquiryIdForPut] = useState();
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
-  const { status, expertsFound, inquiryTitle } = inquiry;
+  const { status, expertsFound, inquiryTitle, refusedBy } = inquiry;
+  let expertsForYou =
+    expertsFound &&
+    expertsFound.filter((expert) => {
+      return !refusedBy.includes(expert._id);
+    });
   const setExpertFunc = (expertId, inquiryId) => {
     isAdmin &&
       (!selectedExpertsByAdmin
@@ -65,7 +69,7 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
   isAdmin && console.log("admin choise", selectedExpertsByAdmin);
   !isAdmin && console.log("user choise ", selectedExpertsByUser);
   console.log("is admin", isAdmin);
-
+  console.log("experts for you", expertsForYou);
   return (
     <>
       {isAdmin && (
@@ -104,10 +108,10 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
         </>
       ) : (
         !isAdmin &&
-        expertsFound && (
+        expertsForYou && (
           <div className="cardGroup">
-            <span>{`עליך לבחור במומחה 1 מתוך ${expertsFound.length}`}</span>
-            {expertsFound.map((expert) => (
+            <span>{`עליך לבחור במומחה 1 מתוך ${expertsForYou.length}`}</span>
+            {expertsForYou.map((expert) => (
               <MentorCard
                 expert={expert}
                 inquiry={inquiry}

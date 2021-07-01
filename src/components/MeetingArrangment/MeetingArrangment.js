@@ -5,7 +5,7 @@ import { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "../Common/Button/Button";
-import { putInquiry } from "../../contexts/actions";
+import { putInquiry, reload } from "../../contexts/actions";
 import { useHistory, useLocation } from "react-router";
 import { useUserState } from "../../contexts/context";
 import clockIcon from "../commonsSVG/clock-icon.svg";
@@ -66,7 +66,7 @@ const MeetingArrangment = ({ inquiry, closePop }) => {
     console.log(request);
     putInquiry(_id, request);
     setTimeout(() => {
-      history.push("/home");
+      reload();
     }, 1500);
   };
 

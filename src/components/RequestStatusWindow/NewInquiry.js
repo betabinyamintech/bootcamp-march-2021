@@ -5,8 +5,10 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 //import "../Common/InputField/Style.css";
 import "./RequestStyle.css";
 import informationIcon from "../commonsSVG/information-icon.svg";
+import megaphone from "../commonsSVG/megaphone.svg";
 import { fetchLogWithToken, reload } from "../../contexts/actions";
 import { useHistory } from "react-router";
+import InputQuestion from "../Common/InputQuestion/InputQuestion";
 const QuestionTypes = {
   TEXT: "TEXT",
   HASHTAG: "HASHTAG",
@@ -72,14 +74,12 @@ const NewInquiry = ({}) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
       });
-      reload();
     },
     [request]
   );
 
   const lastQuestion = currentStep >= steps.length - 1;
   console.log("step", step, "request", request);
-
   return (
     <div className="questionScreen">
       {currentStep === 0 ? (
@@ -95,27 +95,46 @@ const NewInquiry = ({}) => {
         <div className="question-title"> </div>
         <div className="input-with-label">
           <div className="question-box">
+            <span className="megaphone">
+              <img src={megaphone}></img>
+            </span>
             <span className="input-label"> {step.title}</span>
-            {currentStep === 1 && (
+            {/* {currentStep === 1 && (
               <h3 className="input-label">{request.inquiryTitle}</h3>
-            )}
+            )} */}
             {step.type === QuestionTypes.TEXT && currentStep === 0 && (
-              <textarea
-                className="question-input"
+              // <textarea
+              //   className="question-input"
+              // onChange={(e) => {
+              //   setRequestCallback(e.target.value);
+              // }}
+              // value={request[step.field]}
+              // ></textarea>
+              <InputQuestion
+                isInput={true}
                 onChange={(e) => {
                   setRequestCallback(e.target.value);
                 }}
                 value={request[step.field]}
-              ></textarea>
+              />
             )}
             {step.type === QuestionTypes.TEXT && currentStep === 1 && (
-              <textarea
-                className="question-input"
+              // <textarea
+              //   className="question-input"
+              //   id="input"
+              //   onChange={(e) => {
+              //     setRequestCallback(e.target.value);
+              //   }}
+              //   value={request[step.field]}
+
+              // ></textarea>
+              <InputQuestion
+                isInput={true}
                 onChange={(e) => {
                   setRequestCallback(e.target.value);
                 }}
                 value={request[step.field]}
-              ></textarea>
+              />
             )}
             {step.type === QuestionTypes.HASHTAG && (
               <HashtagList
@@ -124,17 +143,18 @@ const NewInquiry = ({}) => {
                 setSelectedHashtags={setRequestCallback}
               />
             )}
+
             <div className="information">
               <img src={informationIcon}></img> <span> {step.comment}</span>
             </div>
             {error && (
-              <span style={{ color: "red" }}> {"מילוי שדה זה הוא חובה"}</span>
+              <span className="errorMessage"> {"מילוי שדה זה הוא חובה"}</span>
             )}
           </div>
         </div>
       </div>
       <Button
-        style={{ marginTop: "55px" }}
+        // style={{ marginTop: "40px" }}
         onClick={() => {
           if (currentStep === 0 && !lastQuestion && request.inquiryTitle) {
             setCurrentStep(currentStep + 1);
@@ -159,6 +179,7 @@ const NewInquiry = ({}) => {
             request.inquiryTags
           ) {
             postNewInquiry(request);
+            reload();
           }
         }}
       >

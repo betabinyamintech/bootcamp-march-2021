@@ -47,7 +47,7 @@
 }
 .popup-content {
   margin: auto;
-  background: rgb(223, 217, 217);
+  /* background: rgb(223, 217, 217); */
   width: 90%;
   height: auto;
   min-height: 160;
