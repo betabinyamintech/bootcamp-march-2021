@@ -7,6 +7,10 @@ import "./QuestionsBeforeMeeting.css";
 import informationIcon from "../commonsSVG/information-icon.svg";
 import { fetchLogWithToken, putInquiry } from "../../contexts/actions";
 import { useHistory, useLocation } from "react-router";
+import question1Icon from "../commonsSVG/question1.svg";
+import question2Icon from "../commonsSVG/question2.svg";
+import InputQuestion from "../Common/InputQuestion/InputQuestion";
+
 const QuestionTypes = {
   TEXT: "TEXT",
   HASHTAG: "HASHTAG",
@@ -58,7 +62,14 @@ const QuestionBeforeMeeting = () => {
       setAnswer2({ question: step.field, ans: value });
     }
   };
+  const putToServer = () => {
+    setTimeout(() => {
+      putInquiry(inquiryId, request);
+      history.push("/home");
+    }, 1200);
+  };
   const submitQuestions = () => {
+    console.log("rewquest before set", request);
     setRequest({
       movedToExpert: {
         answersToExpertQuestions: [answer1, answer2],
@@ -66,19 +77,21 @@ const QuestionBeforeMeeting = () => {
       },
       status: "movedToExpert",
     });
-    const putToServer = () => {
-      putInquiry(inquiryId, request);
-    };
-    setTimeout(() => {
-      putToServer();
-      // history.push("/home");
-    }, 1200);
+    console.log("rewquest after set", request);
   };
 
   const lastQuestion = currentStep >= steps.length - 1;
 
   console.log("answer1", answer1);
   console.log("answer2", answer2);
+  console.log("request on render", request);
+  const put = () => {
+    if (request) {
+      console.log("there  is request");
+      putToServer();
+    }
+  };
+  put();
   return (
     <div className="questionScreen">
       {currentStep === 0 ? (
@@ -95,27 +108,35 @@ const QuestionBeforeMeeting = () => {
         <div className="input-with-label">
           <div className="question-box">
             <span className="input-label">
-              {`שאלה ${currentStep + 1} מתוך ${questions.length}`}{" "}
+              {`שאלה ${currentStep + 1} מתוך ${questions.length}`}
             </span>
-            <span className="input-label"> המומחה שואל.. </span>
+            <span className="input-label">
+              <img
+                src={currentStep === 0 ? question1Icon : question2Icon}
+              ></img>
+            </span>
             <span className="input-label"> {step.title}</span>
             {step.type === QuestionTypes.TEXT && currentStep === 0 && (
-              <textarea
+              <InputQuestion
+                isInput={true}
+                height="35px"
                 className="question-input"
                 onChange={(e) => {
                   localReq(e.target.value);
                 }}
-                // value={request[step.field]}
-              ></textarea>
+              ></InputQuestion>
             )}
             {step.type === QuestionTypes.TEXT && currentStep === 1 && (
-              <textarea
+              <InputQuestion
+                isInput={true}
+                height="85px"
                 className="question-input"
                 onChange={(e) => {
                   localReq(e.target.value);
                 }}
+                onBlur={submitQuestions}
                 // value={request[step.field]}
-              ></textarea>
+              ></InputQuestion>
             )}
 
             <div className="information">
@@ -128,13 +149,13 @@ const QuestionBeforeMeeting = () => {
         </div>
       </div>
       <Button
-        style={{ marginTop: "55px" }}
         onClick={() => {
           if (currentStep === 0 && !lastQuestion && answer1) {
             setCurrentStep(currentStep + 1);
             setError(false);
           }
           if (currentStep === 1 && answer2) {
+            // putToServer();
             submitQuestions();
           }
         }}

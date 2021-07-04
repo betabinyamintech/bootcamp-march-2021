@@ -1,25 +1,9 @@
 import react, { useContext, useState } from "react";
-import MentorCard from "../MentorCard/MentorCard";
-import magnifyingGlass from "./MagnifyingGlassIcon.svg";
 import MentorCardGroup from "../MentorCardGroup/MentorCardGroup";
 
 import "./AdminChooseMentor.css";
-//temporary test import delete when server is working
 import experts from "./experts.json";
 import { useUserState } from "../../contexts/context";
-
-//delete the next line when hashtags are imported from server
-const Hashtags = ["aaa", "bbb", "cba", "cbc"];
-
-//the next information will come as props from previous page, afterwards we will delete the next line
-const inquiry = { inquiryTitle: "מה אני יכולה לעשות..." };
-
-// const AdminChooseMentor = ({
-//   //inquiry,
-//   changeHashtag,
-//   chosenHashtag,
-//   ...props
-// }) => {
 
 const AdminChooseMentor = ({ inquiry }) => {
   const [chosenHashtag, setChosenHashtag] = useState(null);
@@ -29,20 +13,24 @@ const AdminChooseMentor = ({ inquiry }) => {
     setChosenHashtag(hashtag);
   };
   //fetch hashtags from server to const hashtags
-  const hashtagsOptions = Hashtags.map((option) => (
-    <option value={option}>{option}</option>
-  ));
-  // console.log(experts);
-  //fetch experts from server
+  // const hashtagsOptions = Hashtags.map((option) => (
+  //   <option value={option}>{option}</option>
+  // ));
+  const { inquiryTags } = inquiry;
   const selectedMentors = expertsUsers.filter((mentor) =>
     mentor.expertDetails.inquiryTags.includes(chosenHashtag)
   );
-  // console.log("experts by choose", expertsUsers);
+  console.log("inquiryTags", inquiry);
   return (
     <div>
       <div className="chooseMentorHeader">
         <h5>בחירת מומחה לסיוע בשאלה:</h5>
         <h2>{inquiry.inquiryTitle}</h2>
+        <div className="tagsBox">
+          {inquiryTags.map((tag) => (
+            <div className="hashtag">{tag} </div>
+          ))}
+        </div>
       </div>
 
       <div className="searchMentor"></div>

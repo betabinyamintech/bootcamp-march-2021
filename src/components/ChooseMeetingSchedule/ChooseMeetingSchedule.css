@@ -8,16 +8,17 @@
 }
 
 .pageTitle {
-  font-family: Heebo;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 26px;
-  letter-spacing: 0.01em;
-  text-align: right;
-
+  float: right;
   padding: 20px;
   padding-bottom: 0px;
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 129.5%;
+
+  text-align: right;
+  letter-spacing: 0.01em;
 }
 
 .subTitle {
@@ -43,31 +44,36 @@
 
 .outerbox {
   padding: 30px;
-  background: #e7e7ec;
   border: 1px solid #ececec;
   margin: 6px;
   border-radius: 5px;
-  width: 85%;
+  width: 90%;
+  height: 0px;
 }
 .outerboxChoosed {
   padding: 30px;
-  background: #ace790;
-  border: 1px solid #ececec;
+  /* background: #1ee8b7; */
+  border: 2px solid #1ee8b7;
+  font-weight: bold;
   margin: 6px;
   border-radius: 5px;
-  width: 85%;
+  width: 90%;
+  height: 0px;
 }
 
 .boxTitleHeading {
   display: flex;
   font-family: Heebo;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 24px;
   letter-spacing: 0.01em;
   text-align: right;
   padding-right: 10px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: right;
+  letter-spacing: 0.01em;
 }
 
 .subDetails {
@@ -103,7 +109,8 @@
   background: #f0f0f5;
   padding: 10px;
   margin: 10px 20px;
-  width: 97%;
+  border-radius: 10px;
+  width: 107%;
 }
 
 .expertDetailsText {

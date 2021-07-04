@@ -8,7 +8,7 @@ import { getSpecificUser, putInquiry, reload } from "../../contexts/actions";
 import loading from "../commonsSVG/loadingDots.gif";
 import { useHistory } from "react-router";
 import EditInquiry from "../EditInquiry/EditInquiry";
-
+import BrightButton from "../Common/BrightButton/BrightButton";
 // import experts from "./experts.json";
 let d = new Date();
 
@@ -55,17 +55,9 @@ const ChooseMeetingSchedule = ({ inquiry }) => {
           />
         ))}
         <div className="buttonDiv">
-          <Button
-            img={tickForButton}
-            style={{ width: "120%" }}
-            onClick={putToServer}
-          >
-            אישור
-          </Button>
+          <Button onClick={putToServer}>אישור</Button>
         </div>
-        <div className="footerText" onClick={<EditInquiry />}>
-          .תודה, כבר הסתדרתי
-        </div>
+        <BrightButton className="footerText">.תודה, כבר הסתדרתי</BrightButton>
       </div>
     );
 };

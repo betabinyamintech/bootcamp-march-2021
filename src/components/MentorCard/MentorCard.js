@@ -3,7 +3,7 @@ import Avatar from "../Avatar/Avatar";
 import "./MentorCard.css";
 import { useContext, useState } from "react";
 import UserContext, { useUserState } from "../../contexts/context";
-// import NextIcon from "./NextArrow.svg";
+import NextIcon from "./NextArrow.svg";
 import loading from "../commonsSVG/loadingDots.gif";
 import QuestionsBeforeMeeting from "../QuestionsBeforeMeeting/QuestionsBeforeMeeting";
 import { Link } from "react-router-dom";
@@ -23,18 +23,10 @@ function MentorCard({
   const [expertFound, setExpertFound] = useState([]);
   const [detailsButton, setDetailsButton] = useState(false);
   const [chooseButton, setChooseButton] = useState(false);
-  // console.log("admin", isAdmin);
-  // console.log("expert details by cards", expert);
-  // console.log("inzquiry details bymentor card", inquiry);
-  // console.log("inzquiry id bymentor card", inquiry._id);
-  // console.log("include", selectedExperts);
-  // console.log("rendering", expertsFoundForInquiry);
-  // console.log("selected by admin ", selectedExpertsByAdmin);
   return (
     <>
       {isAdmin && (
         <div>
-          <span>admin rendered</span>
           {
             <div
               className={
@@ -59,9 +51,9 @@ function MentorCard({
                 )}
                 <div>
                   <div className="tagsBox">
-                    {/* {expert.expertDetails.inquiryTags.map((tag) => (
-                        <div className="hashtag">{tag} </div>
-                      ))} */}
+                    {expert.expertDetails.inquiryTags.map((tag) => (
+                      <div className="hashtag">{tag} </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -102,65 +94,83 @@ function MentorCard({
         </div>
       )}
       {!isAdmin && (
-        <div>
-          <span>not admin rendered</span>
-
-          {expert.isExpert && (
-            <div className={"mentorcard" + ""}>
-              <Avatar height="50px" />
-              <div className="middlementordiv">
-                <h4>
-                  {expert.firstName} {expert.lastName}
-                </h4>
-                <h5>
-                  {expert.profession}, {expert.city}
-                </h5>
-                <span>
-                  <p>{expert.expertDetails.aboutMe} </p>
-                </span>
-
+        <Link
+          style={{ textDecoration: "none", color: "#9C9CA8" }}
+          to={{
+            pathname: "/questionsBeforeMeeting",
+            state: {
+              questions: expert.expertDetails.questionsBeforeMeeting,
+              selectedExpertsByUser: expert._id,
+              inquiryIdForPut: inquiry._id,
+            },
+          }}
+        >
+          <div>
+            {expert.isExpert && (
+              <div className={"mentorcard" + ""}>
                 <div>
-                  <div className="tagsBox">
-                    {/* {expert.expertDetails.inquiryTags.map((tag) => (
-                    <div className="hashtag">{tag} </div>
-                  ))} */}
+                  <Avatar height="45px" width="45px" avatar={expert.imageSrc} />
+                </div>
+
+                <div className="middlementordiv">
+                  <div style={{ float: "right", color: "#000000" }}>
+                    <span>
+                      {expert.firstName} {expert.lastName}
+                    </span>
+                    <br></br>
+                    <span>
+                      {expert.profession}, {expert.city}
+                    </span>
+                  </div>
+                  <br></br>
+                  <div style={{ width: "111%" }}>
+                    <br></br>
+                    <span>{expert.expertDetails.aboutMe}</span>
+                  </div>
+                  <div>
+                    נפגש בדרך כלל ב:{" "}
+                    <span style={{ background: "#F8F9FA" }}>
+                      {expert.expertDetails.preferredMeetingType ===
+                      "physically"
+                        ? expert.expertDetails.meetingAddress
+                        : "zoom"}
+                    </span>
+                  </div>
+
+                  <div>
+                    {/* <div className="tagsBox">
+                    {expert.expertDetails.inquiryTags.map((tag) => (
+                      <div className="mentorHashtag">{tag}</div>
+                    ))}
+                  </div> */}
                   </div>
                 </div>
-              </div>
-              <div>
-                {/* the same icon looks diferent in inquiry.js and this needs a proper rauting */}
-                <a href="/">
-                  {/* <img className="mentorcardnextimg" src={NextIcon} /> */}
-                </a>
-                <span>
-                  <>
-                    <Link
-                      to={{
-                        pathname: "/questionsBeforeMeeting",
-                        state: {
-                          questions:
-                            expert.expertDetails.questionsBeforeMeeting,
-                          selectedExpertsByUser: expert._id,
-                          inquiryIdForPut: inquiry._id,
-                        },
-                      }}
-                    >
-                      <button
+                <div>
+                  {/* <a href="/"> */}
+                  <img
+                    className="mentorcardnextimg"
+                    src={NextIcon}
+                    style={{ float: "left" }}
+                  />
+                  {/* </a> */}
+                  <span>
+                    <>
+                      {/* <button
                         onClick={() => {
                           setSelectedExperts(expert._id, inquiry._id);
                           setInquiryIdForPut(inquiry._id);
                         }}
                       >
                         בחר במומחה זה
-                      </button>
-                    </Link>
-                    {/* <button onClick={putToServerFromUser}>שלח</button> */}
-                  </>
-                </span>
+                      </button> */}
+                      {/* <button onClick={putToServerFromUser}>שלח</button> */}
+                    </>
+                  </span>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        </Link>
       )}
     </>
   );

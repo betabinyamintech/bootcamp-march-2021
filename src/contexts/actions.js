@@ -1,6 +1,6 @@
 import { ActionTypes } from "./reducer";
 // export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-export const ROOT_URL = "http://localhost:5000";
+export const ROOT_URL = "http://localhost:3000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
@@ -61,17 +61,17 @@ export async function registerUser(dispatch, registerPayload) {
 
 //LOGIN USER
 export async function loginUser(dispatch, loginPayload) {
+  alert("login user");
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(loginPayload),
   };
-
   try {
     dispatch({ type: "REQUEST_LOGIN" });
     let response = await fetchLog("/login", requestOptions);
     let data = await response.json();
-
+    alert("data", data);
     if (data) {
       dispatch({
         type: ActionTypes.LOGIN_SUCCESS,

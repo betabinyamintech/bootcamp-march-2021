@@ -7,12 +7,15 @@ import EditInquiry from "../EditInquiry/EditInquiry";
 import CompleteMissingDetails from "../CompleteMissingDetails/ComleteMissingDetails";
 import clockIcon from "../commonsSVG/clock-icon2.svg";
 import telegramIcon from "../commonsSVG/telegram-icon.svg";
+import matchesFoundIcon from "../commonsSVG/matches-found-icon.svg";
+import meetingScheduleIcon from "../commonsSVG/meeting-schedule-icon.svg";
 export const Inquiry = ({ inquiry, expertsUsers }) => {
   const user = useUserState().user;
   const theExperts = useUserState().expertsFound;
   const userDispatch = useUserDispatch();
   const fromUserSide = true;
   const [clicked, setClicked] = useState(false);
+  const [icon, setIcon] = useState();
   const [theExpert, setTheExpert] = useState();
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
   const { isAdmin, isExpert } = user;
@@ -28,7 +31,6 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
     cancelReason,
     expertsFound,
   } = inquiry;
-  console.log("status", status);
   const values = InquiryType[type][status];
   // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
@@ -119,11 +121,11 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
           {status === "missingDetails" && (
             <CompleteMissingDetails inquiry={inquiry} buttonText={buttonText} />
           )}
-          {status !== "irrelevant" &&
+          {/* {status !== "irrelevant" &&
             status !== "canceledByExpert" &&
             status !== "canceledByUser" && (
               <EditInquiry inquiry={inquiry} buttonText={"בטל פנייה זו"} />
-            )}
+            )} */}
 
           {/* {inquiryTypes && status !== "opened" && status !== "irrelevant" && (
             <button

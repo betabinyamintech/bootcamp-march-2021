@@ -4,9 +4,11 @@ import "reactjs-popup/dist/index.css";
 import { useUserState } from "../../contexts/context";
 import AdminChooseMentor from "../AdminChooseMentor/AdminChooseMentor";
 import ChooseMeetingSchedule from "../ChooseMeetingSchedule/ChooseMeetingSchedule";
+import SmallButton from "../Common/SmallButton/SmallButton";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import MentorCardGroup from "../MentorCardGroup/MentorCardGroup";
+import xIcon from "../commonsSVG/x-icon.svg";
 import "./ActionPage.css";
 const ActionPage = ({
   inquiry,
@@ -22,9 +24,9 @@ const ActionPage = ({
   return (
     <Popup
       trigger={
-        <button onclick={setButton}>
+        <SmallButton onclick={setButton} isIcon={true}>
           {buttonText ? buttonText : "buttonText"}
-        </button>
+        </SmallButton>
       }
       modal
       nested
@@ -32,9 +34,9 @@ const ActionPage = ({
       {(close) => (
         <div className="modal">
           <button className="close" onClick={close}>
-            &times;
+            <img src={xIcon}></img>{" "}
           </button>
-          <div className="header"> {inquiry.inquiryTitle} </div>
+          {/* <div className="header"> {inquiry.inquiryTitle} </div> */}
 
           <div className="content">
             {status === "movedToExpert" && isExpert && (

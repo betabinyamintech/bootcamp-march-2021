@@ -3,7 +3,7 @@ import "./CommunityManager.css";
 
 import { InquiryType } from "../InquiryForAdmin/InquiryForAdmin.js";
 const allInquiryTypesExpert = InquiryType.admin;
-console.log("all typs", allInquiryTypesExpert);
+// console.log("all typs", allInquiryTypesExpert);
 
 const groupByForObject = (xs, key) =>
   Object.values(xs).reduce((rv, x) => {

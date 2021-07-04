@@ -38,22 +38,11 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
     <>
       <div
         className="inquiryBox"
-        onClick={() => {
-          setInfoClick(!infoClick);
-        }}
+        // onClick={() => {
+        //   setInfoClick(!infoClick);
+        // }}
       >
-        {/* <span className="homeMenuIcon"> */}
-        {/* <img alt="home" src={menuIcon}></img> */}
-        {/* <img
-            alt="home"
-            src={infoClick ? upArrow : downArrow}
-            style={{ marginTop: "10px" }}
-          ></img>
-        </span> */}
         <div className="inquiryTitle"> {inquiryTitle}</div>
-        {/* <div className="inquiryTitle" style={{ fontSize: "15px" }}>
-          &bull; נשלחה על ידי: {userId.firstName} {userId.lastName}
-        </div> */}
         <div className="timePassed">
           <img src={clockIcon} alt="clock"></img>
           {`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(0, 5)}`}

@@ -1,3 +1,14 @@
+.modal {
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 26px;
+  text-align: center;
+  letter-spacing: 0.01em;
+
+  color: #000000;
+}
 .newHashtag {
   padding: 4px 12px;
 
@@ -25,4 +36,19 @@
 
   height: 32px;
   top: 0px;
+}
+.hashtagsFounded {
+  font-family: HEEBO;
+  float: right;
+}
+.hashtagResult {
+  flex-direction: column;
+  display: flex;
+  font-size: 16px;
+  align-items: start;
+  height: 35px;
+}
+.modal > .close {
+  background: white;
+  border: none;
 }

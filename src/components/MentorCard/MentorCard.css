@@ -1,9 +1,10 @@
-.hashtag {
+.mentorHashtag {
   padding: 4px 12px;
   text-align: center;
   border-radius: 40px;
   margin: 10px 10px;
   background: #c7c4c4;
+  height: 20px;
 }
 /* .mentorcard {
   display: flex;
@@ -15,12 +16,12 @@
   align-items: center;
 } */
 .mentorcard {
-  /* display: flex; */
-  /* margin: 20px; */
+  margin-top: 30px;
+  display: flex;
   padding: 4px, 12px, 8px, 12px;
   border-radius: 6px;
-  align-items: center;
-  background: #e4dada;
+  min-height: 100px;
+  width: 100%;
 }
 .mentorcardChosen {
   /* display: flex; */
@@ -39,20 +40,7 @@ span {
 .tagsBox {
   display: flex;
 }
-button {
-  width: auto;
-  background: #414141;
-  border-radius: 4px;
-  /* Inside Auto Layout */
-
-  margin: 8px 10px;
-  font-family: Heebo;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 18px;
-  /* identical to box height */
-
-  letter-spacing: 0.01em;
-  color: #ffffff;
+.middlementordiv {
+  align-content: flex-end;
+  margin-top: 7px;
 }

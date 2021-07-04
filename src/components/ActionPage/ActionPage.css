@@ -34,16 +34,16 @@
 }
 .modal > .close {
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   display: block;
   padding: 2px 5px;
   line-height: 20px;
   right: -10px;
   top: -10px;
   font-size: 24px;
-  background: #130a0a;
-  border-radius: 18px;
-  border: 1px solid #cfcece;
+  /* background: #130a0a; */
+  /* border-radius: 18px;
+  border: 1px solid #cfcece; */
 }
 .popup-content {
   margin: auto;
@@ -53,7 +53,7 @@
   min-height: 160;
   padding: 5px;
   border: 1px solid #d7d7d7;
-  border-radius: 18px;
+  /* border-radius: 18px; */
 }
 #popup-root {
   height: 50px;

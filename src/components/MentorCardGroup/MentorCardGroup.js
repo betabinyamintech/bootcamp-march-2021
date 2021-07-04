@@ -3,8 +3,11 @@ import { putInquiry, reload } from "../../contexts/actions";
 import { useUserState } from "../../contexts/context";
 import MentorCard from "../MentorCard/MentorCard";
 import loading from "../commonsSVG/loadingDots.gif";
+import clockIcon from "../commonsSVG/clock-icon.svg";
 import { useHistory } from "react-router";
-
+import "./MentorCardGroup.css";
+import Button from "../Common/Button/Button";
+import BrightButton from "../Common/BrightButton/BrightButton";
 const MentorCardGroup = ({ inquiry, searchResult }) => {
   const history = useHistory();
   const isAdmin = useUserState().user.isAdmin;
@@ -13,7 +16,9 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
   const [selectedExpertsByUser, setSelectedExpertsByUser] = useState([]);
   let [inquiryIdForPut, setInquiryIdForPut] = useState();
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
-  const { status, expertsFound, inquiryTitle, refusedBy } = inquiry;
+  const { status, expertsFound, inquiryTitle, refusedBy, createdAt } = inquiry;
+  let creationDate = new Date(createdAt).toLocaleDateString();
+  let creationTime = new Date(createdAt).toLocaleTimeString();
   let expertsForYou =
     expertsFound &&
     expertsFound.filter((expert) => {
@@ -52,7 +57,6 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
       alert("not enough mentors");
     }
   };
-
   let searchResultExperts =
     isAdmin &&
     expertsUsers.filter((expert) => {
@@ -64,8 +68,6 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
         expert.city.includes(searchResult)
       );
     });
-  // console.log("experts result", searchResultExperts);
-  // console.log(" result input", searchResult);
   isAdmin && console.log("admin choise", selectedExpertsByAdmin);
   !isAdmin && console.log("user choise ", selectedExpertsByUser);
   console.log("is admin", isAdmin);
@@ -110,6 +112,17 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
         !isAdmin &&
         expertsForYou && (
           <div className="cardGroup">
+            {status === "matchesFound" && (
+              <div className="chooseMentorHead">
+                {inquiryTitle}
+                <br />
+                <br />
+                {/* <img src={clockIcon}></img> */}
+                <span>
+                  {creationDate},{creationTime.slice(0, 5)}
+                </span>
+              </div>
+            )}
             <span>{`עליך לבחור במומחה 1 מתוך ${expertsForYou.length}`}</span>
             {expertsForYou.map((expert) => (
               <MentorCard
@@ -126,6 +139,7 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
                 }}
               />
             ))}
+            <BrightButton>תודה,כבר הסתדרתי</BrightButton>
             {/* {isAdmin && (
             <button>אישור ושליחה</button>
             onClick={putExpertsFound}

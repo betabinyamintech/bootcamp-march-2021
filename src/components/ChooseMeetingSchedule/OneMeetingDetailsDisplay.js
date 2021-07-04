@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
-// date is supplied as a string in the form 03/10/2021 12:00 PM
+import calendarIcon from "../commonsSVG/calendar-icon.svg";
 const computeDayOfWeek = (dateString) => {
   const dayOfWeek = new Date(dateString).getDay();
   return isNaN(dayOfWeek)
@@ -58,7 +57,10 @@ const OneMeetingDetailsDisplay = ({ dateTime, setChosenDate, chosenDate }) => {
       }}
     >
       <div className="daytimebox">
-        <div>{finalDate}</div>
+        <div>
+          <img src={calendarIcon}></img>
+          {finalDate}
+        </div>
       </div>
     </div>
   );

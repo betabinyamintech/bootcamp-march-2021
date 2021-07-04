@@ -5,6 +5,7 @@ import inquiriesJson from "../Home/inquiries.json";
 import InquiryForExpert from "../InquiryForExpert/InquiryForExpert";
 import ActionPage from "../ActionPage/ActionPage";
 import nightLight from "../commonsSVG/business-light.svg";
+import { useUserState } from "../../contexts/context";
 
 const OpenInquiries = ({
   inquiries,
@@ -14,6 +15,7 @@ const OpenInquiries = ({
   isExpert,
   userId,
 }) => {
+  let user = useUserState().user;
   if (inquiries.length < 1) {
     return (
       <div className="inquiriesBox">
@@ -29,7 +31,11 @@ const OpenInquiries = ({
   return (
     <div className="inquiriesBox">
       {inquiries.map((inquiry) => {
-        if (inquiry.movedToExpert.expertId && isExpert) {
+        if (
+          inquiry.movedToExpert.expertId &&
+          isExpert &&
+          inquiry.status != "refusedByExpert"
+        ) {
           return (
             <InquiryForExpert
               inquiry={inquiry}

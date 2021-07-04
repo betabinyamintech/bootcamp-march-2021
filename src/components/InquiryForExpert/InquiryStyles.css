@@ -57,11 +57,9 @@
   font-weight: normal;
   font-size: 15px;
   line-height: 18px;
-  /* identical to box height */
   text-align: right;
   letter-spacing: 0.01em;
-  color: #8063d1;
-  /* Inside Auto Layout */
+  color: #000000;
   flex: none;
   order: 0;
   flex-grow: 0;

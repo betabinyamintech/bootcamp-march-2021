@@ -16,12 +16,29 @@
   font-weight: normal;
   font-size: 16px;
   margin: 0px;
+  font-family: Tinos;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 129.5%;
+  /* identical to box height, or 30px */
+
+  text-align: center;
+  letter-spacing: 0.01em;
 }
 
 .user-details h5 {
   font-weight: 300;
   font-size: 12px;
   margin: 0px;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  /* identical to box height */
+
+  letter-spacing: 0.05em;
 }
 
 .more-menu-buttons {

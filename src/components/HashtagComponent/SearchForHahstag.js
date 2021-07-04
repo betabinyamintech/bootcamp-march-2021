@@ -5,7 +5,8 @@ import { postTag, getTags, putInquiry, reload } from "../../contexts/actions";
 import plusImg from "./HashtagScreen/PlusImg.svg";
 import { useState } from "react";
 import HashtagLabel from "../Common/Hashtag/HashtagLabel";
-
+import InputQuestion from "../Common/InputQuestion/InputQuestion";
+import xIcon from "../commonsSVG/x-icon.svg";
 const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
   //CALLED BY - HASHTAGS LIST
   const [inputValue, setInputValue] = useState();
@@ -31,16 +32,18 @@ const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
         <div className="modal">
           <div className="inquiryDetails"></div>{" "}
           <button className="close" onClick={close}>
-            &times;
+            <img src={xIcon}></img>{" "}
           </button>
-          <div className="header"> הוספת האשטאג לפניה </div>
+          <div className="header"> הוספת #האשטאג </div>
           <span>חפש האשטג מתאים</span>
           <div className="content">
-            <input
+            <InputQuestion
+              height="26px"
+              isInput={true}
               onChange={(e) => {
                 setInputValue(e.target.value);
               }}
-            ></input>
+            />
             <div className="hashtagsFounded">
               {hashtags.map((hashtag) => {
                 hashtags.includes(inputValue)
@@ -49,15 +52,18 @@ const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
                 return (
                   hashtag.includes(inputValue) && (
                     <>
-                      <HashtagLabel
-                        title={hashtag}
+                      <div
+                        className="hashtagResult"
                         onClick={() => {
                           setHashtagsPreview(hashtag);
+                          setInputValue("");
                           setTimeout(() => {
                             close();
                           }, 700);
                         }}
-                      />
+                      >
+                        {hashtag}
+                      </div>
                     </>
                   )
                 );

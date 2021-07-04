@@ -30,7 +30,6 @@ const MainRouter = () => {
       getUser(userDispatch);
     }
   }, [userDispatch]);
-  let check = false;
   return (
     <Router>
       {userState.user && (

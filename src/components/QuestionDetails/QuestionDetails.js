@@ -9,8 +9,11 @@ import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import ActionPage from "../ActionPage/ActionPage";
 import { putInquiry, reload } from "../../contexts/actions";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
+import EditInquiry from "../EditInquiry/EditInquiry";
+import SmallButton from "../Common/SmallButton/SmallButton";
 const QuestionDetails = ({ inquiry, buttonText }) => {
   const user = useUserState().user;
+  let { isExpert } = user;
   const { userId, inquiryTitle, inquiryContent, movedToExpert, status, _id } =
     inquiry;
   const { firstName, lastName, city, imageSrc } = userId;
@@ -22,7 +25,11 @@ const QuestionDetails = ({ inquiry, buttonText }) => {
     reload();
   };
   return (
-    <Popup trigger={<button>צפה בפרטי הפניה</button>} modal nested>
+    <Popup
+      trigger={<SmallButton isIcon={true}>צפה בפרטי הפניה</SmallButton>}
+      modal
+      nested
+    >
       {(close) => (
         <div className="modal">
           {/* <div className="inquiryDetails"></div>{" "} */}
@@ -70,12 +77,7 @@ const QuestionDetails = ({ inquiry, buttonText }) => {
                 })}
               </div>
               <ActionPage inquiry={inquiry} buttonText={buttonText} />
-              <button
-                style={{ background: "#e6506b" }}
-                onClick={refuseThisInquiry}
-              >
-                מצטער,הפעם לא אוכל לעזור
-              </button>
+              <span onClick={refuseThisInquiry}>מצטער,הפעם לא אוכל לעזור</span>
             </div>
           </div>
           <div className="actions">
@@ -85,6 +87,12 @@ const QuestionDetails = ({ inquiry, buttonText }) => {
             >
               סגירה
             </button> */}
+            {!isExpert &&
+              status !== "irrelevant" &&
+              status !== "canceledByExpert" &&
+              status !== "canceledByUser" && (
+                <EditInquiry inquiry={inquiry} buttonText={"בטל פנייה זו"} />
+              )}
           </div>
         </div>
       )}

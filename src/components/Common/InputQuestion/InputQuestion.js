@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import greenArrow from "../../commonsSVG/green-left-arrow.svg";
 
-const InputQuestion = ({ isButton, isInput, onChange }) => {
+const InputQuestion = ({ isButton, isInput, onChange, width, height }) => {
   return (
     <div className="inputContainer">
       <img
@@ -13,9 +13,9 @@ const InputQuestion = ({ isButton, isInput, onChange }) => {
         src={import("../../../Icons/question-mark.svg")}
         alt=""
       />
-      <Link to="/inquiry/new">
-        <div>
-          {isButton && (
+      <div>
+        {isButton && (
+          <Link to="/inquiry/new">
             <button className="inputNewQuestion">
               <span className="greenArrow">
                 <img src={greenArrow} alt="arrow" />
@@ -23,16 +23,19 @@ const InputQuestion = ({ isButton, isInput, onChange }) => {
 
               <span className="buttonPlaceHolder"> השאלה החדשה שלך...</span>
             </button>
-          )}
-          {isInput && (
-            <textarea
-              className="inputNewQuestion"
-              onChange={onChange}
-            ></textarea>
-          )}
-        </div>
-      </Link>
-      {/* <input className="inputNewQuestion" placeholder="השאלה החדשה שלך..." /> */}
+          </Link>
+        )}
+        {isInput && (
+          <textarea
+            className="inputNewQuestion"
+            onChange={onChange}
+            style={{
+              width: width ? width : "95%",
+              height: height ? height : "50px",
+            }}
+          ></textarea>
+        )}
+      </div>
     </div>
   );
 };

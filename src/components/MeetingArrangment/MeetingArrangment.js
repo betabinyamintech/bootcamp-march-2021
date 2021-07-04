@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 180,
   },
 }));
 const MeetingArrangment = ({ inquiry, closePop }) => {
@@ -71,7 +71,6 @@ const MeetingArrangment = ({ inquiry, closePop }) => {
   };
 
   const classes = useStyles();
-  console.log("date", date);
   console.log("optinalState", optinalDates);
   console.log("updatedDetails", updateDetails);
   return (
@@ -121,6 +120,31 @@ const MeetingArrangment = ({ inquiry, closePop }) => {
           onBlur={setoptinalState}
         />
       </div>
+      {optinalDates.length > 0 && (
+        <div>
+          התאריכים שנבחרו:
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {optinalDates &&
+              optinalDates.map((date) => {
+                let theTime = new Date(date).toLocaleTimeString();
+                let theDate = new Date(date).toLocaleDateString();
+                console.log("the dateee", theDate);
+                return (
+                  <span
+                    style={{
+                      fontSize: "15px",
+                      border: " 1px solid #1EE8B7 ",
+                      borderRadius: "8px",
+                      marginTop: "10px",
+                    }}
+                  >
+                    {theTime.slice(0, 5)}-{theDate}
+                  </span>
+                );
+              })}
+          </div>
+        </div>
+      )}
 
       {step === 1 && (
         <div className="updateMeetingDetails">

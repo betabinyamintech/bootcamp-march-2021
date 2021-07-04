@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
 import SearchForHashtag from "../SearchForHahstag";
-import plusImg from "./PlusImg.svg";
 //import "./HashtagList.css";
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   let theHashtags = hashtags.slice(0, 11);
@@ -18,15 +17,6 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
       }}
     >
       <div className="hashtagList">
-        {/* <div
-          className="hashtag newHashtag"
-          onClick={() => {
-            setAdd(!add);
-          }}
-        >
-          <img className="hashtagIcon" src={plusImg} alt="" />
-          אחר
-        </div> */}
         {
           <SearchForHashtag
             hashtags={hashtags}
