@@ -1,6 +1,6 @@
 import { ActionTypes } from "./reducer";
-// export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-export const ROOT_URL = "http://localhost:3000";
+export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+// export const ROOT_URL = "http://localhost:3000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
