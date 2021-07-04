@@ -61,7 +61,6 @@ export async function registerUser(dispatch, registerPayload) {
 
 //LOGIN USER
 export async function loginUser(dispatch, loginPayload) {
-  alert("login user");
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -71,7 +70,6 @@ export async function loginUser(dispatch, loginPayload) {
     dispatch({ type: "REQUEST_LOGIN" });
     let response = await fetchLog("/login", requestOptions);
     let data = await response.json();
-    alert("data", data);
     if (data) {
       dispatch({
         type: ActionTypes.LOGIN_SUCCESS,
