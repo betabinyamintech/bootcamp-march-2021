@@ -25,8 +25,6 @@ const Home = ({ numExperts = 167 }) => {
     adminInquiries,
     expertsByAdmin,
   } = useUserState();
-  // console.log("user id on inquiries", userInquiries.movedToExpert);
-  // console.log("user inquiries", userInquiries);
   const [inquiriesForAdmin, setInquiriesForAdmin] = useState();
   const [usersForAdmin, setUsersForAdmin] = useState([]);
   const [expertsForAdmin, setExpertsForAdmin] = useState();
