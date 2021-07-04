@@ -19,7 +19,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   const [theExpert, setTheExpert] = useState();
   let [expertsFoundForInquiry, setExpertsFoundForInquiry] = useState([]);
   const { isAdmin, isExpert } = user;
-  const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
+  const type = isAdmin ? "admin" : "user";
   const {
     status,
     inquiryTitle,
@@ -32,7 +32,6 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
     expertsFound,
   } = inquiry;
   const values = InquiryType[type][status];
-  // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
   let creationDate = new Date(createdAt).toLocaleDateString();
   let creationTime = new Date(createdAt).toLocaleTimeString();
@@ -204,51 +203,6 @@ export const InquiryType = {
       message: "המומחה שבחרת אינו יכול לעזור לך",
       trueFalseButton: false,
       buttonText: "בחר מומחה אחר",
-    },
-  },
-  expert: {
-    movedToExpert: {
-      type: "movedToExpert",
-      message: "הפונה בחר אותך מבין המומחים שהצענו לו",
-      trueFalseButton: false,
-      buttonText: "   אשמח לעזור! בואו נקבע מועד לפגישה  ",
-    },
-    meetingScheduled: {
-      type: "meetingScheduled",
-      message: "נקבע תאריך לפגישה!",
-      trueFalseButton: true,
-      buttonText: "צפיה בפגישה",
-    },
-    responseFromExpert: {
-      type: "responseFromExpert",
-      message: "הפניה נשלחה לפונה לטובת בחירת מועד",
-      trueFalseButton: true,
-      buttonText: "צפיה בתגובה",
-    },
-    meetingDatePassed: {
-      type: "meetingDatePassed",
-      message: "הפגישה התקיימה",
-      trueFalseButton: false,
-    },
-    irrelevant: {
-      type: "irrelevant",
-      message: "לא רלוונטי",
-      trueFalseButton: false,
-    },
-    canceledByUser: {
-      type: "canceledByUser",
-      message: "פנייה בוטלה על ידי שולח הפניה",
-      trueFalseButton: false,
-    },
-    canceledByExpert: {
-      type: "canceledByExpert",
-      message: "פנייה בוטלה על ידיך ",
-      trueFalseButton: false,
-    },
-    refusedByExpert: {
-      type: "refusedByExpert",
-      message: "המומחה דחה פנייה זו    ",
-      trueFalseButton: false,
     },
   },
 };

@@ -13,7 +13,7 @@ import {
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
 import loading from "../commonsSVG/loadingDots.gif";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Button from "../Common/Button/Button";
 import ProfileView from "../ProfileView/ProfileView";
 import ProfileViewAdminRemove from "../ProfileView/ProfileViewAdminRemove";
@@ -25,6 +25,7 @@ const Home = ({ numExperts = 167 }) => {
     adminInquiries,
     expertsByAdmin,
   } = useUserState();
+  let location = useLocation();
   const [inquiriesForAdmin, setInquiriesForAdmin] = useState();
   const [usersForAdmin, setUsersForAdmin] = useState([]);
   const [expertsForAdmin, setExpertsForAdmin] = useState();
@@ -42,16 +43,15 @@ const Home = ({ numExperts = 167 }) => {
   // const putInquiry = () => {
   //   setEditInquiry(!editInquiry);
   // };
-
   if (userInquiries === null) {
     return (
       <div>
-        {" "}
         hello
         <img src={loading}></img>
       </div>
     );
-  } else {
+  }
+  if (userInquiries) {
     const ownedInquiries = userInquiries.filter(
       (ownedInq) => ownedInq.userId === user._id
     );
