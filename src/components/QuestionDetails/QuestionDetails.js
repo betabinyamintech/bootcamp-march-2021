@@ -7,7 +7,7 @@ import Avatar from "../Avatar/Avatar";
 import { useUserState } from "../../contexts/context";
 import MeetingArrangment from "../MeetingArrangment/MeetingArrangment";
 import ActionPage from "../ActionPage/ActionPage";
-import { putInquiry, reload } from "../../contexts/actions";
+import { putInquiry, Reload } from "../../contexts/actions";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import EditInquiry from "../EditInquiry/EditInquiry";
 import SmallButton from "../Common/SmallButton/SmallButton";
@@ -22,7 +22,7 @@ const QuestionDetails = ({ inquiry, buttonText }) => {
     let inquiryId = _id;
     let request = { refusedBy: user._id };
     putInquiry(inquiryId, request);
-    reload();
+    Reload();
   };
   return (
     <Popup

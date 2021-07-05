@@ -9,14 +9,15 @@ import {
   getInquiries,
   getAllInquiries,
   getAllUsers,
+  Reload,
 } from "../../contexts/actions";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
-import loading from "../commonsSVG/loadingDots.gif";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Button from "../Common/Button/Button";
 import ProfileView from "../ProfileView/ProfileView";
 import ProfileViewAdminRemove from "../ProfileView/ProfileViewAdminRemove";
+import Splash from "../Splash/Splash";
 
 const Home = ({ numExperts = 167 }) => {
   const {
@@ -25,7 +26,8 @@ const Home = ({ numExperts = 167 }) => {
     adminInquiries,
     expertsByAdmin,
   } = useUserState();
-  let location = useLocation();
+  console.log(useUserState());
+  let history = useHistory();
   const [inquiriesForAdmin, setInquiriesForAdmin] = useState();
   const [usersForAdmin, setUsersForAdmin] = useState([]);
   const [expertsForAdmin, setExpertsForAdmin] = useState();
@@ -44,13 +46,9 @@ const Home = ({ numExperts = 167 }) => {
   //   setEditInquiry(!editInquiry);
   // };
   if (userInquiries === null) {
-    return (
-      <div>
-        hello
-        <img src={loading}></img>
-      </div>
-    );
+    return <Splash />;
   }
+
   if (userInquiries) {
     const ownedInquiries = userInquiries.filter(
       (ownedInq) => ownedInq.userId === user._id

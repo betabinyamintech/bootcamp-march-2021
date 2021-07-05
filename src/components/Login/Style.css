@@ -1,6 +1,6 @@
 .container {
   direction: rtl;
-  font-family: Heebo;
+  font-family: Tinos;
   font-style: normal;
   font-weight: normal;
   display: flex;
@@ -36,6 +36,7 @@
 .buttons {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .footer {

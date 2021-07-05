@@ -10,7 +10,6 @@ let style = {
 };
 
 const Avatar = ({ avatar, borderRadius, height, width, float, margin }) => {
-  console.log(avatar);
   return (
     <img
       src={

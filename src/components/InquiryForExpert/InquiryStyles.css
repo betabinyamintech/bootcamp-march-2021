@@ -64,14 +64,16 @@
   order: 0;
   flex-grow: 0;
   margin: 0px 10px;
+  margin-top: 17px;
+  background: #ffffff;
+  height: 20px;
 }
 
 .nextStepButton {
   background: #414141;
   border-radius: 4px;
-  /* Inside Auto Layout */
-
   margin: 8px 10px;
+  margin-top: 12px;
   font-family: Heebo;
   font-style: normal;
   font-weight: normal;

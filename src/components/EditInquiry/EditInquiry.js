@@ -5,7 +5,7 @@ import "./EditInquiry.css";
 import { useUserState } from "../../contexts/context";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
-import { putInquiry, reload } from "../../contexts/actions";
+import { putInquiry, Reload } from "../../contexts/actions";
 import { useHistory } from "react-router";
 
 const EditInquiry = ({ inquiry, buttonText }) => {
@@ -41,7 +41,7 @@ const EditInquiry = ({ inquiry, buttonText }) => {
     };
     let request = reason === "irrelevant" ? option2 : option1;
     putInquiry(inquiry._id, request);
-    window.location.reload();
+    Reload();
   };
   const putToServerByUser = () => {
     let newStatus =
@@ -52,7 +52,7 @@ const EditInquiry = ({ inquiry, buttonText }) => {
       cancelDate: new Date(),
     };
     putInquiry(inquiry._id, request);
-    reload();
+    Reload();
   };
 
   return (

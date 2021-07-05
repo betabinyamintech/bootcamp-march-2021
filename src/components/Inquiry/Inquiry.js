@@ -45,19 +45,28 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
         <div className="inquiryBox">
           <div className="inquiryTitle">{inquiryTitle}</div>
           <div className="timePassed">
-            <img src={clockIcon} alt="clock"></img>
-            {`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(0, 5)}`}
+            <span>
+              <img
+                src={clockIcon}
+                alt="clock"
+                style={{ marginTop: "10px" }}
+              ></img>
+            </span>
+            <span>
+              {`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(0, 5)}`}
+            </span>
           </div>
-          {/* <div className="statusMessage">
-            <h6 style={{ fontSize: "13px" }}></h6>
-          </div> */}
           <div className="statusMessage">
-            <img src={telegramIcon} alt="telegram Icon"></img>
-            <span>{message}</span>
+            <img
+              src={telegramIcon}
+              alt="telegram Icon"
+              style={{ marginRight: "5px" }}
+            ></img>
+            <span style={{ marginRight: "6px" }}>{message}</span>
           </div>
           {status === "irrelevant" && (
             <div className="questionAndAnswer">
-              <div className="statusMessage">&bull; הודעת המנהל</div>
+              <div className="statusMessage"> הודעת המנהל</div>
 
               <div className="inquiryTitle" style={{ fontSize: "15px" }}>
                 {irrelevantDetails}
@@ -66,7 +75,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
           )}
           {status === "canceledByExpert" && (
             <div className="questionAndAnswer">
-              <div className="statusMessage">&bull; סיבת הביטול </div>
+              <div className="statusMessage"> סיבת הביטול </div>
 
               <div className="inquiryTitle" style={{ fontSize: "15px" }}>
                 {cancelReason}

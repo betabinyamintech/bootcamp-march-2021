@@ -6,7 +6,7 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 import "./RequestStyle.css";
 import informationIcon from "../commonsSVG/information-icon.svg";
 import megaphone from "../commonsSVG/megaphone.svg";
-import { fetchLogWithToken, reload } from "../../contexts/actions";
+import { fetchLogWithToken, Reload } from "../../contexts/actions";
 import { useHistory } from "react-router";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 const QuestionTypes = {
@@ -179,7 +179,7 @@ const NewInquiry = ({}) => {
             request.inquiryTags
           ) {
             postNewInquiry(request);
-            reload();
+            history.push("/");
           }
         }}
       >

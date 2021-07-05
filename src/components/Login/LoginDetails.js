@@ -4,17 +4,26 @@ import InputField from "../Common/InputField/InputField";
 const LoginDetails = ({ loginDetails, setLoginDetails, isLogin }) => {
   const [errorMessage, setErrorMessage] = useState();
   return (
-    <form>
-      <InputField onChange={(e) => setLoginDetails({ ...loginDetails, email: e.target.value })} label="אימייל" />
+    <form style={{ width: "100%" }}>
       <InputField
-        onChange={(e) => setLoginDetails({ ...loginDetails, password: e.target.value })}
+        onChange={(e) =>
+          setLoginDetails({ ...loginDetails, email: e.target.value })
+        }
+        label="אימייל"
+      />
+      <InputField
+        onChange={(e) =>
+          setLoginDetails({ ...loginDetails, password: e.target.value })
+        }
         label="סיסמא"
         type="password"
       />
       {isLogin && (
         <div>
           <InputField
-            onChange={(e) => setErrorMessage(loginDetails.password !== e.target.value)}
+            onChange={(e) =>
+              setErrorMessage(loginDetails.password !== e.target.value)
+            }
             label="אימות סיסמא"
             type="password"
           />

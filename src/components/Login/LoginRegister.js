@@ -57,7 +57,7 @@ const LoginRegister = () => {
             onClick(loginDetails);
           }}
         >
-          {isLogin ? "התחברות באמצעות אימייל" : "הרשמה באמצעות אימייל"}
+          {isLogin ? "התחברות " : "הרשמה  "}
         </Button>
       </div>
 

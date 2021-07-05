@@ -1,8 +1,3 @@
-/* .back-button{
-  display: flex;
-  align-self: flex-start;
-} */
-
 .profile-edit-container {
   height: auto;
   direction: rtl;
@@ -14,32 +9,33 @@
   font-style: normal;
   font-weight: normal;
   color: #414141;
+  width: auto;
 }
 
 .input-fieldss {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 125%;
 }
 
 .input-div {
   margin-top: 30px;
   margin-top: 30px;
   width: 100%;
+  font-family: HEEBO;
 }
 
 .input-div label {
   margin: 13px 0;
   position: relative;
   display: flex;
+  font-family: HEEBO;
 }
 
 .input-div span {
   padding: 10px;
   pointer-events: none;
   position: absolute;
-  /* left:150px; */
   top: 0;
   transition: 0.2s;
   transition-timing-function: ease;
@@ -48,12 +44,18 @@
 }
 
 .input-div input {
-  padding: 10px;
-  border: none;
   border-bottom: 1px solid black;
-  font-size: 15px;
-  /* width: 150%; */
   margin: 2px;
+  width: 95%;
+  height: 25px;
+  text-align: right;
+  border: none;
+  background: #f8f8fa;
+  border-radius: 10px;
+  font-family: HEEBO;
+  color: #0b0b0c;
+  font-size: 16px;
+  padding: 8px 10px 12px 19px;
 }
 
 .input-div input:focus + span,
@@ -78,6 +80,17 @@ input-div svg {
   font-size: 15px;
   width: 150%;
   margin: 2px;
+  margin: 2px;
+  width: 95%;
+  /* height: 25px; */
+  text-align: right;
+  border: none;
+  background: #f8f8fa;
+  border-radius: 10px;
+  font-family: HEEBO;
+  color: #878794;
+  font-size: 16px;
+  padding: 8px 10px 12px 19px;
 }
 
 .input-div textarea:focus + span,
@@ -101,12 +114,16 @@ textarea:not(:placeholder-shown) + span {
 
 .meeting-kind {
   font-family: Heebo;
-  border-top: white;
-  border-left: white;
-  border-right: white;
   margin-top: 20px;
-  height: 53px;
-  background-color: white;
+  height: 46px;
+  background: #f8f8fa;
+  border-radius: 10px;
+  border: none;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 7px 0px;
+  width: 100%;
 }
 
 /* 

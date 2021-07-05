@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { putInquiry, reload } from "../../contexts/actions";
+import { putInquiry, Reload } from "../../contexts/actions";
 import { useUserState } from "../../contexts/context";
 import MentorCard from "../MentorCard/MentorCard";
 import loading from "../commonsSVG/loadingDots.gif";
@@ -52,7 +52,7 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
         status: "matchesFound",
       };
       putInquiry(inquiryIdForPut, inquiryToPut);
-      reload();
+      Reload();
     } else {
       alert("not enough mentors");
     }

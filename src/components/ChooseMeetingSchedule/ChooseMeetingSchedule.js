@@ -4,7 +4,7 @@ import ExpertDetailsHeader from "./ExpertDetailsHeader";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import tickForButton from "../Common/tickForButton.svg";
 import Button from "../Common/Button/Button";
-import { getSpecificUser, putInquiry, reload } from "../../contexts/actions";
+import { getSpecificUser, putInquiry, Reload } from "../../contexts/actions";
 import loading from "../commonsSVG/loadingDots.gif";
 import { useHistory } from "react-router";
 import EditInquiry from "../EditInquiry/EditInquiry";
@@ -31,7 +31,7 @@ const ChooseMeetingSchedule = ({ inquiry }) => {
       status: "meetingScheduled",
     };
     let response = putInquiry(inquiryId, request);
-    reload();
+    Reload();
   };
 
   if (!theExpert) {

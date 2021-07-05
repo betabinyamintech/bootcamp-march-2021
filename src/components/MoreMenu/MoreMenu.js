@@ -1,4 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import Avatar from "../Avatar/Avatar";
 import "./MoreMenu.css";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
@@ -8,10 +9,18 @@ import logoutIcon from "../commonsSVG/logout-icon.svg";
 import shareIcon from "../commonsSVG/share-icon.svg";
 import profileIcon from "../commonsSVG/profile-icon.svg";
 import plusIcon from "../commonsSVG/plus-icon.svg";
+import whatsappIcon from "../commonsSVG/whatsapp-icon.svg";
+import telegramAppIcon from "../commonsSVG/telegram-app-icon.svg";
+import copyIcon from "../commonsSVG/copy.png";
 import allChallengesIcon from "../commonsSVG/all-challenges-icon.svg";
+import { useState } from "react";
+
 const MoreMenu = () => {
   let history = useHistory();
   const userState = useUserState();
+  const [link, setLink] = useState("anybody-app.herokuapp.com");
+  const [text, setText] = useState("ניסית כבר את האפליקציה שלנו?");
+  const [share, setShare] = useState(false);
   console.log(userState.user);
   const logout = () => {
     localStorage.removeItem("currentUser");
@@ -68,7 +77,11 @@ const MoreMenu = () => {
           </div>
           {/* </Link> */}
         </button>
-        <button>
+        <button
+          onClick={() => {
+            setShare(!share);
+          }}
+        >
           <div>
             <i>
               <img src={shareIcon}></img>
@@ -76,6 +89,31 @@ const MoreMenu = () => {
             <span>שיתוף</span>
           </div>
         </button>
+        {share && (
+          <div className="shareBox">
+            <span>
+              <a
+                href={`whatsapp://send?text= ניסית כבר את האפליקציה שלנו?? ${link}`}
+                data-action="share/whatsapp/share"
+              >
+                <img src={whatsappIcon}></img>
+              </a>
+            </span>
+            <span>
+              <a
+                href={`https://t.me/share/url?url=${link}&text=${text}
+`}
+              >
+                <img src={telegramAppIcon}></img>
+              </a>
+            </span>
+            <CopyToClipboard text={link}>
+              <span>
+                <img src={copyIcon} style={{ height: "47px" }}></img>
+              </span>
+            </CopyToClipboard>
+          </div>
+        )}
         <button>
           <div>
             <i>

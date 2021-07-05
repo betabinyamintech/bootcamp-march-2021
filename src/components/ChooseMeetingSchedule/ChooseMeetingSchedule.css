@@ -119,12 +119,14 @@
 }
 
 .buttonDiv {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   padding-bottom: 20px;
+  width: 100%;
 }
 
-.footerText {
+/* .footerText {
   font-family: Heebo;
   font-size: 16px;
   font-style: normal;
@@ -134,4 +136,4 @@
   text-align: center;
   text-decoration: underline;
   color: #ababab;
-}
+} */

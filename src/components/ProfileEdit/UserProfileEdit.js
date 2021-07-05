@@ -17,6 +17,7 @@ const missingMessage = "שדה חובה";
 const UserProfileEdit = () => {
   const history = useHistory();
   const userState = useUserState();
+  let user = useUserState().user;
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
   const [warnings, setWarnings] = useState({});
@@ -81,7 +82,9 @@ const UserProfileEdit = () => {
         },
       },
       console.log("putUser works" + userDetails),
-      history.push("/home")
+      setTimeout(() => {
+        history.push("/home");
+      }, 1000)
     );
   }, [userDetails, warnings, setWarnings, requiredFields, userDispatch]);
   const setIsExpertFinal = (e) => {
@@ -95,7 +98,7 @@ const UserProfileEdit = () => {
         <PreviousButton linkTo="/more-menu" />
       </div>
       <div className="profile-details">
-        <Avatar />
+        <Avatar avatar={user.imageSrc} />
         {(userDetails.firstName === undefined ||
           userDetails.lastName === undefined ||
           userDetails.firstName === "" ||

@@ -9,6 +9,8 @@ import EditInquiry from "../EditInquiry/EditInquiry";
 import clockIcon from "../commonsSVG/clock-icon2.svg";
 import "reactjs-popup/dist/index.css";
 import QuestionDetails from "../QuestionDetails/QuestionDetails";
+import telegramIcon from "../commonsSVG/telegram-icon.svg";
+
 const InquiryForExpert = ({ inquiry, expertsUsers }) => {
   const {
     inquiryTitle,
@@ -90,9 +92,13 @@ const InquiryForExpert = ({ inquiry, expertsUsers }) => {
           </div>
         )}
         <div className="statusMessage">
-          <h6 style={{ fontSize: "13px" }}></h6>
-        </div>
-        <div className="statusMessage">&bull; {message} </div>
+          <img
+            src={telegramIcon}
+            alt="telegram Icon"
+            style={{ marginRight: "5px" }}
+          ></img>
+          <span style={{ marginRight: "6px" }}>{message}</span>
+        </div>{" "}
         {status === "movedToExpert" && (
           // Component MeetingArrangment
           <QuestionDetails inquiry={inquiry} buttonText={buttonText} />

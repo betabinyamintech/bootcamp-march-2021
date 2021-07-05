@@ -25,23 +25,23 @@ const UserChooseExpert = ({
       : setSelectedExperts(selectedExperts && restOfExperts, { ref: expertId });
   };
 
-  const putExpertsFound = async () => {
-    let response = await fetch(
-      `http://localhost:5000/inquiries/${inquiryIdForPut}`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("currentUser"),
-          "Content-Type": "application/json",
-        },
-        body: {
-          expertsFound: [JSON.stringify(selectedExperts)],
-          inquiryTags: ["תחבורה"],
-        },
-      }
-    );
-    console.log("response", response);
-  };
+  // const putExpertsFound = async () => {
+  //   let response = await fetch(
+  //     `http://localhost:5000/inquiries/${inquiryIdForPut}`,
+  //     {
+  //       method: "PUT",
+  //       headers: {
+  //         authorization: "Bearer " + localStorage.getItem("currentUser"),
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: {
+  //         expertsFound: [JSON.stringify(selectedExperts)],
+  //         inquiryTags: ["תחבורה"],
+  //       },
+  //     }
+  //   );
+  //   console.log("response", response);
+  // };
 
   console.log("selected experts by group", selectedExperts);
   return (

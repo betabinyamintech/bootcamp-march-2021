@@ -4,7 +4,7 @@ import "reactjs-popup/dist/index.css";
 import { useState } from "react";
 import HashtagLabel from "../Common/Hashtag/HashtagLabel";
 import InputField from "../Common/InputField/InputField";
-import { putInquiry, reload } from "../../contexts/actions";
+import { putInquiry, Reload } from "../../contexts/actions";
 import { Inquiry } from "../Inquiry/Inquiry";
 
 const ComleteMissingDetails = ({ buttonText, inquiry }) => {
@@ -19,7 +19,7 @@ const ComleteMissingDetails = ({ buttonText, inquiry }) => {
       inquiryContent: content,
     };
     putInquiry(inquiryId, request);
-    reload();
+    Reload();
   };
   return (
     <Popup
