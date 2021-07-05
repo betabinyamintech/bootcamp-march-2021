@@ -10,6 +10,7 @@ import {
   getAllInquiries,
   getAllUsers,
   Reload,
+  getUser,
 } from "../../contexts/actions";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import InquiryForAdmin from "../InquiryForAdmin/InquiryForAdmin";
@@ -19,19 +20,16 @@ import ProfileView from "../ProfileView/ProfileView";
 import ProfileViewAdminRemove from "../ProfileView/ProfileViewAdminRemove";
 import Splash from "../Splash/Splash";
 
-const Home = ({ numExperts = 167 }) => {
+const Home = ({ numExperts = 85 }) => {
   const {
     user,
     inquiries: userInquiries,
     adminInquiries,
     expertsByAdmin,
   } = useUserState();
-  console.log(useUserState());
   let history = useHistory();
-  const [inquiriesForAdmin, setInquiriesForAdmin] = useState();
-  const [usersForAdmin, setUsersForAdmin] = useState([]);
-  const [expertsForAdmin, setExpertsForAdmin] = useState();
-  const [experts, setExperts] = useState();
+  const [test, setTest] = useState();
+  console.log(" enter to home");
   const [filteredInquiries, setFilteredInquiries] = useState(null);
   const [chosenStatus, setChosenStatus] = useState("all");
   const [editInquiry, setEditInquiry] = useState(false);
@@ -39,16 +37,15 @@ const Home = ({ numExperts = 167 }) => {
   const userDispatch = useUserDispatch();
   useEffect(() => {
     getInquiries(userDispatch);
+    getUser(userDispatch);
     isAdmin && getAllInquiries(userDispatch);
     isAdmin && getAllUsers(userDispatch);
-  }, []);
-  // const putInquiry = () => {
-  //   setEditInquiry(!editInquiry);
-  // };
+  }, [test]);
+  console.log("the user", user);
+  console.log("user inquiries", userInquiries);
   if (userInquiries === null) {
-    return <Splash />;
+    return <Splash setTest={setTest} />;
   }
-
   if (userInquiries) {
     const ownedInquiries = userInquiries.filter(
       (ownedInq) => ownedInq.userId === user._id
@@ -60,9 +57,7 @@ const Home = ({ numExperts = 167 }) => {
       : null;
     console.log("owned BY HOME", ownedInquiries);
     console.log("expert BY HOME", expertInquiries);
-    // isAdmin &&(
-    // console.log("inquiries admin by dispatch", adminInquiries);
-    // console.log("finally experts admin by dispatch", expertsByAdmin);
+    console.log("user inquiries", userInquiries);
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
         <div>
@@ -97,7 +92,7 @@ const Home = ({ numExperts = 167 }) => {
                 נשארו רק כמה פרטים קטנים שתצטרך להשלים על מנת להתחיל ולהשתמש
                 במערכת
               </span>
-              <Link to="/profile/edit">
+              <Link to="/profile/edit" style={{ textDecoration: "none" }}>
                 <Button style={{ marginTop: "10px" }}>
                   לחץ להשלמת הפרטים החסרים
                 </Button>

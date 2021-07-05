@@ -16,11 +16,7 @@ const ExpertDetailsHeader = ({ expert, meetingType }) => {
           </div>
           <div className="meetingPlace">
             נפגש בדרך כלל ב:{" "}
-            {meetingType === "virtual" ? (
-              <Zoom />
-            ) : (
-              expert.expertDetails.meetingAddress
-            )}
+            {meetingType === "virtual" ? <Zoom /> : meetingType.meetingAddress}
           </div>
         </div>
       </div>

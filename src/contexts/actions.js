@@ -1,7 +1,8 @@
 import { useHistory } from "react-router";
+import { useUserDispatch } from "./context";
 import { ActionTypes } from "./reducer";
-export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-// export const ROOT_URL = "http://localhost:5000";
+// export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+export const ROOT_URL = "http://localhost:5000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
@@ -47,6 +48,7 @@ export async function registerUser(dispatch, registerPayload) {
     if (data) {
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
       localStorage.setItem("currentUser", data.token);
+      loginUser(dispatch, registerPayload);
       return;
     }
 

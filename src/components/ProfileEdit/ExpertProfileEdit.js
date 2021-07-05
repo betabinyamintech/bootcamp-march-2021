@@ -44,7 +44,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
       <div className="input-fieldss">
         <InputField
           value={expertDetails.aboutMe}
-          label="כמה מילים על עצמך:"
+          label="כמה מילים על עצמך"
           onChange={(e) =>
             setExpertDetails({ ...expertDetails, aboutMe: e.target.value })
           }
@@ -88,11 +88,10 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           onBlur={() => {
             setExpertDetails({
               ...expertDetails,
-              questionsBeforeMeeting: [...questionsBeforeMeeting, question1],
+              questionsBeforeMeeting: [question1, question2],
             });
           }}
         />
-
         {/* //question2 */}
         <InputField
           value={question2}
@@ -104,7 +103,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
           onBlur={() => {
             setExpertDetails({
               ...expertDetails,
-              questionsBeforeMeeting: [...questionsBeforeMeeting, question2],
+              questionsBeforeMeeting: [question1, question2],
             });
           }}
         />

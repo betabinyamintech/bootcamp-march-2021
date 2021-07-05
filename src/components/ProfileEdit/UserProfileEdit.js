@@ -120,7 +120,7 @@ const UserProfileEdit = () => {
           value={userDetails.firstName || ""}
           id="firstName"
           required={true}
-          label="שם פרטי:"
+          label="שם פרטי"
           warning={warnings.firstName}
           onChange={setUserDetailsWithWarning}
         />
@@ -128,7 +128,7 @@ const UserProfileEdit = () => {
           value={userDetails.lastName}
           id="lastName"
           required={true}
-          label="שם משפחה:"
+          label="שם משפחה"
           warning={warnings.lastName}
           onChange={setUserDetailsWithWarning}
         />
@@ -170,9 +170,8 @@ const UserProfileEdit = () => {
           <span>אשמח גם לסייע לאחרים</span>
         </div>
         <div className="information">
-          <img src={informationIcon}></img>{" "}
+          <img src={informationIcon}></img>
           <span>
-            {" "}
             {
               "לחיצה על כפתור זה תוביל אותך למסך עם כמה שאלות לגבי אופי העזרה שתרצה לתת"
             }
@@ -181,7 +180,9 @@ const UserProfileEdit = () => {
         {localIsExpert && (
           <ExpertProfileEdit
             setExpertDetails={setExpertDetails}
-            expertDetails={userDetails.expertDetails}
+            expertDetails={
+              userDetails.expertDetails ? userDetails.expertDetails : []
+            }
             setExpertQuestion={setExpertQuestion}
           />
         )}

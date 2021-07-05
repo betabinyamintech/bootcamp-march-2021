@@ -58,6 +58,9 @@ const MainRouter = () => {
           <Route path="/search-for-expert">
             <SearchForExpert />
           </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
           <Route path="/">
             <Home />
           </Route>

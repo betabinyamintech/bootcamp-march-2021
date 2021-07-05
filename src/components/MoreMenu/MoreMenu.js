@@ -19,7 +19,7 @@ const MoreMenu = () => {
   let history = useHistory();
   const userState = useUserState();
   const [link, setLink] = useState("anybody-app.herokuapp.com");
-  const [text, setText] = useState("ניסית כבר את האפליקציה שלנו?");
+  let text = "נסו את Anybody! אפליקצייה למנטורינג חברתי";
   const [share, setShare] = useState(false);
   console.log(userState.user);
   const logout = () => {
