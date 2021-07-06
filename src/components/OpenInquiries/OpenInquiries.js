@@ -18,7 +18,7 @@ const OpenInquiries = ({
   let user = useUserState().user;
   if (inquiries.length < 1) {
     return (
-      <div className="inquiriesBox">
+      <div className="inquiriesBoxEmpty">
         <span className="nightLight">
           <img src={nightLight} alt="nightLight"></img>
         </span>

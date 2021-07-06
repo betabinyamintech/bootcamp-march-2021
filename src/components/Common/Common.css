@@ -84,11 +84,9 @@
 }
 /* for PreviousButton */
 .back-button {
-  display: block;
-  align-self: end;
-  width: 61%;
-  font-size: 14px;
-  color: #606060;
+  margin-top: 15px;
+
+  margin-right: 11px;
 }
 .previous-icon {
   margin-top: 2px;

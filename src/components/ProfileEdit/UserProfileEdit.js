@@ -18,6 +18,7 @@ const UserProfileEdit = () => {
   const history = useHistory();
   const userState = useUserState();
   let user = useUserState().user;
+  const { isAdmin, profileFullFields, isExpert } = user;
   const userDispatch = useUserDispatch();
   const [userDetails, setUserDetails] = useState(userState.user);
   const [warnings, setWarnings] = useState({});
@@ -93,106 +94,125 @@ const UserProfileEdit = () => {
   };
   console.log("USER DETAILS", userDetails);
   return (
-    <div className="profile-edit-container">
-      <div style={{ alignSelf: "flex-start" }}>
-        <PreviousButton linkTo="/more-menu" />
-      </div>
-      <div className="profile-details">
-        <Avatar avatar={user.imageSrc} />
-        {(userDetails.firstName === undefined ||
-          userDetails.lastName === undefined ||
-          userDetails.firstName === "" ||
-          userDetails.lastName === "") && (
-          <h4 className="user-name"> הזנת פרטים</h4>
-        )}
-        {userDetails.firstName !== undefined &&
-          userDetails.lastName !== undefined &&
-          userDetails.firstName !== "" &&
-          userDetails.lastName !== "" && (
-            <h4 className="user-name">
-              {userDetails.firstName} {userDetails.lastName}
-            </h4>
+    <>
+      <PreviousButton linkTo="/more-menu" />
+      <div className="profile-edit-container">
+        <div style={{ alignSelf: "flex-start" }}></div>
+        <div className="profile-details">
+          <Avatar avatar={user.imageSrc} />
+          {(userDetails.firstName === undefined ||
+            userDetails.lastName === undefined ||
+            userDetails.firstName === "" ||
+            userDetails.lastName === "") && (
+            <h4 className="user-name"> הזנת פרטים</h4>
           )}
-        <h6 className="user-city">{userDetails.city} </h6>
-      </div>
-      <div className="input-fields">
-        <InputField
-          value={userDetails.firstName || ""}
-          id="firstName"
-          required={true}
-          label="שם פרטי"
-          warning={warnings.firstName}
-          onChange={setUserDetailsWithWarning}
-        />
-        <InputField
-          value={userDetails.lastName}
-          id="lastName"
-          required={true}
-          label="שם משפחה"
-          warning={warnings.lastName}
-          onChange={setUserDetailsWithWarning}
-        />
-        <InputField
-          max={10}
-          value={userDetails.profession}
-          id="profession"
-          label="מה המקצוע שלך?"
-          onChange={setUserDetailsWithWarning}
-        />
-        <InputField
-          type="number"
-          value={userDetails.phone}
-          id="phone"
-          required={true}
-          label="טלפון"
-          warning={warnings.phone}
-          onChange={setUserDetailsWithWarning}
-        />
-        <InputField
-          value={userDetails.city}
-          id="city"
-          required={true}
-          label="ישוב"
-          warning={warnings.city}
-          onChange={setUserDetailsWithWarning}
-        />
-        <div className="mentor-switch">
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={userDetails.isExpert}
-              value={userDetails.isExpert}
-              id="isExpert"
-              onChange={(e) => setIsExpertFinal(e)}
-            />
-            <span className="slider round"></span>
-          </label>
-          <span>אשמח גם לסייע לאחרים</span>
+          {userDetails.firstName !== undefined &&
+            userDetails.lastName !== undefined &&
+            userDetails.firstName !== "" &&
+            userDetails.lastName !== "" && (
+              <h4 className="user-name">
+                {userDetails.firstName} {userDetails.lastName}
+              </h4>
+            )}
+
+          <h6 className="user-city">{userDetails.city} </h6>
         </div>
-        <div className="information">
-          <img src={informationIcon}></img>
-          <span>
-            {
-              "לחיצה על כפתור זה תוביל אותך למסך עם כמה שאלות לגבי אופי העזרה שתרצה לתת"
-            }
-          </span>
-        </div>
-        {localIsExpert && (
-          <ExpertProfileEdit
-            setExpertDetails={setExpertDetails}
-            expertDetails={
-              userDetails.expertDetails ? userDetails.expertDetails : []
-            }
-            setExpertQuestion={setExpertQuestion}
-          />
+        {!isAdmin && !profileFullFields && (
+          <>
+            <span
+              style={{
+                marginTop: "10px",
+                background: "#f99696",
+                borderRadius: "7px",
+                fontFamily: "Tinos",
+                width: "80%",
+                padding: "8px",
+              }}
+            >
+              חסרים רק כמה פרטים קטנים לפני שמתחילים
+            </span>
+          </>
         )}
-        {/* <button className="save-button">שמירה</button> */}
-        <Button className="save-button" id="submitButton" onClick={submit}>
-          <img src={vIcon}></img>
-          שמירה
-        </Button>
+        <div className="input-fields">
+          <InputField
+            value={userDetails.firstName || ""}
+            id="firstName"
+            required={true}
+            label="שם פרטי"
+            warning={warnings.firstName}
+            onChange={setUserDetailsWithWarning}
+          />
+          <InputField
+            value={userDetails.lastName}
+            id="lastName"
+            required={true}
+            label="שם משפחה"
+            warning={warnings.lastName}
+            onChange={setUserDetailsWithWarning}
+          />
+          <InputField
+            max={10}
+            value={userDetails.profession}
+            id="profession"
+            label="מה המקצוע שלך?"
+            onChange={setUserDetailsWithWarning}
+          />
+          <InputField
+            type="number"
+            value={userDetails.phone}
+            id="phone"
+            required={true}
+            label="טלפון"
+            warning={warnings.phone}
+            onChange={setUserDetailsWithWarning}
+          />
+          <InputField
+            value={userDetails.city}
+            id="city"
+            required={true}
+            label="ישוב"
+            warning={warnings.city}
+            onChange={setUserDetailsWithWarning}
+          />
+          <div className="mentor-switch">
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={userDetails.isExpert}
+                value={userDetails.isExpert}
+                id="isExpert"
+                onChange={(e) => setIsExpertFinal(e)}
+              />
+              <span className="slider round"></span>
+            </label>
+            <span>אשמח גם לסייע לאחרים</span>
+          </div>
+          <div className="information-comment">
+            <img src={informationIcon}></img>
+            <span>
+              {
+                "לחיצה על כפתור זה תוביל אותך למסך עם כמה שאלות לגבי אופי העזרה שתרצה לתת"
+              }
+            </span>
+          </div>
+
+          {/* <button className="save-button">שמירה</button> */}
+        </div>
       </div>
-    </div>
+      {localIsExpert && (
+        <ExpertProfileEdit
+          setExpertDetails={setExpertDetails}
+          expertDetails={
+            userDetails.expertDetails ? userDetails.expertDetails : []
+          }
+          setExpertQuestion={setExpertQuestion}
+        />
+      )}
+      <Button className="save-button" id="submitButton" onClick={submit}>
+        {/* <img src={vIcon}></img> */}
+        שמירה
+      </Button>
+    </>
   );
 };
 export default UserProfileEdit;

@@ -34,7 +34,10 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   const values = InquiryType[type][status];
   const { message = null, trueFalseButton, buttonText } = values;
   let creationDate = new Date(createdAt).toLocaleDateString();
-  let creationTime = new Date(createdAt).toLocaleTimeString();
+  // let creationTime = new Date(createdAt).toLocaleTimeString();
+  let day = new Date(createdAt).getDate();
+  let month = new Date(createdAt).getMonth() + 1;
+  let newDate = `${day}.${month}`;
 
   if (!expertsFoundForInquiry) {
     // Add loading animation
@@ -49,11 +52,11 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
               <img
                 src={clockIcon}
                 alt="clock"
-                style={{ marginTop: "10px" }}
+                style={{ marginTop: "10px", marginRight: "12px" }}
               ></img>
             </span>
-            <span>
-              {`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(0, 5)}`}
+            <span style={{ marginRight: "6px", marginTop: "7px" }}>
+              {`נוצרה ב: ${newDate.slice(0, 3)}`}
             </span>
           </div>
           <div className="statusMessage">

@@ -16,31 +16,30 @@ const InputQuestion = ({
   let history = useHistory();
   return (
     <div className="inputContainer">
-      <div>
-        {isButton && (
-          <Link to="/inquiry/new">
-            <button className="inputNewQuestion">
-              {arrow && (
-                <span className="greenArrow">
-                  <img src={greenArrow} alt="arrow" />
-                </span>
-              )}
+      {isButton && (
+        <button
+          className="inputNewQuestion"
+          onClick={() => {
+            history.push("/inquiry/new");
+          }}
+        >
+          {arrow && (
+            <img src={greenArrow} alt="arrow" style={{ marginLeft: "6px" }} />
+          )}
 
-              <span className="buttonPlaceHolder"> השאלה החדשה שלך...</span>
-            </button>
-          </Link>
-        )}
-        {isInput && (
-          <textarea
-            className="inputNewQuestion"
-            onChange={onChange}
-            style={{
-              width: width ? width : "95%",
-              height: height ? height : "50px",
-            }}
-          ></textarea>
-        )}
-      </div>
+          <span className="buttonPlaceHolder"> השאלה החדשה שלך...</span>
+        </button>
+      )}
+      {isInput && (
+        <textarea
+          className="inputNewQuestion"
+          onChange={onChange}
+          style={{
+            width: width ? width : "95%",
+            height: height ? height : "50px",
+          }}
+        ></textarea>
+      )}
     </div>
   );
 };

@@ -6,9 +6,10 @@ import HashtagList from "../HashtagComponent/HashtagScreen/HashtagList";
 import "./RequestStyle.css";
 import informationIcon from "../commonsSVG/information-icon.svg";
 import megaphone from "../commonsSVG/megaphone.svg";
-import { fetchLogWithToken, Reload } from "../../contexts/actions";
+import { fetchLogWithToken, getTags, Reload } from "../../contexts/actions";
 import { useHistory } from "react-router";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
+import { useUserState } from "../../contexts/context";
 const QuestionTypes = {
   TEXT: "TEXT",
   HASHTAG: "HASHTAG",
@@ -40,6 +41,7 @@ const steps = [
 ];
 
 const NewInquiry = ({}) => {
+  let user = useUserState().user;
   const history = useHistory();
   //const arrowSign = "&gt";
   const [currentStep, setCurrentStep] = useState(0);
@@ -48,19 +50,40 @@ const NewInquiry = ({}) => {
   const [request, setRequest] = useState({});
   const step = steps[currentStep];
   const [hashtags, setHashtags] = useState([]);
-
-  const fetchHashtags = useCallback(
-    () =>
-      fetchLogWithToken("/tags")
-        .then((response) => response.json())
-        .then((data) => setHashtags(data)),
-
-    [setHashtags]
-  );
-
   useEffect(() => {
+    const fetchHashtags = async () => {
+      let data = await getTags();
+      setHashtags(data);
+      // console.log("data", data);
+      // let hashtagsToSet = [];
+      // let { tagsList, userTags } = data;
+      // let tagsListLength = tagsList.length;
+      // let userTagsLength = userTags.length;
+      // if (userTagsLength > 0) {
+      //   hashtagsToSet.push(userTags);
+      //   hashtagsToSet.push(tagsList);
+      //   setHashtags(hashtagsToSet);
+      // }
+      // if (userTagsLength === 0) {
+      //   hashtagsToSet.push(tagsList);
+      //   setHashtags(hashtagsToSet);
+      // }
+      // console.log("response", data);
+    };
     fetchHashtags();
   }, []);
+  // useCallback(
+  //   () =>
+  //     fetchLogWithToken("/tags")
+  //       .then((response) => response.json())
+  //       .then((data) => setHashtags(data)),
+
+  //   [setHashtags]
+  // );
+
+  // useEffect(() => {
+  //   fetchHashtags();
+  // }, []);
   //updating request element for sending to the server
   const setRequestCallback = useCallback(
     (value) => setRequest({ ...request, [step.field]: value }),
@@ -79,7 +102,7 @@ const NewInquiry = ({}) => {
   );
 
   const lastQuestion = currentStep >= steps.length - 1;
-  console.log("step", step, "request", request);
+  // console.log("step", step, "request", request);
   return (
     <div className="questionScreen">
       {currentStep === 0 ? (
@@ -99,17 +122,8 @@ const NewInquiry = ({}) => {
               <img src={megaphone}></img>
             </span>
             <span className="input-label"> {step.title}</span>
-            {/* {currentStep === 1 && (
-              <h3 className="input-label">{request.inquiryTitle}</h3>
-            )} */}
+
             {step.type === QuestionTypes.TEXT && currentStep === 0 && (
-              // <textarea
-              //   className="question-input"
-              // onChange={(e) => {
-              //   setRequestCallback(e.target.value);
-              // }}
-              // value={request[step.field]}
-              // ></textarea>
               <InputQuestion
                 isInput={true}
                 onChange={(e) => {
@@ -119,15 +133,6 @@ const NewInquiry = ({}) => {
               />
             )}
             {step.type === QuestionTypes.TEXT && currentStep === 1 && (
-              // <textarea
-              //   className="question-input"
-              //   id="input"
-              //   onChange={(e) => {
-              //     setRequestCallback(e.target.value);
-              //   }}
-              //   value={request[step.field]}
-
-              // ></textarea>
               <InputQuestion
                 isInput={true}
                 onChange={(e) => {

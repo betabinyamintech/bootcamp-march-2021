@@ -1,8 +1,8 @@
 import { useHistory } from "react-router";
 import { useUserDispatch } from "./context";
 import { ActionTypes } from "./reducer";
-export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
-// export const ROOT_URL = "http://localhost:5000";
+// export const ROOT_URL = "https://binyamin-tech-march-2021.herokuapp.com";
+export const ROOT_URL = "http://localhost:5000";
 export async function fetchLog(location, requestOptions) {
   console.log("fetch", location, requestOptions);
   const response = await fetch(`${ROOT_URL}${location}`, requestOptions);
@@ -219,15 +219,12 @@ export async function getAllUsers(dispatch) {
 }
 
 //GET ALL TAGS
-
-export async function getTags(tag) {
-  console.log("tag by actions", tag);
+export async function getTags() {
   const options = addToken();
   const response = await fetchLog(`/tags`, options);
   const data = await response.json();
-  return;
+  return data;
 }
-
 //POST NEW TAGS
 
 export async function postTag(tag) {
@@ -241,6 +238,16 @@ export async function postTag(tag) {
   const response = await fetchLog(`/tags`, options);
   const data = await response.json();
   return;
+}
+export async function getNumsOfUsers() {
+  const options = addToken({
+    method: "GET",
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  });
+  const response = await fetchLog(`/users/nums`, options);
+  const data = await response.json();
+  return data;
 }
 
 export function Reload() {

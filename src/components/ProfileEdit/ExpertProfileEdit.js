@@ -14,6 +14,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
   );
   const localPreferredMeetingType = (value) => {
     setPreferredMeetingType(value);
+    console.log(preferredMeetingType);
     setExpertDetails({
       ...expertDetails,
       preferredMeetingType: value,
@@ -39,9 +40,10 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
     "selected hashtags by expert details page",
     expertDetails.inquiryTags
   );
+  console.log("expert details", expertDetails);
   return (
     <div className="profile-edit-container">
-      <div className="input-fieldss">
+      <div className="input-fields">
         <InputField
           value={expertDetails.aboutMe}
           label="כמה מילים על עצמך"

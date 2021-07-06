@@ -4,18 +4,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px;
+  margin: 3px;
   font-family: Heebo;
   font-style: normal;
   font-weight: normal;
   color: #414141;
   width: auto;
+  /* width: 220px; */
 }
 
-.input-fieldss {
+.input-fields {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
 }
 
 .input-div {
@@ -55,9 +58,13 @@
   font-family: HEEBO;
   color: #0b0b0c;
   font-size: 16px;
-  padding: 8px 10px 12px 19px;
+  /* padding: 8px 10px 12px 19px; */
 }
-
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 .input-div input:focus + span,
 input:not(:placeholder-shown) + span {
   opacity: 1;
@@ -78,7 +85,6 @@ input-div svg {
   border: none;
   border-bottom: 1px solid black;
   font-size: 15px;
-  width: 150%;
   margin: 2px;
   margin: 2px;
   width: 95%;

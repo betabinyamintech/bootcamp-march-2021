@@ -11,32 +11,27 @@
 }
 .newHashtag {
   padding: 4px 12px;
-
   background: #f3f3f3;
   border-radius: 40px;
 }
-.hashtag {
+/* .hashtag {
   padding: 4px 12px;
   text-align: center;
   display: flex;
-
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 4px 12px;
-
   background: #f7f7f9;
   border-radius: 40px;
-
   flex: none;
   order: 7;
   flex-grow: 0;
   margin: 10px 10px;
   cursor: pointer;
-
   height: 32px;
   top: 0px;
-}
+} */
 .hashtagsFounded {
   font-family: HEEBO;
   float: right;

@@ -28,26 +28,29 @@ const MoreMenu = () => {
     document.location.reload();
   };
   return (
-    <div className="more-menu-container">
+    <>
       <PreviousButton linkTo="/home" />
-      <div className="user-details">
-        <Avatar avatar={userState.user.imageSrc} />
-        <div>
-          <h3>{`${userState.user.firstName ? userState.user.firstName : ""} ${
-            userState.user.lastName ? userState.user.lastName : "ברוך/ה הבא/ה!"
-          }`}</h3>
-          <h5>{`${userState.user.city ? userState.user.city : ""}`}</h5>
-          <h5>{`${
-            userState.user.profession
-              ? userState.user.profession
-              : userState.user.city
-              ? userState.user.city
-              : "הכנס/י ללשונית 'עריכת פרופיל' להשלמת הפרטים החסרים"
-          }`}</h5>{" "}
+      <div className="more-menu-container">
+        <div className="user-details">
+          <Avatar avatar={userState.user.imageSrc} />
+          <div>
+            <h3>{`${userState.user.firstName ? userState.user.firstName : ""} ${
+              userState.user.lastName
+                ? userState.user.lastName
+                : "ברוך/ה הבא/ה!"
+            }`}</h3>
+            <h5>{`${userState.user.city ? userState.user.city : ""}`}</h5>
+            <h5>{`${
+              userState.user.profession
+                ? userState.user.profession
+                : userState.user.city
+                ? userState.user.city
+                : "הכנס/י ללשונית 'עריכת פרופיל' להשלמת הפרטים החסרים"
+            }`}</h5>{" "}
+          </div>
         </div>
-      </div>
-      <div className="more-menu-buttons">
-        {/* <button>
+        <div className="more-menu-buttons">
+          {/* <button>
           <div>
             <i>
               <img src={allChallengesIcon}></img>
@@ -55,7 +58,7 @@ const MoreMenu = () => {
             <span>כל האתגרים</span>
           </div>
         </button> */}
-        {/* <button>
+          {/* <button>
           <div onClick={() => history.push("/inquiry/new")}>
             <i>
               <img src={plusIcon}></img>
@@ -65,68 +68,72 @@ const MoreMenu = () => {
             </span>
           </div>
         </button> */}
-        <button>
-          {/* <Link to="/profile/edit" style={{ textDecoration: "none" }}> */}
-          <div onClick={() => history.push("/profile/edit")}>
-            <i>
-              <img src={profileIcon}></img>
-            </i>
-            <span onClick={() => history.push("/profile/edit")}>
-              עריכת הפרופיל
-            </span>
-          </div>
-          {/* </Link> */}
-        </button>
-        <button
-          onClick={() => {
-            setShare(!share);
-          }}
-        >
-          <div>
-            <i>
-              <img src={shareIcon}></img>
-            </i>
-            <span>שיתוף</span>
-          </div>
-        </button>
-        {share && (
-          <div className="shareBox">
-            <span>
-              <a
-                href={`whatsapp://send?text= ניסית כבר את האפליקציה שלנו?? ${link}`}
-                data-action="share/whatsapp/share"
-              >
-                <img src={whatsappIcon}></img>
-              </a>
-            </span>
-            <span>
-              <a
-                href={`https://t.me/share/url?url=${link}&text=${text}
-`}
-              >
-                <img src={telegramAppIcon}></img>
-              </a>
-            </span>
-            <CopyToClipboard text={link}>
-              <span>
-                <img src={copyIcon} style={{ height: "47px" }}></img>
+          <button>
+            {/* <Link to="/profile/edit" style={{ textDecoration: "none" }}> */}
+            <div onClick={() => history.push("/profile/edit")}>
+              <i>
+                <img src={profileIcon}></img>
+              </i>
+              <span onClick={() => history.push("/profile/edit")}>
+                עריכת הפרופיל
               </span>
-            </CopyToClipboard>
-          </div>
-        )}
-        <button>
-          <div>
-            <i>
-              <img src={logoutIcon}></img>
-            </i>
-            <span onClick={logout}>התנתקות</span>
-          </div>
-        </button>
-        <button className="close-button" onClick={() => history.push("/home")}>
-          סגירה
-        </button>
+            </div>
+            {/* </Link> */}
+          </button>
+          <button
+            onClick={() => {
+              setShare(!share);
+            }}
+          >
+            <div>
+              <i>
+                <img src={shareIcon}></img>
+              </i>
+              <span>שיתוף</span>
+            </div>
+          </button>
+          {share && (
+            <div className="shareBox">
+              <span>
+                <a
+                  href={`whatsapp://send?text= ניסית כבר את האפליקציה שלנו?? ${link}`}
+                  data-action="share/whatsapp/share"
+                >
+                  <img src={whatsappIcon}></img>
+                </a>
+              </span>
+              <span>
+                <a
+                  href={`https://t.me/share/url?url=${link}&text=${text}
+`}
+                >
+                  <img src={telegramAppIcon}></img>
+                </a>
+              </span>
+              <CopyToClipboard text={link}>
+                <span>
+                  <img src={copyIcon} style={{ height: "47px" }}></img>
+                </span>
+              </CopyToClipboard>
+            </div>
+          )}
+          <button>
+            <div>
+              <i>
+                <img src={logoutIcon}></img>
+              </i>
+              <span onClick={logout}>התנתקות</span>
+            </div>
+          </button>
+          <button
+            className="close-button"
+            onClick={() => history.push("/home")}
+          >
+            סגירה
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

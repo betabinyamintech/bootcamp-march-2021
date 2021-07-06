@@ -7,8 +7,16 @@ import { useState } from "react";
 import HashtagLabel from "../Common/Hashtag/HashtagLabel";
 import InputQuestion from "../Common/InputQuestion/InputQuestion";
 import xIcon from "../commonsSVG/x-icon.svg";
-const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
+import { useUserState } from "../../contexts/context";
+const SearchForHashtag = ({
+  hashtags,
+  setHashtagsPreview,
+  setSelectedHashtags,
+  setNewHashtag,
+}) => {
   //CALLED BY - HASHTAGS LIST
+  let user = useUserState().user;
+  const { _id } = user;
   const [inputValue, setInputValue] = useState();
   const [isInclude, setIsInclude] = useState();
   const [allHashtags, setAllHahstags] = useState(hashtags);
@@ -16,6 +24,7 @@ const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
   const postNewTag = async () => {
     await postTag({ name: inputValue, createdAt: new Date() });
     setHashtagsPreview(inputValue);
+    setNewHashtag(inputValue);
   };
   return (
     <Popup
@@ -53,13 +62,15 @@ const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
                   hashtag.includes(inputValue) && (
                     <>
                       <div
-                        className="hashtagResult"
+                        className="hashtag.active"
                         onClick={() => {
                           setHashtagsPreview(hashtag);
+                          setSelectedHashtags(hashtag);
                           setInputValue("");
                           setTimeout(() => {
                             close();
                           }, 700);
+                          // setTimeout(() => {}, 1100);
                         }}
                       >
                         {hashtag}
@@ -70,9 +81,7 @@ const SearchForHashtag = ({ hashtags, setHashtagsPreview }) => {
               })}
               {inputValue && !isInclude && (
                 <>
-                  {" "}
-                  כנראה שעוד לא נוסף אצלנו השטאג כזה
-                  <span></span>
+                  לא מוצא האשטאג מתאים? <span></span>
                   <div
                     className="hashtag newHashtag"
                     onClick={() => {
