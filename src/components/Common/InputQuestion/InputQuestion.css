@@ -8,7 +8,7 @@
   font-family: HEEBO;
   color: #878794;
   font-size: 16px;
-  padding: 8px 10px 12px 19px;
+  padding: 13px 10px 12px 19px;
   margin-top: 10px;
 }
 
@@ -19,9 +19,9 @@
 .greenArrow {
   margin-top: 15px;
 }
-.buttonPlaceHolder {
+/* .buttonPlaceHolder {
   font-family: HEEBO;
   color: #878794;
   font-size: 16px;
   margin: inherit;
-}
+} */

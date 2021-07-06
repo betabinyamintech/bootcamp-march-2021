@@ -55,9 +55,9 @@ const Home = ({ numExperts = 85 }) => {
           (expertInq) => expertInq.movedToExpert.expertId === user._id
         )
       : null;
-    console.log("owned BY HOME", ownedInquiries);
-    console.log("expert BY HOME", expertInquiries);
-    console.log("user inquiries", userInquiries);
+    // console.log("owned BY HOME", ownedInquiries);
+    // console.log("expert BY HOME", expertInquiries);
+    // console.log("user inquiries", userInquiries);
     return (
       <div style={{ display: "flex", flexFlow: "column nowrap" }}>
         <div>
@@ -78,7 +78,7 @@ const Home = ({ numExperts = 85 }) => {
             <span>תושבי בנימין מחכים שתקשר בינם לבין המומחים המתאימים</span>
           )}
           {!user.isAdmin && user.profileFullFields && (
-            <InputQuestion isButton={true} />
+            <InputQuestion isButton={true} arrow={true} />
           )}
           {!user.profileFullFields && !user.isAdmin && (
             <>

@@ -8,12 +8,12 @@ import "./Splash.css";
 const Splash = ({ setTest }) => {
   let history = useHistory();
   // const userDispatch = useUserDispatch();
-  let { userInquiries } = useUserState();
+  // let { userInquiries } = useUserState();
   // getInquiries(userDispatch);
   setTimeout(() => {
-    console.log("user inquiries", userInquiries);
+    // console.log("user inquiries", userInquiries);
     setTest("test");
-    history.push("/home");
+    // history.push("/home");
     // window.location.reload();
     // if (userInquiries !== null) {
     // }

@@ -122,16 +122,7 @@ const MoreMenu = () => {
             <span onClick={logout}>התנתקות</span>
           </div>
         </button>
-        <button
-          style={{
-            border: "none",
-            marginTop: "12px",
-            height: "30px",
-            width: "20%",
-            alignSelf: "center",
-          }}
-          onClick={() => history.push("/home")}
-        >
+        <button className="close-button" onClick={() => history.push("/home")}>
           סגירה
         </button>
       </div>
