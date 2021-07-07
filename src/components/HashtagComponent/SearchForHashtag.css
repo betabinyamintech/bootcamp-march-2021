@@ -14,7 +14,7 @@
   background: #f3f3f3;
   border-radius: 40px;
 }
-/* .hashtag {
+.hashtags {
   padding: 4px 12px;
   text-align: center;
   display: flex;
@@ -31,7 +31,7 @@
   cursor: pointer;
   height: 32px;
   top: 0px;
-} */
+}
 .hashtagsFounded {
   font-family: HEEBO;
   float: right;

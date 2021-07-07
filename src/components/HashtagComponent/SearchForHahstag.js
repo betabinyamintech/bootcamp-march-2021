@@ -48,6 +48,7 @@ const SearchForHashtag = ({
           <div className="content">
             <InputQuestion
               height="26px"
+              width="90%"
               isInput={true}
               onChange={(e) => {
                 setInputValue(e.target.value);
@@ -62,7 +63,7 @@ const SearchForHashtag = ({
                   hashtag.includes(inputValue) && (
                     <>
                       <div
-                        className="hashtag.active"
+                        className="hashtags"
                         onClick={() => {
                           setHashtagsPreview(hashtag);
                           setSelectedHashtags(hashtag);
