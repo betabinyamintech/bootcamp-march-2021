@@ -35,7 +35,7 @@ const steps = [
   {
     type: QuestionTypes.HASHTAG,
     title: "בחירת האשטגים רלוונטיים",
-    comment: "זה פשוט עוזר לנו לאתר את המומחית/מומחה שתדע/ידע לעזור לך.",
+    comment: "זה פשוט עוזר לנו לאתר את המומחה שידע לעזור לך",
     field: "inquiryTags",
   },
 ];
@@ -184,7 +184,9 @@ const NewInquiry = ({}) => {
             request.inquiryTags
           ) {
             postNewInquiry(request);
-            history.push("/");
+            setTimeout(() => {
+              history.push("/home");
+            }, 900);
           }
         }}
       >

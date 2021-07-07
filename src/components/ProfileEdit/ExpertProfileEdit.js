@@ -46,16 +46,17 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
       <div className="input-fields">
         <InputField
           value={expertDetails.aboutMe}
-          label="כמה מילים על עצמך"
+          label="כמה מילים על הרקע המקצועי שלך"
           onChange={(e) =>
             setExpertDetails({ ...expertDetails, aboutMe: e.target.value })
           }
         />
         <div className="input-div">
           <label>
-            <textarea
+            <InputField
+              height="90px"
+              label="באילו נושאים ותחומים מעניין אותך לסייע?"
               value={expertDetails.helpDescription}
-              placeholder=" "
               type="text"
               onChange={(e) =>
                 setExpertDetails({
@@ -63,11 +64,10 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
                   helpDescription: e.target.value,
                 })
               }
-            ></textarea>
-            <span>בכמה מילים, במה בדיוק תוכל לסייע?</span>
+            ></InputField>
           </label>
         </div>
-        <span className="titles"> באילו נושאים תוכל לסייע?</span>
+        <span className="titles">כאן אפשר לבחור האשטאגים מתאימים</span>
         <HashtagList
           hashtags={hashtagsFromServer}
           selectedHashtags={expertDetails.inquiryTags}
@@ -78,9 +78,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             })
           }
         />
-        <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
-
-        {/* //question 1 */}
+        {/* <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
 
         <InputField
           value={question1}
@@ -94,7 +92,6 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             });
           }}
         />
-        {/* //question2 */}
         <InputField
           value={question2}
           label={"שאלה 2"}
@@ -167,7 +164,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             <img src={giftSVG}></img>
             תוכלו להיפגש בחינם בבנימין טק
           </span>
-        )}
+        )} */}
       </div>
     </div>
   );

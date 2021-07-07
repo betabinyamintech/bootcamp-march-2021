@@ -132,7 +132,7 @@ input:not(:placeholder-shown) + span {
 }
 
 input:checked + .slider {
-  background-color: #12181d;
+  background-color: #1ee8b7;
 }
 
 input:focus + .slider {

@@ -39,7 +39,6 @@ const Home = () => {
   const isAdmin = user.isAdmin;
   const userDispatch = useUserDispatch();
   useEffect(() => {
-    console.log("effect working");
     getUser(userDispatch);
     getInquiries(userDispatch);
     isAdmin && getAllInquiries(userDispatch);
@@ -49,7 +48,6 @@ const Home = () => {
   useEffect(() => {
     let getNumbers = async () => {
       let numbers = await getNumsOfUsers(userDispatch);
-      console.log("numbers", numbers);
       setNumberOfUsers(numberOfUsers + numbers.usersNum);
       setNumberOfExperts(numberOfExperts + numbers.expertsNum);
     };
@@ -91,9 +89,9 @@ const Home = () => {
           {!user.isAdmin && user.profileFullFields && (
             <InputQuestion isButton={true} arrow={true} />
           )}
-          {/* {!user.profileFullFields && !user.isAdmin && (
+          {!user.profileFullFields && !user.isAdmin && (
             <Redirect to={{ pathname: "/profile/edit" }} />
-          )} */}
+          )}
         </div>
 
         {isAdmin && (

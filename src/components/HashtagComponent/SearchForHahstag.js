@@ -1,4 +1,4 @@
-import "../HashtagComponent/SearchForHashtag.css";
+import "./SearchForHashtag.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { postTag, getTags, putInquiry, reload } from "../../contexts/actions";
@@ -63,7 +63,7 @@ const SearchForHashtag = ({
                   hashtag.includes(inputValue) && (
                     <>
                       <div
-                        className="hashtags"
+                        className="hashtagFound"
                         onClick={() => {
                           setHashtagsPreview(hashtag);
                           setSelectedHashtags(hashtag);

@@ -26,13 +26,26 @@
   margin-top: 30px;
   width: 100%;
   font-family: HEEBO;
+  height: auto;
 }
 
 .input-div label {
+  color: #9c9ca8;
   margin: 13px 0;
   position: relative;
   display: flex;
   font-family: HEEBO;
+  display: flex;
+  flex-direction: column;
+  font-family: Heebo;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 19px;
+  /* identical to box height */
+
+  text-align: right;
+  letter-spacing: 0.01em;
 }
 
 .input-div span {
@@ -47,8 +60,7 @@
 }
 
 .input-div input {
-  border-bottom: 1px solid black;
-  margin: 2px;
+  margin: -3px;
   width: 95%;
   height: 25px;
   text-align: right;
@@ -56,9 +68,8 @@
   background: #f8f8fa;
   border-radius: 10px;
   font-family: HEEBO;
-  color: #0b0b0c;
+  color: #000000;
   font-size: 16px;
-  /* padding: 8px 10px 12px 19px; */
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -94,7 +105,7 @@ input-div svg {
   background: #f8f8fa;
   border-radius: 10px;
   font-family: HEEBO;
-  color: #878794;
+  color: #0b0b0c;
   font-size: 16px;
   padding: 8px 10px 12px 19px;
 }

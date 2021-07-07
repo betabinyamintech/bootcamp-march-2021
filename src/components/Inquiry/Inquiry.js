@@ -37,7 +37,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
   // let creationTime = new Date(createdAt).toLocaleTimeString();
   let day = new Date(createdAt).getDate();
   let month = new Date(createdAt).getMonth() + 1;
-  let newDate = `${day}.${month}`;
+  let newDate = `${day}/${month}`;
 
   if (!expertsFoundForInquiry) {
     // Add loading animation
@@ -56,7 +56,7 @@ export const Inquiry = ({ inquiry, expertsUsers }) => {
               ></img>
             </span>
             <span style={{ marginRight: "6px", marginTop: "7px" }}>
-              {`נוצרה ב: ${newDate.slice(0, 3)}`}
+              {`נוצרה ב: ${newDate.slice(0, 3)}/21`}
             </span>
           </div>
           <div className="statusMessage">

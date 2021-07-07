@@ -9,8 +9,8 @@ import logoutIcon from "../commonsSVG/logout-icon.svg";
 import shareIcon from "../commonsSVG/share-icon.svg";
 import profileIcon from "../commonsSVG/profile-icon.svg";
 import plusIcon from "../commonsSVG/plus-icon.svg";
-import whatsappIcon from "../commonsSVG/whatsapp-icon.svg";
-import telegramAppIcon from "../commonsSVG/telegram-app-icon.svg";
+import whatsappIcon from "../commonsSVG/whatsapp-dark-icon.svg";
+import telegramAppIcon from "../commonsSVG/telegram-dark-icon.svg";
 import copyIcon from "../commonsSVG/copy.png";
 import allChallengesIcon from "../commonsSVG/all-challenges-icon.svg";
 import { useState } from "react";
@@ -18,14 +18,23 @@ import { useState } from "react";
 const MoreMenu = () => {
   let history = useHistory();
   const userState = useUserState();
-  const [link, setLink] = useState("anybody-app.herokuapp.com");
-  let text = "נסו את Anybody! אפליקצייה למנטורינג חברתי";
+  const link = "anybody.co.il";
+  let text =
+    "Anybody תעזור לך לפגוש בדיוק את האנשים שחיפשת שיוכלו לענות על האתגרים המקצועיים שלך. רוצה להצטרף?";
   const [share, setShare] = useState(false);
-  console.log(userState.user);
+  const [display, setDisplay] = useState("none");
   const logout = () => {
     localStorage.removeItem("currentUser");
     localStorage.removeItem("token");
     document.location.reload();
+  };
+
+  const copyMeesage = () => {
+    console.log("copy message func");
+    setDisplay("inline");
+    setTimeout(() => {
+      setDisplay("none");
+    }, 1000);
   };
   return (
     <>
@@ -107,14 +116,18 @@ const MoreMenu = () => {
                   href={`https://t.me/share/url?url=${link}&text=${text}
 `}
                 >
-                  <img src={telegramAppIcon}></img>
+                  <img src={telegramAppIcon} alt="telegram"></img>
                 </a>
               </span>
               <CopyToClipboard text={link}>
-                <span>
-                  <img src={copyIcon} style={{ height: "47px" }}></img>
+                <span onClick={copyMeesage}>
+                  <img src={copyIcon} style={{ height: "40px" }}></img>
                 </span>
               </CopyToClipboard>
+              <div id="custom-tooltip" style={{ display: display }}>
+                {" "}
+                הקישור הועתק
+              </div>
             </div>
           )}
           <button>

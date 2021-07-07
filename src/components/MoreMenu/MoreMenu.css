@@ -90,3 +90,41 @@
   display: flex;
   justify-content: space-around;
 }
+
+.visuallyhidden {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+/* .copybutton {
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  opacity: 1;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  z-index: 9;
+  border-radius: 24px;
+} */
+/* .button-tooltip-container {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  min-height: 30px;
+} */
+
+#custom-tooltip {
+  margin-left: 40px;
+  padding: 5px 12px;
+  background-color: #b6b6b6df;
+  border-radius: 23px;
+  color: #000000;
+  font-size: 15px;
+  width: 27%;
+  height: 20px;
+  position: absolute;
+  /* top: 403px; */
+  /* color: black; */
+  margin-top: 52px;
+}

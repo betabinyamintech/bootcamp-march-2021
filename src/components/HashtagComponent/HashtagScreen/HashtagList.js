@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { getTags } from "../../../contexts/actions";
+import { useUserState } from "../../../contexts/context";
 import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
 import SearchForHashtag from "../SearchForHahstag";
 //import "./HashtagList.css";
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
-  let hahtagsLength = hashtags.length;
-  let theHashtags = hashtags.slice(0, 11);
+  console.log("selected", selectedHashtags);
+  if (selectedHashtags === undefined) {
+    selectedHashtags = [];
+  }
+  let rest = 11 - selectedHashtags.length;
+  let cutHashtags = hashtags.slice(0, rest);
+  let theHashtags = selectedHashtags.concat(cutHashtags);
   const [hashtagsPreview, setHashtagsPreview] = useState(theHashtags);
   const [newHashtag, setNewHashtag] = useState(undefined);
   useEffect(() => {
     if (newHashtag !== undefined) {
-      console.log("map start");
       newHashtag.map((hashtag) => {
         setSelectedHashtags(
           selectedHashtags.includes(hashtag)
@@ -23,12 +28,8 @@ const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
       });
     }
   }, [newHashtag]);
-  console.log("hashtag preview", hashtagsPreview.length);
   if (selectedHashtags === undefined) selectedHashtags = [];
   let keys = 0;
-  console.log("selected hashtags", selectedHashtags);
-  console.log("new hashtag", newHashtag);
-
   return (
     <div
       style={{
