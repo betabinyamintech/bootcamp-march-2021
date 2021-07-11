@@ -73,11 +73,35 @@ const UserProfileEdit = () => {
     }
     console.log("submit", userDetails);
     let { city, firstName, profession, lastName, phone } = userDetails;
+    let {
+      aboutMe,
+      helpDescription,
+      inquiryTags,
+      questionsBeforeMeeting,
+      lengthMeeting,
+      peoplesKind,
+      link,
+      preferredMeetingType,
+    } = userDetails.expertDetails;
     putUser(
       userDispatch,
       {
         userDetails: {
           ...userDetails,
+          expertDetails: {
+            ...userDetails.expertDetails,
+            expertProfileCompleted:
+              aboutMe &&
+              helpDescription &&
+              inquiryTags &&
+              questionsBeforeMeeting &&
+              lengthMeeting &&
+              peoplesKind &&
+              link &&
+              preferredMeetingType
+                ? true
+                : false,
+          },
           profileFullFields:
             city && phone && profession && firstName && lastName ? true : false,
         },
@@ -170,7 +194,7 @@ const UserProfileEdit = () => {
             value={userDetails.city}
             id="city"
             required={true}
-            label="ישוב"
+            label="איפה אתה גר?"
             warning={warnings.city}
             onChange={setUserDetailsWithWarning}
           />

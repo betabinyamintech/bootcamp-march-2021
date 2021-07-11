@@ -34,7 +34,7 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
   };
 
   const deleteSelectedExpert = (expertId) => {
-    console.log("delete selecetd with", expertId);
+    console.log("delete seleceted with", expertId);
     let selected = selectedExpertsByAdmin;
     console.log("selected before pop", selected);
     for (let i = 0; i < selected.length; i++) {
@@ -60,6 +60,7 @@ const MentorCardGroup = ({ inquiry, searchResult }) => {
   let searchResultExperts =
     isAdmin &&
     expertsUsers.filter((expert) => {
+      console.log("expert on filter", expert);
       return (
         expert.firstName.includes(searchResult) ||
         expert.lastName.includes(searchResult) ||

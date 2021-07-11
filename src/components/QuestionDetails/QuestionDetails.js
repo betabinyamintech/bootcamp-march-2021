@@ -12,6 +12,7 @@ import PreviousButton from "../Common/PreviousButton/PreviousButton";
 import EditInquiry from "../EditInquiry/EditInquiry";
 import SmallButton from "../Common/SmallButton/SmallButton";
 const QuestionDetails = ({ inquiry, buttonText }) => {
+  console.log("inquiry by question details screen", inquiry);
   const user = useUserState().user;
   let { isExpert } = user;
   const { userId, inquiryTitle, inquiryContent, movedToExpert, status, _id } =
@@ -55,26 +56,27 @@ const QuestionDetails = ({ inquiry, buttonText }) => {
                 </div>
                 <div className="title">{inquiryTitle}</div>
                 <div className="inquiryText">{inquiryContent}</div>
-                {answersToExpertQuestions.map((question) => {
-                  return (
-                    <>
-                      {status !== "meetingScheduled" && (
-                        <div className="questionAndAnswers">
-                          <div className="questionBox">
-                            <br></br>
-                            {question.question}
+                {answersToExpertQuestions &&
+                  answersToExpertQuestions.map((question) => {
+                    return (
+                      <>
+                        {status !== "meetingScheduled" && (
+                          <div className="questionAndAnswers">
+                            <div className="questionBox">
+                              <br></br>
+                              {question.question}
+                            </div>
+
+                            <div className="answerBox">{question.ans}</div>
                           </div>
+                        )}
 
-                          <div className="answerBox">{question.ans}</div>
-                        </div>
-                      )}
-
-                      {/* {status === "meetingScheduled" && (
+                        {/* {status === "meetingScheduled" && (
                     <InquiryMeetingScheduled inquiry={inquiry} />
                   )} */}
-                    </>
-                  );
-                })}
+                      </>
+                    );
+                  })}
               </div>
               <ActionPage inquiry={inquiry} buttonText={buttonText} />
               <span onClick={refuseThisInquiry}>מצטער,הפעם לא אוכל לעזור</span>

@@ -9,7 +9,6 @@ import {
   getInquiries,
   getAllInquiries,
   getAllUsers,
-  Reload,
   getUser,
   getNumsOfUsers,
 } from "../../contexts/actions";
@@ -20,6 +19,7 @@ import Button from "../Common/Button/Button";
 import ProfileView from "../ProfileView/ProfileView";
 import ProfileViewAdminRemove from "../ProfileView/ProfileViewAdminRemove";
 import Splash from "../Splash/Splash";
+import informationIcon from "../commonsSVG/information-icon.svg";
 
 const Home = () => {
   const {
@@ -36,7 +36,7 @@ const Home = () => {
   const [numberOfExperts, setNumberOfExperts] = useState(44);
   const [editInquiry, setEditInquiry] = useState(false);
 
-  const isAdmin = user.isAdmin;
+  const { isAdmin, isExpert } = user;
   const userDispatch = useUserDispatch();
   useEffect(() => {
     getUser(userDispatch);
@@ -89,6 +89,29 @@ const Home = () => {
           {!user.isAdmin && user.profileFullFields && (
             <InputQuestion isButton={true} arrow={true} />
           )}
+          {!user.expertDetails.expertProfileCompleted && isExpert && (
+            <div
+              className="information-comment"
+              style={{
+                marginTop: "15px",
+                color: "#9d9d9d",
+                marginBottom: "10px",
+              }}
+            >
+              <img src={informationIcon}></img>
+              <span>
+                הוספנו כמה שאלות כדי שנוכל להכיר אותך טוב יותר כמומחה ונדע
+                להתאים לך רק פניות רלוונטיות
+              </span>
+              <Button
+                onClick={() => {
+                  history.push("/profile/edit");
+                }}
+              >
+                למענה
+              </Button>
+            </div>
+          )}
           {!user.profileFullFields && !user.isAdmin && (
             <Redirect to={{ pathname: "/profile/edit" }} />
           )}
@@ -104,15 +127,24 @@ const Home = () => {
             />
           </>
         )}
-        {isAdmin &&
-          adminInquiries &&
-          adminInquiries.map((inquiry) => {
-            return (
-              (inquiry.status === chosenStatus || inquiry.status === "all") && (
-                <InquiryForAdmin inquiry={inquiry} />
-              )
-            );
-          })}
+        {isAdmin && adminInquiries && (
+          <div className="inquiriesBox-admin">
+            <table style={{ width: "100%", border: "1px solid black" }}>
+              <th>שם</th>
+              <th>כותרת</th>
+              <th>סטטוס</th>
+              <th>תאריך</th>
+              {adminInquiries.map((inquiry) => {
+                return (
+                  (inquiry.status === chosenStatus ||
+                    inquiry.status === "all") && (
+                    <InquiryForAdmin inquiry={inquiry} />
+                  )
+                );
+              })}
+            </table>
+          </div>
+        )}
         <>
           {user.isExpert && expertInquiries.length > 0 && (
             <>

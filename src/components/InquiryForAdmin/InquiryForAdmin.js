@@ -1,12 +1,13 @@
-import "../InquiryForExpert/InquiryStyles.css";
+import "./InquiryForAdmin.css";
+import { Table, Tag, Space } from "antd";
 import inquiryTypes from "../Inquiry/InquiryType";
 import InquiryMeetingScheduled from "../InquiryMeetingScheduled/InquiryMeetingScheduled";
 import { useUserState } from "../../contexts/context";
 import { useState } from "react";
 import ActionPage from "../ActionPage/ActionPage";
 import EditInquiry from "../EditInquiry/EditInquiry";
+import QuestionDetails from "../QuestionDetails/QuestionDetails";
 const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
-  console.log("inq by inq admin", inquiry);
   const {
     inquiryTitle,
     inquiryContent,
@@ -17,36 +18,37 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   } = inquiry;
   const user = useUserState().user;
   const fromAdminSide = true;
-  const [clicked, setClicked] = useState(true);
-  const [cancel, setCancel] = useState();
+  const [clicked, setClicked] = useState(false);
+  // const [showQuestion, setShowQuestion] = useState(false);
   const { isAdmin, isExpert } = user;
   let creationDate = new Date(updatedAt).toLocaleDateString();
   let creationTime = new Date(updatedAt).toLocaleTimeString();
   const type = isAdmin ? "admin" : isExpert ? "expert" : "user";
   const values = InquiryType[type][status];
-  console.log("values", values);
+  // console.log("values", values);
   const { message = null, trueFalseButton, buttonText } = values;
   return (
     <>
-      <div className="inquiryBox">
-        {/* <span className="homeMenuIcon">
-          <div></div>
-          ,<img alt="home" src={menuIcon}></img>
-        </span> */}
-        <div className="inquiryTitle">&bull; {inquiryTitle}</div>
-        <div className="inquiryTitle">
+      <tr>
+        <td>{userId.firstName + " " + userId.lastName}</td>
+        <td>{inquiryTitle}</td>
+        {clicked && <td>{inquiryContent}</td>}
+        <td>{status}</td>
+        <td>{creationDate}</td>
+      </tr>
+      {/* <div className="inquiryBox-admin">
+        <div className="inquiryTitle-admin">&bull; {inquiryTitle}</div>
+        <div className="inquiryTitle-admin">
           &bull; שם: {userId.firstName} {userId.lastName}
         </div>
-        <div className="timePassed">{`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(
+        <div className="timePassed-admin">{`נוצרה ב:${creationDate} בשעה : ${creationTime.slice(
           0,
           5
         )}`}</div>
-        <div className="statusMessage">
-          <h6 style={{ fontSize: "13px" }}></h6>
-        </div>
-        <div className="statusMessage">&bull;סטטוס: {message}</div>
+
+        <div className="statusMessage-admin">&bull;סטטוס: {message}</div>
         {status === "movedToExpert" && (
-          <div className="statusMessage">
+          <div className="statusMessage-admin">
             &bull;עבר אל:{" "}
             {`${movedToExpert.expertId.firstName}   ${movedToExpert.expertId.lastName}, ${movedToExpert.expertId.profession}`}
           </div>
@@ -63,10 +65,8 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
           />
         )}
         {<EditInquiry inquiry={inquiry} buttonText={"ערוך פנייה זו"} />}
-        {/* {inquiryTypes && status !== "irrelevant" && (
-          <button>בטל פנייה זו</button>
-        )} */}
-      </div>
+       
+      </div>  */}
     </>
   );
 };

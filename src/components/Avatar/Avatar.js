@@ -10,6 +10,9 @@ let style = {
 };
 
 const Avatar = ({ avatar, borderRadius, height, width, float, margin }) => {
+  let user = useUserState().user;
+  let expertCompleted = user.expertDetails.expertProfileCompleted;
+  console.log(expertCompleted);
   return (
     <img
       src={
@@ -20,6 +23,7 @@ const Avatar = ({ avatar, borderRadius, height, width, float, margin }) => {
       // className="imgAvatar"
       alt=""
       style={{
+        border: expertCompleted ? "1px solid green" : "none",
         borderRadius: borderRadius ? borderRadius : style.borderRadius,
         height: height ? height : style.height,
         width: width ? width : style.width,

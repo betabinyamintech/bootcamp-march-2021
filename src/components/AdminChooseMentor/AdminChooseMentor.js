@@ -20,7 +20,6 @@ const AdminChooseMentor = ({ inquiry }) => {
   const selectedMentors = expertsUsers.filter((mentor) =>
     mentor.expertDetails.inquiryTags.includes(chosenHashtag)
   );
-  console.log("inquiryTags", inquiry);
   return (
     <div>
       <div className="chooseMentorHeader">

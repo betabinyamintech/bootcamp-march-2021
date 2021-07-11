@@ -35,7 +35,8 @@ const InquiryFilter = ({
     <>
       <div className="inquiriesTitle">פניות מסוננות: {selectedStatus}</div>
       <select
-        className="meeting-kind"
+        style={{ marginBottom: "50px" }}
+        className="status-filter"
         id="filterMeetings"
         name="filterMeetings"
         value={selectedStatus}

@@ -5,6 +5,7 @@ import "./ExpertProfileEdit.css";
 import hashtagsFromServer from "../Common/Hashtags";
 import giftSVG from "../commonsSVG/gift.svg";
 import clockIcon from "../commonsSVG/clock-icon.svg";
+import informationIcon from "../commonsSVG/information-icon.svg";
 
 const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
   const [preferredMeetingType, setPreferredMeetingType] = useState(
@@ -78,7 +79,58 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             })
           }
         />
-        {/* <span className="titles">מה חשוב לך לדעת לפני הפגישה?</span>
+
+        <div className="input-div">
+          <label>
+            <InputField
+              height="90px"
+              label="לאיזה סוג אנשים אתה מעוניין לייעץ?  "
+              value={expertDetails.peoplesKind}
+              type="text"
+              onChange={(e) =>
+                setExpertDetails({
+                  ...expertDetails,
+                  peoplesKind: e.target.value,
+                })
+              }
+            ></InputField>
+          </label>
+        </div>
+        <div className="information-comment">
+          <img src={informationIcon}></img>
+          <span>שלב בקריירה, גודל עסק , רקע ספציפי</span>
+        </div>
+        <div className="input-div">
+          <label>
+            <InputField
+              height="90px"
+              label="כאן כדאי לשים קישור ללינקדאין / דף פייסבוק "
+              value={expertDetails.link}
+              type="text"
+              onChange={(e) =>
+                setExpertDetails({
+                  ...expertDetails,
+                  link: e.target.value,
+                })
+              }
+            ></InputField>
+          </label>
+        </div>
+        <div className="information-comment">
+          <img src={informationIcon}></img>
+          <span>נוכל לשלוח לפונה המתאים לפני הפגישה שלכם.</span>
+        </div>
+
+        <span className="titles">מידע שחשוב לך לקבל מהפונה לפני כל פגישה?</span>
+        <div className="information-comment">
+          <img src={informationIcon}></img>
+          <span>
+            מסמכים, מידע על העסק או המיזם <br /> הפניות שרלוונטיות לך במערכת ,
+            מאפשרות לך לקבוע פגישה עם המשתמש שפנה כדי לענות על השאלה שלו. השאלות
+            הבאות יעזרו לנו להפנות אליך את האנשים הנכונים ולגרום שהפגישות יהיו
+            הכי יעילות.
+          </span>
+        </div>
 
         <InputField
           value={question1}
@@ -164,7 +216,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
             <img src={giftSVG}></img>
             תוכלו להיפגש בחינם בבנימין טק
           </span>
-        )} */}
+        )}
       </div>
     </div>
   );

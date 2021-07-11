@@ -1,6 +1,8 @@
+import { useUserState } from "../../../contexts/context";
+
 function InputField({ onChange, label, required, warning, height, ...props }) {
   return (
-    <div className="input-div">
+    <div className="input-div" style={{ height: height ? height : "auto" }}>
       <label>
         <p>{label}</p>
         <input
