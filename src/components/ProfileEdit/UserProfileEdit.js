@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./UserProfileEdit.css";
 import Avatar from "../Avatar/Avatar";
 import ExpertProfileEdit from "./ExpertProfileEdit";
 import Button from "../Common/Button/Button";
 import InputField from "../Common/InputField/InputField";
 import PreviousButton from "../Common/PreviousButton/PreviousButton";
-import { putUser } from "../../contexts/actions";
+import { getTags, putUser } from "../../contexts/actions";
 import { useUserDispatch, useUserState } from "../../contexts/context";
 import vIcon from "../commonsSVG/v-icon.svg";
 import informationIcon from "../commonsSVG/information-icon.svg";
@@ -23,9 +23,17 @@ const UserProfileEdit = () => {
   const [userDetails, setUserDetails] = useState(userState.user);
   const [warnings, setWarnings] = useState({});
   const [questions, setQuestions] = useState([]);
+  const [hashtags, setHashtags] = useState([]);
   const [checkIsExpert, setCheckIsExpert] = useState(
     userDetails.isExpert ? userDetails.isExpert : false
   );
+  useEffect(() => {
+    const fetchHashtags = async () => {
+      let data = await getTags();
+      setHashtags(data);
+    };
+    fetchHashtags();
+  }, []);
   const [localIsExpert, setLocalIsExpert] = useState(checkIsExpert);
   // console.log("userState", userState, "warnings", warnings);
 
@@ -226,6 +234,7 @@ const UserProfileEdit = () => {
       {localIsExpert && (
         <ExpertProfileEdit
           setExpertDetails={setExpertDetails}
+          hashtags={hashtags}
           expertDetails={
             userDetails.expertDetails ? userDetails.expertDetails : []
           }

@@ -18,7 +18,7 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   } = inquiry;
   const user = useUserState().user;
   const fromAdminSide = true;
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState(true);
   // const [showQuestion, setShowQuestion] = useState(false);
   const { isAdmin, isExpert } = user;
   let creationDate = new Date(updatedAt).toLocaleDateString();
@@ -29,14 +29,7 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
   const { message = null, trueFalseButton, buttonText } = values;
   return (
     <>
-      <tr>
-        <td>{userId.firstName + " " + userId.lastName}</td>
-        <td>{inquiryTitle}</td>
-        {clicked && <td>{inquiryContent}</td>}
-        <td>{status}</td>
-        <td>{creationDate}</td>
-      </tr>
-      {/* <div className="inquiryBox-admin">
+      <div className="inquiryBox-admin">
         <div className="inquiryTitle-admin">&bull; {inquiryTitle}</div>
         <div className="inquiryTitle-admin">
           &bull; שם: {userId.firstName} {userId.lastName}
@@ -65,8 +58,10 @@ const InquiryForAdmin = ({ inquiry, expertsUsers }) => {
           />
         )}
         {<EditInquiry inquiry={inquiry} buttonText={"ערוך פנייה זו"} />}
-       
-      </div>  */}
+        {/* {inquiryTypes && status !== "irrelevant" && (
+          <button>בטל פנייה זו</button>
+        )} */}
+      </div>
     </>
   );
 };

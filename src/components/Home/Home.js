@@ -129,20 +129,14 @@ const Home = () => {
         )}
         {isAdmin && adminInquiries && (
           <div className="inquiriesBox-admin">
-            <table style={{ width: "100%", border: "1px solid black" }}>
-              <th>שם</th>
-              <th>כותרת</th>
-              <th>סטטוס</th>
-              <th>תאריך</th>
-              {adminInquiries.map((inquiry) => {
-                return (
-                  (inquiry.status === chosenStatus ||
-                    inquiry.status === "all") && (
-                    <InquiryForAdmin inquiry={inquiry} />
-                  )
-                );
-              })}
-            </table>
+            {adminInquiries.map((inquiry) => {
+              return (
+                (inquiry.status === chosenStatus ||
+                  inquiry.status === "all") && (
+                  <InquiryForAdmin inquiry={inquiry} />
+                )
+              );
+            })}
           </div>
         )}
         <>

@@ -54,21 +54,6 @@ const NewInquiry = ({}) => {
     const fetchHashtags = async () => {
       let data = await getTags();
       setHashtags(data);
-      // console.log("data", data);
-      // let hashtagsToSet = [];
-      // let { tagsList, userTags } = data;
-      // let tagsListLength = tagsList.length;
-      // let userTagsLength = userTags.length;
-      // if (userTagsLength > 0) {
-      //   hashtagsToSet.push(userTags);
-      //   hashtagsToSet.push(tagsList);
-      //   setHashtags(hashtagsToSet);
-      // }
-      // if (userTagsLength === 0) {
-      //   hashtagsToSet.push(tagsList);
-      //   setHashtags(hashtagsToSet);
-      // }
-      // console.log("response", data);
     };
     fetchHashtags();
   }, []);

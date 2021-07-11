@@ -1,6 +1,6 @@
 import react, { useContext, useState } from "react";
 import MentorCardGroup from "../MentorCardGroup/MentorCardGroup";
-
+import InputField from "../Common/InputField/InputField";
 import "./AdminChooseMentor.css";
 import experts from "./experts.json";
 import { useUserState } from "../../contexts/context";
@@ -21,7 +21,7 @@ const AdminChooseMentor = ({ inquiry }) => {
     mentor.expertDetails.inquiryTags.includes(chosenHashtag)
   );
   return (
-    <div>
+    <div className="choise-body">
       <div className="chooseMentorHeader">
         <h5>בחירת מומחה לסיוע בשאלה:</h5>
         <h2>{inquiry.inquiryTitle}</h2>
@@ -34,14 +34,14 @@ const AdminChooseMentor = ({ inquiry }) => {
 
       <div className="searchMentor"></div>
       <div>
-        <input
+        <InputField
           type="text"
           id="name"
           name="name"
           onChange={(e) => {
             setSearchResult(e.target.value);
           }}
-        ></input>
+        ></InputField>
       </div>
       <MentorCardGroup
         inquiry={inquiry}

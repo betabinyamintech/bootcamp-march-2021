@@ -7,7 +7,7 @@ import giftSVG from "../commonsSVG/gift.svg";
 import clockIcon from "../commonsSVG/clock-icon.svg";
 import informationIcon from "../commonsSVG/information-icon.svg";
 
-const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
+const ExpertProfileEdit = ({ setExpertDetails, expertDetails, hashtags }) => {
   const [preferredMeetingType, setPreferredMeetingType] = useState(
     expertDetails.preferredMeetingType
       ? expertDetails.preferredMeetingType
@@ -70,7 +70,7 @@ const ExpertProfileEdit = ({ setExpertDetails, expertDetails }) => {
         </div>
         <span className="titles">כאן אפשר לבחור האשטאגים מתאימים</span>
         <HashtagList
-          hashtags={hashtagsFromServer}
+          hashtags={hashtags}
           selectedHashtags={expertDetails.inquiryTags}
           setSelectedHashtags={(value) =>
             setExpertDetails({

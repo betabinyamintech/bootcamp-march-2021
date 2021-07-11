@@ -3,9 +3,9 @@ import { getTags } from "../../../contexts/actions";
 import { useUserState } from "../../../contexts/context";
 import HashtagLabel from "../../Common/Hashtag/HashtagLabel";
 import SearchForHashtag from "../SearchForHahstag";
-//import "./HashtagList.css";
 const HashtagList = ({ hashtags, selectedHashtags, setSelectedHashtags }) => {
   console.log("selected", selectedHashtags);
+  console.log("hashtags all", hashtags);
   if (selectedHashtags === undefined) {
     selectedHashtags = [];
   }

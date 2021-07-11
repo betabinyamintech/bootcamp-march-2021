@@ -17,3 +17,7 @@ input {
   padding: 16px;
   margin: 16px;
 }
+.choise-body {
+  width: 90%;
+  align-self: center;
+}
